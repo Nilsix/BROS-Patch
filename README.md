@@ -20,4 +20,5 @@ and press Enter
 
 you now have access to the Bros community patch launcher, it will also auto update
 
+Inside the folder, you will find a launcher file, this is the one you should click on to launch the program
 
