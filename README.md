@@ -8,7 +8,7 @@ STEP 2 :
 DO NOT download it as a ZIP or it won't auto update
 go into your command prompt (press Windows+R then type cmd then press enter), then type : 
 cd Documents
-then type : 
+then type : git clone https://github.com/Nilsix/BROS-Community-Patch.git
 
 
 
