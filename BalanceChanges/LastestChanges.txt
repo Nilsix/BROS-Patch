@@ -1,3 +1,5 @@
+Bros Community Patch v00001
+
 Halibell : 
 dash attack : hitbox coll radius 2.5->1.8
 

@@ -34,7 +34,7 @@ game_path = config.get("GAME_PATH", "")
 
 if updated:
     game_path = ""
-    
+
 if not game_path or game_path == "":
     input("Game Path not found. Press Enter to select it...")
     game_path = filedialog.askdirectory()
@@ -69,7 +69,7 @@ while choice not in [1, 2, 5]:
             json.dump(config, f)
 
     if choice == 4:
-        balance_file = os.path.join(BASE_DIR, "BalanceChanges.txt")
+        balance_file = os.path.join(BASE_DIR, "BalanceChanges/LastestChanges.txt")
         if os.path.exists(balance_file):
             os.startfile(balance_file)
         else:
