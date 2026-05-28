@@ -3,6 +3,13 @@ import json
 from tkinter import filedialog
 import shutil
 import os
+import subprocess
+
+
+try:
+    subprocess.run(["git", "pull", "https://github.com/Nilsix/BROS-Community-Patch.git"])
+except Exception as e:
+    print("Error pulling the latest changes: make sure you followed the instruction on README.md")
 
 root = tk.Tk()
 root.withdraw()
@@ -24,7 +31,8 @@ while choice != 1 and choice != 2:
         choice = int(input("""(1) : Launch Bleach Rebirth of Souls 
 (2) : Launch Bleach Rebirth of Souls Community Edition 
 (3) : Change game path
-(4) : Exit
+(4) Read balance changes
+(5) : Exit
 : """))
     except:
         choice = -1
@@ -33,7 +41,9 @@ while choice != 1 and choice != 2:
         config["GAME_PATH"] = game_path
         with open(config_path,"w") as f:
             json.dump(config,f)
-    if(choice == 4):
+    if (choice == 4):
+        os.startfile("BalanceChanges.txt")
+    if(choice == 5):
         exit()
 
 

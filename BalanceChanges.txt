@@ -1,5 +1,3 @@
-balance notes : 
-
 Halibell : 
 dash attack : hitbox coll radius 2.5->1.8
 
@@ -11,6 +9,7 @@ blockstun : 34->33 (light3 is now 0 on block when she is yellow)
 
 Notes : 
 Hali was doing everything,her neutral presence with dash light was too strong and she could then convert that into really strong pressure, as well as having TOD levels of damage, we are tuning both of those things down, which is fine because her buttons are still great, she still has great oki, but her damage definetely got gutted in a huge margin
+
 
 BYAKUYA  
 Light3 (base){
@@ -24,7 +23,9 @@ Notes :
 Minimum & maximum range increased. Minimum range increase is a significant nerf to his close-midrange combat. Maximum range increase functionally adds very little since it cannot be followed up with light attacks at that range anyway. Currently an artefact of being unable to separate minimum & maximum ranges.
 }
 
+
 SOI FON :
+
 SP1 (evo) {
 hitstun : 68->40 (ankenless sp1 loops are gone)
 }
@@ -34,7 +35,9 @@ Soi fon was doing everything while not thinking much about her anken managament,
 she could just mix up with anken and at the same time get insane damage with ankenless sp1 loops.
 Now if Soi Fon want to mix with anken, she has to accept that she will lose damage on the sp1 loops.
 
+
 KISUKE :
+
 Light 1 and Light 1[SP2] (base and evo) :
 
  	 Hitbox Radius : 2 -> 3.8
