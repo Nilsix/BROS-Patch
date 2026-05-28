@@ -7,9 +7,16 @@ import subprocess
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 config_path = os.path.join(BASE_DIR, "config.json")
-
+updated = False
 try:
-    subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True)
+    result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+    output = result.stdout.strip()
+    if "Already up to date." in output:
+        print("Mod is already up to date.")
+    else:
+        print("Mod updated successfully.")
+        updated = True
+
 except Exception as e:
     print("Git update failed:", e)
 
@@ -25,7 +32,10 @@ with open(config_path, "r") as f:
 
 game_path = config.get("GAME_PATH", "")
 
-if not game_path:
+if updated:
+    game_path = ""
+    
+if not game_path or game_path == "":
     input("Game Path not found. Press Enter to select it...")
     game_path = filedialog.askdirectory()
 
@@ -38,7 +48,7 @@ choice = -1
 
 while choice not in [1, 2, 5]:
     try:
-        print("Make sure you got the right game path, otherwise the mod won't work. If you want to change it, select option 3.")
+        print("Make sure you got the right game path (Bleach Rebirth of Souls folder), otherwise the mod won't work. If you want to change it, select option 3.")
         print("\nCurrent Bleach Rebirth of Souls path:", game_path)
 
         choice = int(input("""
