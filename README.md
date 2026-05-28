@@ -2,7 +2,7 @@ PLEASE READ ME BEFORE DOWNLOADING OR IT WON'T WORK PROPERLY (IT'S REALLY EAST TO
 STEP 1 : 
 You will need to download : 
 Python : https://www.python.org/downloads/
-Git : https://git-scm.com/
+and Git : https://git-scm.com/
 
 STEP 2 : 
 DO NOT download it as a ZIP or it won't auto update
