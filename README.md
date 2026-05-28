@@ -13,6 +13,7 @@ and press Enter,
 then type
 
 "git clone https://github.com/Nilsix/BROS-Community-Patch.git" 
+
 and press Enter
 
 
