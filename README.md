@@ -6,13 +6,15 @@ Python : https://www.python.org/downloads/
 and Git : https://git-scm.com/
 
 STEP 2 : 
-DO NOT download it as a ZIP or it won't auto update. Go into your command prompt (press Windows+R then type cmd then press enter), then type (without the quotation marks) : 
-"cd Documents" 
+DO NOT download it as a ZIP or it won't auto update. Go into your command prompt (press Windows+R then type cmd then press enter), then : 
+
+
+cd Documents 
 
 and press Enter, 
-then type
+then type :
 
-"git clone https://github.com/Nilsix/BROS-Community-Patch.git" 
+git clone https://github.com/Nilsix/BROS-Community-Patch.git
 
 and press Enter
 
