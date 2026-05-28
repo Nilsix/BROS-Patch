@@ -13,7 +13,7 @@ except Exception as e:
 
 root = tk.Tk()
 root.withdraw()
-config_path = "Config/config.json"
+config_path = "config.json"
 with open(config_path,"r") as f:
     config = json.load(f)
 game_path = config.get("GAME_PATH")
