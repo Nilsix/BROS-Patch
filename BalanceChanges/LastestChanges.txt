@@ -23,7 +23,7 @@ Halibell :
 dash attack : hitbox coll radius 2.5->1.8
 
 SP1 : 
-Hitstun : 72->65 (can only combo into sig light after a yellow SP1)
+Hitstun : 72->67 (can only combo into sig light after a yellow SP1)
 
 Light3 : 
 blockstun : 34->33 (light3 is now 0 on block when she is yellow)
