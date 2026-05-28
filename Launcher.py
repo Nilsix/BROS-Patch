@@ -38,6 +38,7 @@ choice = -1
 
 while choice not in [1, 2, 5]:
     try:
+        print("Make sure you got the right game path, otherwise the mod won't work. If you want to change it, select option 3.")
         print("\nCurrent Bleach Rebirth of Souls path:", game_path)
 
         choice = int(input("""
