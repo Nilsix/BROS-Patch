@@ -4,7 +4,6 @@ from tkinter import filedialog
 import shutil
 import os
 
-
 root = tk.Tk()
 root.withdraw()
 config_path = "Config/config.json"
