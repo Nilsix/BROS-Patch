@@ -10,7 +10,8 @@ DO NOT download it as a ZIP or it won't auto update. Go into your command prompt
 "cd Documents" 
 
 and press Enter, 
-then type : "git clone https://github.com/Nilsix/BROS-Community-Patch.git" 
+then type : 
+"git clone https://github.com/Nilsix/BROS-Community-Patch.git" 
 and press Enter
 
 
