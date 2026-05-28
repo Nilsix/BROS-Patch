@@ -69,7 +69,7 @@ while choice not in [1, 2, 5]:
             json.dump(config, f)
 
     if choice == 4:
-        balance_file = os.path.join(BASE_DIR, "BalanceChanges/LastestChanges.txt")
+        balance_file = os.path.join(BASE_DIR, "BalanceChanges/LatestChanges.txt")
         if os.path.exists(balance_file):
             os.startfile(balance_file)
         else:
