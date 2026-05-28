@@ -1,4 +1,23 @@
-Bros Community Patch v00001
+Bros Community Patch
+
+ULQUIORRA : 
+Light 1 (base and evo) : 
+	Hitbox Radius : 2 -> 3.8
+	Hitbox position (Z-axis) : -0.2 -> -2
+
+Light 1 (reawakening) : 
+	Hitbox Radius : 3->4.8
+	Hitbox Position (Z-axis) : -0.2 -> -2
+
+ulquiorra can now punish flashsteps (nerfs will be incoming soon to compensate)
+
+Yoruichi : 
+
+Light 1 (base and evo) : 
+	Hitbox Radius : 2 -> 
+	Hitbox position (Z-axis) : 0.5 -> 
+
+Yoruichi can now punish flashsteps
 
 Halibell : 
 dash attack : hitbox coll radius 2.5->1.8
