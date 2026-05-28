@@ -1,69 +1,99 @@
 import tkinter as tk
-import json 
+import json
 from tkinter import filedialog
 import shutil
 import os
 import subprocess
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+config_path = os.path.join(BASE_DIR, "config.json")
 
 try:
-    subprocess.run(["git", "pull", "https://github.com/Nilsix/BROS-Community-Patch.git"])
+    subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True)
 except Exception as e:
-    print("Error pulling the latest changes: make sure you followed the instruction on README.md")
+    print("Git update failed:", e)
+
+if not os.path.exists(config_path):
+    with open(config_path, "w") as f:
+        json.dump({"GAME_PATH": ""}, f)
 
 root = tk.Tk()
 root.withdraw()
-config_path = "config.json"
-with open(config_path,"r") as f:
-    config = json.load(f)
-game_path = config.get("GAME_PATH")
 
-if not game_path or game_path == "":
-    chooseFolder = input("Game Path not found, choose your Bleach Rebirth of Souls folder, it can be found in your Steam library (Press Enter to continue)")   
+with open(config_path, "r") as f:
+    config = json.load(f)
+
+game_path = config.get("GAME_PATH", "")
+
+if not game_path:
+    input("Game Path not found. Press Enter to select it...")
     game_path = filedialog.askdirectory()
+
     config["GAME_PATH"] = game_path
-    with open(config_path,"w") as f:
-        json.dump(config,f)
+
+    with open(config_path, "w") as f:
+        json.dump(config, f)
+
 choice = -1
-while choice != 1 and choice != 2:
-    try: 
-        print("Current Bleach Rebirth of Souls path: ",game_path)
-        choice = int(input("""(1) : Launch Bleach Rebirth of Souls 
-(2) : Launch Bleach Rebirth of Souls Community Edition 
+
+while choice not in [1, 2, 5]:
+    try:
+        print("\nCurrent Bleach Rebirth of Souls path:", game_path)
+
+        choice = int(input("""
+(1) : Launch Bleach Rebirth of Souls
+(2) : Launch Bleach Rebirth of Souls Community Edition
 (3) : Change game path
-(4) Read balance changes
+(4) : Read balance changes
 (5) : Exit
-: """))
+> """))
     except:
         choice = -1
-    if(choice == 3):
+
+    if choice == 3:
         game_path = filedialog.askdirectory()
         config["GAME_PATH"] = game_path
-        with open(config_path,"w") as f:
-            json.dump(config,f)
-    if (choice == 4):
-        os.startfile("BalanceChanges.txt")
-    if(choice == 5):
+
+        with open(config_path, "w") as f:
+            json.dump(config, f)
+
+    if choice == 4:
+        balance_file = os.path.join(BASE_DIR, "BalanceChanges.txt")
+        if os.path.exists(balance_file):
+            os.startfile(balance_file)
+        else:
+            print("BalanceChanges.txt not found")
+
+    if choice == 5:
         exit()
 
-
 files = ""
+
 if choice == 1:
     files = "Bros"
-if choice == 2:
+elif choice == 2:
     files = "BrosCommunityEdition"
 
+try:
+    action_src = os.path.join(BASE_DIR, f"{files}Files", "Action")
+    action_dst = os.path.join(game_path, "Script", "Action")
 
-shutil.copytree(f"{files}Files\\Action", f"{game_path}\\Script\\Action", dirs_exist_ok=True)
-shutil.copy(f"{files}Files\\CharaStatus.fsv", f"{game_path}\\Script")
-shutil.copy(f"{files}Files\\CommonParam.fsv", f"{game_path}\\Script")
+    shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
+
+    shutil.copy(
+        os.path.join(BASE_DIR, f"{files}Files", "CharaStatus.fsv"),
+        os.path.join(game_path, "Script")
+    )
+
+    shutil.copy(
+        os.path.join(BASE_DIR, f"{files}Files", "CommonParam.fsv"),
+        os.path.join(game_path, "Script")
+    )
+
+except Exception as e:
+    print("Error copying files:", e)
 
 try:
     os.startfile("steam://rungameid/1689620")
 except Exception as e:
-    print("Error launching the game: ", e)
-
-
-    
-
-    
+    print("Error launching game:", e)
