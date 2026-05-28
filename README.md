@@ -18,5 +18,6 @@ git clone https://github.com/Nilsix/BROS-Community-Patch.git
 
 and press Enter
 
+you now have access to the Bros community patch launcher, it will also auto update
 
 
