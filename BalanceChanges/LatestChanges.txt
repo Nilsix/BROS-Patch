@@ -1,4 +1,5 @@
 Bros Community Patch
+
 Ichigo (Bankai) : 
 SP2 (base) : 
 time stop speed : 0.001000 -> 0.1
@@ -35,10 +36,6 @@ Hitstun : 72->67 (can only combo into sig light after a yellow SP1)
 
 Light3 : 
 blockstun : 34->33 (light3 is now 0 on block when she is yellow)
-
-
-
-ON strikeback, light3 would combo into light1 in normal form but not yellow, I'm changing this so that strikeback light3 combo into  light1 when yellow, strikeback light3 does not combo into light1 in normal mode
 
 Notes : 
 Hali was doing everything,her neutral presence with dash light was too strong and she could then convert that into really strong pressure, as well as having TOD levels of damage, we are tuning both of those things down, which is fine because her buttons are still great, she still has great oki, but her damage definetely got gutted in a huge margin
