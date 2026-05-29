@@ -20,14 +20,6 @@ Light 1 (reawakening) :
 
 ulquiorra can now punish flashsteps (nerfs will be incoming soon to compensate)
 
-Yoruichi : 
-
-Light 1 (base and evo) : 
-	Hitbox Radius : 2 -> 
-	Hitbox position (Z-axis) : 0.5 -> 
-
-Yoruichi can now punish flashsteps
-
 Halibell : 
 dash attack : hitbox coll radius 2.5->1.8
 
