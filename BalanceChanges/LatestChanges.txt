@@ -1,5 +1,12 @@
 Bros Community Patch
 
+UNIVERSAL CHANGES : 
+Fighting spirit generated when hitting your opponent : 1.5 -> 3
+Fighting spirit generated when getting hit by your opponent : 1.75 -> 2.5
+Fighting spirit generated when hitting someone blocking : 1.25 -> 2.5
+Fighting spirit generated when blocking an attack : 1 -> 2
+Fighting spirit generated when dying : 0.5 -> 0
+
 
 YWACH (changes made by Nilsix)
 
