@@ -1,4 +1,12 @@
 Bros Community Patch
+Ichigo (Bankai) : 
+SP2 (base) : 
+time stop speed : 0.001000 -> 0.1
+
+SP2 (evo) : 
+time stop speed : 0.001000 -> 0.1
+No more timestop
+
 
 ULQUIORRA : 
 Light 1 (base and evo) : 
