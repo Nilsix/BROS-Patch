@@ -212,6 +212,26 @@ Heavy2 (evo) and Heavy2[SP2] (evo):
 	hitstun : 40 -> 54
 Kisuke can now dash light on oki 
 
+SHUHEI Changes(by efra):
+
+
+Base:
+
+Heavy 2 Guard damage from Hit 1 & 2 has been reduced from 200 -> 90
+Hit 3 guard damage has been reduced from 250 -> 140.
+
+
+Awakewning:
+
+Heavy 2 guard damage from Hits 6 & 7 has been reduced from 300 -> 150.
+
+
+Base & Awakening:
+
+Light 3 guard damage has been reduced from 300 -> 150
+
+SP1 guard damage from Hit 1 and 2 has been reduced from 150 -> 000
+
 
 
 
