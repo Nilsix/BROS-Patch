@@ -1,6 +1,19 @@
 Bros Community Patch
 
 
+YWACH (changes made by Nilsix)
+
+light 2 (base) : 
+blockstun : 34->32
+
+light2 (evo):
+blockstun : 32-> 35
+
+light2 (reawakening):
+blockstun : 32->35
+
+Light2 is now + on block on evo and reawakening, and minus in base
+
 KOMAMURA (changes made by Rolandz)
 
 Base:
