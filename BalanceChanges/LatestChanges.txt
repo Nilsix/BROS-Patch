@@ -2,11 +2,10 @@ Bros Community Patch
 
 UNIVERSAL CHANGES : 
 Fighting spirit generated when hitting your opponent : 1.5 -> 3
-Fighting spirit generated when getting hit by your opponent : 1.75 -> 2.5
+Fighting spirit generated when getting hit by your opponent : 1.75 -> 2.9
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2.5
 Fighting spirit generated when blocking an attack : 1 -> 2
 Fighting spirit generated when dying : 0.5 -> 0
-
 
 YWACH (changes made by Nilsix)
 
@@ -141,6 +140,20 @@ Change **Damage Values** from: **500.000000, 300.000000, 300.000000**
 Note: This is to increase SP1's damage in Koma's weakened form.
 
 Ichigo (Bankai) (changes made by Nilsix): 
+
+Sig (SP2) :
+	damage : 800 -> 50
+	guard damage : 150 -> 50
+
+heavy 1 (evo): 
+	fighting spirit gain : 0.12 -> 0.01
+	guard damage : 550-> 300
+	damage : 840 -> 1040
+
+heavy 2 (evo):
+	guard damage : 1400 -> 600
+
+	
 SP2 (base) : 
 time stop speed : 0.001000 -> 0.1
 
