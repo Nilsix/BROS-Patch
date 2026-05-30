@@ -144,6 +144,7 @@ Ichigo (Bankai) (changes made by Nilsix):
 Sig (SP2) :
 	damage : 800 -> 50
 	guard damage : 150 -> 50
+	fighting spirit gain : 0.1 -> 0.05
 
 heavy 1 (evo): 
 	fighting spirit gain : 0.12 -> 0.01
