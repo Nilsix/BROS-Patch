@@ -93,7 +93,6 @@ Note: These are to increase the Stats of the Giant's tilt.
 Change value of Guard Damage from 200 to 400
 Note: This slightly increases the guard damage of the giant's signature off of its tilt.
 
-
 Gigantic downtimer : 60 -> 1 
 Koma is now safe after his giant form ends
 
