@@ -35,7 +35,6 @@ game_path = config.get("GAME_PATH", "")
 if not game_path or game_path == "":
     input("Game Path not found. Press Enter to select it...")
     game_path = filedialog.askdirectory()
-
     config["GAME_PATH"] = game_path
 
     with open(config_path, "w") as f:
