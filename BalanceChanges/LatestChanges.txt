@@ -37,10 +37,6 @@ Change the two values of **Damage Movement Rate** from **3.000000 to 0.100000**;
 Change the value of **Hitsun**, second one, from **64 to 90**
 Notes: These values allow Koma to combo dashlight off of his tilt sig.
 
-1\_normal\_attack\_atk\_hi01:
-Change value of **Hitbox Radius** from **2.500000 to 2.700000**
-Note: This is to slightly buff Koma's heavy range, so he's able to punish grabs he shimmies from backdashing with heavy.
-
 1\_normal\_attack\_sp\_atk01:
 Change **Damage Values** from: **700.000000, 450.000000, 450.000000**
 **to: 900.000000, 600.000000, 600.000000**
