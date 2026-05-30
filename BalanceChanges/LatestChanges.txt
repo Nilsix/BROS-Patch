@@ -1,5 +1,9 @@
 Bros Community Patch
 
+TOSEN : 
+Health (evo) : 10000 -> 11000
+resistance : 1 -> 2
+
 UNIVERSAL CHANGES : 
 
 Fighting spirit generated when dying : 0.5 -> 0
@@ -186,6 +190,9 @@ Hali was doing everything,her neutral presence with dash light was too strong an
 
 
 BYAKUYA  (changes made by Nilsix and Meri)
+
+Damage resistance : 2 -> 1 
+
 Light3 (base){
 hitstun : 30 -> 27 (will prevent the light3 infinite bug, while still keeping byakuya + on hit)
 }
