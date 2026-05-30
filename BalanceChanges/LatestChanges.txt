@@ -141,6 +141,8 @@ Change **Damage Values** from: **500.000000, 300.000000, 300.000000**
 **to: 900.000000, 600.000000, 600.000000**
 Note: This is to increase SP1's damage in Koma's weakened form.
 
+
+
 Ichigo (Bankai) (changes made by Nilsix): 
 
 Sig (SP2) :
