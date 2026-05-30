@@ -93,6 +93,10 @@ Note: These are to increase the Stats of the Giant's tilt.
 Change value of Guard Damage from 200 to 400
 Note: This slightly increases the guard damage of the giant's signature off of its tilt.
 
+
+Gigantic downtimer : 60 -> 1 
+Koma is now safe after his giant form ends
+
 Weakened State : 
 3\_rev\_attack\_rev\_atk\_da01:
 Change Value of Hitstun from 30 to 36
@@ -136,6 +140,8 @@ Note: Change value of Base Damage Rate from **0.500000 to 0.600000**
 Change **Damage Values** from: **500.000000, 300.000000, 300.000000**
 **to: 900.000000, 600.000000, 600.000000**
 Note: This is to increase SP1's damage in Koma's weakened form.
+
+
 
 
 
