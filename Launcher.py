@@ -38,7 +38,7 @@ with open(config_path, "r") as f:
 game_path = config.get("GAME_PATH", "")
 
 if not game_path or game_path == "":
-    input("Bleach Rebirth of Souls folder not found. Press Enter to select it...")
+    input("Bleach Rebirth of Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
     game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
     config["GAME_PATH"] = game_path
 
