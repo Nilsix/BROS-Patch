@@ -8,11 +8,7 @@ import subprocess
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-if not os.path.exists("config.json"):
-    shutil.copy("configTemplate.json","config.json")
 
-config_path = os.path.join(BASE_DIR, "config.json")
-updated = False
 try:
     result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
     output = result.stdout.strip()
@@ -24,6 +20,16 @@ try:
 
 except Exception as e:
     print("Git update failed:", e)
+
+try :
+    template_path = os.path.join(BASE_DIR,"configTemplate.json")
+    config_path = os.path.join(BASE_DIR,"config.json")
+    if not os.path.exists(config_path):
+        shutil.copy(template_path,config_path)
+
+except Exception as e: 
+    print(e)
+config_path = os.path.join(BASE_DIR, "config.json")
 
 if not os.path.exists(config_path):
     with open(config_path, "w") as f:
@@ -37,20 +43,30 @@ with open(config_path, "r") as f:
 
 game_path = config.get("GAME_PATH", "")
 
-if not game_path or game_path == "":
-    input("Bleach Rebirth of Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
-    game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
-    config["GAME_PATH"] = game_path
 
+    
+
+if not game_path or game_path == "":
+    flag = True
+    while(flag):
+        input("BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
+        game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
+
+        if"BLEACH_Rebirth_of_Souls.exe" in game_path:
+            flag = False
+
+    parent_dir = os.path.dirname(game_path)
+    game_path = str(parent_dir)
+    config["GAME_PATH"] = game_path
     with open(config_path, "w") as f:
         json.dump(config, f)
+    
 
 choice = -1
 
 while choice not in [1, 2, 5]:
     try:
-        print("Make sure you got the right game path (Bleach Rebirth of Souls folder), otherwise the mod won't work. If you want to change it, select option 3.")
-        print("\nCurrent Bleach Rebirth of Souls path:", game_path)
+        print("\nCurrent Bleach Rebirth of Souls folder:", game_path)
 
         choice = int(input("""
 (1) : Launch Bleach Rebirth of Souls
@@ -63,7 +79,20 @@ while choice not in [1, 2, 5]:
         choice = -1
 
     if choice == 3:
-        game_path = filedialog.askdirectory()
+        flag = True
+        firstTime = True
+        while(flag):
+            if not firstTime:
+                input("BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
+            game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
+
+            if"BLEACH_Rebirth_of_Souls.exe" in game_path:
+                flag = False
+            elif firstTime:
+                firstTime = False
+
+        parent_dir = os.path.dirname(game_path)
+        game_path = str(parent_dir)
         config["GAME_PATH"] = game_path
 
         with open(config_path, "w") as f:
