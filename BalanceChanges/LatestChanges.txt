@@ -206,14 +206,16 @@ Hali was doing everything,her neutral presence with dash light was too strong an
 
 BYAKUYA  (changes made by Nilsix and Meri)
 
-Damage resistance : 2 -> 1 
+	SP1 (evo)
 
-Light3 (base){
-hitstun : 30 -> 27 (will prevent the light3 infinite bug, while still keeping byakuya + on hit)
-}
+	Damage resistance : 2 -> 1 
 
-heavy 1 (evo) {
-starting position : 0.5 -> 0.55 (Minimum range increased, Maximum range increased)
+	Light3 (base)
+		histun : 30 -> 27 (will prevent the light3 infinite bug, while still keeping byakuya + on hit)
+		
+
+	heavy 1 (evo) : 
+		starting position : 0.5 -> 0.55 (Minimum range increased, Maximum range increased)
 
 Notes : 
 Minimum & maximum range increased. Minimum range increase is a significant nerf to his close-midrange combat. Maximum range increase functionally adds very little since it cannot be followed up with light attacks at that range anyway. Currently an artefact of being unable to separate minimum & maximum ranges.
