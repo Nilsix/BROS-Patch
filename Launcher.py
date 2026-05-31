@@ -5,7 +5,11 @@ import shutil
 import os
 import subprocess
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+if not os.path.exists("config.json"):
+    os.copy("config.json","configTemplate.json")
 config_path = os.path.join(BASE_DIR, "config.json")
 updated = False
 try:
