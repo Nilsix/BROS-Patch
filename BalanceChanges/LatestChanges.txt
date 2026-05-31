@@ -222,9 +222,12 @@ Minimum & maximum range increased. Minimum range increase is a significant nerf 
 
 SOI FON (changes made by Nilsix):
 
-SP1 (evo) {
-hitstun : 68->40 (ankenless sp1 loops are gone)
-}
+	SP1 (evo) :
+		hitstun : 68->40 (ankenless sp1 loops are gone)
+	Flashstep : 
+		frames : -1 -> 9
+	Soi fon flashstep is now slower and can consistently be punished
+
 
 Notes : 
 Soi fon was doing everything while not thinking much about her anken managament, 
@@ -234,11 +237,11 @@ Now if Soi Fon want to mix with anken, she has to accept that she will lose dama
 
 KISUKE (changes made by Nilsix):
 
-Light 1 and Light 1[SP2] (base and evo) :
+	Light 1 and Light 1[SP2] (base and evo) :
 
- 	 Hitbox Radius : 2 -> 3.8
-	 Hitbox position (Z-axis) : -0.2 -> -2
-	 Hitbox angle : 90->60
+ 	 	Hitbox Radius : 2 -> 3.8
+	 	Hitbox position (Z-axis) : -0.2 -> -2
+	 	Hitbox angle : 90->60
 
 Kisuke can now punish Flashsteps
 
