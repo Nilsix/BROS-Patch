@@ -67,10 +67,10 @@ while choice not in [1, 2, 6]:
 
         choice = int(input(f"""
 (1) : Launch Bleach Rebirth of Souls
-(2) : Launch Bleach Rebirth of Souls Community Edition
+(2) : Launch Bleach Rebirth of Souls Community Patch
 (3) : Change game path
 (4) : Read balance changes
-(5) : Keep default osts on the community edition ( currently :{config["DEFAULT_OST"]})
+(5) : Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )
 (6) : Exit
 > """))
     except:
@@ -104,10 +104,10 @@ while choice not in [1, 2, 6]:
             print("BalanceChanges.txt not found")
 
     if choice == 5:
-        if config["DEFAULT_OST"] == "on":
-            config["DEFAULT_OST"] = "off"
+        if config["DEFAULT_OST"] == "ON":
+            config["DEFAULT_OST"] = "OFF"
         else:
-            config["DEFAULT_OST"] = "on"
+            config["DEFAULT_OST"] = "ON"
 
         with open(config_path,"w") as f:
             json.dump(config,f)
@@ -138,7 +138,7 @@ try:
         os.path.join(game_path, "Script")
     )
 
-    if config["DEFAULT_OST"] == "on":
+    if config["DEFAULT_OST"] == "ON":
         files = "Bros"
     
     shutil.copy(
