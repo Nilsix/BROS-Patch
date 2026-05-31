@@ -131,6 +131,12 @@ try:
         os.path.join(game_path, "Script")
     )
 
+    shutil.copy(
+        os.path.join(BASE_DIR, f"{files}Files", "bgm.bnk"),
+        os.path.join(game_path, "Sound")
+    )
+    
+
 except Exception as e:
     print("Error copying files:", e)
 
