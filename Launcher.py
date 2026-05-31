@@ -41,10 +41,7 @@ root.withdraw()
 with open(config_path, "r") as f:
     config = json.load(f)
 
-game_path = config.get("GAME_PATH", "")
-
-
-    
+game_path = config.get("GAME_PATH","")
 
 if not game_path or game_path == "":
     flag = True
@@ -64,16 +61,17 @@ if not game_path or game_path == "":
 
 choice = -1
 
-while choice not in [1, 2, 5]:
+while choice not in [1, 2, 6]:
     try:
         print("\nCurrent Bleach Rebirth of Souls folder:", game_path)
 
-        choice = int(input("""
+        choice = int(input(f"""
 (1) : Launch Bleach Rebirth of Souls
 (2) : Launch Bleach Rebirth of Souls Community Edition
 (3) : Change game path
 (4) : Read balance changes
-(5) : Exit
+(5) : Keep default osts on the community edition ( currently :{config["DEFAULT_OST"]})
+(6) : Exit
 > """))
     except:
         choice = -1
@@ -106,6 +104,15 @@ while choice not in [1, 2, 5]:
             print("BalanceChanges.txt not found")
 
     if choice == 5:
+        if config["DEFAULT_OST"] == "on":
+            config["DEFAULT_OST"] = "off"
+        else:
+            config["DEFAULT_OST"] = "on"
+
+        with open(config_path,"w") as f:
+            json.dump(config,f)
+
+    if choice == 6:
         exit()
 
 files = ""
@@ -131,6 +138,9 @@ try:
         os.path.join(game_path, "Script")
     )
 
+    if config["DEFAULT_OST"] == "on":
+        files = "Bros"
+    
     shutil.copy(
         os.path.join(BASE_DIR, f"{files}Files", "bgm.bnk"),
         os.path.join(game_path, "Sound")
