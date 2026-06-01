@@ -3,7 +3,7 @@ Bros Community Patch
 UNIVERSAL CHANGES : 
 
 Fighting spirit generated when dying : 0.5 -> 0
-Fighting spirit generated when hitting your opponent : 1.5 -> 2.5
+Fighting spirit generated when hitting your opponent : 1.5 -> 2.75
 Fighting spirit generated when getting hit by your opponent : 1.75 -> 2
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
@@ -72,14 +72,7 @@ TOSEN (changes made by Nilsix) :
 
 
 YWACH (changes made by Nilsix)
-
-	light2 (evo):
-		blockstun : 32-> 35
-
-	light2 (reawakening):
-		blockstun : 32->35
-
-	Light2 is now + on block on evo and reawakening
+	
 
 KOMAMURA (changes made by Rolandz)
 
