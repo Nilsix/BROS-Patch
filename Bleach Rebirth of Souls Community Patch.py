@@ -19,7 +19,7 @@ try:
         updated = True
 
 except Exception as e:
-    print("Git update failed:", e)
+    print("Git update failed :", e)
 
 try :
     template_path = os.path.join(BASE_DIR,"configTemplate.json")
