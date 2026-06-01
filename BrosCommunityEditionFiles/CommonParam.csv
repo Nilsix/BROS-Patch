@@ -143,9 +143,9 @@ buff_range_reiryoku_2,1
 avoid_warp_length,1
 avoid_demo_warp_length,1
 chara_max_distance,15
-buffered_input_frame,10
-buffered_atk_input_frame,10
-buffered_soulreboot_input_frame,10
+buffered_input_frame,3
+buffered_atk_input_frame,3
+buffered_soulreboot_input_frame,3
 kikon_push_calc_add_val,0.2
 kikon_push_calc_div_val,2
 konnjo_0_0,0.98
