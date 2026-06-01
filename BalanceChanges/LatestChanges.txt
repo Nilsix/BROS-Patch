@@ -237,7 +237,7 @@ Sig (SP2) :
 heavy 1 (evo): 
 	fighting spirit gain : 0.12 -> 0.01
 	guard damage : 550-> 300
-	damage : 840 -> 740
+	damage : 840 -> 640
 
 heavy 2 (evo):
 	guard damage : 1400 -> 600
