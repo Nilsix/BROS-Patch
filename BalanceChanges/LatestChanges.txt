@@ -26,8 +26,13 @@ RANGIKU (changes made by Nilsix) :
 		guard damage : 135 -> 75
 	
 	light 3 (evo) : 
-		guard damage : 150 -> 70	
+		guard damage : 150 -> 70
 	
+Mayuri (changes made by Nilsix) : 
+	dash light[1] (base and evo):
+		pushblock : 0 -> -0.5
+	dash light[2] :
+		pushblock = 1 - -0.5
 	 
 Ishida Uryu Buffs:
 	Base:
