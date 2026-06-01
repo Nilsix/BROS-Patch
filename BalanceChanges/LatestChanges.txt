@@ -103,9 +103,6 @@ GIN (changes made by Nilsix) :
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
 	resistance : 1 -> 2
-
-
-YWACH (changes made by Nilsix)
 	
 
 KOMAMURA (changes made by Rolandz)
@@ -233,18 +230,26 @@ Note: This is to increase SP1's damage in Koma's weakened form.
 Ichigo (Bankai) (changes made by Nilsix): 
 
 Sig (SP2) :
-	damage : 800 -> 50
-	guard damage : 150 -> 50
-	fighting spirit gain : 0.1 -> 0.03
+	damage : 800 -> 600
+	guard damage : 140 -> 50
+	fighting spirit gain : 0.1 -> 0.01
 
 heavy 1 (evo): 
 	fighting spirit gain : 0.12 -> 0.01
 	guard damage : 550-> 300
-	damage : 840 -> 1040
+	damage : 840 -> 740
 
 heavy 2 (evo):
 	guard damage : 1400 -> 600
+	damage : 3100-> 2500
 
+Vasto Lorde : 
+	light2 : 
+		blockstun : 32->30
+	tilt : 
+		blockstun : 20->18
+	SP2 : 
+		damage 1400 -> 750
 	
 SP2 (base) : 
 time stop speed : 0.001000 -> 0.1
