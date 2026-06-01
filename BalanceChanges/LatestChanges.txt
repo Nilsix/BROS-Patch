@@ -31,6 +31,7 @@ RANGIKU (changes made by Nilsix) :
 	 
 
 GIN (changes made by Nilsix) :
+
 	light1 (base and evo) : 
 		RotateSpeed : 0->2
 
@@ -39,7 +40,8 @@ GIN (changes made by Nilsix) :
 	Flashstep :
 		frames : -1-> 9
 
-Gin's flashstep can now be punished
+	Gin's flashstep can now be punished
+
 
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
@@ -48,13 +50,13 @@ TOSEN (changes made by Nilsix) :
 
 YWACH (changes made by Nilsix)
 
-light2 (evo):
-blockstun : 32-> 35
+	light2 (evo):
+		blockstun : 32-> 35
 
-light2 (reawakening):
-blockstun : 32->35
+	light2 (reawakening):
+		blockstun : 32->35
 
-Light2 is now + on block on evo and reawakening, and minus in base
+	Light2 is now + on block on evo and reawakening
 
 KOMAMURA (changes made by Rolandz)
 
@@ -204,12 +206,10 @@ No more timestop
 
 ULQUIORRA (changes made by Nilsix): 
 Light 1 (base and evo) : 
-	Hitbox Radius : 2 -> 3.8
-	Hitbox position (Z-axis) : -0.2 -> -2
+	rotate speed : 0 -> 2.0
 
 Light 1 (reawakening) : 
-	Hitbox Radius : 3->4.8
-	Hitbox Position (Z-axis) : -0.2 -> -2
+	rotate speed : 0 -> 2.0
 
 ulquiorra can now punish flashsteps (nerfs will be incoming soon to compensate)
 
@@ -228,10 +228,11 @@ Hali was doing everything,her neutral presence with dash light was too strong an
 
 BYAKUYA  (changes made by Nilsix and Meri)
 
-	SP1 (evo)
+	SP1 (evo):
+		fixed the bug where Byakuya would gain more reverse than excepted
 
 	Damage resistance : 2 -> 1 
-
+	
 	Light3 (base)
 		histun : 30 -> 27 (will prevent the light3 infinite bug, while still keeping byakuya + on hit)
 		
@@ -267,11 +268,7 @@ KISUKE (changes made by Nilsix):
 	 	Hitbox position (Z-axis) : -0.2 -> -2
 	 	Hitbox angle : 90->60
 
-Kisuke can now punish Flashsteps
-
-Heavy2 (evo) and Heavy2[SP2] (evo):
-	hitstun : 40 -> 54
-Kisuke can now dash light on oki 
+	Kisuke can now punish Flashsteps
 
 SHUHEI Changes(by efra):
 
