@@ -74,8 +74,8 @@ pinch_buff_timer,-1
 pinch_buff_atk_rate,0.3
 pinch_buff_atk_guard_rate,0.3
 reiatu_rate,0.00025
-fightingSuccessAtkRate,2.75
-fightingDamageRate,2
+fightingSuccessAtkRate,2.5
+fightingDamageRate,1.75
 fightingBlockAtkRate,2
 fightingSuccessGuardRate,1.5
 fighting_MoveToRival,0.0012
