@@ -66,13 +66,14 @@ while choice not in [1, 2, 6]:
         print("\nCurrent Bleach Rebirth of Souls folder:", game_path)
 
         choice = int(input(f"""
+Please choose one of the following options : 
 (1) : Launch Bleach Rebirth of Souls
 (2) : Launch Bleach Rebirth of Souls Community Patch
 (3) : Change game path
 (4) : Read balance changes
 (5) : Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )
 (6) : Exit
-Please choose one of the following options : """))
+"""))
     except:
         choice = -1
 
