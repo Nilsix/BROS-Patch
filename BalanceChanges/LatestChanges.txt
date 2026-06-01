@@ -249,7 +249,7 @@ Vasto Lorde :
 	tilt : 
 		blockstun : 20->18
 	SP2 : 
-		damage 1400 -> 750
+		damage 1400 -> 1000
 	
 SP2 (base) : 
 time stop speed : 0.001000 -> 0.1
