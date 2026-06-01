@@ -28,6 +28,40 @@ RANGIKU (changes made by Nilsix) :
 	light 3 (evo) : 
 		guard damage : 150 -> 70
 
+YWACH (Changes Made by Bergen and Goose)
+
+### Base
+
+Sankt Altar (SP1 Tilt Up):
+
+  Increased blockstun from 30 to 40, making it plus on block to allow for mixups and pressure.
+
+### Awakening
+
+Sankt Altar (SP1 Tilt Up):
+
+   Increased blockstun from 30 to 40, making it plus on block to allow for mixups and pressure.
+   Increased damage from 2000 on hit to 3000 and decreased the scaling so the minimum damage is 2000 on hit.
+
+Tilt:
+
+   Increased hitstun from 40 → 50 to combo with light attack.
+
+Signature (Neutral):
+
+Increased blockstun from 22 → 30 to make it safe on block.
+
+### Reawakening
+
+Sankt Altar (SP1 Tilt Up):
+
+Increased blockstun from 30 to 40, making it plus on block to allow for mixups and pressure.
+Increased damage from 2000 on hit to 4000 and decreased the scaling so the minimum damage is 3000 on hit
+
+Signature (Neutral):
+
+  * Increased blockstun from 22 → 30 to make it safe on block.
+
 Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
 		Rotate Speed : 0->2 

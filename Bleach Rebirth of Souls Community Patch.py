@@ -66,6 +66,7 @@ while choice not in [1, 2, 6]:
         print("\nCurrent Bleach Rebirth of Souls folder:", game_path)
 
         choice = int(input(f"""
+Bleach Rebirth of Souls community patch Launcher (made by Nilsix)
 
 (1) : Launch Bleach Rebirth of Souls
 (2) : Launch Bleach Rebirth of Souls Community Patch
