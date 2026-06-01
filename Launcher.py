@@ -74,7 +74,7 @@ while choice not in [1, 2, 6]:
 (5) : Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )
 (6) : Exit
 
-Please choose one of the following options :  """))
+Choose one of the options :  """))
     except:
         choice = -1
 
