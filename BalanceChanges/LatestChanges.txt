@@ -29,6 +29,17 @@ RANGIKU (changes made by Nilsix) :
 		guard damage : 150 -> 70	
 	
 	 
+Ishida Uryu Buffs:
+	Base:
+    		SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.05
+	Awakening:
+    		SP1: Nerfed the damage from 1200 on hit to 50
+         Increased hitstun from 40 to 60 on the last arrow, allowing him to combo with his heavy
+         Changed landing position after sp1 from 3,5 to 0,5
+    		SP2: Changed the hitstun from 52 to 80 on the arrow, allowing uryu to combo from his sp2 with a dash heavy
+	Reawakening:
+    		Heavy Attack 1: Turned on homing, and changed homing speed on the X and Y axis from 10 -> 80 to stop opponents from just spamming sidesteps against his heavy
+
 
 GIN (changes made by Nilsix) :
 
