@@ -27,6 +27,13 @@ RANGIKU (changes made by Nilsix) :
 	
 	light 3 (evo) : 
 		guard damage : 150 -> 70
+
+Yoruichi (changes made by Nilsix):
+	Light1 (base and Evo)
+		Rotate Speed : 0->2 
+	
+		Yoruichi can now punish flashsteps
+
 	
 Mayuri (changes made by Nilsix) : 
 	dash light[1] (base and evo):
@@ -34,7 +41,7 @@ Mayuri (changes made by Nilsix) :
 	dash light[2] :
 		pushblock = 1 - -0.5
 	 
-Ishida Uryu Buffs:
+Ishida Uryu:
 	Base:
     		SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.05
 	Awakening:
@@ -221,12 +228,8 @@ No more timestop
 
 
 ULQUIORRA (changes made by Nilsix): 
-Light 1 (base and evo) : 
+Light 1 (base evo and reawakening) : 
 	rotate speed : 0 -> 2.0
-
-Light 1 (reawakening) : 
-	rotate speed : 0 -> 2.0
-
 ulquiorra can now punish flashsteps (nerfs will be incoming soon to compensate)
 
 HALIBELL (changes made by Efra): 
@@ -279,11 +282,7 @@ Now if Soi Fon want to mix with anken, she has to accept that she will lose dama
 KISUKE (changes made by Nilsix):
 
 	Light 1 and Light 1[SP2] (base and evo) :
-
- 	 	Hitbox Radius : 2 -> 3.8
-	 	Hitbox position (Z-axis) : -0.2 -> -2
-	 	Hitbox angle : 90->60
-
+		Rotate speed : 0->2
 	Kisuke can now punish Flashsteps
 
 SHUHEI Changes(by efra):
