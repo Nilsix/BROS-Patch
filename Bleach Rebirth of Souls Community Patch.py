@@ -61,7 +61,7 @@ if not game_path or game_path == "":
 
 choice = -1
 
-while choice not in [1, 2, 6]:
+while choice not in [1, 2, 7]:
     try:
         print("\nCurrent Bleach Rebirth of Souls folder:", game_path)
 
@@ -73,7 +73,8 @@ Bleach Rebirth of Souls community patch Launcher (made by Nilsix)
 (3) : Change game path
 (4) : Read balance changes
 (5) : Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )
-(6) : Exit
+(6) : Add modded osts on the Bleach rebirth of souls vanilla (currently )
+(7) : Exit
 
 Choose one of the options :  """))
     except:
@@ -115,7 +116,7 @@ Choose one of the options :  """))
         with open(config_path,"w") as f:
             json.dump(config,f)
 
-    if choice == 6:
+    if choice == 7:
         exit()
 
 files = ""

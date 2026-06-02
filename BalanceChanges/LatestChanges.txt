@@ -31,6 +31,13 @@ RANGIKU (changes made by Nilsix) :
 	light 3 (evo) : 
 		guard damage : 150 -> 70
 
+
+Nell (changes by Nilsix)
+SP1 (evo) : 
+	hitstun : 70->50 
+Nell SP1->sig loops are gone
+
+
 YWACH (Changes Made by Bergen and Goose)
 
 ### Base
@@ -70,6 +77,8 @@ Yoruichi (changes made by Nilsix):
 		Rotate Speed : 0->2 
 	
 		Yoruichi can now punish flashsteps
+Flashstep followup : 
+	
 
 	
 Mayuri (changes made by Nilsix) : 
@@ -78,16 +87,23 @@ Mayuri (changes made by Nilsix) :
 	dash light[2] :
 		pushblock = 1 - -0.5
 	 
-Ishida Uryu:
-	Base:
-    		SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.05
-	Awakening:
-    		SP1: Nerfed the damage from 1200 on hit to 50
-         Increased hitstun from 40 to 60 on the last arrow, allowing him to combo with his heavy
-         Changed landing position after sp1 from 3,5 to 0,5
-    		SP2: Changed the hitstun from 52 to 80 on the arrow, allowing uryu to combo from his sp2 with a dash heavy
-	Reawakening:
-    		Heavy Attack 1: Turned on homing, and changed homing speed on the X and Y axis from 10 -> 80 to stop opponents from just spamming sidesteps against his heavy
+Ishida Uryu(changes made by Bergen):
+    Base:
+            SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.03
+    Awakening:
+        increased guard stun on his flashstep follow up on guard from 25 -> 48 to fix him being unsafe on block (temporary fix until a better solution is found)
+                SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.04
+            SP2: Changed the hitstun from 52 to 80 on the arrow, allowing uryu to combo from his sp2 with a dash heavy and increased the fighting spirit gain from 0.05 -> 0.1 on successfully landing counter.
+    Reawakening:
+        increased guard stun on his flashstep follow up on guard from 25 -> 48 to fix him being unsafe on block (temporary fix until a better solution is found)
+            Heavy Attack 1: Turned on homing, and changed homing speed on the X and Y axis from 10 -> 80 to stop opponents from spamming sidesteps against his heavy
+        increased the hitstun on his heavy 1 from 34 to 38 to allow more consistent confirms.
+        increased the hitstun on his light 2 from 28 to 32 to allow more consistent confirms.
+        Increase guaranteed damage from 540 -> 800 to reduce scaling (max damage is 1800.)
+        Increased SP1 max distance from 11 -> 15
+        Changed position to land closer to the opponent after SP1 (3.5 -> 0.5)
+        SP2: increased the hitstun from 82 -> 85 for more consistency
+        increased steps from 1.2 to 1.4 (with the exception of his backstep being 1.5 to help him create distance and account for its recovery) for better movement
 
 
 GIN (changes made by Nilsix) :
