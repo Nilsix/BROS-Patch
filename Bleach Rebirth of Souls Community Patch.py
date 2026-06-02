@@ -73,8 +73,7 @@ Bleach Rebirth of Souls community patch Launcher (made by Nilsix)
 (3) : Change game path
 (4) : Read balance changes
 (5) : Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )
-(6) : Add modded osts on the Bleach rebirth of souls vanilla (currently )
-(7) : Exit
+(6) : Exit
 
 Choose one of the options :  """))
     except:
@@ -116,7 +115,7 @@ Choose one of the options :  """))
         with open(config_path,"w") as f:
             json.dump(config,f)
 
-    if choice == 7:
+    if choice == 6:
         exit()
 
 files = ""

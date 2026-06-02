@@ -101,7 +101,6 @@ Ishida Uryu(changes made by Bergen):
         increased the hitstun on his light 2 from 28 to 32 to allow more consistent confirms.
         Increase guaranteed damage from 540 -> 800 to reduce scaling (max damage is 1800.)
         Increased SP1 max distance from 11 -> 15
-        Changed position to land closer to the opponent after SP1 (3.5 -> 0.5)
         SP2: increased the hitstun from 82 -> 85 for more consistency
         increased steps from 1.2 to 1.4 (with the exception of his backstep being 1.5 to help him create distance and account for its recovery) for better movement
 
