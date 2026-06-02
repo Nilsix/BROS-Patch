@@ -102,13 +102,13 @@ Ishida Uryu(changes made by Bergen):
 	SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.03
 	increased light range from 2.0 -> 2.2 for more consistency
     Awakening:
-	increased guard stun on his flashstep follow up on guard from 25 -> 48 to fix him being unsafe on block (temporary fix until a better solution is found)
+	increased guard stun on his flashstep follow up on guard from 25 -> 47 to fix him being unsafe on block (temporary fix until a better solution is found)
 	SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.04
 	SP2: Changed the hitstun from 52 to 80 on the arrow, allowing uryu to combo from his sp2 with a dash heavy and increased the fighting spirit gain from 0.05 -> 0.1 on successfully landing counter.
 	increased light range from 2.0 -> 2.2 for more consistency
     Reawakening:
 	increased light range from 2.0 -> 2.2 for more consistency
-        increased guard stun on his flashstep follow up on guard from 25 -> 48 to fix him being unsafe on block (temporary fix until a better solution is found)
+        increased guard stun on his flashstep follow up on guard from 25 -> 47 to fix him being unsafe on block (temporary fix until a better solution is found)
 	Heavy Attack 1: Turned on homing, and changed homing speed on the X and Y axis from 10 -> 80 to stop opponents from spamming sidesteps against his heavy
         increased the hitstun on his heavy 1 from 34 to 38 to allow more consistent confirms.
         increased the hitstun on his light 2 from 28 to 32 to allow more consistent confirms.
