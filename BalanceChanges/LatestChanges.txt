@@ -8,9 +8,6 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
-
-buffer 10->3
-
 RANGIKU (changes made by Nilsix) :
 	SP2 (evo):
 		timestop speed : 0.001 -> 0.1
@@ -31,7 +28,10 @@ RANGIKU (changes made by Nilsix) :
 	light 3 (evo) : 
 		guard damage : 150 -> 70
 
-
+Kaien : 
+	flashstep on block (evo) : 
+	blockstun : 20 ->25
+	is now 0 on block
 Nell (changes by Nilsix)
 SP1 (evo) : 
 	hitstun : 70->50 
