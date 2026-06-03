@@ -78,12 +78,16 @@ Signature (Neutral):
 Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
 		Rotate Speed : 0->2 
+	Yoruichi can now punish flashsteps
+	
 	Forward sig : 
-		blockstun 17->14
-	
-		Yoruichi can now punish flashsteps
-Flashstep followup : 
-	
+		blockstun 14->9
+	anken->forward dash is unsafe now
+
+	Flashstep followup (last hit) : 
+		hitstun : 36->33
+		
+
 
 	
 Mayuri (changes made by Nilsix) : 
