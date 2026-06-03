@@ -85,7 +85,9 @@ Yoruichi (changes made by Nilsix):
 	anken->forward dash is unsafe now
 
 	Flashstep followup (last hit) : 
-		hitstun : 36->33
+		hitstun : 36->26
+
+	She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup
 		
 
 
@@ -309,7 +311,15 @@ No more timestop
 ULQUIORRA (changes made by Nilsix): 
 Light 1 (base evo and reawakening) : 
 	rotate speed : 0 -> 2.0
-ulquiorra can now punish flashsteps (nerfs will be incoming soon to compensate)
+	ulquiorra can now punish flashsteps
+
+	heavy 2 (evo) : 
+		guard damage : 700 -> 300
+	
+	light 1 (reawakening) : 
+		pushblock : 0.8 -> 1
+	sp2 :
+	timestop speed : 0.001 -> 0.1
 
 HALIBELL (changes made by Efra): 
 dash attack : hitbox coll radius 2.5->1.8
