@@ -330,7 +330,7 @@ Light 1 (base evo and reawakening) :
 		guard damage : 700 -> 300
 	
 	light 1: 
-		guard damage : 175 -> 100 
+		guard damage : 175 -> 50 
 		pushblock : 0.8 -> 1.2
 	sp2 :
 	timestop speed : 0.001 -> 0.1
