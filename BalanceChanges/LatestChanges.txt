@@ -316,6 +316,9 @@ Light 1 (base evo and reawakening) :
 	heavy 2 (evo) : 
 		guard damage : 700 -> 300
 	
+	heavy 2 (reawakening):
+		guard damage : 700 -> 300
+	
 	light 1 (reawakening) : 
 		pushblock : 0.8 -> 1
 	sp2 :
