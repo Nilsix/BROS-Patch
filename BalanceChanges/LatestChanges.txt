@@ -313,14 +313,25 @@ Light 1 (base evo and reawakening) :
 	rotate speed : 0 -> 2.0
 	ulquiorra can now punish flashsteps
 
+	light1 : 
+		guard damage : 175->100
+	
+	light 2 : 
+		guard damage : 175 -> 100
+
 	heavy 2 (evo) : 
 		guard damage : 700 -> 300
 	
-	heavy 2 (reawakening):
+	Reawakening : 
+	light 1: 
+		
+
+	heavy 2:
 		guard damage : 700 -> 300
 	
-	light 1 (reawakening) : 
-		pushblock : 0.8 -> 1
+	light 1: 
+		guard damage : 175 -> 100 
+		pushblock : 0.8 -> 1.2
 	sp2 :
 	timestop speed : 0.001 -> 0.1
 
