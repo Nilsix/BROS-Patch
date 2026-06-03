@@ -93,24 +93,42 @@ Mayuri (changes made by Nilsix) :
 		pushblock = 1 - -0.5
 
 Ishida Uryu(changes made by Bergen):
+    General Changes(evo and base):
+	halved fighting spirit gain from light[1,2,3], dash light, heavy[1,2], tilt, charged tilt, and flashstep follow up
+	doubled fighting spirit gain from heavy[1,2], tilt, charged tilt, in enhanced mode (SP2 mode active)
     Base:
-	SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.03
 	increased light range from 2.0 -> 2.2 for more consistency
     Awakening:
 	increased guard stun on his flashstep follow up on guard from 25 -> 47 to fix him being unsafe on block (temporary fix until a better solution is found)
-	SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.04
+	SP1: increased fighting spirit gain from sp1 on hit from 0.02 -> 0.03 for each arrow.
+	     increased max distance from 8 -> 10 to stop it from dropping at uryu max heavy distance
 	SP2: Changed the hitstun from 52 to 80 on the arrow, allowing uryu to combo from his sp2 with a dash heavy and increased the fighting spirit gain from 0.05 -> 0.1 on successfully landing counter.
-	increased light range from 2.0 -> 2.2 for more consistency
+	increased light range from 1.7 -> 2.0 for more consistency
     Reawakening:
-	increased light range from 2.0 -> 2.2 for more consistency
+	increased light range from 1.7 -> 2.0 for more consistency
+	Increased the hitstun on the last hit of the Flashstep Follow-up (Down) from 40 -> 50, allowing it to link into SP1, consistent with the Up version.
         increased guard stun on his flashstep follow up on guard from 25 -> 47 to fix him being unsafe on block (temporary fix until a better solution is found)
 	Heavy Attack 1: Turned on homing, and changed homing speed on the X and Y axis from 10 -> 80 to stop opponents from spamming sidesteps against his heavy
         increased the hitstun on his heavy 1 from 34 to 38 to allow more consistent confirms.
         increased the hitstun on his light 2 from 28 to 32 to allow more consistent confirms.
         Increase guaranteed damage from 540 -> 800 to reduce scaling (max damage is 1800.)
-        Increased SP1 max distance from 11 -> 15
+        Increased SP1 max distance from 11 -> 15 for more consistency with heavy 2 range.
         increased steps from 1.2 to 1.4 (with the exception of his backstep being 1.5 to help him create distance and account for its recovery) for better movement
 
+RANGIKU (changes made by Bergen) :
+	Signature (evo):
+		guard damage: 75-> 50
+		chip damage: reduced by 30%
+	SP2 (evo):
+		timestop speed : 0.001 -> 0.1
+	she cannot timestop anymore
+		guard damage : 100 -> 30
+		chip damage: reduced by 50%
+	heavy 1 (evo):
+		guard damage : 200 -> 160
+	
+	heavy 2 (evo):
+		guard damage : 600 -> 400
 
 GIN (changes made by Nilsix) :
 
