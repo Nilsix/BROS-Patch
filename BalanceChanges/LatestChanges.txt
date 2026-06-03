@@ -9,6 +9,9 @@ Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
 
+Toshiro : 
+	SP2 (evo) : 
+	blockstun : 20->5
 
 Dangai Ichigo (changes by Nilsix)
 LV1 : 
