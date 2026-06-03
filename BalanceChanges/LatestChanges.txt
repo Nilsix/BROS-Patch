@@ -9,28 +9,30 @@ Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
 
-buffer 10->3
 
-RANGIKU (changes made by Nilsix) :
-	SP2 (evo):
-		timestop speed : 0.001 -> 0.1
-	she cannot timestop anymore
+Dangai Ichigo (changes by Nilsix)
 
-	heavy 1 (evo):
-		guard damage : 100 -> 50
-	
-	heavy 2 (evo):
-		guard damage : 600 -> 200
-	
-	light 1 (evo):
-		guard damage : 150 -> 75
+LVL1 : 
+	Sig : 
+		damage : 800 -> 1000
+		Fighting spirit generated to the opponent : 2.0 -> 1.0
+	SP2 : 
+		damage : 600 -> 800
+		hitstun -> 100 -> 40
+LVL2 : 
+	SP2 : 
+		damage : 800 -> 1000
+		hitstun : 100 -> 40
 
-	light 2 (evo) : 
-		guard damage : 135 -> 75
-	
-	light 3 (evo) : 
-		guard damage : 150 -> 70
-
+LVL3 :
+	SP2 :
+		damage : 700 -> 900
+		hitstun 100 -> 50
+	SIG :
+		hitstun : 40 -> 30 
+	Tilt :
+		hitstun : 40 -> 30
+		
 
 Nell (changes by Nilsix)
 SP1 (evo) : 
@@ -75,6 +77,8 @@ Signature (Neutral):
 Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
 		Rotate Speed : 0->2 
+	Forward sig : 
+		blockstun 17->14
 	
 		Yoruichi can now punish flashsteps
 Flashstep followup : 
