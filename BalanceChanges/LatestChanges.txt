@@ -28,11 +28,11 @@ LVL3 :
 		damage : 700 
 		hitstun 100 -> 55
 	Tilt : 
-		damage: 1000 -> 1500
+		damage: 1000 -> 2000
 		hitstun : 40 -> 30
 
 	SIG :
-		hitstun : 40 -> 25 
+		hitstun : 40 -> 20
 
 
 Nell (changes by Nilsix)
