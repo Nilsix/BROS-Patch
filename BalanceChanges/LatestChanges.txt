@@ -11,8 +11,7 @@ Fighting spirit generated when blocking an attack : 1 -> 1.5
 
 
 Dangai Ichigo (changes by Nilsix)
-
-LVL1 : 
+LV1 : 
 	Sig : 
 		damage : 800 -> 1000
 		Fighting spirit generated to the opponent : 2.0 -> 1.0
@@ -27,12 +26,14 @@ LVL2 :
 LVL3 :
 	SP2 :
 		damage : 700 -> 900
-		hitstun 100 -> 50
-	SIG :
-		hitstun : 40 -> 30 
-	Tilt :
+		hitstun 100 -> 55
+	Tilt : 
+		damage: 1000 -> 1500
 		hitstun : 40 -> 30
-		
+
+	SIG :
+		hitstun : 40 -> 25 
+
 
 Nell (changes by Nilsix)
 SP1 (evo) : 
