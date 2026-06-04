@@ -8,8 +8,6 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
-Szayel:
-	Base and Evo: increased blockstun on light3 from 28 -> 29 to fix a weird interaction with uryu's reworked sp2
 
 Toshiro (changes made by Nilsix): 
 	SP2 (evo):
