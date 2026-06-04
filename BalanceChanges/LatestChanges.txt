@@ -154,7 +154,7 @@ Step: 1.2 -> 1.4 (backstep 1.5)
 FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 
 Heavy1:
-- homing ON (10 -> 60)
+- homing ON (10 -> 80)
 - hitstun 34 -> 38
 Light2:
 - hitstun 28 -> 32
