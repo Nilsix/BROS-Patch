@@ -119,13 +119,13 @@ DP (invincible on startup only), hits from behind, +28% damage
 
 ==================== BASE ====================
 
-FS required to go from Base->Awakening: 2.75 -> 2.25
 Light range: 2.0 -> 2.2
 
 SP2:
 - auto DP (invincible on startup only)
-- homing ON (10 -> 20)
+- homing ON (10 -> 25)
 - hitstun 52 -> 40
+- guardstun reduced to 05
 - explosion radius 2.2 -> 4.2
 - Z pos -0.2 -> -2.2
 
@@ -139,8 +139,9 @@ Guard stun FlashstepFollowup (on block): 25 -> 47 (temporary bug fix until we fi
 
 SP2:
 - auto DP (invincible on startup only)
-- homing 10 -> 20
+- homing 10 -> 25
 - hitstun 80 -> 40
+- guardstun reduced to 05
 - explosion 4.2 -> 7.4
 - Z pos -0.2 -> -4.2
 - dmg 800+1000 -> 1000+1300
@@ -152,10 +153,10 @@ Light range: 1.7 -> 2.0
 Step: 1.2 -> 1.4 (backstep 1.5)
 FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 
-H1:
-- homing ON (10 -> 80)
+Heavy1:
+- homing ON (10 -> 60)
 - hitstun 34 -> 38
-L2:
+Light2:
 - hitstun 28 -> 32
 SP1 Maximum Guaranteed Damage increased:
 - 540 -> 800 (max damage is 1800)
@@ -163,8 +164,9 @@ SP1 Maximum Guaranteed Damage increased:
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
 - auto DP (invincible on startup only)
-- homing 10 -> 20
+- homing 10 -> 25
 - hitstun 82 -> 40
+- guardstun reduced to 05
 - explosion radius 4.2 -> 7.4
 - Z pos -0.2 -> -4.2
 - dmg 1200+3500 -> 3000+3000
