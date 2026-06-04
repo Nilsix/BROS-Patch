@@ -26,9 +26,12 @@ Shunsui (changes made by Nilsix):
 			guard damage : 225 -> 50
 		heavy 2 :
 			guard damage : 750 -> 300
+		SP1:
+			guard damage : 120->50
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
+
 
 Dangai Ichigo (changes by Nilsix)
 LV1 : 
