@@ -11,9 +11,26 @@ Fighting spirit generated when blocking an attack : 1 -> 1.5
 Szayel:
 	Base and Evo: increased blockstun on light3 from 28 -> 29 to fix a weird interaction with uryu's reworked sp2
 
-Toshiro : 
-	SP2 (evo) : 
-	blockstun : 20->5
+Toshiro (changes made by Nilsix): 
+	SP2 (evo):
+		blockstun : 20->0
+		now unsafe on block
+	
+Shunsui (changes made by Nilsix): 
+	BASE AND EVO : 
+		light 1 : 
+			guard damage : 175 -> 25
+		light 2 :
+			guard damage : 175 -> 25
+		light 3 :
+			guard damage : 300 -> 100
+		heavy 1 :
+			guard damage : 225 -> 50
+		heavy 2 :
+			guard damage : 750 -> 300
+		SP2 : 
+			blockstun : 22 -> 0
+			now unsafe on block 
 
 Dangai Ichigo (changes by Nilsix)
 LV1 : 
