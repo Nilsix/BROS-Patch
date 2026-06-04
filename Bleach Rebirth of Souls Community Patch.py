@@ -5,9 +5,14 @@ import shutil
 import os
 import subprocess
 
+#yeah I know I stored the password here so you can just find it here, I know I could use an hash or crypt it but I just didn't bother it ain't sensitive data
+#I know you can also just change the config.json and change the flag to true but like I said I didn't bother
+#I also know mfs aren't gonna bother reading the py file and if they did bother then they deserve to have the pass ig
+fakofeaopkeg = "aINSGi14iEoGPzhv"
+
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 
 try:
     result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
@@ -16,10 +21,11 @@ try:
         print("Mod is already up to date.")
     else:
         print("Mod updated successfully.")
-        updated = True
-
 except Exception as e:
     print("Git update failed :", e)
+
+
+
 
 try :
     template_path = os.path.join(BASE_DIR,"configTemplate.json")
@@ -35,11 +41,29 @@ if not os.path.exists(config_path):
     with open(config_path, "w") as f:
         json.dump({"GAME_PATH": ""}, f)
 
+
+
+
 root = tk.Tk()
 root.withdraw()
 
 with open(config_path, "r") as f:
     config = json.load(f)
+
+
+password = False
+if config["kpkp"] == "BANANA":
+    password = True
+    
+    
+while not password:
+    theNpass = input("Enter password : ")
+    if theNpass == fakofeaopkeg:
+        password = True
+        config["kpkp"] = "BANANA"
+        with open(config_path, "w") as f:
+            json.dump(config, f)
+    
 
 game_path = config.get("GAME_PATH","")
 
