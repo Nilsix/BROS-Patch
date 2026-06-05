@@ -19,8 +19,9 @@ Toshiro (changes made by Nilsix):
 			blockstun : 28->20
 
 	Leaves a gap between dash attack and SP2, allowing the opponent to flashstep the SP2, essetially removing dash attack->SP2 being unblockable/unescapble setup
-	This does bring a huge nerf in that : 
-		ifa a 
+	This does bring a nerf in that : 
+		if both nnoitra and a tier 1 light mash after the dash light, they will clash instead of nnoitra winning (the tier 1 light will still lose to nnoitra's grab, armored tilt and SP2)
+		
 
 	
 Notes : 
