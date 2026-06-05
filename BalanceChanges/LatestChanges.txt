@@ -498,8 +498,16 @@ SP1 guard damage from Hit 1 and 2 has been reduced from 150 -> 000
 
 
 
+Ikkaku Changes (By RedZekrom913)
+
+Awakening: 
+
+	Changed damage_move_rate on SP1 heavy from 1.0 to 0.25 to make his SP! heavy into SP1 lights loops consistently work against all characters
+
+
+
+
 
 
 
  
-
