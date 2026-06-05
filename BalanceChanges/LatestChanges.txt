@@ -162,7 +162,7 @@ SP2:
 - explosion radius 2.2 -> 4.2
 - Z pos -0.2 -> -2.2
 - changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.5 
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 
 
 ==================== AWAKENING ====================
 
@@ -182,7 +182,7 @@ SP2:
 - dmg 800+1000 -> 1000+1300
 - fighting spirit 0.05 -> 2.0
 - changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.5 
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15  
 
 ==================== REAWAKENING ====================
 
@@ -209,7 +209,7 @@ SP2:
 - Z pos -0.2 -> -4.2
 - dmg 1200+3500 -> 2400+2400
 - changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.5 
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 
 
 
 
