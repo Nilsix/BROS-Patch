@@ -8,12 +8,16 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
+NNoitra (changes made by Nilsix):
 
 Toshiro (changes made by Nilsix): 
 	SP2 (evo):
 		blockstun : 20->0
 		now unsafe on block
 	
+Notes : 
+Toshiro's SP2 was way too versatile : dp, damage dealer, charge his ice bar, + on block (mixup tool) so we are now adding risk to throwing SP2
+
 Shunsui (changes made by Nilsix): 
 	BASE AND EVO : 
 		light 1 : 
@@ -26,11 +30,13 @@ Shunsui (changes made by Nilsix):
 			guard damage : 225 -> 50
 		heavy 2 :
 			guard damage : 750 -> 300
-		SP1:
-			guard damage : 120->50
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
+
+	Shunsui stays the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
+	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
+
 
 
 Dangai Ichigo (changes by Nilsix)
@@ -56,15 +62,17 @@ LVL3 :
 	Tilt : 
 		damage: 1000 -> 2000
 		hitstun : 40 -> 30
+		cannot combo after tilt anymore
 
 	SIG :
 		hitstun : 40 -> 20
+		cannot combo after sig but at least gets oki from it
 
 
 Nell (changes by Nilsix)
 SP1 (evo) : 
 	hitstun : 70->50 
-Nell SP1->sig loops are gone
+Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 
 YWACH (Changes Made by Bergen and Goose)
@@ -114,6 +122,10 @@ Yoruichi (changes made by Nilsix):
 		hitstun : 36->26
 
 	She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup
+
+Notes : 
+anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
+this was deemed too much now that she can punish flashstep, this will encourage yoru players to get in more using her close options, the way a rushdown character should be
 		
 
 
@@ -123,8 +135,7 @@ Mayuri (changes made by Nilsix) :
 		pushblock : 0 -> -0.5
 	dash light[2] :
 		pushblock = 1 - -0.5
-
-
+Mayuri can now properly mixup after hitting both hit of a dash light on block
 
 
 ISHIDA URYU (Rework by Bergen)
@@ -228,15 +239,15 @@ GIN (changes made by Nilsix) :
 	Gin can now punish flashsteps
 
 	Flashstep :
-		frames : -1-> 9fd 
+		frames : -1-> 9
 
 	Gin's flashstep can now be punished
 
 
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
-	resistance : 1 -> 2
-	
+	damage_resistance : 1 -> 2
+Tosen kit already works really well (good neutral tool,mixups,counters), he just needs a slight boost in health and resistance to make him more consistent
 
 KOMAMURA (changes made by Rolandz)
 
@@ -376,20 +387,21 @@ heavy 2 (evo):
 	guard damage : 1400 -> 600
 	damage : 3100-> 2500
 
+SP2 (base and evo) : 
+time stop speed : 0.001000 -> 0.1
+
+No more timestop
+
 Vasto Lorde : 
 	light2 : 
 		blockstun : 32->30
+		not + on block anymore
 	tilt : 
 		blockstun : 20->18
 	SP2 : 
 		damage 1400 -> 1000
 	
-SP2 (base) : 
-time stop speed : 0.001000 -> 0.1
 
-SP2 (evo) : 
-time stop speed : 0.001000 -> 0.1
-No more timestop
 
 
 ULQUIORRA (changes made by Nilsix): 
@@ -422,6 +434,9 @@ Light 1 (base evo and reawakening) :
 		guard damage : 300->100
 	sp2 :
 	timestop speed : 0.001 -> 0.1
+
+Ulquiorra lost his ability to guard break consistenly but he still kept his mix after Cero (seemed fair because he is sacrificing his health for it), 
+now that he can punish flashtep, he needed segunda to be a little bit less dominant on the offense as a compensation
 
 HALIBELL (changes made by Efra): 
 dash attack : hitbox coll radius 2.5->1.8
