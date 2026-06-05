@@ -11,9 +11,17 @@ Fighting spirit generated when blocking an attack : 1 -> 1.5
 NNoitra (changes made by Nilsix):
 
 Toshiro (changes made by Nilsix): 
-	SP2 (evo):
-		blockstun : 20->0
-		now unsafe on block
+	Base:
+		dash attack 
+			blockstun : 28->23
+	Evo : 
+		dash attack 
+			blockstun : 28->20
+
+	Leaves a gap between dash attack and SP2, allowing the opponent to flashstep the SP2, essetially removing dash attack->SP2 being unblockable/unescapble setup
+	This does bring a huge nerf in that : 
+		ifa a 
+
 	
 Notes : 
 Toshiro's SP2 was way too versatile : dp, damage dealer, charge his ice bar, + on block (mixup tool) so we are now adding risk to throwing SP2
