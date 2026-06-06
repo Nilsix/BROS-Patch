@@ -106,7 +106,7 @@ Tilt:
 
 Signature (Neutral):
 
- * reduced pushback on the projectile from 1.0 -> 0.5
+ * reduced pushback on the projectile from 1.0 -> 0.5 and the sword from 2.0 -> 1.0
 
 ### Reawakening
 
@@ -117,7 +117,7 @@ Increased damage from 2000 on hit to 4000 and decreased the scaling so the minim
 
 Signature (Neutral):
 
-  * reduced pushback on the projectile from 1.0 -> 0.5
+  * reduced pushback on the projectile from 1.0 -> 0.5 and the sword from 2.0 -> 1.0
 
 Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
