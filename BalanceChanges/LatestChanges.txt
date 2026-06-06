@@ -86,6 +86,7 @@ Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 YWACH (Changes Made by Bergen and Goose)
 
+Changed Konpaku count from 8 -> 9 across all mode
 ### Base
 
 Sankt Altar (SP1 Tilt Up):
@@ -105,7 +106,7 @@ Tilt:
 
 Signature (Neutral):
 
-Increased blockstun from 22 → 30 to make it safe on block.
+ * reduced pushback on the projectile from 1.0 -> 0.5
 
 ### Reawakening
 
@@ -116,7 +117,7 @@ Increased damage from 2000 on hit to 4000 and decreased the scaling so the minim
 
 Signature (Neutral):
 
-  * Increased blockstun from 22 → 30 to make it safe on block.
+  * reduced pushback on the projectile from 1.0 -> 0.5
 
 Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
