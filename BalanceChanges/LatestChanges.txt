@@ -160,38 +160,41 @@ SP2:
 DP (invincible on startup only), hits from behind, +28% damage
 
 ==================== BASE ====================
-
 Light range: 2.0 -> 2.2
 
 SP2:
 - auto DP (invincible on startup only)
-- homing ON (10 -> 25)
+- homing ON (10 ->30)
 - hitstun 52 -> 40
 - guardstun reduced to 05
 - explosion radius 2.2 -> 4.2
 - Z pos -0.2 -> -2.2
-- changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 
+- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 ==================== AWAKENING ====================
 
-FS required to go from Awakening->Sublimation: 3 -> 6
-FS gain SP1: 0.02 -> 0.05
+FS required to go from Awakening->Sublimation: 3 -> 4
+FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
-Guard stun FlashstepFollowup (on block): 25 -> 47 (temporary bug fix until we find recovery)
+Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.03
+
+flashstep followup on guard being unsafe bug:
+- Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
+- reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
 
 SP2:
 - auto DP (invincible on startup only)
-- homing 10 -> 25
+- homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
 - explosion 4.2 -> 7.4
 - Z pos -0.2 -> -4.2
 - dmg 800+1000 -> 1000+1300
-- fighting spirit 0.05 -> 2.0
-- changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15  
+- fighting spirit 0.05 -> 1.5
+- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 ==================== REAWAKENING ====================
 
@@ -200,25 +203,30 @@ Light range: 1.7 -> 2.0
 Steps: 1.2 -> 1.4
 FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 
+flashstep followup on guard being unsafe bug:
+- Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
+- reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
+
 Heavy1:
-- homing ON (10 -> 80)
+- homing ON (speed of XY: 80)
 - hitstun 34 -> 38
 Light2:
 - hitstun 28 -> 32
 SP1 Maximum Guaranteed Damage increased:
 - 540 -> 800 (max damage is 1800)
+Turned on homing for charged tilt (speed of XY: 100)
 
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
 - auto DP (invincible on startup only)
-- homing 10 -> 25
+- homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
 - explosion radius 4.2 -> 7.4
 - Z pos -0.2 -> -4.2
 - dmg 1200+3500 -> 2400+2400
-- changed the minimum activation frames on the DP by 6 frames to fix an uninteraction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 
+- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 
 
