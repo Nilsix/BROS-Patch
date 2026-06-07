@@ -515,6 +515,7 @@ SOI FON (changes made by Nilsix):
 
 	SP1 (evo) :
 		hitstun : 68->40 (ankenless sp1 loops are gone)
+		minimum damage scaling : 180 -> 0
 	Flashstep : 
 		frames : -1 -> 9
 	Soi fon flashstep is now slower and can consistently be punished
