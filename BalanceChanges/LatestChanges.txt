@@ -58,6 +58,8 @@ Shunsui (changes made by Nilsix):
 			guard damage : 225 -> 50
 		heavy 2 :
 			guard damage : 750 -> 300
+		SP1 : 
+			minimum damage : 
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
@@ -100,6 +102,7 @@ LVL3 :
 Nell (changes by Nilsix)
 SP1 (evo) : 
 	hitstun : 70->50 
+	minimum damage : 120-> 0 
 Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 
@@ -300,7 +303,7 @@ GIN (changes made by Nilsix) :
 	EVO : 
 		tilt :
 			step cancelling : removed
-			can still tilt-> sig cancel
+			can still tilt-> sig cancel (only on block/hit)
 
 
 TOSEN (changes made by Nilsix) : 
