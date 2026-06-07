@@ -78,10 +78,10 @@ fightingSuccessAtkRate,2.5
 fightingDamageRate,1.0
 fightingBlockAtkRate,1.5
 fightingSuccessGuardRate,0.5
-fighting_MoveToRival,5.0
+fighting_MoveToRival,0.01
 fightingDamagedSoul,0.1
 fightingSuccessJustSyunpo,0.2
-fightingOnBreak,0.0002
+fightingOnBreak,5.0
 fightingUniqueTousi,0
 fightingUniqueReitetu,0
 fightingUniqueKyuuti,0
