@@ -8,9 +8,15 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
 
-NNoitra (changes made by Nilsix):
+Unohana (Changes by Nilsix):
+	EVO:
+		Light1 : 
+			pushbock : 0.25 -> 0.45 
+		dash light : 
+			whiff recovery : 33->
 
-Toshiro (changes made by Nilsix): 
+
+NNoitra (changes made by Nilsix):
 	Base:
 		dash attack 
 			blockstun : 28->23
@@ -23,7 +29,7 @@ Toshiro (changes made by Nilsix):
 		if both nnoitra and a tier 1 light mash after the dash light, they will clash instead of nnoitra winning (the tier 1 light will still lose to nnoitra's grab, armored tilt and SP2)
 		
 
-	
+Toshiro (changes made by Nilsix): 	
 Notes : 
 Toshiro's SP2 was way too versatile : dp, damage dealer, charge his ice bar, + on block (mixup tool) so we are now adding risk to throwing SP2
 
@@ -456,14 +462,29 @@ Light 1 (base evo and reawakening) :
 Ulquiorra lost his ability to guard break consistenly but he still kept his mix after Cero (seemed fair because he is sacrificing his health for it), 
 now that he can punish flashtep, he needed segunda to be a little bit less dominant on the offense as a compensation
 
-HALIBELL (changes made by Efra): 
-dash attack : hitbox coll radius 2.5->1.8
+HALIBELL (changes made by Efra and Nilsix): 
 
-SP1 : 
-Hitstun : 72->67 (can only combo into sig light after a yellow SP1)
+BASE:
+	SP1 (air) (yellow) : 
+		Hitstun : 72->67 
+		can only combo into sig light
+EVO:
+	dash attack : hitbox coll radius 2.5->1.8
 
-Light3 : 
-blockstun : 34->33 (light3 is now 0 on block when she is yellow)
+	Light3 : 
+		blockstun : 34->33 (light3 is now 0 on block when she is yellow)
+
+	Heavy 1:
+		Whiff recovery : 50 ->
+
+	SP1 (air) (yellow) : 
+		Hitstun : 72->67 
+		can only combo into sig light
+	
+	
+
+
+	
 
 Notes : 
 Hali was doing everything,her neutral presence with dash light was too strong and she could then convert that into really strong pressure, as well as having TOD levels of damage, we are tuning both of those things down, which is fine because her buttons are still great, she still has great oki, but her damage definetely got gutted in a huge margin
