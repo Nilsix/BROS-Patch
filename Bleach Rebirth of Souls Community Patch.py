@@ -24,7 +24,8 @@ try:
 except Exception as e:
     print("Git update failed :", e)
     print("Please delete this folder and redo the installation, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself even if you see 'done' written on the installation window")
-    
+    a = input("Press Enter to exit ")
+    exit()
 
 
 
