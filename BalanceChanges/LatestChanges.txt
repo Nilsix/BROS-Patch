@@ -183,8 +183,6 @@ Mayuri can now properly mixup after hitting both hit of a dash light on block
 ISHIDA URYU (Rework by Bergen)
 
 ==================== GENERAL ====================
-FS gain halved for:
-Light1-2-3, dash light, heavy1-2, tilt, charged tilt, flashstep follow-up
 
 FS gain in Reishi Concentration State (SP2) doubled for:
 heavy1-2, tilt, charged tilt
