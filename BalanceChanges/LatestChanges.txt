@@ -7,6 +7,7 @@ Fighting spirit generated when hitting your opponent : 1.5 -> 2.5
 Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
 Fighting spirit generated when hitting someone blocking : 1.25 -> 2
 Fighting spirit generated when blocking an attack : 1 -> 1.5
+Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 
 
 	
@@ -22,7 +23,7 @@ Unohana (Changes by Nilsix):
 
 
 NNoitra (changes made by Nilsix):
-	Base and Evo : 
+	Base: 
 		startup : 68 -> 71
 	Base:
 		dash attack 
@@ -33,9 +34,15 @@ NNoitra (changes made by Nilsix):
 	SP2:
 		Evo : 
 		startup : 
-	
+			startup : 68 -> 70
 
 Toshiro (changes made by Nilsix): 	
+	BASE:
+		SP1: 
+			minimum damage -> 120 -> 0
+	EVO: 
+		SP1:
+			minimum damage 150 -> 0
 Notes : 
 Toshiro's SP2 was way too versatile : dp, damage dealer, charge his ice bar, + on block (mixup tool) so we are now adding risk to throwing SP2
 
@@ -295,146 +302,11 @@ GIN (changes made by Nilsix) :
 			step cancelling : removed
 			can still tilt-> sig cancel
 
-	sp_atk02 :
-	26->
-
-	atk02_01:
-	16
-	5
-	5
-	5
-	5
-
-		
-
-
 
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
 	damage_resistance : 1 -> 2
 Tosen kit already works really well (good neutral tool,mixups,counters), he just needs a slight boost in health and resistance to make him more consistent
-
-KOMAMURA (changes made by Rolandz)
-
-Base:
-
-1\_Normal\_attack\_atk\_hi03:
-Change value of **Hitstun** from 44 to 55
-Note: This'll allow Koma to combo from strikeback tilt with dashlight.
-Change value of **Damage Movement Rate** from **0.500000 to 0.200000**
-Note: This'll make it easier for koma to combo off of tilt sig, as well as allow him to combo off of tilt strikeback. 
-
-1\_normal\_attack\_atk\_ex01\_3:
-Change the two values of **Damage Movement Rate** from **3.000000 to 0.100000**; and from **0.700000 to 0.100000**
-Change the value of **Hitsun**, second one, from **64 to 90**
-Notes: These values allow Koma to combo dashlight off of his tilt sig.
-
-1\_normal\_attack\_sp\_atk01:
-Change **Damage Values** from: **700.000000, 450.000000, 450.000000**
-**to: 900.000000, 600.000000, 600.000000**
-Note: This is to increase SP1's damage
-
-1\_normal\_attack\_atk\_gr02:
-Change value of Base Damage Rate from **0.500000 to 0.600000**
-Note: This will increase the damage of Koma's grab combo.
-
-
-1\_normal\_attack\_atk\_lo02:
-Change value of **Base Damage Rate** from **0.500000 to 0.600000**
-Note: This will increase damage from koma's light 2 in combos.
-
-EVO : 
-2\_evo\_attack\_evo\_sp\_atk01:
-Change value of Guard Damage from **180 to 360**
-Change value of Guard damage from **250 to 500**
-Change value of hitbox radius from **2.000000 to 7.500000**
-Note: These values will allow Giant SP1 to have more of an impact, and it'll prevent the move from whiffing when an opponent hugs the giant.
-
-2\_evo\_attack\_evo\_atk\_hi01:
-Change value of Damage from 1000.000000 to 2000.000000
-Change value of Guard Damage from 500 to 700
-Change value of Guard Penetration from 0.100000 to 0.250000
-Note: This increases the stats of the giant's heavy 1.
-
-2\_evo\_attack\_evo\_atk\_hi02:
-Change value of Damage from 1600.000000 to 2200.000000
-Change value of Guard Penetration from 0.100000 to 0.300000 
-Note: This increases the stats of the giant's heavy 2.
-
-
-2\_evo\_attack\_evo\_atk\_ex01\_1: 
-Change value of Guard Damage from 280 to 600 
-Change value of Guard Penetration from 0.200000 to 0.300000
-Note: This increases the stats of the giant's signature move off of heavy string. 
-
-2\_evo\_attack\_evo\_atk\_ex01:
-Change value of Damage from 300.000000 to 850.000000; and 
-Change value of Guard Damage from 150 to 850; and 350 to 500
-Change value of Hitbox Radius from 5.000000 to 7.500000
-This increases the stats of the giant's lone signature move, and gives it good guard breaking potential.
-
-2\_evo\_attack\_evo\_atk\_hi03:
-Change values of Damage from 300.000000, 300.000000, 300.000000
-To: 400.000000, 400.000000, 400.000000
-Change values of Guard Damage from 150, 150, 150 TO: 250, 250, 250
-Change values of Guard Penetration from 0.200000, 0.200000, 0.200000
-To: 0.300000, 0.300000, 0.300000
-Note: These are to increase the Stats of the Giant's tilt.
-
-2\_evo\_attack\_evo\_atk\_ex01\_2:
-Change value of Guard Damage from 200 to 400
-Note: This slightly increases the guard damage of the giant's signature off of its tilt.
-
-Gigantic downtimer : 60 -> 1 
-Koma is now safe after his giant form ends
-
-Weakened State : 
-3\_rev\_attack\_rev\_atk\_da01:
-Change Value of Hitstun from 30 to 36
-Change value of Blockstun from 26 to 30
-Note: This returns the framedata of Koma's Dashattack in his base.
-
-3\_rev\_attack\_rev\_atk\_hi01:
-Note: Increase the Hitbox radius from **2.500000 to 2.700000**
-
-3\_rev\_attack\_rev\_atk\_hi02:
-Change last value of Hitstun from 36 to 44
-Note: Returns framedata from koma's base to his heavy 2
-Change last value of Blockstun from 26 to 22
-
-3\_rev\_attack\_rev\_atk\_hi03:
-Change value of Hitstun from 44 to 55
-Change value of Blockstun from 28 to 33
-Change value of **Damage Movement Rate** from **1.000000 to 0.200000**
-Change value of Hitbox Angle from 75 to 90
-Note: These values returns the framedata of Koma's tilt in his base.
-
-
-3\_rev\_attack\_rev\_atk\_lo01:
-Change the Value of Blockstun from 28 to 30
-Note: This returns the Framedata of Koma's light 1 from his base
-
-3\_rev\_attack\_rev\_atk\_lo02:
-Change value of Damage Movement Rate from 0.100000 to 0.500000
-Note: Change the Base Damage Rate from **0.500000 to 0.600000**
-
-3\_rev\_attack\_rev\_atk\_lo03:
-Change value of Hitstop from 10 to 16
-Change value of Block Hitstop from 8 to 14
-Change value of Hitstop Speed from 0.05 to 0.02
-note: Returns these values to koma's light 3 that are from his base.
-
-3\_rev\_attack\_rev\_atk\_gr02:
-Note: Change value of Base Damage Rate from **0.500000 to 0.600000**
-
-3\_rev\_attack\_rev\_sp\_atk01:
-Change **Damage Values** from: **500.000000, 300.000000, 300.000000**
-**to: 900.000000, 600.000000, 600.000000**
-Note: This is to increase SP1's damage in Koma's weakened form.
-
-
-
-
 
 Ichigo (Bankai) (changes made by Nilsix): 
 
