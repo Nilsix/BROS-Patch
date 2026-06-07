@@ -77,9 +77,9 @@ reiatu_rate,0.00025
 fightingSuccessAtkRate,2.0
 fightingDamageRate,0.5
 fightingBlockAtkRate,1
-fightingSuccessGuardRate,0.5
+fightingSuccessGuardRate,0.25
 fighting_MoveToRival,0.005
-fightingDamagedSoul,0.1
+fightingDamagedSoul,0
 fightingSuccessJustSyunpo,0.2
 fightingOnBreak,0
 fightingUniqueTousi,0
@@ -110,7 +110,7 @@ blow_max_length,10
 max_blow_frame,120
 blow_slow_start_frame,120
 damage_fix_up_max,4
-damage_fix_up_add,1
+damage_fix_up_add,0
 kikon_chance_only_frame,80
 soul_break_auto_kikon_frame,90
 chance_reishi_rate,0.3
