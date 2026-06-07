@@ -20,7 +20,7 @@ kikon_suc_reiryoku_buff_min,0.5
 kikon_suc_reiryoku_buff_max,0.5
 kikon_suc_reiryoku_buff_time,900
 kikon_suc_reiryoku_buff_min_lerp_time,0
-kikon_suc_reiryoku_buff_continue_add,0
+kikon_suc_reiryoku_buff_continue_add,1
 sp_atk_reiryoku_debuff_time,480
 sp_atk_reiryoku_debuff_rate,0.8
 ashisogi_min,0
@@ -311,7 +311,7 @@ room_match_time_01,210
 room_match_time_02,240
 room_match_time_03,300
 room_match_time_04,420
-soul_break_chara_alpha,1
+soul_break_chara_alpha,0
 soul_break_hit_eff_scale,0.2
 soul_break_atk_eff_invisible,1
 soul_break_chara_light_x,0
