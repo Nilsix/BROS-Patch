@@ -514,9 +514,14 @@ EVO:
 	Heavy 1:
 		Whiff recovery : 50 -> 60
 
+
+	SP1 (all forms):
+		minimum damage : 180 -> 0 
+
 	SP1 (air) (yellow) : 
 		Hitstun : 72->67 
 		can only combo into sig light
+		
 	
 	
 
