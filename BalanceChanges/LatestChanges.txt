@@ -12,14 +12,11 @@ Unohana (Changes by Nilsix):
 	EVO:
 		Light1 : 
 			pushbock : 0.25 -> 0.45 
-		dash light : 
-			whiff recovery : 33->
 
 
 NNoitra (changes made by Nilsix):
 	Base and Evo : 
 		startup : 68 -> 71
-		
 	Base:
 		dash attack 
 			blockstun : 28->25
@@ -491,23 +488,104 @@ Hali was doing everything,her neutral presence with dash light was too strong an
 With her whiff recovery nerf on her heavy 1, hali now has a clearer weakness, do not whiff with her
 
 
-BYAKUYA  (changes made by Nilsix and Meri)
+==========
+CharStatus
+==========
+	guts_rank
+	2.0 -> 1.0 			(modifies damage resistance downwards 1 grade at all stages of the game)
 
-	SP1 (evo):
-		fixed the bug where Byakuya would gain more reverse than excepted
+=================================================================================
 
-	Damage resistance : 2 -> 1 
+==========
+pl022
+==========
+
+020 <<Byak base light 3 sword form>>
+
+	fix_time
+	30->27 				(reduces hitstun of light 3 to remove infinite bug bug on strikeback)
+
+=================================================================================
+026 <<Byak base hoho follow-up petals down>>
+
+	raw[265] <<add_bomb_hit_stop_damage_only>>
+	1->0				(Adds hitstun to Byakuya on sakura downwards hoho-followup to prevent sp1 continuation)
+
+=================================================================================
+030 <<Byak Base SP2>>
+
+	raw[025] <<speed>>
+	0.001000 -> 1.000000 		(Adjusts game speed during SP2 activation to be normal time to prevent timestop)
+
+	raw[029] <<end_change_speed>>
+	0.200000 -> 1.000000		(Adjusts game speed mid SP2 activation to be normal time to prevent jank)
+
+=================================================================================
+031 <<Byak Base SP2>>
+
+	raw[55] <<collision angle>> 	
+	90 -> 360			(Improves reliability of counter hit connecting)
+
+	raw[609] pos 			
+	3.5 -> -3			(Adjusts Byakuya's arrival position after SP2 activation for aura purposes)
+
+================================================================================
+100 <<Byak Evo Heavy>>
+
+	coll_pos (1,2,3)
+	z 5->5.8			(Adjusts heavy hitbox position to increase deadzone size)
+
+	raw[050] <<pos>>
+	pos z -5 -> -12   		(Adjusts animation to attempt to match hitbox)
+	raw[054] <<ros>>
+	scl z 1.8 -> 3			(Adjusts animation to attempt to match hitbox)
+
+=================================================================================
+099 <<Byak Evo Grab>>
 	
-	Light3 (base)
-		histun : 30 -> 27 (will prevent the light3 infinite bug, while still keeping byakuya + on hit)
-		
+	raw[642] <<pos>>
+	z -2 -> -2.2			(Adjusts Byakuya's placement after a successful grab to maintain heavy combo after minimum range increased)
+=================================================================================
+111 <<Byak Evo SP1>>
 
-	heavy 1 (evo) : 
-		starting position : 0.5 -> 0.55 (Minimum range increased, Maximum range increased)
+	raw[2493] <<heal_val>>
+	0.1 -> 0.0			(Removes the reverse regeneration for the second portion of Byakuya's awakened SP1)
+=================================================================================
+112 <<Byak Evo SP2>>
 
-Notes : 
-Minimum & maximum range increased. Minimum range increase is a significant nerf to his close-midrange combat. Maximum range increase functionally adds very little since it cannot be followed up with light attacks at that range anyway. Currently an artefact of being unable to separate minimum & maximum ranges.
-}
+	raw[026] <<speed>>
+	0.001000 -> 1.000000 		(Adjusts game speed during SP2 activation to be normal time to prevent timestop)
+
+	raw[030] <<end_change_speed>>
+	0.200000 -> 1.000000		(Adjusts game speed mid SP2 activation to be normal time to prevent jank)
+
+
+=================================================================================
+113 <<Byak Evo SP2>>
+
+	raw[52] <<effect hitbox>>	
+	xyz all 2->4     		(increases hitbox size of SP2 damage portion, just to avoid jank)
+
+	raw[56] <<collision angle>>
+	90->360				(Improves reliability of counter hit connecting)
+
+	raw[554] <<pos>>		
+	z 3.5 -> -3			(Adjusts Byakuya's arrival position after SP2 activation for aura purposes)
+
+=================================================================================
+122 <<Byak Evo Hakgeki>> (down)
+
+	raw[876] <<max_dist>>		
+	3.5 -> 4.6			(Adjusts the movement distance of Byakuya for the in-combo Hakugeki to correctly connect)
+=================================================================================	
+
+124 <<Byak Evo Hakgeki>> (up)
+
+	raw[876] <<max_dist>>	
+	3.5 -> 4.6			(Adjusts the movement distance of Byakuya for the in-combo Hakugeki to correctly connect)
+
+	
+
 
 
 SOI FON (changes made by Nilsix):
