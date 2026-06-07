@@ -207,7 +207,6 @@ SP2:
 
 ==================== AWAKENING ====================
 
-FS required to go from Awakening->Sublimation: 3 -> 4
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
