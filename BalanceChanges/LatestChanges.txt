@@ -17,17 +17,19 @@ Unohana (Changes by Nilsix):
 
 
 NNoitra (changes made by Nilsix):
+	Base and Evo : 
+		startup : 68 -> 71
+		
 	Base:
 		dash attack 
-			blockstun : 28->23
+			blockstun : 28->25
 	Evo : 
 		dash attack 
-			blockstun : 28->20
-
-	Leaves a gap between dash attack and SP2, allowing the opponent to flashstep the SP2, essetially removing dash attack->SP2 being unblockable/unescapble setup
-	This does bring a nerf in that : 
-		if both nnoitra and a tier 1 light mash after the dash light, they will clash instead of nnoitra winning (the tier 1 light will still lose to nnoitra's grab, armored tilt and SP2)
-		
+			blockstun : 28->21
+	SP2:
+		Evo : 
+		startup : 
+	
 
 Toshiro (changes made by Nilsix): 	
 Notes : 
@@ -475,7 +477,7 @@ EVO:
 		blockstun : 34->33 (light3 is now 0 on block when she is yellow)
 
 	Heavy 1:
-		Whiff recovery : 50 ->
+		Whiff recovery : 50 -> 60
 
 	SP1 (air) (yellow) : 
 		Hitstun : 72->67 
@@ -484,10 +486,9 @@ EVO:
 	
 
 
-	
-
-Notes : 
-Hali was doing everything,her neutral presence with dash light was too strong and she could then convert that into really strong pressure, as well as having TOD levels of damage, we are tuning both of those things down, which is fine because her buttons are still great, she still has great oki, but her damage definetely got gutted in a huge margin
+	Notes : 
+Hali was doing everything,her neutral presence with dash light was too strong and she could then convert that into really strong pressure, as well as having TOD levels of damage, we are tuning both of those things down, which is fine because her buttons are still great, she still has great oki, but her damage definetely got gutted in a huge margin.
+With her whiff recovery nerf on her heavy 1, hali now has a clearer weakness, do not whiff with her
 
 
 BYAKUYA  (changes made by Nilsix and Meri)
