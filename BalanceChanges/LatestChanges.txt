@@ -11,6 +11,10 @@ Fighting spirit generated when blocking an attack : 1 -> 1.5
 
 	
 
+Sosuke Aizen(Changes made by Bergen):
+	Base, Evo, Rev: reduced the recovery on the backstep from 66 -> 40
+	removed timestop from base and evo sp1: 0.001 -> 0.1
+
 Unohana (Changes by Nilsix):
 	EVO:
 		Light1 : 
