@@ -20,7 +20,7 @@ kikon_suc_reiryoku_buff_min,0.5
 kikon_suc_reiryoku_buff_max,0.5
 kikon_suc_reiryoku_buff_time,900
 kikon_suc_reiryoku_buff_min_lerp_time,0
-kikon_suc_reiryoku_buff_continue_add,1
+kikon_suc_reiryoku_buff_continue_add,0
 sp_atk_reiryoku_debuff_time,480
 sp_atk_reiryoku_debuff_rate,0.8
 ashisogi_min,0
@@ -109,8 +109,8 @@ blow_speed_most,10
 blow_max_length,10
 max_blow_frame,120
 blow_slow_start_frame,120
-damage_fix_up_max,3
-damage_fix_up_add,0
+damage_fix_up_max,4
+damage_fix_up_add,1
 kikon_chance_only_frame,80
 soul_break_auto_kikon_frame,90
 chance_reishi_rate,0.3
