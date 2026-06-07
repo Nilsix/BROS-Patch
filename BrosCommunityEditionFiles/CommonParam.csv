@@ -109,7 +109,7 @@ blow_speed_most,10
 blow_max_length,10
 max_blow_frame,120
 blow_slow_start_frame,120
-damage_fix_up_max,4
+damage_fix_up_max,3
 damage_fix_up_add,0
 kikon_chance_only_frame,80
 soul_break_auto_kikon_frame,90
