@@ -75,11 +75,11 @@ pinch_buff_atk_rate,0.3
 pinch_buff_atk_guard_rate,0.3
 reiatu_rate,0.00025
 fightingSuccessAtkRate,2.5
-fightingDamageRate,1.75
-fightingBlockAtkRate,2
-fightingSuccessGuardRate,1.5
+fightingDamageRate,1.0
+fightingBlockAtkRate,1.5
+fightingSuccessGuardRate,0.5
 fighting_MoveToRival,0.0012
-fightingDamagedSoul,0
+fightingDamagedSoul,0.1
 fightingSuccessJustSyunpo,0.2
 fightingOnBreak,0.0002
 fightingUniqueTousi,0
