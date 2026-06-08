@@ -109,7 +109,6 @@ Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 YWACH (Changes Made by Bergen and Goose)
 
-Changed Konpaku count from 8 -> 9 across all mode
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
