@@ -180,6 +180,12 @@ Mayuri (changes made by Nilsix) :
 Mayuri can now properly mixup after hitting both hit of a dash light on block
 
 
+GRIMMJOW (changes made by Nilsix) :
+	Base and evo : 
+		dash attack : 
+			whiff recovery : 28->30
+
+
 ISHIDA URYU (Rework by Bergen)
 
 ==================== GENERAL ====================
@@ -257,9 +263,6 @@ SP2:
 - dmg 1200+3500 -> 2400+2400
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
-
-
-
 
 
 
@@ -375,11 +378,13 @@ Light 1 (base evo and reawakening) :
 	sp2 :
 	timestop speed : 0.001 -> 0.1
 
-	EVO AND REAWK : 
+	EVO: 
 		heavy2->sig : 
 			blockstun : 36->34
-			38->36
-			ex01_1 : 200 dmg
+			
+	REAWAKENING:
+		heavy2->sig:
+			blockstun : 38->36
 
 HALIBELL (changes made by Efra and Nilsix): 
 
@@ -395,10 +400,6 @@ EVO:
 
 	Heavy 1:
 		Whiff recovery : 50 -> 60
-
-
-	SP1 (all forms):
-		minimum damage : 180 -> 0 
 
 	SP1 (air) (yellow) : 
 		Hitstun : 72->67 
