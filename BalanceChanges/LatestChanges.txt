@@ -343,6 +343,7 @@ Vasto Lorde :
 
 
 ULQUIORRA (changes made by Nilsix): 
+
 Light 1 (base evo and reawakening) : 
 	rotate speed : 0 -> 2.0
 	ulquiorra can now punish flashsteps
@@ -364,6 +365,7 @@ Light 1 (base evo and reawakening) :
 	heavy 2:
 		guard damage : 700 -> 300
 	
+	
 	light 1: 
 		guard damage : 175 -> 50 
 		pushblock : 0.8 -> 1
@@ -373,8 +375,11 @@ Light 1 (base evo and reawakening) :
 	sp2 :
 	timestop speed : 0.001 -> 0.1
 
-Ulquiorra lost his ability to guard break consistenly but he still kept his mix after Cero (seemed fair because he is sacrificing his health for it), 
-now that he can punish flashtep, he needed segunda to be a little bit less dominant on the offense as a compensation
+	EVO AND REAWK : 
+		heavy2->sig : 
+			blockstun : 36->34
+			38->36
+			ex01_1 : 200 dmg
 
 HALIBELL (changes made by Efra and Nilsix): 
 
