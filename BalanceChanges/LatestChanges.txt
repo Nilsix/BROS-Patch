@@ -117,6 +117,8 @@ Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 YWACH (Changes Made by Bergen and Goose)
 
+Gave Yhwach 9 stocks
+
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
@@ -223,7 +225,7 @@ SP2:
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
-Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.03
+Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.035
 
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
@@ -251,7 +253,8 @@ FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
 - reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
-
+Recovery bug on Ranged Hakugeki:
+	changed the recovery on ranged hakugeki in reawakening from 90 -> 78
 Heavy1:
 - homing ON (speed of XY: 80)
 - hitstun 34 -> 38
