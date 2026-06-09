@@ -12,6 +12,11 @@ Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 
 	
 
+Shikai Ichigo (changes made by Nilsix):
+	EVO : 
+		light1 : startup 6 -> 7
+		Ichigo's light 1 is now a tier 2 jab, he cannot white reverse->light1 anymore
+		
 Sosuke Aizen(Changes made by Bergen):
 	Base, Evo, Rev: reduced the recovery on the backstep from 66 -> 40
 	removed timestop from base and evo sp1: 0.001 -> 0.1
