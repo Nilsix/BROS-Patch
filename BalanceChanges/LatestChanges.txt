@@ -19,7 +19,7 @@ Sosuke Aizen(Changes made by Bergen):
 Unohana (Changes by Nilsix):
 	EVO:
 		Light1 : 
-			pushbock : 0.25 -> 0.45 
+			pushbock : 0.25 -> 0.4
 
 
 NNoitra (changes made by Nilsix):
