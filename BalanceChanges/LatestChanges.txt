@@ -4,9 +4,9 @@ UNIVERSAL CHANGES :
 
 Fighting spirit generated when dying : 0.5 -> 0
 Fighting spirit generated when hitting your opponent : 1.5 -> 2.5
-Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.75
-Fighting spirit generated when hitting someone blocking : 1.25 -> 2
-Fighting spirit generated when blocking an attack : 1 -> 1.5
+Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.15
+Fighting spirit generated when hitting someone blocking : 1.25 -> 1
+Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 
 
@@ -63,6 +63,9 @@ Shunsui (changes made by Nilsix):
 			guard damage : 225 -> 50
 		heavy 2 :
 			guard damage : 750 -> 300
+		Sig : 
+			whiff recovery :
+				charge lvl2 : 185 -> 
 		SP1 : 
 			minimum damage : 
 		SP2 : 
@@ -70,6 +73,7 @@ Shunsui (changes made by Nilsix):
 			now unsafe on block 
 	EVO : 
 		SP1 : minimum damage : 72 -> 0
+	
 	Shunsui stays the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
 
