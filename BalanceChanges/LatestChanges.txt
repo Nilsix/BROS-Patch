@@ -483,7 +483,7 @@ pl022
 099 <<Byak Evo Grab>>
 	
 	raw[642] <<pos>>
-	z -2 -> -2.2			(Adjusts Byakuya's placement after a successful grab to maintain heavy combo after minimum range increased)
+	z -2 -> -2.4			(Adjusts Byakuya's placement after a successful grab to maintain heavy combo after minimum range increased)
 =================================================================================
 111 <<Byak Evo SP1>>
 
