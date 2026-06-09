@@ -404,6 +404,10 @@ EVO:
 
 	Heavy 1:
 		Whiff recovery : 50 -> 60
+	
+	Tilt:
+		hitstun 39 -> 40
+		makes tilt-> sig light more consistent while in yellow
 
 	SP1 (air) (yellow) : 
 		Hitstun : 72->67 
