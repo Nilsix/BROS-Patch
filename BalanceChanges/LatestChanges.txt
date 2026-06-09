@@ -79,6 +79,10 @@ Shunsui (changes made by Nilsix):
 			blockstun : 22 -> 0
 			now unsafe on block 
 	EVO : 
+		light3 : 
+			pushback on hit : 2 -> -1 
+			fixed an issue where light3->sp1 wouldn't combo against some characters
+
 		SP1 : minimum damage : 72 -> 0
 	
 	Shunsui stays the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
