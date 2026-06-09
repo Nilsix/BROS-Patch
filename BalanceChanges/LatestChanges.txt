@@ -394,7 +394,7 @@ HALIBELL (changes made by Efra and Nilsix):
 
 BASE:
 	SP1 (air) (yellow) : 
-		Hitstun : 72->67 
+		Hitstun : 72-> 69
 		can only combo into sig light
 EVO:
 	dash attack : hitbox coll radius 2.5->1.8
