@@ -16,7 +16,7 @@ Shikai Ichigo (changes made by Nilsix):
 	EVO : 
 		light1 : startup 6 -> 7
 		Ichigo's light 1 is now a tier 2 jab, he cannot white reverse->light1 anymore
-		
+
 Sosuke Aizen(Changes made by Bergen):
 	Base, Evo, Rev: reduced the recovery on the backstep from 66 -> 40
 	removed timestop from base and evo sp1: 0.001 -> 0.1
@@ -116,6 +116,8 @@ Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 
 YWACH (Changes Made by Bergen and Goose)
+
+Gave Yhwach 9 stocks
 
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
 increase SP regen on his lights by 30% across all modes:
@@ -223,7 +225,7 @@ SP2:
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
-Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.03
+Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.035
 
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
@@ -251,7 +253,8 @@ FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
 - reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
-
+Recovery bug on Ranged Hakugeki:
+	changed the recovery on ranged hakugeki in reawakening from 90 -> 78
 Heavy1:
 - homing ON (speed of XY: 80)
 - hitstun 34 -> 38
@@ -427,13 +430,6 @@ Hali was doing everything,her neutral presence with dash light was too strong an
 With her whiff recovery nerf on her heavy 1, hali now has a clearer weakness, do not whiff with her
 
 
-==========
-CharStatus
-==========
-	guts_rank
-	2.0 -> 1.0 			(modifies damage resistance downwards 1 grade at all stages of the game)
-
-=================================================================================
 
 ==========
 pl022
