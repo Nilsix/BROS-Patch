@@ -101,10 +101,13 @@ LVL3 :
 
 
 Nell (changes by Nilsix)
+
+Amount of fighting spirit needed to go from base to evo :
+	2.5 -> 3
 SP1 (evo) : 
 	hitstun : 70->50 
 	minimum damage : 120-> 0 
-Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
+Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash, she can also do sp1->sig->sp1
 
 
 YWACH (Changes Made by Bergen and Goose)
@@ -567,10 +570,3 @@ Awakening:
 
 	Changed damage_move_rate on SP1 heavy from 1.0 to 0.25 to make his SP! heavy into SP1 lights loops consistently work against all characters
 
-
-
-
-
-
-
- 360->999
