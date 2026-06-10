@@ -42,6 +42,7 @@ NNoitra (changes made by Nilsix):
 		Evo : 
 		startup : 
 			startup : 68 -> 70
+	These changes removes Nnoitra's ability to do his sp2 unblockable setup
 
 Toshiro (changes made by Nilsix): 	
 	BASE:
@@ -66,15 +67,8 @@ Shunsui (changes made by Nilsix):
 		heavy 2 :
 			guard damage : 750 -> 300
 		Sig : 
-			ComboStart : 
-				B -> F 
-				basically he can't do sig whiff cancel light1 anymore 
-				recovery : 54 -> 100
-				blockstun : 32 -> 
-			whiff recovery :
-				charge lvl2 : 185 -> 
-		SP1 : 
-			minimum damage : 
+			whiff recovery : 54 -> 100
+			can still whiff cancel into light1
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
@@ -85,8 +79,10 @@ Shunsui (changes made by Nilsix):
 
 		SP1 : minimum damage : 72 -> 0
 	
-	Shunsui stays the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
+	Shunsui stays relatively the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
+	His sig requires more commitement since whiffing it implies more risk, which makes sense since sig is a button with almost no weakness (+ on block, feintable, neutral skip, armor)
+
 
 
 
@@ -106,6 +102,11 @@ LVL2 :
 	SP2 : 
 		damage : 800 -> 1200
 		hitstun : 100 -> 40
+
+All levels : 
+	SP2 :
+	pushback on hit : 1->1.5
+	prevents an issue where light3->sp2 or upclose sp2 would allow to combo into light1
 
 LVL3 :
 	SP2 :
