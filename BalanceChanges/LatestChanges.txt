@@ -14,7 +14,7 @@ BASE AND EVO :
 	Sig : 
 		rotateSpeed -> speed rate : 1 -> 0
 		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
-		
+
 Kaein : 
 	Flashstep on block : 
 		minus -> 0 on block
@@ -61,6 +61,7 @@ Unohana (Changes by Nilsix):
 	EVO:
 		Light1 : 
 			pushbock : 0.25 -> 0.4
+			whiff recovery : 31 -> 34
 
 
 NNoitra (changes made by Nilsix):
