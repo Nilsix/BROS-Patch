@@ -20,8 +20,37 @@ Shikai Ichigo (changes made by Nilsix):
 		Ichigo's light 1 is now a tier 2 jab, he cannot white reverse->light1 anymore
 
 Sosuke Aizen(Changes made by Bergen):
-	Base, Evo, Rev: reduced the recovery on the backstep from 66 -> 40
-	removed timestop from base and evo sp1: 0.001 -> 0.1
+General Changes:
+	increase the max speed aizen can generate flames from 0.004 -> 0.006 (UV1)
+	increased how fast aizen loses guard gauge when escudo is active (10 -> 12) (UV6)
+	removed timestop from base and evo sp1: speed(0.001 -> 0.1)
+base:
+	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 3600 (120 seconds -> 60 seconds) (UV4)
+	reduced heavy 2 (all variations) damage by 15%
+	reduced the recovery on the backstep from 66 -> 42 
+cocoon:
+	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.5
+	changed the guardstun on the tilt from 28 to 33 to make it plus on block
+evo:
+	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 2.7
+	reduced heavy 2 (all variations) damage by 15%
+	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
+	reduced the recovery on the backstep from 66 -> 42
+Rev:
+	reduce guard damage on tilt in Rev from 400 -> 250
+	Rev: reduced the recovery on the backstep to 35
+	Rev: reduced the amount of pushback on his 5th and 4th hit to stop it from dropping against certain characters (6.0 -> 4.0)
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 Unohana (Changes by Nilsix):
 	EVO:
@@ -241,7 +270,7 @@ SP2:
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
-Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.025 + 0.035
+Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.0025 + 0.035
 
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
@@ -252,10 +281,10 @@ SP2:
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
-- explosion 4.2 -> 7.4
+- explosion size 4.2 -> 7.4
 - Z pos -0.2 -> -4.2
 - dmg 800+1000 -> 1000+1300
-- fighting spirit 0.05 -> 1.5
+- fighting spirit 0.05 -> 0.20
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
@@ -264,13 +293,13 @@ SP2:
 FS required to go from Sublimation->Reawakening: 1.4 -> 4
 Light range: 1.7 -> 2.0
 Steps: 1.2 -> 1.4
-FF Down finisher hitstun: 40 -> 50 (consistency fix with UP Flashstep follow up)
+FF Down finisher hit stun: 40 -> 50 (consistency fix with UP Flashstep follow up)
 
 flashstep followup on guard being unsafe bug:
-- Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
-- reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
+- Changed CancelTiming and ComboStart from on the first hit of the flash step follow-up from |B to B 
+- reduced guard stun on the first hit of the flashstep follow-up from 25 -> 24 to make him trade with tier3 lights
 Recovery bug on Ranged Hakugeki:
-	changed the recovery on ranged hakugeki in reawakening from 90 -> 78
+	changed the recovery on ranged Hakugeki in reawakening from 90 -> 78
 Heavy1:
 - homing ON (speed of XY: 80)
 - hitstun 34 -> 38
@@ -286,7 +315,7 @@ SP2:
 - homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
-- explosion radius 4.2 -> 7.4
+- explosion radius 4.2 -> 8.4
 - Z pos -0.2 -> -4.2
 - dmg 1200+3500 -> 2400+2400
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
