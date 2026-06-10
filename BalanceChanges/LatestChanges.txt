@@ -9,7 +9,12 @@ Fighting spirit generated when hitting someone blocking : 1.25 -> 1
 Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 
-
+Yamamoto (changes made by Nilsix): 
+BASE AND EVO : 
+	Sig : 
+		rotateSpeed -> speed rate : 1 -> 0
+		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
+		
 Kaein : 
 	Flashstep on block : 
 		minus -> 0 on block
