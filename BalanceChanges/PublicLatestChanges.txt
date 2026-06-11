@@ -1,0 +1,21 @@
+Sosuke Aizen(Changes made by Bergen):
+General Changes:
+	increase the max speed Aizen can generate flames by 50% (when signature counter is hit/when standing still for 3 seconds)
+	Escudo duration decreased by 20%
+	removed timestop from base and evo sp1
+base:
+	reduced the timer until Aizen can evolve into his cocoon form from 120 seconds -> 60 seconds
+	reduced heavy 2 (all variations) damage by 15% 
+	reduced backstep recovery by 18%
+cocoon:
+	fighting spirit required to go from cocoon -> evo reduced by 33%
+	Changed Tilt to be plus on block.
+evo:
+	fighting spirit required to go from evo -> sublimation increased by 8%
+	reduced heavy 2 (all variations) damage by 15%
+	reduced tilt 3 (Senju Koten Taihou) guard stun in order to remove a guaranteed unblockable setup
+	reduced backstep recovery by 18%
+Rev:
+	reduce guard damage on tilt from by 37.5%
+	Rev: reduced the recovery on the backstep by 15%
+	fixed a bug where aizen's heavy 2 would drop against certain characters.
