@@ -19,3 +19,6 @@ Rev:
 	reduce guard damage on tilt from by 37.5%
 	Rev: reduced the recovery on the backstep by 15%
 	fixed a bug where aizen's heavy 2 would drop against certain characters.
+
+Note: In the previous meta, Aizen was very reliant on both Kyouka Suigetsu and gaining fighting spirit on death. However this was changed to prevent Lose to Win, Aizen needed a change too. Since most characters awaken within the first minute of the game, Aizen base form would move on to cocoon within  the same timeframe as well. This change should also fix an issue where previously Aizen would still be in base/cocoon fighting against characters in Sublimation. 
+Furthermore, the time that Aizen's SP1 was active has been reduced, and the timestop effect of it was removed to match other general changes. The rest of the changes are balancing and bugfixes.
