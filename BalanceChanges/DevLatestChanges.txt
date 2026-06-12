@@ -39,7 +39,7 @@ General Changes:
 base:
 	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 3600 (120 seconds -> 60 seconds) (UV4)
 	reduced heavy 2 (all variations) damage by 15%
-	reduced the recovery on the backstep from 66 -> 42 
+	reduced the recovery on the backstep from 66 -> 55 
 cocoon:
 	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.5
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
@@ -47,10 +47,10 @@ evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 2.7
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
-	reduced the recovery on the backstep from 66 -> 42
+	reduced the recovery on the backstep from 66 -> 55
 Rev:
 	reduce guard damage on tilt in Rev from 400 -> 250
-	Rev: reduced the recovery on the backstep to 35
+	Rev: reduced the recovery on the backstep from 40 -> 35
 	Rev: reduced the amount of pushback on his 5th and 4th hit to stop it from dropping against certain characters (6.0 -> 4.0)
 
 	
