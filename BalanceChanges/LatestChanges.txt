@@ -16,6 +16,11 @@ BASE AND EVO :
 	Sig : 
 		rotateSpeed -> speed rate : 1 -> 0
 		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
+	EVO : 
+		SP1 :
+			damage value : 400 -> 300
+		SP2 : 
+			damage value 4200 -> 
 
 Kaein : 
 	Flashstep on block : 
@@ -154,7 +159,7 @@ LVL3 :
 
 	SIG :
 		hitstun : 40 -> 20
-		cannot combo after sig but at least gets oki from it
+		cannot combo after sign can get oki from it with a dash 
 
 
 Nell (changes by Nilsix)
@@ -246,6 +251,12 @@ GRIMMJOW (changes made by Nilsix) :
 		dash attack : 
 			whiff recovery : 28->31
 	grimm's dash light is a button that does everything, I am nerfing it's whiff recovery to make it slightly riskier to throw out on whiff
+
+	Evo : 
+	sp1 (during sp2 rage):
+		removed command grab frames
+	with the way his sp1 works while in sp2 rage, it was kinda impossible to make it flashstepable so the only band-aid I found was so remove the command grab frames altogether sadly
+
 
 
 ISHIDA URYU (Rework by Bergen)
