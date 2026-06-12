@@ -26,14 +26,17 @@ EVO :
 	Yamamoto's identity is being able to output a huge amount of damage at once, and it should stay that way, with that said, we tweaked his damage a little so he has less room to 0-100, he should mostly stay the same damage wise but on some specific occasions
 	 he might need 1 more interaction or slightly more ressources to get the kill, overall, he stays the same for the most part
 
-Kaein : 
+Kaien : 
 	Flashstep on block : 
 		minus -> 0 on block
+
 
 Shikai Ichigo (changes made by Nilsix):
 	EVO : 
 		light1 : startup 6 -> 7
 		Ichigo's light 1 is now a tier 2 jab, he cannot white reverse->light1 anymore
+
+
 
 Sosuke Aizen(Changes made by Bergen):
 General Changes:
@@ -43,7 +46,8 @@ General Changes:
 base:
 	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 3600 (120 seconds -> 60 seconds) (UV4)
 	reduced heavy 2 (all variations) damage by 15%
-	reduced the recovery on the backstep from 66 -> 42 
+	reduced the recovery on the backstep from 66 -> 55 
+	reduced the recovery on the frontstep from 42 -> 40
 cocoon:
 	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.5
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
@@ -51,7 +55,8 @@ evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 2.7
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
-	reduced the recovery on the backstep from 66 -> 42
+	reduced the recovery on the backstep from 66 -> 55
+	reduced the recovery on the frontstep from 42 -> 40
 Rev:
 	reduce guard damage on tilt in Rev from 400 -> 250
 	Rev: reduced the recovery on the backstep to 35
@@ -649,5 +654,11 @@ Ikkaku Changes (By RedZekrom913)
 
 Awakening: 
 
-	Changed damage_move_rate on SP1 heavy from 1.0 to 0.25 to make his SP! heavy into SP1 lights loops consistently work against all characters
+	Changed damage_move_rate on SP1 heavy from 1.0 to 0.05 and coil_radius from 2.8 to 3.3 to make his SP! heavy into SP1 light loops consistently work against all characters
 
+
+Shinji Changes (By RedZekrom913) 
+
+General:
+	Can now combo heavy after a successful sig counter
+	Fixed spacing and frame data when Sakanade is active
