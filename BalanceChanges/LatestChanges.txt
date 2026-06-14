@@ -21,7 +21,7 @@ EVO :
 		damage value : 400 -> 300
 	SP2 : 
 		damage value 300 -> 200 
-		Yamamoto's sp2 is a really versatile tool, dp, combo starter, reduce his inferno gage back to 0, we are tweaking his dmg a little, he will still hit hard because he can still combo after tho.
+		Yamamoto's sp2 is a really versatile tool, dp, combo starter, reduce his inferno gauge back to 0, we are tweaking his dmg a little, he will still hit hard because he can still combo after tho.
 	
 	Yamamoto's identity is being able to output a huge amount of damage at once, and it should stay that way, with that said, we tweaked his damage a little so he has less room to 0-100, he should mostly stay the same damage wise but on some specific occasions
 	 he might need 1 more interaction or slightly more ressources to get the kill, overall, he stays the same for the most part
@@ -44,22 +44,25 @@ General Changes:
 	increased how fast aizen loses guard gauge when escudo is active (10 -> 12) (UV6)
 	removed timestop from base and evo sp1: speed(0.001 -> 0.1)
 base:
-	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 3600 (120 seconds -> 60 seconds) (UV4)
-	reduced heavy 2 (all variations) damage by 15%
-	reduced the recovery on the backstep from 66 -> 55 
+	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 4800 (120 seconds -> 80 seconds) (UV4)
+	reduced heavy 2 (all variations) damage by 15% 
 	reduced the recovery on the frontstep from 42 -> 40
 cocoon:
 	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.5
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
 evo:
-	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 2.7
+	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 3.0
+	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.5
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
-	reduced the recovery on the backstep from 66 -> 55
-	reduced the recovery on the frontstep from 42 -> 40
+	reduced the recovery on the frontstep from 42 -> 38
 Rev:
-	reduce guard damage on tilt in Rev from 400 -> 250
-	Rev: reduced the recovery on the backstep to 35
+	increased HP from 10000 -> 11000
+	reduce guard damage on tilt from 400 -> 250
+	reduced heavy2 guard damage by 30%
+	increased hitstun on tilt from 20 -> 30 to make it combo with heavy.
+	reduced the recovery on the backstep from 40 to 35
+	reduced the recovery of the frontstep from 35 to 30
 	Rev: reduced the amount of pushback on his 5th and 4th hit to stop it from dropping against certain characters (6.0 -> 4.0)
 
 	
@@ -278,13 +281,13 @@ FS gain in Reishi Concentration State (SP2) in evo doubled for:
 heavy1-2, tilt, charged tilt
 
 SP2:
-DP (invincible on startup only), hits from behind, +28% damage
+DP (invincible after 10 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
 Light range: 2.0 -> 2.2
 
 SP2:
-- auto DP (invincible on startup only)
+- DP (invincible after 10 frames of activation)
 - homing ON (10 ->30)
 - hitstun 52 -> 40
 - guardstun reduced to 05
@@ -294,7 +297,7 @@ SP2:
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 ==================== AWAKENING ====================
-
+FS required to go from awakening to sublimation: 3.0 -> 4.75
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
@@ -305,7 +308,7 @@ flashstep followup on guard being unsafe bug:
 - reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
 
 SP2:
-- auto DP (invincible on startup only)
+- DP (invincible after 10 frames of activation)
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
@@ -321,37 +324,34 @@ SP2:
 FS required to go from Sublimation->Reawakening: 1.4 -> 4
 Light range: 1.7 -> 2.0
 Steps: 1.2 -> 1.4
-FF Down finisher hit stun: 40 -> 50 (consistency fix with UP Flashstep follow up)
+FF Down finisher hit stun: 40 -> 48 (consistency fix with UP Flashstep follow up)
 
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flash step follow-up from |B to B 
 - reduced guard stun on the first hit of the flashstep follow-up from 25 -> 24 to make him trade with tier3 lights
-Recovery bug on Ranged Hakugeki:
-	changed the recovery on ranged Hakugeki in reawakening from 90 -> 78
+
 Heavy1:
 - homing ON (speed of XY: 80)
-- hitstun 34 -> 38
-Light2:
-- hitstun 28 -> 32
 SP1 Maximum Guaranteed Damage increased:
 - 540 -> 800 (max damage is 1800)
-Turned on homing for charged tilt (speed of XY: 100)
+- Turned on homing for charged tilt (speed of XY: 100)
 
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
-- auto DP (invincible on startup only)
+- DP (invincible after 10 frames of activation)
 - homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
 - explosion radius 4.2 -> 8.4
 - Z pos -0.2 -> -4.2
-- dmg 1200+3500 -> 2400+2400
+- dmg 1200+3500 -> 2800+2800
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 
 
 RANGIKU (changes made by Bergen) :
+	Amount of fighting spirit required to go from evo -> sublimation increase from 
 	Signature (evo):
 		guard damage: 75-> 50
 		chip damage: reduced by 30%
