@@ -167,7 +167,7 @@ try:
 
     window.title("Bleach CP ED")
     window.geometry("1080x720")
-    window.iconbitmap("ressources/pimplin.ico")
+    window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
     #minimum size of the window
     window.minsize(480,360)
     bgcolor = "#4A1942"
