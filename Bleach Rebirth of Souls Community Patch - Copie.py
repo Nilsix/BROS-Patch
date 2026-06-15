@@ -15,14 +15,15 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+    window = Tk()
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
-        if "Already up to date." in output:
-            print("Mod is already up to date.")
-        else:
-            print("Mod updated successfully.")
+        #if "Already up to date." in output:
+            #print("Mod is already up to date.")
+        #else:
+            #print("Mod updated successfully.")
     except Exception as e:
         print("Git update failed :", e)
         print("Please delete this folder and redo the installation, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself even if you see 'done' written on the installation window")
@@ -85,8 +86,7 @@ try:
         config["GAME_PATH"] = game_path
         with open(config_path, "w") as f:
             json.dump(config, f)
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
-    window= Tk()
+    
 
     files = ""
     def launch(choice):
