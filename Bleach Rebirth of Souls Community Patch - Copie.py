@@ -15,8 +15,7 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
-    window= Tk()
+
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
@@ -86,7 +85,8 @@ try:
         config["GAME_PATH"] = game_path
         with open(config_path, "w") as f:
             json.dump(config, f)
-    
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+    window= Tk()
 
     files = ""
     def launch(choice):
