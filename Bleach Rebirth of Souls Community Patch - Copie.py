@@ -149,10 +149,7 @@ try:
         flag = True
         firstTime = True
         while(flag):
-            if not firstTime:
-                input("BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
             game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
-
             if"BLEACH_Rebirth_of_Souls.exe" in game_path:
                 flag = False
             elif firstTime:
