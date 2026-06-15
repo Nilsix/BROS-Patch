@@ -4,6 +4,7 @@ from tkinter import filedialog
 import shutil
 import os
 import subprocess
+import ctypes
 
 #yeah I know I stored the password here so you can just find it here, I know I could use an hash or crypt it but I just didn't bother it ain't sensitive data
 #I know you can also just change the config.json and change the flag to true but like I said I didn't bother
@@ -83,7 +84,7 @@ try:
         config["GAME_PATH"] = game_path
         with open(config_path, "w") as f:
             json.dump(config, f)
-        
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
     window= Tk()
 
     files = ""
