@@ -90,6 +90,7 @@ try:
 
     files = ""
     def launch(choice):
+        window.destroy()
         if choice == 1:
             files = "Bros"
         elif choice == 2:
@@ -127,7 +128,7 @@ try:
             os.startfile("steam://rungameid/1689620")
         except Exception as e:
             print("Error launching game:", e)
-        window.destroy()
+        
 
     def readBalanceChanges():
         balance_file = os.path.join(BASE_DIR, "BalanceChanges/LatestChanges.txt")
