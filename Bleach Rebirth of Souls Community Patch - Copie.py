@@ -72,7 +72,7 @@ try:
 
     game_path = config.get("GAME_PATH","")
 
-    if not game_path or game_path == "" or not "BLEACH_Rebirth_of_Souls" in game_path:
+    if not game_path or game_path == "" or not "BLEACH Rebirth of Souls" in game_path:
         flag = True
         while(flag):
             messagebox.showinfo("Bleach not found","BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder, press ok then select it")
