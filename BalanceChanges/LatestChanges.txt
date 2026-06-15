@@ -8,6 +8,7 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.15
 Fighting spirit generated when hitting someone blocking : 1.25 -> 1
 Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
+White Reverse hitstun reduced: 35 -> 34
 
 buffer 10 -> 16 (temporary/testing)
 
@@ -32,9 +33,7 @@ Kaien :
 
 
 Shikai Ichigo (changes made by Nilsix):
-	EVO : 
-		light1 : startup 6 -> 7
-		Ichigo's light 1 is now a tier 2 jab, he cannot white reverse->light1 anymore
+	
 
 
 
@@ -186,8 +185,9 @@ Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash
 
 YWACH (Changes Made by Bergen and Goose)
 
-Gave Yhwach 9 stocks
+### General Changes
 
+Gave Yhwach 9 stocks
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
