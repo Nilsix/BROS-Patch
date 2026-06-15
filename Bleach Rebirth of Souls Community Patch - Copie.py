@@ -165,7 +165,7 @@ try:
             json.dump(config, f)
 
 
-    window.title("Bleach CP ED")
+    window.title("Bleach Community Patch")
     window.geometry("1080x720")
     window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
     #minimum size of the window
