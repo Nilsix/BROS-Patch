@@ -8,9 +8,7 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.15
 Fighting spirit generated when hitting someone blocking : 1.25 -> 1
 Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
-White Reverse hitstun reduced: 35 -> 34
-
-buffer 10 -> 16 (temporary/testing)
+White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
 
 Yamamoto (changes made by Nilsix): 
 BASE AND EVO : 
@@ -64,13 +62,6 @@ Rev:
 	reduced the recovery of the frontstep from 35 to 30
 	Rev: reduced the amount of pushback on his 5th and 4th hit to stop it from dropping against certain characters (6.0 -> 4.0)
 
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -128,8 +119,6 @@ Shunsui (changes made by Nilsix):
 		light3 : 
 			pushback on hit : 2 -> -1 
 			fixed an issue where light3->sp1 wouldn't combo against some characters
-
-		SP1 : minimum damage : 72 -> 0
 	
 	Shunsui stays relatively the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
