@@ -1,4 +1,5 @@
 from tkinter import * 
+from tkinter import messagebox
 import json
 from tkinter import filedialog
 import shutil
@@ -14,7 +15,8 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+    window= Tk()
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
@@ -73,7 +75,7 @@ try:
     if not game_path or game_path == "":
         flag = True
         while(flag):
-            input("BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder. Press Enter to select it...")
+            messagebox.showinfo("Bleach not found","BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder, press ok then select it")
             game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
 
             if"BLEACH_Rebirth_of_Souls.exe" in game_path:
@@ -84,8 +86,7 @@ try:
         config["GAME_PATH"] = game_path
         with open(config_path, "w") as f:
             json.dump(config, f)
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
-    window= Tk()
+    
 
     files = ""
     def launch(choice):
@@ -154,6 +155,8 @@ try:
                 flag = False
             elif firstTime:
                 firstTime = False
+                messagebox.showerror("Error","BLEACH_Rebirth_of_Souls.exe not found")
+                
 
         parent_dir = os.path.dirname(game_path)
         game_path = str(parent_dir)
