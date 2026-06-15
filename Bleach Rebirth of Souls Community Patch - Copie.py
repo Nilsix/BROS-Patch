@@ -8,7 +8,9 @@ import subprocess
 import ctypes
 
 
-#ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+
+
+
 #yeah I know I stored the password here so you can just find it here, I know I could use an hash or crypt it but I just didn't bother it ain't sensitive data
 #I know you can also just change the config.json and change the flag to true but like I said I didn't bother
 #I also know mfs aren't gonna bother reading the py file and if they did bother then they deserve to have the pass ig
@@ -17,6 +19,16 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    window = Tk()
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+    window.title("Bleach Community Patch")
+    window.geometry("1080x720")
+    window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
+    #minimum size of the window
+    window.minsize(480,360)
+    bgcolor = "#4A1942"
+    labelcolor = "#D9B8D4"
+    window.config(background=bgcolor)
      
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
@@ -169,15 +181,6 @@ try:
             json.dump(config, f)
 
     
-    window = Tk()
-    window.title("Bleach Community Patch")
-    window.geometry("1080x720")
-    window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
-    #minimum size of the window
-    window.minsize(480,360)
-    bgcolor = "#4A1942"
-    labelcolor = "#D9B8D4"
-    window.config(background=bgcolor)
 
     #box
     frame = Frame(window, bg=bgcolor)
