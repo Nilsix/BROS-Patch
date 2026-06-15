@@ -15,7 +15,7 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    #ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
@@ -72,7 +72,7 @@ try:
 
     game_path = config.get("GAME_PATH","")
 
-    if not game_path or game_path == "" or not "BLEACH_Rebirth_of_Souls.exe" in game_path:
+    if not game_path or game_path == "" or not "BLEACH_Rebirth_of_Souls" in game_path:
         flag = True
         while(flag):
             messagebox.showinfo("Bleach not found","BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder, press ok then select it")
