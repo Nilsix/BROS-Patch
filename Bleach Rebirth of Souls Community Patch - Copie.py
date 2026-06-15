@@ -7,6 +7,8 @@ import os
 import subprocess
 import ctypes
 
+
+ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
 #yeah I know I stored the password here so you can just find it here, I know I could use an hash or crypt it but I just didn't bother it ain't sensitive data
 #I know you can also just change the config.json and change the flag to true but like I said I didn't bother
 #I also know mfs aren't gonna bother reading the py file and if they did bother then they deserve to have the pass ig
@@ -15,7 +17,7 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+     
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
