@@ -15,7 +15,7 @@ fakofeaopkeg = "aINSGi14iEoGPzhv"
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
+    #ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)   
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
