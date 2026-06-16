@@ -87,8 +87,8 @@ try:
         try:
             action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Script")
             action_dst = os.path.join(game_path, "Script")
-
-            shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
+            shutil.rmtree(action_dst)
+            shutil.copytree(action_src, action_dst)
 
             #ost choice
             if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
