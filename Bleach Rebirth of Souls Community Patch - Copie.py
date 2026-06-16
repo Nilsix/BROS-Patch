@@ -102,10 +102,9 @@ try:
                 os.path.join(game_path, "Script")
             )
 
-            if config["DEFAULT_OST"] == "ON":
+            #ost choice
+            if choice != 2 or config["DEFAULT_OST"] == "ON":
                 files = "Bros"
-            else: 
-                files = "BrosCommunityEdition"
 
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f"{files}Files", "bgm.bnk"),

@@ -282,8 +282,8 @@ break_humerus_guard_add_dmg,0.5
 break_lung_frame,1800
 break_lung_reiryoku_rate,0.5
 gigantic_timer_max_sec,40
-gigantic_downtimer_max,1
-gigantic_downtimer_max2,1
+gigantic_downtimer_max,2
+gigantic_downtimer_max2,2
 kyoraku_asobi_lottery_frame,300
 kyoraku_asobi_decide_frame,120
 kyoraku_asobi_preparation_frame,240
