@@ -83,23 +83,14 @@ try:
     files = ""
 
     def launch(choice):
+        print(choice)
         window.destroy()
         files = choice
         try:
-            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Action")
-            action_dst = os.path.join(game_path, "Script", "Action")
+            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Script")
+            action_dst = os.path.join(game_path, "Script")
 
             shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
-
-            shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}", "CharaStatus.fsv"),
-                os.path.join(game_path, "Script")
-            )
-
-            shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}", "CommonParam.fsv"),
-                os.path.join(game_path, "Script")
-            )
 
             #ost choice
             if choice != 2 or config["DEFAULT_OST"] == "ON":
@@ -171,6 +162,7 @@ try:
 
         with open(config_path, "w") as f:
             json.dump(config, f)
+    
 
     
 
@@ -182,13 +174,17 @@ try:
     labelSubTitle = Label(frame,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(frame,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
-    brosVerionList = ttk.Combobox(
-        window,
+    brosVersionList = ttk.Combobox(
+        frame,
         textvariable=brosVersion,
-        values=["Bleach Rebirth of Souls, Bleach Rebirth of Souls Community Patch","Bleach Rebirth of Souls 1.40 (Ywach Release Patch)"]
+        values=["Bleach Rebirth of Souls, Bleach Rebirth of Souls Community Patch","Bleach Rebirth of Souls 1.40 (Ywach Release Patch)"],
+        state="readonly"
     )
 
+    def prelauncher():
+        launch(brosVersionList.get())
     #buttons
+    launchButton = Button(frame,text="Launch",font=("Courrier",25),bg="white",fg=bgcolor,command=preLauncher)
     launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
     launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",25),bg="white",fg=bgcolor,command=changeGamePath)
@@ -199,8 +195,7 @@ try:
     labelTitle.pack()
     labelSubTitle.pack()
     labelGamePath.pack(pady=10)
-    launchBrosButton.pack(pady=25,fill=X)
-    launchBrosPatchButton.pack(pady=25,fill=X)
+    brosVersionList.pack()
     changeGamePathButton.pack(pady=25,fill=X)
     readBalanceChangesButton.pack(pady=25,fill=X)
     ostSettingsButton.pack(pady=25,fill=X)
