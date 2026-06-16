@@ -169,7 +169,7 @@ Nell (changes by Nilsix)
 Amount of fighting spirit needed to go from base to evo :
 	2.5 -> 3
 SP1 (evo) : 
-	hitstun : 70->65
+	hitstun : 70->55
 	minimum damage : 120-> 0 
 Nell can still SP1->sig loop but not with dash heavy anymore
 
