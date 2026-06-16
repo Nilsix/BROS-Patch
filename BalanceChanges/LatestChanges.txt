@@ -171,7 +171,7 @@ Amount of fighting spirit needed to go from base to evo :
 SP1 (evo) : 
 	hitstun : 70->50 
 	minimum damage : 120-> 0 
-Nell SP1->sig loops are gone, she does at least gets oki by doing SP1->sig->dash, she can also do sp1->sig->sp1
+Nell can still SP1->sig loop but not with dash heavy anymore
 
 
 YWACH (Changes Made by Bergen and Goose)
