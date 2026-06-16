@@ -141,15 +141,8 @@ LVL2 :
 LVL3:
 	SP2 : 
 		damage 700 -> 350
-
-All levels : 
-	SP2 :
-	pushback on hit : 1->1.5
-	prevents an issue where light3->sp2 or upclose sp2 would allow to combo into light1
-
+		
 LVL3 :
-	SP2 :
-		hitstun 100 -> 55
 	Tilt : 
 		damage: 1000 -> 2000
 		hitstun : 40 -> 30
