@@ -392,7 +392,7 @@ Tosen kit already works really well (good neutral tool,mixups,counters), he just
 
 Ichigo (Bankai) (changes made by Nilsix): 
 
-Sig (SP2) :
+Sig (SP2) (evo):
 	damage : 800 -> 400
 	guard damage : 140 -> 50
 	fighting spirit gain : 0.1 -> 0.01
@@ -405,7 +405,11 @@ heavy 1 (evo):
 heavy 2 (evo):
 	guard damage : 1400 -> 600
 	damage : 3100-> 2500
+	hitstun : 60->65
+	fixed an issue where heavy2 -> sp2-> combo would drop on some characters
 
+heavy 2 followup (sp2) : 
+	fs gain : 0.3 -> 0.05 
 SP2 (base and evo) : 
 time stop speed : 0.001000 -> 0.1
 
