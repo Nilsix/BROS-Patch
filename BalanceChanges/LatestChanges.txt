@@ -134,10 +134,13 @@ LV1 :
 	Sig : 
 		Fighting spirit generated to the opponent : 2.0 -> 1.0
 	SP2 : 
-		damage : 600 -> 
+		damage : 600 -> 300
 LVL2 : 
 	SP2 : 
-		damage : 800 -> 
+		damage : 800 -> 400
+LVL3:
+	SP2 : 
+		damage 700 -> 350
 
 All levels : 
 	SP2 :
