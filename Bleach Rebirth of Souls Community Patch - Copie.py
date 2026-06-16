@@ -57,7 +57,8 @@ try:
 
 
     with open(config_path, "r") as f:
-        config = json.load(f)        
+        config = json.load(f)
+        
 
     game_path = config.get("GAME_PATH","")
 
@@ -86,26 +87,28 @@ try:
             files = "BrosCommunityEdition"
 
         try:
-            action_src = os.path.join(BASE_DIR, f"{files}Files", "Action")
+            action_src = os.path.join(BASE_DIR,"Files",f"{files}Files", "Action")
             action_dst = os.path.join(game_path, "Script", "Action")
 
             shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
 
             shutil.copy(
-                os.path.join(BASE_DIR, f"{files}Files", "CharaStatus.fsv"),
+                os.path.join(BASE_DIR,"Files",f"{files}Files", "CharaStatus.fsv"),
                 os.path.join(game_path, "Script")
             )
 
             shutil.copy(
-                os.path.join(BASE_DIR, f"{files}Files", "CommonParam.fsv"),
+                os.path.join(BASE_DIR,"Files",f"{files}Files", "CommonParam.fsv"),
                 os.path.join(game_path, "Script")
             )
 
             if config["DEFAULT_OST"] == "ON":
                 files = "Bros"
-            
+            else: 
+                files = "BrosCommunityEdition"
+
             shutil.copy(
-                os.path.join(BASE_DIR, f"{files}Files", "bgm.bnk"),
+                os.path.join(BASE_DIR,"Files",f"{files}Files", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
             
