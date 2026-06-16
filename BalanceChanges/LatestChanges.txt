@@ -132,19 +132,12 @@ Shunsui (changes made by Nilsix):
 Dangai Ichigo (changes by Nilsix)
 LV1 : 
 	Sig : 
-		damage : 800 -> 1000
 		Fighting spirit generated to the opponent : 2.0 -> 1.0
-	Tilt : 
-		damage : 600 -> 800
 	SP2 : 
-		damage : 600 -> 1000
-		hitstun -> 100 -> 40
+		damage : 600 -> 
 LVL2 : 
-	Tilt : 
-		damage : 750 -> 1000
 	SP2 : 
-		damage : 800 -> 1200
-		hitstun : 100 -> 40
+		damage : 800 -> 
 
 All levels : 
 	SP2 :
