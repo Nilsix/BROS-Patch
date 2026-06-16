@@ -82,10 +82,8 @@ try:
 
     files = ""
 
-    def launch(choice):
-        print(choice)
+    def launch(files):
         window.destroy()
-        files = choice
         try:
             action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Script")
             action_dst = os.path.join(game_path, "Script")
@@ -93,8 +91,8 @@ try:
             shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
 
             #ost choice
-            if choice != 2 or config["DEFAULT_OST"] == "ON":
-                files = "Bros"
+            if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
+                files = "Bleach Rebirth of Souls"
 
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f"{files}", "bgm.bnk"),
@@ -177,14 +175,19 @@ try:
     brosVersionList = ttk.Combobox(
         frame,
         textvariable=brosVersion,
-        values=["Bleach Rebirth of Souls, Bleach Rebirth of Souls Community Patch","Bleach Rebirth of Souls 1.40 (Ywach Release Patch)"],
-        state="readonly"
+        values=["Bleach Rebirth of Souls","Bleach Rebirth of Souls Community Patch","Bros 1.40 (Big Yuha release patch)"],
+        state="readonly",
+        font=("Courrier",25)
     )
 
-    def prelauncher():
-        launch(brosVersionList.get())
+    brosVersionList.set("Choose a game version")
+
+    def preLauncher():
+        if brosVersionList.get() != "Choose a game version":
+            launch(brosVersionList.get())
+
     #buttons
-    launchButton = Button(frame,text="Launch",font=("Courrier",25),bg="white",fg=bgcolor,command=preLauncher)
+    launchButton = Button(frame,text="Launch the game",font=("Courrier",25),bg="white",fg=bgcolor,command=preLauncher)
     launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
     launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",25),bg="white",fg=bgcolor,command=changeGamePath)
@@ -194,8 +197,9 @@ try:
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
-    labelGamePath.pack(pady=10)
-    brosVersionList.pack()
+    labelGamePath.pack(pady=25,fill=X)
+    brosVersionList.pack(pady=25,fill=X)
+    launchButton.pack()
     changeGamePathButton.pack(pady=25,fill=X)
     readBalanceChangesButton.pack(pady=25,fill=X)
     ostSettingsButton.pack(pady=25,fill=X)
