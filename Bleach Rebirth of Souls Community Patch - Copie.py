@@ -7,16 +7,6 @@ import os
 import subprocess
 import ctypes
 
-
-
-
-
-#yeah I know I stored the password here so you can just find it here, I know I could use an hash or crypt it but I just didn't bother it ain't sensitive data
-#I know you can also just change the config.json and change the flag to true but like I said I didn't bother
-#I also know mfs aren't gonna bother reading the py file and if they did bother then they deserve to have the pass ig
-fakofeaopkeg = "aINSGi14iEoGPzhv"
-
-
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
@@ -67,22 +57,7 @@ try:
 
 
     with open(config_path, "r") as f:
-        config = json.load(f)
-
-
-    password = False
-    if config["kpkp"] == "BANANA":
-        password = True
-        
-        
-    while not password:
-        theNpass = input("Enter password : ")
-        if theNpass == fakofeaopkeg:
-            password = True
-            config["kpkp"] = "BANANA"
-            with open(config_path, "w") as f:
-                json.dump(config, f)
-        
+        config = json.load(f)        
 
     game_path = config.get("GAME_PATH","")
 
