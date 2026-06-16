@@ -189,8 +189,8 @@ try:
     )
 
     #buttons
-    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
-    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
+    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
+    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",25),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",25),bg="white",fg=bgcolor,command=readBalanceChanges)
     ostSettingsButton =  Button(frame,text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
@@ -213,4 +213,4 @@ try:
 except Exception as e:
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     print(e)
-    input("stop")
+    input("ping the error to Nilsix")
