@@ -587,6 +587,7 @@ pl022
 
 
 SOI FON (changes made by Nilsix):
+	fighting spirit needed to reach evo : 3-> 6
 	BASE AND EVO : 
 		light1 : 
 			recovery : 25 -> 28
