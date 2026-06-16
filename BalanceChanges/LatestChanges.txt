@@ -112,6 +112,8 @@ Shunsui (changes made by Nilsix):
 		Sig : 
 			whiff recovery : 54 -> 100
 			can still whiff cancel into light1
+
+			blockstun : 32->40
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
