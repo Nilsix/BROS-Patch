@@ -81,26 +81,23 @@ try:
     
 
     files = ""
+
     def launch(choice):
         window.destroy()
-        if choice == 1:
-            files = "Bros"
-        elif choice == 2:
-            files = "BrosCommunityEdition"
-
+        files = choice
         try:
-            action_src = os.path.join(BASE_DIR,"Files",f"{files}Files", "Action")
+            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Action")
             action_dst = os.path.join(game_path, "Script", "Action")
 
             shutil.copytree(action_src, action_dst, dirs_exist_ok=True)
 
             shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}Files", "CharaStatus.fsv"),
+                os.path.join(BASE_DIR,"Files",f"{files}", "CharaStatus.fsv"),
                 os.path.join(game_path, "Script")
             )
 
             shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}Files", "CommonParam.fsv"),
+                os.path.join(BASE_DIR,"Files",f"{files}", "CommonParam.fsv"),
                 os.path.join(game_path, "Script")
             )
 
@@ -109,13 +106,29 @@ try:
                 files = "Bros"
 
             shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}Files", "bgm.bnk"),
+                os.path.join(BASE_DIR,"Files",f"{files}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
-            
+        
 
         except Exception as e:
             print("Error copying files:", e)
+
+        forlater = """
+        else:
+            src = Path(os.path.join(BASE_DIR,"Files",choice))
+            dst = Path(game_path)
+
+            dst.mkdir(parents=True,exist_ok=True)
+
+            for item in src.rglob("*"):
+                if item.is_file:
+                    relative_path = item.relative_to(src)
+                    target_file = dst / relative_path
+
+                    target_file.parent.mkdir(parents=True,exist_ok=True)
+                    shutil.copy2(item,target_file)
+            """
 
         try:
             os.startfile("steam://rungameid/1689620")
@@ -176,8 +189,8 @@ try:
     )
 
     #buttons
-    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch(1))
-    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch(2))
+    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
+    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",25),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",25),bg="white",fg=bgcolor,command=readBalanceChanges)
     ostSettingsButton =  Button(frame,text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
