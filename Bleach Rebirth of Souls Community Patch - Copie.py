@@ -1,11 +1,13 @@
 from tkinter import * 
 from tkinter import messagebox
-import json
 from tkinter import filedialog
+from tkinter import ttk
+import json
 import shutil
 import os
 import subprocess
 import ctypes
+from pathlib import Path
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -166,6 +168,12 @@ try:
     labelTitle = Label(frame, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
     labelSubTitle = Label(frame,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(frame,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    brosVersion = StringVar()
+    brosVerionList = ttk.Combobox(
+        window,
+        textVariable=brosVersion,
+        values=["Bleach Rebirth of Souls, Bleach Rebirth of Souls Community Patch","Bleach Rebirth of Souls 1.40 (Ywach Release Patch)"]
+    )
 
     #buttons
     launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch(1))
@@ -190,5 +198,6 @@ try:
 
     window.mainloop()
 except Exception as e:
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     print(e)
     input("stop")
