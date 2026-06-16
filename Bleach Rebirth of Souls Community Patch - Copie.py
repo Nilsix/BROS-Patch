@@ -84,7 +84,7 @@ try:
     def launch(choice):
         window.destroy()
         if choice == 1:
-            files = "Bros_1_40"
+            files = "Bros"
         elif choice == 2:
             files = "BrosCommunityEdition"
 
