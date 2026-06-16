@@ -175,7 +175,7 @@ try:
     brosVersionList = ttk.Combobox(
         frame,
         textvariable=brosVersion,
-        values=["Bleach Rebirth of Souls","Bleach Rebirth of Souls Community Patch","Bros 1.40 (Big Yuha release patch)"],
+        values=["Bleach Rebirth of Souls","Bleach Rebirth of Souls Community Patch","Bros 1.40 (Big Yuha release patch)","Old Bros Test"],
         state="readonly",
         font=("Courrier",25)
     )
