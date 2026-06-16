@@ -184,7 +184,7 @@ try:
     brosVersion = StringVar()
     brosVerionList = ttk.Combobox(
         window,
-        textVariable=brosVersion,
+        textvariable=brosVersion,
         values=["Bleach Rebirth of Souls, Bleach Rebirth of Souls Community Patch","Bleach Rebirth of Souls 1.40 (Ywach Release Patch)"]
     )
 
