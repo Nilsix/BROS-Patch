@@ -30,9 +30,11 @@ Kaien :
 		minus -> 0 on block
 
 
-Shikai Ichigo (changes made by Nilsix):
-	
-
+Shikai Ichigo (changes made by Bergen):
+evo:	
+	increased sp1(non-white) damage by 25% 
+	decreased sp1(white) damage by 25%
+	increased sp2(white)damage by 10%
 
 
 Sosuke Aizen(Changes made by Bergen):
