@@ -39,29 +39,29 @@ evo:
 
 Sosuke Aizen(Changes made by Bergen):
 General Changes:
-	increase the max speed aizen can generate flames from 0.004 -> 0.006 (UV1)
+	increase the max speed Aizen can generate flames from 0.004 -> 0.006 (UV1)
 	increased how fast aizen loses guard gauge when escudo is active (10 -> 12) (UV6)
 	removed timestop from base and evo sp1: speed(0.001 -> 0.1)
 base:
-	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 4800 (120 seconds -> 80 seconds) (UV4)
+	reduced the timer until Aizen can evolve into his cocoon form from 7200 -> 4200 (120 seconds -> 70 seconds) (UV4)
 	reduced heavy 2 (all variations) damage by 15% 
-	reduced the recovery on the frontstep from 42 -> 40
+	reduced the recovery on the frontstep from 42 -> 38
 cocoon:
-	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.5
+	fighting spirit required to go from cocoon -> evo reduced from 2.0 -> 1.7
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
 evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 3.0
-	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.5
+	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.0
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
-	reduced the recovery on the frontstep from 42 -> 38
+	reduced the recovery on the frontstep from 42 -> 30
 Rev:
 	increased HP from 10000 -> 11000
 	reduce guard damage on tilt from 400 -> 250
 	reduced heavy2 guard damage by 30%
 	increased hitstun on tilt from 20 -> 30 to make it combo with heavy.
 	reduced the recovery on the backstep from 40 to 35
-	reduced the recovery of the frontstep from 35 to 30
+	reduced the recovery of the frontstep from 35 to 25
 	Rev: reduced the amount of pushback on his 5th and 4th hit to stop it from dropping against certain characters (6.0 -> 4.0)
 
 	
