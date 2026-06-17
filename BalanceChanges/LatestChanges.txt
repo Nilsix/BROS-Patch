@@ -267,6 +267,7 @@ SP2:
 DP (invincible after 10 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
+FS required to go from Base -> awakening: 2.75 -> 2.5
 Light range: 2.0 -> 2.2
 
 SP2:
@@ -280,11 +281,11 @@ SP2:
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
 
 ==================== AWAKENING ====================
-FS required to go from awakening to sublimation: 3.0 -> 4.75
+FS required to go from awakening to sublimation: 3.0 -> 4.5
 FS gain SP1: 0.02 -> 0.04
 SP1 range: 8 -> 10 (to stop it from dropping after heavy 2 at max range)
 Light range: 1.7 -> 2.0
-Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.0025 + 0.035
+Signature (in SP2 mode active): fighting spirit reduce from 0.005 + 0.08 -> 0.0025 + 0.04
 
 flashstep followup on guard being unsafe bug:
 - Changed CancelTiming and ComboStart from on the first hit of the flashstep followup from |B to B 
