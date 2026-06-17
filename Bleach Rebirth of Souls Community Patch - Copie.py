@@ -85,11 +85,18 @@ try:
     def launch(files):
         window.destroy()
         try:
-            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Script")
-            action_dst = os.path.join(game_path, "Script")
-            shutil.rmtree(action_dst)
-            shutil.copytree(action_src, action_dst)
+            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Action")
+            action_dst = os.path.join(game_path, "Script","Action")
+            shutil.copytree(action_src, action_dst,dirs_exist_ok=True)
 
+            shutil.copy(
+                os.path.join(BASE_DIR,"Files",f'{files}',"Charastatus.fsv"),
+                os.path.join(game_path,"Script","Action","Charastatus.fsv")
+            )
+            shutil.copy(
+                os.path.join(BASE_DIR,"Files",f'{files}',"CommonParam.fsv"),
+                os.path.join(game_path,"Script","Action","CommonParam.fsv")
+            )
             #ost choice
             if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
                 files = "Bleach Rebirth of Souls"
@@ -203,7 +210,6 @@ try:
     changeGamePathButton.pack(pady=25,fill=X)
     readBalanceChangesButton.pack(pady=25,fill=X)
     ostSettingsButton.pack(pady=25,fill=X)
-
 
     frame.pack(expand=YES)
 
