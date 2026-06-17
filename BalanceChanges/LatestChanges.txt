@@ -33,8 +33,8 @@ Kaien :
 Shikai Ichigo (changes made by Bergen):
 evo:	
 	increased sp1(non-white) damage by 25% 
-	decreased sp1(white) damage by 25%
-	increased sp2(white)damage by 10%
+	decreased sp1(white) damage by 50%
+	added sp1 tilt (in white)
 
 
 Sosuke Aizen(Changes made by Bergen):
