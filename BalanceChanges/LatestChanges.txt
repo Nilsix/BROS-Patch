@@ -595,7 +595,8 @@ pl022
 
 
 SOI FON (changes made by Nilsix):
-	fighting spirit needed to reach evo : 3-> 6
+	fighting spirit needed to reach evo : 3-> 5
+	fighting spirit needed to reach sublimation: 3.75 -> 4.25
 	BASE AND EVO : 
 		light1 : 
 			recovery : 25 -> 28
