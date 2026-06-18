@@ -110,11 +110,6 @@ Shunsui (changes made by Nilsix):
 			guard damage : 225 -> 50
 		heavy 2 :
 			guard damage : 750 -> 300
-		Sig : 
-			whiff recovery : 54 -> 100
-			can still whiff cancel into light1
-
-			blockstun : 32->40
 		SP2 : 
 			blockstun : 22 -> 0
 			now unsafe on block 
@@ -133,6 +128,11 @@ Shunsui (changes made by Nilsix):
 Dangai Ichigo (changes by Nilsix)
 FS required to go from evo -> sublimation: 4.5 -> 7.5
 Fixed a bug where he would do the full flashstep follow up string on guard instead of just the full hit.
+
+Dash Attack : 
+	slow motion rate : 2-> 1
+	his dash attack speed is now the same speed as his old dash attack
+
 LV1 : 
 	Sig : 
 		damage : 800 -> 1000
