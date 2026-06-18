@@ -459,13 +459,13 @@ Light 1 (base evo and reawakening) :
 
 	EVO: 
 		heavy2->sig : 
-			blockstun : 36->34
-		is now 0 on block
+			blockstun : 36->28
+		is now minus on block (cannot step, but can flashstep)
 			
 	REAWAKENING:
 		heavy2->sig:
-			blockstun : 38->36
-		is now 0 on block 
+			blockstun : 38->35
+		is now minus on block (can step and flashstep, but cannot mash)
 
 HALIBELL (changes made by Efra and Nilsix): 
 
