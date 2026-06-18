@@ -90,8 +90,8 @@ try:
             shutil.copytree(action_src, action_dst,dirs_exist_ok=True)
 
             shutil.copy(
-                os.path.join(BASE_DIR,"Files",f'{files}',"Charastatus.fsv"),
-                os.path.join(game_path,"Script","Action","Charastatus.fsv")
+                os.path.join(BASE_DIR,"Files",f'{files}',"CharaStatus.fsv"),
+                os.path.join(game_path,"Script","Action","CharaStatus.fsv")
             )
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f'{files}',"CommonParam.fsv"),
