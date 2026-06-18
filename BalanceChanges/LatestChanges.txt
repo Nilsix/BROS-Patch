@@ -132,6 +132,8 @@ Shunsui (changes made by Nilsix):
 
 
 Dangai Ichigo (changes by Nilsix)
+FS required to go from evo -> sublimation: 4.5 -> 7.5
+Fixed a bug where he would do the full flashstep follow up string on guard instead of just the full hit.
 LV1 : 
 	Sig : 
 		damage : 800 -> 1000
