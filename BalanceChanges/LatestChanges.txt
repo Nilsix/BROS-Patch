@@ -239,7 +239,6 @@ Mayuri (changes made by Nilsix) :
 		pushblock : 0 -> -0.5
 	dash light[2] :
 		pushblock = 1 - -0.5
-		recovery : 53->56
 
 Mayuri can now properly mixup after hitting both hit of a dash light on block
 
