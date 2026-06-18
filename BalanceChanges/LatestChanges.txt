@@ -72,7 +72,6 @@ Unohana (Changes by Nilsix):
 	EVO:
 		Light1 : 
 			pushbock : 0.25 -> 0.4
-			whiff recovery : 31 -> 34
 
 
 NNoitra (changes made by Nilsix):
