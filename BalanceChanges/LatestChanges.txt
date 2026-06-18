@@ -140,13 +140,13 @@ LV1 :
 	Tilt : 
 		damage : 600 -> 800
 	SP2 : 
-		damage : 600 -> 1400
+		damage : 600 -> 2500
 		hitstun -> 100 -> 40
 LVL2 : 
 	Tilt : 
 		damage : 750 -> 1000
 	SP2 : 
-		damage : 800 -> 1200
+		damage : 800 -> 3000
 		hitstun : 100 -> 40
 
 LVL3 :
