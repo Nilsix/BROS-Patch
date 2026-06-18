@@ -158,10 +158,12 @@ LVL3 :
 		cannot combo after sig but gets oki from it
 
 
-Nell (changes by Nilsix)
+Nell (changes by Nilsix and Bergen)
 
-Amount of fighting spirit needed to go from base to evo :
-	2.5 -> 3
+ Amount of fighting spirit needed to go from base to evo : 2.5 -> 3
+ Added the ability to use sig right after the sp1 extension
+ Hitstun on the last hit of sp1 changed from 70 -> 35 (dash light oki)
+ Hitstun on the last hit of sp1 extension changed from 50 -> 70 (can loop with sig cancels)
 
 
 YWACH (Changes Made by Bergen and Goose)
