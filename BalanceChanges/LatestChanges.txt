@@ -429,6 +429,11 @@ Vasto Lorde :
 
 ULQUIORRA (changes made by Nilsix): 
 
+Base : 
+	dash light (whiff) -> hakugeki : removed
+	light1 (whiff) hakugeki : removed
+	heavy 1 (whiff) hakugeki : removed
+
 Light 1 (base evo and reawakening) : 
 	
 	rotate speed : 0 -> 2.0
