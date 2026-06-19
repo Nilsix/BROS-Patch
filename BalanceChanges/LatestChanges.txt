@@ -616,7 +616,9 @@ she could just mix up with anken and at the same time get insane damage with ank
 Now if Soi Fon want to mix with anken, she has to accept that she will lose damage on the sp1 loops.
 
 
-KISUKE (changes made by Nilsix):
+KISUKE (changes made by Nilsix and Bergen):
+Fixed a bug where Kisuke was able to can the whiff of a heavy1 -> Hakugeki
+increased the recovery on kisuke's heavy 1 from 48 -> 55 
 
 	Light 1 and Light 1[SP2] (base and evo) :
 		Rotate speed : 0->2
