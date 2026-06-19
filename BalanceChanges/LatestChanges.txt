@@ -622,6 +622,9 @@ KISUKE (changes made by Nilsix and Bergen):
 Fixed a bug where Kisuke was able to can the whiff of a heavy1 -> Hakugeki
 increased the recovery on kisuke's heavy 1 from 48 -> 55 
 
+light1 -> whiff cancel -> hakugeki : removed
+dash light -> whiff cancel -> hakugeki : removed
+
 	Light 1 and Light 1[SP2] (base and evo) :
 		Rotate speed : 0->2
 	Kisuke can now punish Flashsteps
