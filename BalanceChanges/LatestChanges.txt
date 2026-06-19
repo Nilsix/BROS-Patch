@@ -8,6 +8,7 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.15
 Fighting spirit generated when hitting someone blocking : 1.25 -> 1
 Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
+Blue Reverse range increased from 5 -> 20 and size *4 times bigger to make it fullscreen
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
 
 
@@ -307,8 +308,10 @@ SP2:
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
-- explosion size 4.2 -> 7.4
-- Z pos -0.2 -> -4.2
+- collision explosion size 4.2 -> 7.4
+- collision Z pos -0.2 -> -4.2
+- changed explosion size to from (1.0,1.0,1.0) -> (1.5,1.5,1.5)
+- changed the position from (0.0,0.0,0.0) -> (0.0,-1.4,-1.0)
 - dmg 800+1000 -> 1000+1300
 - fighting spirit 0.05 -> 0.20
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
@@ -337,8 +340,11 @@ SP2:
 - homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
-- explosion radius 4.2 -> 8.4
-- Z pos -0.2 -> -4.2
+- collision explosion radius 4.2 -> 7.2
+- collision Z pos -0.2 -> -3.6
+- changed explosion size to from (1.0,1.0,1.0) -> (1.525,1.525,1.525)
+- changed the position from (0.0,0.0,0.0) -> (0.0,-1.4,-1.0)
+- explosion damage_move_rate: 1.0 -> 0.5
 - dmg 1200+3500 -> 2800+2800
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
