@@ -10,6 +10,11 @@ Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
 
+
+Kira : 
+Base and Evo :
+	Fixed a bug where he would be able to cancel the following whiffed button into Hakugeki : dash light, light1, heavy 1
+
 Yamamoto (changes made by Nilsix): 
 BASE AND EVO : 
 	Sig : 
@@ -128,7 +133,7 @@ Shunsui (changes made by Nilsix):
 Dangai Ichigo (changes by Nilsix and Bergen)
 FS required to go from evo -> sublimation: 4.5 -> 7.5
 Fixed a bug where he would do the full flashstep follow up string on guard instead of just the full hit.
-Fixed a bug where Dangai would be able to cancel his whiffed heavy -> Hakugeki.
+Fixed a bug where he would be able to cancel the following whiffed button into Hakugeki : dash light, light1, heavy 1
 
 
 Dash Attack : 
