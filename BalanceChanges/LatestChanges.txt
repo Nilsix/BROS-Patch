@@ -132,7 +132,9 @@ Fixed a bug where he would do the full flashstep follow up string on guard inste
 Dash Attack : 
 	slow motion rate : 2-> 1
 	his dash attack speed is now the same speed as his old dash attack
-
+SP2 (all levels): 
+	first hit damage : 600 -> 1000
+	damage : 300 -> 1000
 LV1 : 
 	Sig : 
 		damage : 800 -> 1200
