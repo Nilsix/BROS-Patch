@@ -41,6 +41,7 @@ evo:
 	increased sp1(non-white) damage by 25% 
 	decreased sp1(white) damage by 50%
 	added sp1 tilt (in white)
+	[raw 992+ 1051 + 1107: removed P000_sk1_00 animation to clean up tilt sp1]
 
 
 Sosuke Aizen(Changes made by Bergen):
@@ -134,7 +135,7 @@ Shunsui (changes made by Nilsix):
 Dangai Ichigo (changes by Nilsix and Bergen)
 FS required to go from evo -> sublimation: 4.5 -> 7.5
 Fixed a bug where he would do the full flashstep follow up string on guard instead of just the full hit.
-Fixed a bug where he would be able to cancel the following whiffed button into Hakugeki : dash light, light1, heavy 1
+Fixed a bug where Dangai would be able to cancel his whiffed heavy -> Hakugeki.
 
 
 Dash Attack : 
@@ -334,6 +335,8 @@ SP1 Maximum Guaranteed Damage increased:
 - 540 -> 800 (max damage is 1800)
 - Turned on homing for charged tilt (speed of XY: 100)
 
+- heavy1, heavy2, light2, light3, tilt and charged tilt guard damage increased by 10%
+
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
 - DP (invincible after 10 frames of activation)
@@ -346,8 +349,11 @@ SP2:
 - changed the position from (0.0,0.0,0.0) -> (0.0,-1.4,-1.0)
 - explosion damage_move_rate: 1.0 -> 0.5
 - dmg 1200+3500 -> 2800+2800
+- explosion guard damage reduced from 800 -> 600 (25%)
 - changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
 - changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
+
+
 
 
 
