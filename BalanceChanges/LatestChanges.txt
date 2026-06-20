@@ -228,7 +228,9 @@ Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
 		Rotate Speed : 0->2 
 	Yoruichi can now punish flashsteps
-	
+	SP2 (base and Evo):
+		speed: 0.001 -> 1.000
+	Consistency fix for all sp counters
 	Forward sig : 
 		blockstun 14->9
 	anken->forward dash is unsafe now
