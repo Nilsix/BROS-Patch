@@ -92,6 +92,8 @@ try:
         try:
             #folder injection
             injectFolder(files,"Script")
+            injectFolder(files,"AiAttackData")
+
 
             #ost choice
             if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
