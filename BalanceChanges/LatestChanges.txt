@@ -370,6 +370,8 @@ RANGIKU (changes made by Bergen) :
 
 GIN (changes made by Nilsix) :
 	BASE AND EVO : 
+	SP2 : 
+		Fixed a bug where you can hold grab dash and sp2 during it's animation
 	light1 : 
 		RotateSpeed : 0->2
 	SP2:
