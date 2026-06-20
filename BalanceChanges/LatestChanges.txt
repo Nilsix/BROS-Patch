@@ -527,7 +527,9 @@ With her whiff recovery nerf on her heavy 1, hali now has a clearer weakness, do
 ==========
 pl022
 ==========
-
+Base :
+	Fixed a bug where you could hold grab dash and cancel it into sp1
+	
 020 <<Byak base light 3 sword form>>
 
 	fix_time
