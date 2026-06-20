@@ -78,35 +78,29 @@ try:
         config["GAME_PATH"] = game_path
         with open(config_path, "w") as f:
             json.dump(config, f)
+
+
+    def injectFolder(files,folderName):
+            action_src = os.path.join(BASE_DIR,"Files",f"{files}",f'{folderName}')
+            action_dst = os.path.join(game_path,f'{folderName}')
+            shutil.rmtree(action_dst)
+            shutil.copytree(action_src, action_dst)
+
     
-
-    files = ""
-
     def launch(files):
         window.destroy()
         try:
-            action_src = os.path.join(BASE_DIR,"Files",f"{files}", "Action")
-            action_dst = os.path.join(game_path, "Script","Action")
-            shutil.copytree(action_src, action_dst,dirs_exist_ok=True)
+            #folder injection
+            injectFolder(files,"Script")
 
-            shutil.copy(
-                os.path.join(BASE_DIR,"Files",f'{files}',"CharaStatus.fsv"),
-                os.path.join(game_path,"Script","CharaStatus.fsv")
-            )
-            shutil.copy(
-                os.path.join(BASE_DIR,"Files",f'{files}',"CommonParam.fsv"),
-                os.path.join(game_path,"Script","CommonParam.fsv")
-            )
             #ost choice
             if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
                 files = "Bleach Rebirth of Souls"
-
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f"{files}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
         
-
         except Exception as e:
             print("Error copying files:", e)
 
