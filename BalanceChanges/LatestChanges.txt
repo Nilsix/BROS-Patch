@@ -228,7 +228,9 @@ Yoruichi (changes made by Nilsix):
 	Light1 (base and Evo)
 		Rotate Speed : 0->2 
 	Yoruichi can now punish flashsteps
-	
+	SP2 (base and Evo):
+		speed: 0.001 -> 1.000
+	Consistency fix for all sp counters
 	Forward sig : 
 		blockstun 14->9
 	anken->forward dash is unsafe now
@@ -277,7 +279,7 @@ FS gain in Reishi Concentration State (SP2) in evo doubled for:
 heavy1-2, tilt, charged tilt
 
 SP2:
-DP (invincible after 10 frames of activation), hits from behind, +28% damage
+DP (invincible after 4 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
 FS required to go from Base -> awakening: 2.75 -> 2.5
@@ -290,8 +292,7 @@ SP2:
 - guardstun reduced to 05
 - explosion radius 2.2 -> 4.2
 - Z pos -0.2 -> -2.2
-- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 1.0 to combat a bug where Uryu was able to punish 99% of characters for their light string on guard
 
 ==================== AWAKENING ====================
 FS required to go from awakening to sublimation: 3.0 -> 4.5
@@ -309,14 +310,13 @@ SP2:
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
-- collision explosion size 4.2 -> 7.4
+- collision explosion size 4.2 -> 7.0
 - collision Z pos -0.2 -> -4.2
 - changed explosion size to from (1.0,1.0,1.0) -> (1.5,1.5,1.5)
 - changed the position from (0.0,0.0,0.0) -> (0.0,-1.4,-1.0)
 - dmg 800+1000 -> 1000+1300
 - fighting spirit 0.05 -> 0.20
-- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 1.0 to combat a bug where Uryu was able to punish 99% of characters for their light string on guard
 
 ==================== REAWAKENING ====================
 
@@ -350,14 +350,14 @@ SP2:
 - explosion damage_move_rate: 1.0 -> 0.5
 - dmg 1200+3500 -> 2800+2800
 - explosion guard damage reduced from 800 -> 600 (25%)
-- changed the minimum activation frames on the DP by 6 frames to fix an interaction where Uryu was able to punish 99% of characters' light string on guard with SP2
-- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 0.15 to combat the previously mentioned bug
+- changed the speed at which the world revolves for the counter section of the dp from 0.001 to 1.0 to combat a bug where Uryu was able to punish 99% of characters for their light string on guard
 
 
 
 
 
 RANGIKU (changes made by Bergen) :
+	Base and Evo SP1 timestop removed (speed 0.001 -> 1.0)
 	Amount of fighting spirit required to go from evo -> sublimation increase from 
 	Signature (evo):
 		guard damage: 75-> 50
@@ -657,7 +657,7 @@ dash light -> whiff cancel -> hakugeki : removed
 	Kisuke can now punish Flashsteps
 
 SHUHEI Changes(by efra):
-
+	changed base and evo SP2 speed from 0.001 -> 1.000
 
 Base:
 
