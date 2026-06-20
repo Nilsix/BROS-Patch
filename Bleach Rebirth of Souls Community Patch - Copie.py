@@ -91,11 +91,11 @@ try:
 
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f'{files}',"CharaStatus.fsv"),
-                os.path.join(game_path,"Script","Action","CharaStatus.fsv")
+                os.path.join(game_path,"Script","CharaStatus.fsv")
             )
             shutil.copy(
                 os.path.join(BASE_DIR,"Files",f'{files}',"CommonParam.fsv"),
-                os.path.join(game_path,"Script","Action","CommonParam.fsv")
+                os.path.join(game_path,"Script","CommonParam.fsv")
             )
             #ost choice
             if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
