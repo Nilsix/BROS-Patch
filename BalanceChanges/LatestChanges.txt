@@ -357,6 +357,7 @@ SP2:
 
 
 RANGIKU (changes made by Bergen) :
+	Base and Evo SP1 timestop removed (speed 0.001 -> 1.0)
 	Amount of fighting spirit required to go from evo -> sublimation increase from 
 	Signature (evo):
 		guard damage: 75-> 50
