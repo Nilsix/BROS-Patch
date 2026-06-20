@@ -441,7 +441,8 @@ Vasto Lorde :
 
 
 ULQUIORRA (changes made by Nilsix): 
-
+Base, Evo, Reawakening : 
+	fixed a bug where ulq could grab dash and cancel into SP2
 Base : 
 	dash light (whiff) -> hakugeki : removed
 	light1 (whiff) hakugeki : removed
@@ -529,7 +530,7 @@ pl022
 ==========
 Base :
 	Fixed a bug where you could hold grab dash and cancel it into sp1
-	
+
 020 <<Byak base light 3 sword form>>
 
 	fix_time
