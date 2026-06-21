@@ -48,13 +48,21 @@ try:
         exit()
 
 
-    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","FaintGlow.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
+    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
 
     try :
         template_path = os.path.join(BASE_DIR,"configTemplate.json")
         config_path = os.path.join(BASE_DIR,"config.json")
         if not os.path.exists(config_path):
             shutil.copy(template_path,config_path)
+        
+        else:
+            with open(template_path, "r",encoding="utf-8") as f:
+                data1 = json.load(f)
+            with open(config_path,"r",encoding="utf-8") as f:
+                data2 = json.load(f)
+            if len(data1) != len(data2):
+                shutil.copy(template_path,config_path)
 
     except Exception as e: 
         print(e)
@@ -113,6 +121,8 @@ try:
                 os.path.join(BASE_DIR,"Files","OST",f"{files}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
+
+            #Low Spec mode
         
         except Exception as e:
             print("Error copying files:", e)
@@ -213,7 +223,7 @@ try:
     launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
-    ostSettingsButton =  Button(frame,text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
+    ostSettingsButton =  Button(frame,text=f'Keep default OST :  ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     #pack
     labelTitle.pack()
