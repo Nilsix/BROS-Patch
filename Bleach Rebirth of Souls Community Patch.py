@@ -47,8 +47,8 @@ try:
 
         exit()
 
-
-    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
+    ressourcesPath = os.path.join(BASE_DIR,"ressources")
+    winsound.PlaySound(os.path.join(ressourcesPath,"LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
 
     try :
         template_path = os.path.join(BASE_DIR,"configTemplate.json")
