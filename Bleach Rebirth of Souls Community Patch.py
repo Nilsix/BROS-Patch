@@ -7,7 +7,7 @@ import shutil
 import os
 import subprocess
 import ctypes
-import pygame
+import winsound
 from pathlib import Path
 
 
@@ -15,10 +15,7 @@ from pathlib import Path
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    pygame.mixer.init()
-    pygame.mixer.music.load(os.path.join(BASE_DIR,"ressources","FaintGlow.mp3"))
     window = Tk()
-    pygame.mixer.music.play(-1)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
