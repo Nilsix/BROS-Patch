@@ -16,8 +16,8 @@ from pathlib import Path
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
-    winsound.PlaySound(
-    "FaintGlow.wav",
+    winsound.PlaySound(os.path.join("ressources",
+    "FaintGlow.wav"),
     winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP
 )
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
