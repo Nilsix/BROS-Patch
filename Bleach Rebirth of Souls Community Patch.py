@@ -105,10 +105,12 @@ try:
             injectFolder(files,"Script")
 
             #ost choice
-            if files != "Bleach Rebirth of Souls Community Patch" or config["DEFAULT_OST"] == "ON":
-                files = "Bleach Rebirth of Souls"
+            if config["DEFAULT_OST"] == "ON":
+                files = "Default"
+            else : 
+                files = "Mod"
             shutil.copy(
-                os.path.join(BASE_DIR,"Files",f"{files}", "bgm.bnk"),
+                os.path.join(BASE_DIR,"Files","OST",f"{files}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
         
@@ -157,7 +159,7 @@ try:
 
         with open(config_path,"w") as f:
             json.dump(config,f)
-        button.config(text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )')
+        button.config(text=f'OST Mod : ( currently : {config["DEFAULT_OST"]} )')
 
     def changeGamePath():
         flag = True
