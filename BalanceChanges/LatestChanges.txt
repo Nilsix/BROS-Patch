@@ -374,7 +374,9 @@ RANGIKU (changes made by Bergen) :
 
 
 GIN (changes made by Nilsix) :
-	BASE AND EVO : 
+	BASE AND EVO :
+	SP1 :
+		Removed timestop on the counter (speed 0.001 -> 1.00) 
 	SP2 : 
 		Fixed a bug where you can hold grab dash and sp2 during it's animation
 	light1 : 
