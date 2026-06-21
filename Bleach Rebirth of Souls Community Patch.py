@@ -16,10 +16,7 @@ from pathlib import Path
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
-    winsound.PlaySound(os.path.join("ressources",
-    "FaintGlow.wav"),
-    winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP
-)
+    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","FaintGlow.wav"),winsound.SND_FILENAME)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
@@ -44,6 +41,7 @@ try:
         print("Git update failed :", e)
         print("Please delete this folder and redo the installation, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself even if you see 'done' written on the installation window")
         a = input("Press Enter to exit ")
+
         exit()
 
 
