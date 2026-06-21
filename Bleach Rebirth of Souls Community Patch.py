@@ -65,7 +65,7 @@ try:
 
     except Exception as e: 
         print(e)
-    config_path = os.path.join(BASE_DIR,,"Json","config.json")
+    config_path = os.path.join(BASE_DIR,"Json","config.json")
 
     if not os.path.exists(config_path):
         with open(config_path, "w") as f:
