@@ -365,8 +365,9 @@ RANGIKU (changes made by Bergen) :
 	Base and Evo SP1 timestop removed (speed 0.001 -> 1.0)
 	Amount of fighting spirit required to go from evo -> sublimation increase from 
 	Signature (evo):
-		guard damage: 75-> 50
-		chip damage: reduced by 30%
+		Level 1: guard damage 75-> 50 + chip damage reduced by 30% + lifetime reduced from 600 -> 300
+		Level 2: guard damage 75-> 50 + chip damage reduced by 30% + damage increased from 100 -> 200
+		Level 3: chip damage: reduced by 30% + lifetime reduced from 600 -> 400
 	SP2 (evo):
 		timestop speed : 0.001 -> 0.1
 	she cannot timestop anymore
