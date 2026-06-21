@@ -129,7 +129,7 @@ try:
 
             #Low Spec mode
             lowSpecFolder = ""
-            if config["LOW_SPEC_MOD"] == "ON":
+            if config["LOW_SPEC_MODE"] == "ON":
                 lowSpecFolder = "lowspec"
             else:
                 lowSpecFolder = "original"
@@ -215,14 +215,14 @@ try:
             json.dump(config, f)
         
     def lowSpecFunc(button):
-        if config["LOW_SPEC_MOD"] == "ON":
-            config["LOW_SPEC_MOD"] = "OFF"
+        if config["LOW_SPEC_MODE"] == "ON":
+            config["LOW_SPEC_MODE"] = "OFF"
         else:
-            config["LOW_SPEC_MOD"] = "ON"
+            config["LOW_SPEC_MODE"] = "ON"
 
         with open(config_path,"w") as f:
             json.dump(config,f)
-        button.config(text=f'Low Spec Mod : ( currently : {config["LOW_SPEC_MOD"]} )')
+        button.config(text=f'Low Spec Mod : ( currently : {config["LOW_SPEC_MODE"]} )')
     
 
     
@@ -258,7 +258,7 @@ try:
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
     ostSettingsButton =  Button(frame,text=f'Keep default OST :  ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
-    lowSpecButton =  Button(frame,text=f'Low Spec Mod :  ( currently : {config["LOW_SPEC_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: lowSpecFunc(lowSpecButton))
+    lowSpecButton =  Button(frame,text=f'Low Spec Mode :  ( currently : {config["LOW_SPEC_MODE"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: lowSpecFunc(lowSpecButton))
     CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     
 
