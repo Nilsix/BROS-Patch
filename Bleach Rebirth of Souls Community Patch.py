@@ -16,7 +16,7 @@ from pathlib import Path
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
-    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","FaintGlow.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
+    
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
@@ -32,12 +32,14 @@ try:
         output = result.stdout.strip()
         if "Already up to date." in output:
             pass
+        
         #if there is an update, will relaunch the launcher so the code actually gets reset too
         else:
             pass
-            #subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-            #winsound.PlaySound(None,winsound.SND_PURGE)
-            #exit()
+            subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
+            winsound.PlaySound(None,winsound.SND_PURGE)
+            exit()
+
     except Exception as e:
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
         print("Git update failed :", e)
@@ -47,7 +49,7 @@ try:
         exit()
 
 
-
+    winsound.PlaySound(os.path.join(BASE_DIR,"ressources","FaintGlow.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
 
     try :
         template_path = os.path.join(BASE_DIR,"configTemplate.json")
