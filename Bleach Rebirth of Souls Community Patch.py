@@ -10,7 +10,7 @@ import ctypes
 import pygame
 from pathlib import Path
 
-pygame.mixer.innit()
+
 
 
 try: 
