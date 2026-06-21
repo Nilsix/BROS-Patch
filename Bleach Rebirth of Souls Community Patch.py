@@ -9,6 +9,7 @@ import subprocess
 import ctypes
 from pathlib import Path
 
+
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
@@ -25,10 +26,12 @@ try:
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
-        #if "Already up to date." in output:
-            #print("Mod is already up to date.")
-        #else:
-            #print("Mod updated successfully.")
+        if "Already up to date." in output:
+            pass
+        #if there is an update, will relaunch the launcher so the code actually gets reset too
+        else:
+            subprocess.run("Bleach Rebirth of Souls Community Patch.py",shell=True)
+            exit()
     except Exception as e:
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
         print("Git update failed :", e)
