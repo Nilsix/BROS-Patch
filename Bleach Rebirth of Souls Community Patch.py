@@ -51,8 +51,8 @@ try:
     winsound.PlaySound(os.path.join(ressourcesPath,"LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
 
     try :
-        template_path = os.path.join(BASE_DIR,"configTemplate.json")
-        config_path = os.path.join(BASE_DIR,"config.json")
+        template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
+        config_path = os.path.join(BASE_DIR,"Json","config.json")
         if not os.path.exists(config_path):
             shutil.copy(template_path,config_path)
         else:
@@ -65,7 +65,7 @@ try:
 
     except Exception as e: 
         print(e)
-    config_path = os.path.join(BASE_DIR, "config.json")
+    config_path = os.path.join(BASE_DIR,,"Json","config.json")
 
     if not os.path.exists(config_path):
         with open(config_path, "w") as f:
@@ -181,7 +181,7 @@ try:
             print("BalanceChanges.txt not found")
     
     def readCredits():
-        creditsFile = os.path.join(BASE_DIR, "credits.txt")
+        creditsFile = os.path.join(BASE_DIR,"Credits","credits.txt")
         if os.path.exists(creditsFile):
             os.startfile(creditsFile)
 
