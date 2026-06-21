@@ -8,6 +8,8 @@ Fighting spirit generated when getting hit by your opponent : 1.75 -> 1.15
 Fighting spirit generated when hitting someone blocking : 1.25 -> 1
 Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
+Fighting Spirit gained from yellow reverse : 0.001 -> 0.0005
+
 Blue Reverse range increased from 5 -> 20 and size *4 times bigger to make it fullscreen
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
 

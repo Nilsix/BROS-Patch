@@ -68,7 +68,7 @@ reverse_fight,0.4
 atk_reverse_fight,0
 def_reverse_fight,0.2
 reverse_fight_add,0.00125
-atk_reverse_fight_add,0.001
+atk_reverse_fight_add,0.0005
 def_reverse_fight_add,0
 pinch_buff_timer,-1
 pinch_buff_atk_rate,0.3
