@@ -3,3 +3,12 @@ Sources :
 Launcher ost : Deltarune - Faint Glow : https://www.youtube.com/watch?v=16A13R7T0rM
 
 Ost mod : https://gamebanana.com/mods/639050
+
+Low Spec Mode : 
+
+Hakugeki effect remover : https://gamebanana.com/mods/587012
+Awakening Aura effect remover : https://gamebanana.com/mods/586987
+Skill activation effect remover : https://gamebanana.com/mods/586799
+Breaker/Grab effect remover : https://gamebanana.com/mods/586784
+Hit effect remover : https://gamebanana.com/mods/586784
+Reverse globe effect remover : https://gamebanana.com/mods/586476
