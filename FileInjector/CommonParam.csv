@@ -59,7 +59,7 @@ reverse_shift_reiryoku,4
 reverse_shift_reishi,150
 min_reverse_shift_timer,1
 max_reverse_shift_timer,1
-attack_reverse_add_reiryoku,30
+attack_reverse_add_reiryoku,90
 defensive_reverse_add_reiryoku,25
 defensive_reverse_guard_hp_recovery,1000
 defensive_reverse_guard_hp_recovery_guarding,400
