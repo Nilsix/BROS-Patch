@@ -55,7 +55,6 @@ try:
         config_path = os.path.join(BASE_DIR,"config.json")
         if not os.path.exists(config_path):
             shutil.copy(template_path,config_path)
-        
         else:
             with open(template_path, "r",encoding="utf-8") as f:
                 data1 = json.load(f)
@@ -105,6 +104,9 @@ try:
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
 
+    def injectOstFiles(folderName,lowspecmodornot):
+        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
+                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
     
     def launch(files):
         window.destroy()
@@ -123,6 +125,25 @@ try:
             )
 
             #Low Spec mode
+            lowSpecFolder = ""
+            if config["LOW_SPEC_MOD"] == "ON":
+                lowSpecFolder = "lowspec"
+            else:
+                lowSpecFolder = "original"
+
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{lowSpecFolder}',"high"),
+                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
+            
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{lowSpecFolder}',"middle"),
+                        os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+            
+            injectOstFiles("awakeningaura_effects_by_grifo",lowSpecFolder)
+            injectOstFiles("breaker_grab_effect_remover_by_grifo",lowSpecFolder)
+            injectOstFiles("hakugeki_effect_remover_by_grifo",lowSpecFolder)
+            injectOstFiles("hit_effect_remover_by_grifo",lowSpecFolder)
+            injectOstFiles("skill_activation_effect_remover_by_grifo",lowSpecFolder)
+            
+
         
         except Exception as e:
             print("Error copying files:", e)
@@ -189,6 +210,16 @@ try:
 
         with open(config_path, "w") as f:
             json.dump(config, f)
+        
+    def lowSpecFunc(button):
+        if config["LOW_SPEC_MOD"] == "ON":
+            config["LOW_SPEC_MOD"] = "OFF"
+        else:
+            config["LOW_SPEC_MOD"] = "ON"
+
+        with open(config_path,"w") as f:
+            json.dump(config,f)
+        button.config(text=f'Low Spec Mod : ( currently : {config["LOW_SPEC_MOD"]} )')
     
 
     
@@ -224,7 +255,10 @@ try:
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
     ostSettingsButton =  Button(frame,text=f'Keep default OST :  ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
+    lowSpecButton =  Button(frame,text=f'Low Spec Mod :  ( currently : {config["LOW_SPEC_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: lowSpecFunc(lowSpecButton))
     CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
+    
+
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
@@ -234,6 +268,7 @@ try:
     changeGamePathButton.pack(pady=paddingYvalue,fill=X)
     readBalanceChangesButton.pack(pady=paddingYvalue,fill=X)
     ostSettingsButton.pack(pady=paddingYvalue,fill=X)
+    lowSpecButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
     frame.pack(expand=YES)
