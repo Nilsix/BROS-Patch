@@ -7,7 +7,10 @@ import shutil
 import os
 import subprocess
 import ctypes
+import pygame
 from pathlib import Path
+
+pygame.mixer.innit()
 
 
 try: 
@@ -15,7 +18,7 @@ try:
     window = Tk()
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
-    window.geometry("1080x720")
+    window.geometry("1080x800")
     window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
     #minimum size of the window
     window.minsize(480,360)
@@ -135,6 +138,11 @@ try:
             os.startfile(balance_file)
         else:
             print("BalanceChanges.txt not found")
+    
+    def readCredits():
+        creditsFile = os.path.join(BASE_DIR, "credits.txt")
+        if os.path.exists(creditsFile):
+            os.startfile(creditsFile)
 
     def ostSettings(button):
         if config["DEFAULT_OST"] == "ON":
@@ -190,23 +198,26 @@ try:
         if brosVersionList.get() != "Choose a game version":
             launch(brosVersionList.get())
 
+    textSize = 20
+    paddingYvalue = 15
     #buttons
-    launchButton = Button(frame,text="Launch the game",font=("Courrier",25),bg="white",fg=bgcolor,command=preLauncher)
-    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
-    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
-    changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",25),bg="white",fg=bgcolor,command=changeGamePath)
-    readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",25),bg="white",fg=bgcolor,command=readBalanceChanges)
-    ostSettingsButton =  Button(frame,text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",25),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
-
+    launchButton = Button(frame,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
+    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
+    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
+    changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
+    readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
+    ostSettingsButton =  Button(frame,text=f'Keep default osts on the Community Patch ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
+    CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
-    labelGamePath.pack(pady=25,fill=X)
-    brosVersionList.pack(pady=25,fill=X)
+    labelGamePath.pack(pady=paddingYvalue,fill=X)
+    brosVersionList.pack(pady=paddingYvalue,fill=X)
     launchButton.pack()
-    changeGamePathButton.pack(pady=25,fill=X)
-    readBalanceChangesButton.pack(pady=25,fill=X)
-    ostSettingsButton.pack(pady=25,fill=X)
+    changeGamePathButton.pack(pady=paddingYvalue,fill=X)
+    readBalanceChangesButton.pack(pady=paddingYvalue,fill=X)
+    ostSettingsButton.pack(pady=paddingYvalue,fill=X)
+    CreditsButton.pack(pady=paddingYvalue,fill=X)
 
     frame.pack(expand=YES)
 
