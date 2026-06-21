@@ -30,7 +30,7 @@ try:
             pass
         #if there is an update, will relaunch the launcher so the code actually gets reset too
         else:
-            subprocess.run("Bleach Rebirth of Souls Community Patch.py",shell=True)
+            subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
             exit()
     except Exception as e:
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
