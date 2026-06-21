@@ -16,6 +16,10 @@ from pathlib import Path
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     window = Tk()
+    winsound.PlaySound(
+    "FaintGlow.wav",
+    winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP
+)
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
