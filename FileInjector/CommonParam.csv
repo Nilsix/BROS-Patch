@@ -79,7 +79,7 @@ fightingDamageRate,1.15
 fightingBlockAtkRate,1
 fightingSuccessGuardRate,0.5
 fighting_MoveToRival,0.005
-fightingDamagedSoul,0.2
+fightingDamagedSoul,0.1
 fightingSuccessJustSyunpo,0.2
 fightingOnBreak,0
 fightingUniqueTousi,0
