@@ -118,10 +118,10 @@ try:
             injectFolder(files,"Script")
 
             #ost choice
-            if config["DEFAULT_OST"] == "ON":
-                files = "Default"
-            else : 
+            if config["OST_MOD"] == "ON":
                 files = "Mod"
+            else : 
+                files = "Default"
             shutil.copy(
                 os.path.join(BASE_DIR,"Files","OST",f"{files}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
@@ -186,14 +186,14 @@ try:
             os.startfile(creditsFile)
 
     def ostSettings(button):
-        if config["DEFAULT_OST"] == "ON":
-            config["DEFAULT_OST"] = "OFF"
+        if config["OST_MOD"] == "ON":
+            config["OST_MOD"] = "OFF"
         else:
-            config["DEFAULT_OST"] = "ON"
+            config["OST_MOD"] = "ON"
 
         with open(config_path,"w") as f:
             json.dump(config,f)
-        button.config(text=f'OST Mod : ( currently : {config["DEFAULT_OST"]} )')
+        button.config(text=f'OST Mod : ( currently : {config["OST_MOD"]} )')
 
     def changeGamePath():
         flag = True
@@ -257,7 +257,7 @@ try:
     launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
-    ostSettingsButton =  Button(frame,text=f'Keep default OST :  ( currently : {config["DEFAULT_OST"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
+    ostSettingsButton =  Button(frame,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     lowSpecButton =  Button(frame,text=f'Low Spec Mode :  ( currently : {config["LOW_SPEC_MODE"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: lowSpecFunc(lowSpecButton))
     CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     
