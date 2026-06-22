@@ -42,10 +42,6 @@ try:
     with open(config_path, "r") as f:
         config = json.load(f)
     
-    if config["MAINTENANCE"] != "LITERALLY_SHOWING_THE_PW_IN_THE_CODE":
-        input("The launcher is going under maintenance for several hours")
-        exit()
-    
     window = Tk()
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
