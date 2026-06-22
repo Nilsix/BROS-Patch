@@ -187,7 +187,6 @@ YWACH (Changes Made by Bergen and Goose)
 ### General Changes
 
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
-heavy 1 and heavy 2 SP regen reduced by 20% across all modes 
 ### Base
 reduced heavy 2 hit pushback from 2.0 and 1.0 -> 0.2 and 0.5 respectively on the last 2 hits of the heavy 2 for consistency.
 
