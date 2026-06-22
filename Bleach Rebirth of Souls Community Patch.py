@@ -158,11 +158,6 @@ try:
                     shutil.copy(
                         os.path.join(srcPath,"CharaStatus.fsv"),
                         os.path.join(dstPath,"CharaStatus.fsv"))
-                
-                if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
-                    shutil.copy(
-                        os.path.join(srcPath,"CommonParam.fsv"),
-                        os.path.join(dstPath,"CommonParam.fsv"))
             
             #team battle injection
             if config["TEAM_BATTLE"] == "ON":
