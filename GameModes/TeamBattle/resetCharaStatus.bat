@@ -2,4 +2,6 @@
 
 copy "originalCharaStatus\CharaStatus.csv" .
 
+convertToFsvAndPush
+
 pause

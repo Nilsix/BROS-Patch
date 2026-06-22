@@ -172,6 +172,7 @@ try:
                 shutil.copy(
                     os.path.join(srcPath,"CharaStatus.fsv"),
                     os.path.join(dstPath,"CharaStatus.fsv"))
+                
         
 
         except Exception as e:
