@@ -167,13 +167,11 @@ try:
             #team battle injection
             if config["TEAM_BATTLE"] == "ON":
                 srcPath = os.path.join(BASE_DIR,"Game Modes","TeamBattle")
-                dstPath = os.path.join(game_path,"Script")
-                
-                if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
-                    shutil.copy(
-                        os.path.join(srcPath,"CharaStatus.fsv"),
-                        os.path.join(dstPath,"CharaStatus.fsv"))
-            
+                dstPath = os.path.join(game_path,"Script")   
+                shutil.copy(
+                    os.path.join(srcPath,"CharaStatus.fsv"),
+                    os.path.join(dstPath,"CharaStatus.fsv"))
+        
 
         except Exception as e:
             print("Error copying files:", e)
@@ -339,6 +337,12 @@ try:
         else:
             gameMode = "BaseOnly"
         baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
+    
+    def teamBattleFunc():
+        with open(config_path,"w") as f:
+            config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
+            json.dump(config,f)
+        teamBattleButton.config(text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})')
 
     textSize = 18
     paddingYvalue = 15
@@ -473,7 +477,16 @@ try:
         command=baseOnlyFunc
     )
 
+    teamBattleButton = Button(
+        gameModesPage,
+        text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=teamBattleFunc
+    )
 
+    teamBattleButton.pack(pady=paddingYvalue, fill=X)
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
     

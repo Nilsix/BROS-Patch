@@ -8,3 +8,4 @@ if exist CommonParam.csv (
 )
 
 
+pause
