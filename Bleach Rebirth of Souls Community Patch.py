@@ -330,20 +330,34 @@ try:
 
     def backToMainMenu():
         mainPage.tkraise()
-    
+
+    def actualiseGameModeButtons():
+        baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
+        instantEvoAndSublimation.config(text=f'Instant Evo and Sublimation : (Currently {"ON" if gameMode == "InstantEvoAndSublimation" else "OFF"})')
+
     def baseOnlyFunc():
         global gameMode
         if gameMode == "BaseOnly":
             gameMode = "DEFAULT"
         else:
             gameMode = "BaseOnly"
-        baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
+        actualiseGameModeButtons()
     
     def teamBattleFunc():
         with open(config_path,"w") as f:
             config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
             json.dump(config,f)
         teamBattleButton.config(text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})')
+    
+    def instantEvoAndSublimationFunc():
+        global gameMode
+        if gameMode == "InstantEvoAndSublimation":
+            gameMode = "DEFAULT"
+        else:
+            gameMode = "InstantEvoAndSublimation"
+        actualiseGameModeButtons()
+    
+    
 
     textSize = 18
     paddingYvalue = 15
@@ -488,13 +502,14 @@ try:
     )
     instantEvoAndSublimation = Button(
         gameModesPage,
-        text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})',
+        text=f'Instant Evo and Sublimation : (Currently {"ON" if gameMode == "InstantEvoAndSublimation" else "OFF"})',
         font=("Courrier", textSize),
         bg="white",
         fg=bgcolor,
-        command=teamBattleFunc
+        command=instantEvoAndSublimationFunc
     )
     teamBattleButton.pack(pady=paddingYvalue, fill=X)
+    instantEvoAndSublimation.pack(pady=paddingYvalue, fill=X)
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
     
