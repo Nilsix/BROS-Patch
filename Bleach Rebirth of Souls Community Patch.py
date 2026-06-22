@@ -117,7 +117,7 @@ try:
                         os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
     
     
-    def launch(files):
+    def launch(gameVersion):
         window.destroy()
         try: 
             pygame.mixer.music.stop()
@@ -125,20 +125,21 @@ try:
             pass
         try:
             #folder injection
-            injectFolder(files,"Script")
+            injectFolder(gameVersion,"Script")
 
             #ost choice
+            ostFolder = ""
             if config["OST_MOD"] == "ON":
-                files = "Mod"
+                ostFolder = "Mod"
             else : 
-                files = "Default"
+                ostFolder = "Default"
             shutil.copy(
-                os.path.join(BASE_DIR,"Files","OST",f"{files}", "bgm.bnk"),
+                os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}", "bgm.bnk"),
                 os.path.join(game_path, "Sound")
             )
 
         
-
+            #Performance Mode injection
             shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
                         os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
             
@@ -158,6 +159,11 @@ try:
                     shutil.copy(
                         os.path.join(srcPath,"CharaStatus.fsv"),
                         os.path.join(dstPath,"CharaStatus.fsv"))
+                        
+                if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CommonParam.fsv"),
+                        os.path.join(dstPath,"CommonParam.fsv"))
             
             #team battle injection
             if config["TEAM_BATTLE"] == "ON":
