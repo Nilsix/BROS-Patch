@@ -56,6 +56,7 @@ try:
     bgcolor = "#4A1942"
     labelcolor = "#D9B8D4"
     window.config(background=bgcolor)
+    gameMode = "DEFAULT"
      
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
@@ -136,12 +137,7 @@ try:
                 os.path.join(game_path, "Sound")
             )
 
-            #Low Spec mode
-            lowSpecFolder = ""
-            if config["LOW_SPEC_MODE"] == "ON":
-                lowSpecFolder = "lowspec"
-            else:
-                lowSpecFolder = "original"
+        
 
             shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
                         os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
@@ -152,14 +148,33 @@ try:
             for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
                 injectOstFiles(folder,config[folder])
             
-            #injectOstFiles("awakeningaura_effects_by_grifo",lowSpecFolder)
-            #injectOstFiles("breaker_grab_effect_remover_by_grifo",lowSpecFolder)
-            #injectOstFiles("hakugeki_effect_remover_by_grifo",lowSpecFolder)
-            #injectOstFiles("hit_effect_remover_by_grifo",lowSpecFolder)
-            #injectOstFiles("skill_activation_effect_remover_by_grifo",lowSpecFolder)
+
+            #gamemode injection
+            if gameMode != "Default":
+                srcPath = os.path.join(BASE_DIR,"Game Modes",f"{gameMode}")
+                dstPath = os.path.join(game_path,"Script")
+                
+                if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CharaStatus.fsv"),
+                        os.path.join(dstPath,"CharaStatus.fsv"))
+                
+                if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CommonParam.fsv"),
+                        os.path.join(dstPath,"CommonParam.fsv"))
+            
+            #team battle injection
+            if config["TEAM_BATTLE"] == "ON":
+                srcPath = os.path.join(BASE_DIR,"Game Modes","TeamBattle")
+                dstPath = os.path.join(game_path,"Script")
+                
+                if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CharaStatus.fsv"),
+                        os.path.join(dstPath,"CharaStatus.fsv"))
             
 
-        
         except Exception as e:
             print("Error copying files:", e)
 
@@ -227,16 +242,9 @@ try:
         with open(config_path, "w") as f:
             json.dump(config, f)
         
-    def lowSpecFunc(button):
-        if config["LOW_SPEC_MODE"] == "ON":
-            config["LOW_SPEC_MODE"] = "OFF"
-        else:
-            config["LOW_SPEC_MODE"] = "ON"
-
-        with open(config_path,"w") as f:
-            json.dump(config,f)
-        button.config(text=f'Low Spec Mod : ( currently : {config["LOW_SPEC_MODE"]} )')
-    
+   
+    def gameModesMenu():
+        gameModesPage.tkraise()
 
     
 
@@ -252,6 +260,8 @@ try:
     labelSubTitle = Label(mainPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelTitleSettings = Label(settingsPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
     labelSubTitleSettings = Label(settingsPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitleGameModes = Label(gameModesPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleGameModes = Label(gameModesPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
@@ -321,8 +331,16 @@ try:
 
     def backToMainMenu():
         mainPage.tkraise()
+    
+    def baseOnlyFunc():
+        global gameMode
+        if gameMode == "BaseOnly":
+            gameMode = "DEFAULT"
+        else:
+            gameMode = "BaseOnly"
+        baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
 
-    textSize = 20
+    textSize = 18
     paddingYvalue = 15
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
@@ -333,6 +351,7 @@ try:
     ostSettingsButton =  Button(mainPage,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
     CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
+    gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
     
 
 
@@ -345,6 +364,7 @@ try:
     launchButton.pack()
     changeGamePathButton.pack(pady=paddingYvalue,fill=X)
     readBalanceChangesButton.pack(pady=paddingYvalue,fill=X)
+    gameModesButton.pack(pady=paddingYvalue,fill=X)
     ostSettingsButton.pack(pady=paddingYvalue,fill=X)
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
@@ -431,8 +451,34 @@ try:
 
     mainMenuButton.pack(pady=paddingYvalue,fill=X)
 
+    #game modes page
+    labelTitleGameModes.pack(pady=paddingYvalue)
+    labelSubTitleGameModes.pack(pady=paddingYvalue)
+
+    gameModesMenuButton = Button(
+        gameModesPage,
+        text="Main Menu",
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=backToMainMenu
+    )
+
+    baseOnlyButton = Button(
+        gameModesPage,
+        text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=baseOnlyFunc
+    )
+
+
+    baseOnlyButton.pack(pady=paddingYvalue, fill=X)
+    gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
+    
    
-    for page in(mainPage,settingsPage):
+    for page in(mainPage,settingsPage,gameModesPage):
         page.grid(row=0,column=0,sticky="nsew")
     mainPage.tkraise()
 
