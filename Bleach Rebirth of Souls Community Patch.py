@@ -15,8 +15,28 @@ from pathlib import Path
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    window = Tk()
+   
+    template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
+    config_path = os.path.join(BASE_DIR,"Json","config.json")
+    if not os.path.exists(config_path):
+        shutil.copy(template_path,config_path)
+    else:
+        with open(template_path, "r",encoding="utf-8") as f:
+            data1 = json.load(f)
+        with open(config_path,"r",encoding="utf-8") as f:
+            data2 = json.load(f)
+        if len(data1) != len(data2):
+            shutil.copy(template_path,config_path)
+    config_path = os.path.join(BASE_DIR,"Json","config.json")
+
+    with open(config_path, "r") as f:
+        config = json.load(f)
     
+    if config["MAINTENANCE"] != "LITERALLY8SHOWINGTHE_PW_IN_THE_CODE":
+        input("The launcher is going under maintenance for several hours")
+        exit()
+    
+    window = Tk()
     ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
@@ -49,37 +69,6 @@ try:
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
     winsound.PlaySound(os.path.join(ressourcesPath,"LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
-
-    try :
-        template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
-        config_path = os.path.join(BASE_DIR,"Json","config.json")
-        if not os.path.exists(config_path):
-            shutil.copy(template_path,config_path)
-        else:
-            with open(template_path, "r",encoding="utf-8") as f:
-                data1 = json.load(f)
-            with open(config_path,"r",encoding="utf-8") as f:
-                data2 = json.load(f)
-            if len(data1) != len(data2):
-                shutil.copy(template_path,config_path)
-
-    except Exception as e: 
-        print(e)
-    config_path = os.path.join(BASE_DIR,"Json","config.json")
-
-    if not os.path.exists(config_path):
-        with open(config_path, "w") as f:
-            json.dump({"GAME_PATH": ""}, f)
-
-
-
-
-
-
-    with open(config_path, "r") as f:
-        config = json.load(f)
-        
-
     game_path = config.get("GAME_PATH","")
 
     if not game_path or game_path == "" or not "BLEACH Rebirth of Souls" in game_path:
