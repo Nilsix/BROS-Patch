@@ -486,7 +486,14 @@ try:
         fg=bgcolor,
         command=teamBattleFunc
     )
-
+    instantEvoAndSublimation = Button(
+        gameModesPage,
+        text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=teamBattleFunc
+    )
     teamBattleButton.pack(pady=paddingYvalue, fill=X)
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
