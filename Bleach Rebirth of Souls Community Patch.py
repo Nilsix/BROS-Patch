@@ -8,10 +8,20 @@ import os
 import subprocess
 import ctypes
 import winsound
+import sys
 from pathlib import Path
 
-
-
+pygameInstallSucess = False
+try: 
+    import pygame
+except :
+    subprocess.run(
+        [sys.executable,"-m","pip","install","pygame"]
+    )
+    try:
+        import pygame
+    except:
+        pass
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -32,7 +42,7 @@ try:
     with open(config_path, "r") as f:
         config = json.load(f)
     
-    if config["MAINTENANCE"] != "LITERALLY8SHOWINGTHE_PW_IN_THE_CODE":
+    if config["MAINTENANCE"] != "LITERALLY_SHOWING_THE_PW_IN_THE_CODE":
         input("The launcher is going under maintenance for several hours")
         exit()
     
@@ -68,7 +78,13 @@ try:
         exit()
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
-    winsound.PlaySound(os.path.join(ressourcesPath,"LauncherOst.wav"),winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
+    launcherOstPath = os.path.join(ressourcesPath,"LauncherOst.wav")
+    try:
+        pygame.mixer.init()
+        pygame.mixer.music.load(launcherOstPath)
+        pygame.mixer.music.play(loops=-1)
+    except:
+        winsound.PlaySound(launcherOstPath,winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
     game_path = config.get("GAME_PATH","")
 
     if not game_path or game_path == "" or not "BLEACH Rebirth of Souls" in game_path:
@@ -88,7 +104,7 @@ try:
 
 
     def injectFolder(files,folderName):
-            action_src = os.path.join(BASE_DIR,"Files",f"{files}",f'{folderName}')
+            action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
             action_dst = os.path.join(game_path,f'{folderName}')
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
@@ -102,6 +118,10 @@ try:
     
     def launch(files):
         window.destroy()
+        try: 
+            pygame.mixer.music.stop()
+        except:
+            pass
         try:
             #folder injection
             injectFolder(files,"Script")
@@ -123,17 +143,20 @@ try:
             else:
                 lowSpecFolder = "original"
 
-            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{lowSpecFolder}',"high"),
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
                         os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
             
-            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{lowSpecFolder}',"middle"),
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"middle"),
                         os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
             
-            injectOstFiles("awakeningaura_effects_by_grifo",lowSpecFolder)
-            injectOstFiles("breaker_grab_effect_remover_by_grifo",lowSpecFolder)
-            injectOstFiles("hakugeki_effect_remover_by_grifo",lowSpecFolder)
-            injectOstFiles("hit_effect_remover_by_grifo",lowSpecFolder)
-            injectOstFiles("skill_activation_effect_remover_by_grifo",lowSpecFolder)
+            for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
+                injectOstFiles(folder,config[folder])
+            
+            #injectOstFiles("awakeningaura_effects_by_grifo",lowSpecFolder)
+            #injectOstFiles("breaker_grab_effect_remover_by_grifo",lowSpecFolder)
+            #injectOstFiles("hakugeki_effect_remover_by_grifo",lowSpecFolder)
+            #injectOstFiles("hit_effect_remover_by_grifo",lowSpecFolder)
+            #injectOstFiles("skill_activation_effect_remover_by_grifo",lowSpecFolder)
             
 
         
@@ -158,6 +181,7 @@ try:
 
         try:
             os.startfile("steam://rungameid/1689620")
+            
         except Exception as e:
             print("Error launching game:", e)
         
@@ -217,17 +241,27 @@ try:
     
 
     #box
-    frame = Frame(window, bg=bgcolor)
+    container = Frame(window, bg=bgcolor)
+    container.pack(expand=YES)
+    mainPage = Frame(container,bg=bgcolor)
+    settingsPage = Frame(container,bg=bgcolor)
+    gameModesPage = Frame(container,bg=bgcolor)
 
     #labels
-    labelTitle = Label(frame, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
-    labelSubTitle = Label(frame,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
-    labelGamePath = Label(frame,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    labelTitle = Label(mainPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitle = Label(mainPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitleSettings = Label(settingsPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleSettings = Label(settingsPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
+    gameVersionsList = []
+    gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
+    for folder in os.listdir(gameVersionsPath):
+            gameVersionsList.append(folder)
     brosVersionList = ttk.Combobox(
-        frame,
+        mainPage,
         textvariable=brosVersion,
-        values=["Bleach Rebirth of Souls","Bleach Rebirth of Souls Community Patch","Bros 1.40 (Big Yuha release patch)","Old Bros Test"],
+        values=gameVersionsList,
         state="readonly",
         font=("Courrier",25)
     )
@@ -237,19 +271,71 @@ try:
     def preLauncher():
         if brosVersionList.get() != "Choose a game version":
             launch(brosVersionList.get())
+        
+    def performanceSettingsMenu():
+        settingsPage.tkraise()
+
+    def adjustAwakeningAuraSettings():
+        if config["awakeningaura_effects_by_grifo"] == "original":
+            config["awakeningaura_effects_by_grifo"] = "lowspec"
+        else:
+            config["awakeningaura_effects_by_grifo"] = "original"
+        awakeningAuraButton.config(text=f'remove awakening aura : currently {"OFF" if config["awakeningaura_effects_by_grifo"] == "original" else "ON"}')
+    
+    def adjustBreakerGrabSettings():
+        if config["breaker_grab_effect_remover_by_grifo"] == "original":
+            config["breaker_grab_effect_remover_by_grifo"] = "lowspec"
+        else:
+            config["breaker_grab_effect_remover_by_grifo"] = "original"
+
+        breakerGrabButton.config(
+            text=f'remove breaker grab effect : currently {"OFF" if config["breaker_grab_effect_remover_by_grifo"] == "original" else "ON"}'
+        )
+    def adjustHakugekiSettings():
+        if config["hakugeki_effect_remover_by_grifo"] == "original":
+            config["hakugeki_effect_remover_by_grifo"] = "lowspec"
+        else:
+            config["hakugeki_effect_remover_by_grifo"] = "original"
+        hakugekiButton.config(text=f'remove hakugeki effect : currently {"OFF" if config["hakugeki_effect_remover_by_grifo"] == "original" else "ON"}')
+    
+    def adjustHitEffectSettings():
+        if config["hit_effect_remover_by_grifo"] == "original":
+            config["hit_effect_remover_by_grifo"] = "lowspec"
+        else:
+            config["hit_effect_remover_by_grifo"] = "original"
+        hitEffectButton.config(text=f'remove hit effect : currently {"OFF" if config["hit_effect_remover_by_grifo"] == "original" else "ON"}')  
+    
+    def adjustReverseGlobeSettings():
+        if config["reverse_globe_effect_remover_by_grifo"] == "original":
+            config["reverse_globe_effect_remover_by_grifo"] = "lowspec"
+        else:
+            config["reverse_globe_effect_remover_by_grifo"] = "original"
+        reverseGlobeButton.config(text=f'remove reverse globe effect : currently {"OFF" if config["reverse_globe_effect_remover_by_grifo"] == "original" else "ON"}')  
+    
+    def adjustSkillActivationSettings():
+        if config["skill_activation_effect_remover_by_grifo"] == "original":
+            config["skill_activation_effect_remover_by_grifo"] = "lowspec"
+        else:
+            config["skill_activation_effect_remover_by_grifo"] = "original"
+        skillActivationButton.config(text=f'remove skill activation effect : currently {"OFF" if config["skill_activation_effect_remover_by_grifo"] == "original" else "ON"}')  
+
+    def backToMainMenu():
+        mainPage.tkraise()
 
     textSize = 20
     paddingYvalue = 15
     #buttons
-    launchButton = Button(frame,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
-    launchBrosButton = Button(frame,text="Launch Bleach Rebirth of Souls",font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
-    launchBrosPatchButton =  Button(frame,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
-    changeGamePathButton =  Button(frame,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
-    readBalanceChangesButton =  Button(frame,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
-    ostSettingsButton =  Button(frame,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
-    lowSpecButton =  Button(frame,text=f'Low Spec Mode :  ( currently : {config["LOW_SPEC_MODE"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: lowSpecFunc(lowSpecButton))
-    CreditsButton = Button(frame,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
+    launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
+    launchBrosButton = Button(mainPage,text="Launch Bleach Rebirth of Souls",font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
+    launchBrosPatchButton =  Button(mainPage,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
+    changeGamePathButton =  Button(mainPage,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
+    readBalanceChangesButton =  Button(mainPage,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
+    ostSettingsButton =  Button(mainPage,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
+    lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
+    CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     
+
+
 
     #pack
     labelTitle.pack()
@@ -263,8 +349,92 @@ try:
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
-    frame.pack(expand=YES)
 
+    labelTitleSettings.pack()
+    labelSubTitleSettings.pack()
+
+
+    #Settings page
+    awakeningAuraButton = Button(
+    settingsPage,
+    text=f'remove awakening aura : currently {"OFF" if config["awakeningaura_effects_by_grifo"] == "original" else "ON"}',
+    font=("Courrier", textSize),
+    bg="white",
+    fg=bgcolor,
+    command=adjustAwakeningAuraSettings
+)
+    awakeningAuraButton.pack(pady=paddingYvalue, fill=X)
+
+
+    breakerGrabButton = Button(
+        settingsPage,
+        text=f'remove breaker grab effect : currently {"OFF" if config["breaker_grab_effect_remover_by_grifo"] == "original" else "ON"}',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=adjustBreakerGrabSettings
+    )
+    breakerGrabButton.pack(pady=paddingYvalue, fill=X)
+
+
+    hakugekiButton = Button(
+        settingsPage,
+        text=f'remove hakugeki effect : currently {"OFF" if config["hakugeki_effect_remover_by_grifo"] == "original" else "ON"}',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=adjustHakugekiSettings
+    )
+    hakugekiButton.pack(pady=paddingYvalue, fill=X)
+
+
+    hitEffectButton = Button(
+        settingsPage,
+        text=f'remove hit effect : currently {"OFF" if config["hit_effect_remover_by_grifo"] == "original" else "ON"}',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=adjustHitEffectSettings
+    )
+    hitEffectButton.pack(pady=paddingYvalue, fill=X)
+
+
+    reverseGlobeButton = Button(
+        settingsPage,
+        text=f'remove reverse globe effect : currently {"OFF" if config["reverse_globe_effect_remover_by_grifo"] == "original" else "ON"}',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=adjustReverseGlobeSettings
+    )
+    reverseGlobeButton.pack(pady=paddingYvalue, fill=X)
+
+
+    skillActivationButton = Button(
+        settingsPage,
+        text=f'remove skill activation effect : currently {"OFF" if config["skill_activation_effect_remover_by_grifo"] == "original" else "ON"}',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=adjustSkillActivationSettings 
+    )
+    skillActivationButton.pack(pady=paddingYvalue, fill=X)
+    
+    mainMenuButton = Button(
+        settingsPage,
+        text="Main Menu",
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=backToMainMenu
+    )
+
+    mainMenuButton.pack(pady=paddingYvalue,fill=X)
+
+   
+    for page in(mainPage,settingsPage):
+        page.grid(row=0,column=0,sticky="nsew")
+    mainPage.tkraise()
 
     window.mainloop()
 except Exception as e:
