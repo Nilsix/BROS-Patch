@@ -152,14 +152,14 @@ try:
 
             #gamemode injection
             if gameMode != "Default":
-                srcPath = os.path.join(BASE_DIR,"Game Modes",f"{gameMode}")
+                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}")
                 dstPath = os.path.join(game_path,"Script")
                 
                 if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
                     shutil.copy(
                         os.path.join(srcPath,"CharaStatus.fsv"),
                         os.path.join(dstPath,"CharaStatus.fsv"))
-                        
+
                 if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
                     shutil.copy(
                         os.path.join(srcPath,"CommonParam.fsv"),
@@ -167,7 +167,7 @@ try:
             
             #team battle injection
             if config["TEAM_BATTLE"] == "ON":
-                srcPath = os.path.join(BASE_DIR,"Game Modes","TeamBattle")
+                srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
                 dstPath = os.path.join(game_path,"Script")   
                 shutil.copy(
                     os.path.join(srcPath,"CharaStatus.fsv"),
