@@ -186,9 +186,19 @@ YWACH (Changes Made by Bergen and Goose)
 
 ### General Changes
 
+Gave Yhwach 9 stocks
+
 removed SP2 timestop (Changed speed from 0.001 -> 0.1)
+increase SP regen on his lights by 30% across all modes:
+light1 SP regen rate 4.0 -> 5.2
+light2 SP regen rate 2.0 -> 2.6
+light3(base) SP regen rate 6.0 -> 7.8
+light3 (evo) SP regen rate 5.5 -> 7.15
+light3 (rev) SP regen rate 6.0 -> 7.8
+heavy 1 and heavy 2 SP regen reduced by 20% across all modes 
 ### Base
 reduced heavy 2 hit pushback from 2.0 and 1.0 -> 0.2 and 0.5 respectively on the last 2 hits of the heavy 2 for consistency.
+reduced guardstun on the second light from 38 -> 31 to make it minus on block (loses to tier 3 lights)
 
 Sankt Altar (SP1 Tilt Up):
   Increased blockstun from 30 to 40, making it plus on block to allow for mixups and pressure.
