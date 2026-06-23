@@ -99,6 +99,9 @@ try:
         with open(config_path, "w") as f:
             json.dump(config, f)
 
+    def saveJson():
+        with open(config_path,"w") as f:
+            json.dump(config,f)
 
     def injectFolder(files,folderName):
             action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
@@ -215,8 +218,7 @@ try:
         else:
             config["OST_MOD"] = "ON"
 
-        with open(config_path,"w") as f:
-            json.dump(config,f)
+        saveJson()
         button.config(text=f'OST Mod : ( currently : {config["OST_MOD"]} )')
 
     def changeGamePath():
@@ -287,6 +289,7 @@ try:
         else:
             config["awakeningaura_effects_by_grifo"] = "original"
         awakeningAuraButton.config(text=f'remove awakening aura : currently {"OFF" if config["awakeningaura_effects_by_grifo"] == "original" else "ON"}')
+        
     
     def adjustBreakerGrabSettings():
         if config["breaker_grab_effect_remover_by_grifo"] == "original":
@@ -297,12 +300,15 @@ try:
         breakerGrabButton.config(
             text=f'remove breaker grab effect : currently {"OFF" if config["breaker_grab_effect_remover_by_grifo"] == "original" else "ON"}'
         )
+        
+
     def adjustHakugekiSettings():
         if config["hakugeki_effect_remover_by_grifo"] == "original":
             config["hakugeki_effect_remover_by_grifo"] = "lowspec"
         else:
             config["hakugeki_effect_remover_by_grifo"] = "original"
         hakugekiButton.config(text=f'remove hakugeki effect : currently {"OFF" if config["hakugeki_effect_remover_by_grifo"] == "original" else "ON"}')
+        
     
     def adjustHitEffectSettings():
         if config["hit_effect_remover_by_grifo"] == "original":
@@ -310,6 +316,7 @@ try:
         else:
             config["hit_effect_remover_by_grifo"] = "original"
         hitEffectButton.config(text=f'remove hit effect : currently {"OFF" if config["hit_effect_remover_by_grifo"] == "original" else "ON"}')  
+        
     
     def adjustReverseGlobeSettings():
         if config["reverse_globe_effect_remover_by_grifo"] == "original":
@@ -317,6 +324,7 @@ try:
         else:
             config["reverse_globe_effect_remover_by_grifo"] = "original"
         reverseGlobeButton.config(text=f'remove reverse globe effect : currently {"OFF" if config["reverse_globe_effect_remover_by_grifo"] == "original" else "ON"}')  
+        
     
     def adjustSkillActivationSettings():
         if config["skill_activation_effect_remover_by_grifo"] == "original":
@@ -324,13 +332,11 @@ try:
         else:
             config["skill_activation_effect_remover_by_grifo"] = "original"
         skillActivationButton.config(text=f'remove skill activation effect : currently {"OFF" if config["skill_activation_effect_remover_by_grifo"] == "original" else "ON"}')  
+        
 
     def backToMainMenu():
+        saveJson()
         mainPage.tkraise()
-
-    def actualiseGameModeButtons():
-        baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
-        instantEvoAndSublimation.config(text=f'Instant Evo and Sublimation : (Currently {"ON" if gameMode == "InstantEvoAndSublimation" else "OFF"})')
 
     def baseOnlyFunc():
         global gameMode
@@ -341,9 +347,8 @@ try:
         actualiseGameModeButtons()
     
     def teamBattleFunc():
-        with open(config_path,"w") as f:
-            config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
-            json.dump(config,f)
+        config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
+        saveJson()
         teamBattleButton.config(text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})')
     
     def instantEvoAndSublimationFunc():
@@ -354,7 +359,20 @@ try:
             gameMode = "InstantEvoAndSublimation"
         actualiseGameModeButtons()
     
+    def eightKonpakusFunc():
+        global gameMode
+        if gameMode == "EightKonpakus":
+            gameMode = "DEFAULT"
+        else:
+            gameMode = "EightKonpakus"
+        actualiseGameModeButtons()
     
+    def actualiseGameModeButtons():
+        baseOnlyButton.config(text=f'Base Only : (Currently {"ON" if gameMode == "BaseOnly" else "OFF"})')
+        instantEvoAndSublimation.config(text=f'Instant Evo and Sublimation : (Currently {"ON" if gameMode == "InstantEvoAndSublimation" else "OFF"})')
+        eightKonpakus.config(text=f'8 Konpakus : (Currently {"ON" if gameMode == "EightKonpakus" else "OFF"})')
+    
+   
 
     textSize = 18
     paddingYvalue = 15
@@ -505,9 +523,19 @@ try:
         fg=bgcolor,
         command=instantEvoAndSublimationFunc
     )
+
+    eightKonpakus = Button(
+        gameModesPage,
+        text=f'8 Konpakus : (Currently {"ON" if gameMode == "EightKonpakus" else "OFF"})',
+        font=("Courrier", textSize),
+        bg="white",
+        fg=bgcolor,
+        command=eightKonpakusFunc
+    )
     teamBattleButton.pack(pady=paddingYvalue, fill=X)
     instantEvoAndSublimation.pack(pady=paddingYvalue, fill=X)
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
+    eightKonpakus.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
     
    
