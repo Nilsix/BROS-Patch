@@ -1,6 +1,9 @@
 @echo off
-set /p commitText=Name of the commit : 
+
 git pull
+set /p commitText=Name of the commit : 
 git add .
 git commit -m "%commitText"
 git push
+
+pause
