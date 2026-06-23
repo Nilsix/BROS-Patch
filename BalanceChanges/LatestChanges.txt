@@ -173,7 +173,7 @@ LVL3 :
 		hitstun : 40 -> 20
 		cannot combo after sig but gets oki from it
 
-
+.
 Nell (changes by Nilsix and Bergen)
 
  Amount of fighting spirit needed to go from base to evo : 2.5 -> 3
