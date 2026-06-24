@@ -11,7 +11,7 @@ import winsound
 import sys
 import webbrowser
 from pathlib import Path
-import requests
+
 
 pygameInstallSucess = False
 try: 
