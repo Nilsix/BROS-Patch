@@ -198,17 +198,17 @@ try:
             injectFolder(gameVersion,"Script")
 
             #ost choice
-            ostFolder = ""
-            if config["OST_MOD"] == "ON":
-                ostFolder = "Mod"
-            else : 
-                ostFolder = "Default"
-            ostPath = os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}","bgm.bnk")
-            if os.path.exists(ostPath):
-                shutil.copy(
-                    ostPath,
-                    os.path.join(game_path, "Sound")
-                )
+            #ostFolder = ""
+            #if config["OST_MOD"] == "ON":
+                #ostFolder = "Mod"
+            #else : 
+                #ostFolder = "Default"
+            #ostPath = os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}","bgm.bnk")
+            #if os.path.exists(ostPath):
+                #shutil.copy(
+                    #ostPath,
+                    #os.path.join(game_path, "Sound")
+                #)
 
         
             #Performance Mode injection
@@ -488,7 +488,7 @@ try:
     changeGamePathButton.pack(pady=paddingYvalue,fill=X)
     readBalanceChangesButton.pack(pady=paddingYvalue,fill=X)
     gameModesButton.pack(pady=paddingYvalue,fill=X)
-    ostSettingsButton.pack(pady=paddingYvalue,fill=X)
+    #ostSettingsButton.pack(pady=paddingYvalue,fill=X)
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
     repairButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
