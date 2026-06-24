@@ -13,7 +13,7 @@ import webbrowser
 from pathlib import Path
 
 
-pygameInstallSucess = False
+
 try: 
     import pygame
 except :
@@ -203,10 +203,12 @@ try:
                 ostFolder = "Mod"
             else : 
                 ostFolder = "Default"
-            shutil.copy(
-                os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}", "bgm.bnk"),
-                os.path.join(game_path, "Sound")
-            )
+            ostPath = os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}","bgm.bnk")
+            if os.path.exists(ostPath):
+                shutil.copy(
+                    ostPath,
+                    os.path.join(game_path, "Sound")
+                )
 
         
             #Performance Mode injection
