@@ -1,2 +1,15 @@
 BrosCommunityEditionFiles/bgm.bnk filter=lfs diff=lfs merge=lfs -text
 *.bnk filter=lfs diff=lfs merge=lfs -text
+# Binary game files: never touch line endings
+*.fsv    binary
+*.tcmbpkg binary
+*.tadjpkg binary
+*.tbl    binary
+*.vfxb   binary
+
+# Text files — store as LF
+*.py     text eol=lf
+*.csv    text eol=lf
+*.json   text eol=lf
+*.txt    text eol=lf
+*.bat    text eol=crlf
