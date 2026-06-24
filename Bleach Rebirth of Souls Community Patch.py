@@ -9,6 +9,7 @@ import subprocess
 import ctypes
 import winsound
 import sys
+import webbrowser
 from pathlib import Path
 
 pygameInstallSucess = False
@@ -115,7 +116,76 @@ try:
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
                         os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
     
-    
+    def repair():
+        messagebox.showinfo("Repair", "Please select the BLEACH_Rebirth_of_Souls.exe file from a clean backup folder of the game (your backup folder, not your main Bros folder)")
+        repair_game_path = ""
+        parent_dir = ""
+        if not repair_game_path or repair_game_path == "" or not "BLEACH Rebirth of Souls" in repair_game_path:
+            flag = True
+            while(flag):
+                repair_game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
+
+                if repair_game_path == "":
+                    messagebox.showinfo("Repair", "You cancelled the repair process.")
+                    return
+                elif"BLEACH_Rebirth_of_Souls.exe" in repair_game_path:
+                    parent_dir = os.path.dirname(repair_game_path)
+                    repair_game_path = str(parent_dir)
+                    if repair_game_path == config["GAME_PATH"]:
+                        messagebox.showerror("Error", "You selected the same folder as your main game folder. Please select a backup folder.")
+                    else:
+                        flag = False
+                else : 
+                    messagebox.showerror("Error", "You did not select the correct file. Please select the BLEACH_Rebirth_of_Souls.exe file of your backup folder")
+        
+       
+        messagebox.showinfo("Repair", "Repairing files. Please wait")
+        repairPage.tkraise()
+        window.update()
+        
+        repairWaitOstPath = os.path.join(BASE_DIR,"ressources","RepairWaitOst.wav")
+        repairEndOstPath = os.path.join(BASE_DIR,"ressources","RepairEndOst.wav")
+        try:
+            pass
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load(repairWaitOstPath)
+            pygame.mixer.music.play(loops=-1)
+        except:
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairWaitOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
+            pass
+        
+        try:
+            subprocess.run([
+                "robocopy", repair_game_path, game_path, "/E", "/XO"
+            ], capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred during the repair process: {e}")
+            return
+        try:
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load(repairEndOstPath)
+            pygame.mixer.music.play(loops=-1)
+        except:
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairEndOstPath, winsound.SND_ASYNC)
+        messagebox.showinfo("Repair", "Files repaired successfully!")
+        backToMainMenu()
+        launcherOstPath = os.path.join(BASE_DIR,"ressources","LauncherOst.wav")
+        try:
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load(launcherOstPath)
+            pygame.mixer.music.play(loops=-1)
+        except:
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
+        
+        
+                
+
+        
+
+
     def launch(gameVersion):
         window.destroy()
         try: 
@@ -163,6 +233,13 @@ try:
                     shutil.copy(
                         os.path.join(srcPath,"CommonParam.fsv"),
                         os.path.join(dstPath,"CommonParam.fsv"))
+                    
+                if os.path.exists(os.path.join(srcPath,"Action")):
+                    shutil.copytree(
+                        os.path.join(srcPath,"Action"),
+                        os.path.join(dstPath,"Action"),
+                        dirs_exist_ok=True)
+
             
             #team battle injection
             if config["TEAM_BATTLE"] == "ON":
@@ -252,14 +329,20 @@ try:
     mainPage = Frame(container,bg=bgcolor)
     settingsPage = Frame(container,bg=bgcolor)
     gameModesPage = Frame(container,bg=bgcolor)
+    repairPage = Frame(container,bg=bgcolor)
 
+    titleText = "Bleach Rebirth of Souls community patch launcher"
+    subTitleText = "made by Nilsix :3"
     #labels
-    labelTitle = Label(mainPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
-    labelSubTitle = Label(mainPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
-    labelTitleSettings = Label(settingsPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
-    labelSubTitleSettings = Label(settingsPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
-    labelTitleGameModes = Label(gameModesPage, text="Bleach Rebirth of Souls community patch launcher", font=("Arial",30),bg=bgcolor,fg=labelcolor)
-    labelSubTitleGameModes = Label(gameModesPage,text="made by Nilsix :3",font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitle = Label(mainPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitle = Label(mainPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitleSettings = Label(settingsPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleSettings = Label(settingsPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitleGameModes = Label(gameModesPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleGameModes = Label(gameModesPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelTitleRepair = Label(repairPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleRepair = Label(repairPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
+    labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
@@ -375,17 +458,19 @@ try:
    
 
     textSize = 18
-    paddingYvalue = 15
+    paddingYvalue = 10
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
     launchBrosButton = Button(mainPage,text="Launch Bleach Rebirth of Souls",font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
     launchBrosPatchButton =  Button(mainPage,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
+    joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/eHEReMAez"))
     changeGamePathButton =  Button(mainPage,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(mainPage,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
     ostSettingsButton =  Button(mainPage,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
     CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
+    repairButton = Button(mainPage,text="Repair files",font=("Courrier",textSize),bg="white",fg=bgcolor,command=repair)
     
 
 
@@ -396,11 +481,13 @@ try:
     labelGamePath.pack(pady=paddingYvalue,fill=X)
     brosVersionList.pack(pady=paddingYvalue,fill=X)
     launchButton.pack()
+    joinDiscordButton.pack(pady=paddingYvalue,fill=X)
     changeGamePathButton.pack(pady=paddingYvalue,fill=X)
     readBalanceChangesButton.pack(pady=paddingYvalue,fill=X)
     gameModesButton.pack(pady=paddingYvalue,fill=X)
     ostSettingsButton.pack(pady=paddingYvalue,fill=X)
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
+    repairButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
 
@@ -537,9 +624,22 @@ try:
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
     eightKonpakus.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
+
+    #repairPage
+    labelRepairText = Label(
+        repairPage,
+        text="Repairing files. Please wait",
+        font=("Courrier", 35),
+        bg=bgcolor,
+        fg=labelcolor
+    )
     
-   
-    for page in(mainPage,settingsPage,gameModesPage):
+
+    labelTitleRepair.pack(pady=paddingYvalue)
+    labelSubTitleRepair.pack(pady=paddingYvalue)
+    labelRepairText.pack(pady=200)
+
+    for page in(mainPage,settingsPage,gameModesPage,repairPage):
         page.grid(row=0,column=0,sticky="nsew")
     mainPage.tkraise()
 
