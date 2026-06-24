@@ -111,7 +111,7 @@ try:
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
 
-    def injectOstFiles(folderName,lowspecmodornot):
+    def injectPerformanceFiles(folderName,lowspecmodornot):
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
                         os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
@@ -219,7 +219,7 @@ try:
                         os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
             
             for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
-                injectOstFiles(folder,config[folder])
+                injectPerformanceFiles(folder,config[folder])
             
 
             #gamemode injection
