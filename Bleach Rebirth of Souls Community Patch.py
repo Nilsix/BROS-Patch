@@ -55,6 +55,63 @@ try:
     labelcolor = "#D9B8D4"
     window.config(background=bgcolor)
     gameMode = "DEFAULT"
+
+    # ── Hover helpers ──────────────────────────────────────────────────────────
+    HOVER_BG   = "#F5D6F0"   # light lilac highlight on mouse-over
+    NORMAL_BG  = "white"
+
+    class Tooltip:
+        """Small pop-up label that appears after the mouse rests on a widget."""
+        DELAY_MS = 700          # how long the cursor must stay still before appearing
+
+        def __init__(self, widget, text):
+            self.widget  = widget
+            self.text    = text
+            self._job    = None
+            self._tip_wnd = None
+            widget.bind("<Enter>",    self._schedule, add="+")
+            widget.bind("<Leave>",    self._cancel,   add="+")
+            widget.bind("<ButtonPress>", self._cancel, add="+")
+
+        def _schedule(self, event=None):
+            self._cancel()
+            self._job = self.widget.after(self.DELAY_MS, self._show)
+
+        def _cancel(self, event=None):
+            if self._job:
+                self.widget.after_cancel(self._job)
+                self._job = None
+            self._hide()
+
+        def _show(self):
+            if self._tip_wnd:
+                return
+            x = self.widget.winfo_rootx() + self.widget.winfo_width() // 2
+            y = self.widget.winfo_rooty() + self.widget.winfo_height() + 4
+            self._tip_wnd = tw = Toplevel(self.widget)
+            tw.wm_overrideredirect(True)          # no title bar / borders
+            tw.wm_geometry(f"+{x}+{y}")
+            tw.attributes("-topmost", True)
+            lbl = Label(
+                tw, text=self.text,
+                background="#FFFBCC", foreground="#222222",
+                relief="solid", borderwidth=1,
+                font=("Segoe UI", 10), padx=6, pady=3
+            )
+            lbl.pack()
+
+        def _hide(self):
+            if self._tip_wnd:
+                self._tip_wnd.destroy()
+                self._tip_wnd = None
+
+    def add_hover(btn, tooltip_text=""):
+        """Attach a light-up hover colour and an optional tooltip to a Button."""
+        btn.bind("<Enter>", lambda e: btn.config(bg=HOVER_BG), add="+")
+        btn.bind("<Leave>", lambda e: btn.config(bg=NORMAL_BG), add="+")
+        if tooltip_text:
+            Tooltip(btn, tooltip_text)
+    # ──────────────────────────────────────────────────────────────────────────
      
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
@@ -478,6 +535,16 @@ try:
 
 
 
+    # Apply hover effects to main-page buttons 
+    add_hover(launchButton,          "Launch the game using the version selected in the dropdown above.")
+    add_hover(joinDiscordButton,     "Open the community Discord server in your browser.")
+    add_hover(changeGamePathButton,  "Change the folder path where your copy of Bleach Rebirth of Souls is installed.")
+    add_hover(readBalanceChangesButton, "Open the latest balance-changes notes")
+    add_hover(gameModesButton,       "Switch between different game modes (Base only, 8 konpaku, etc...)")
+    add_hover(lowSpecButton,         "Toggle per-effect FPS booster settings to improve performance on lower-end PCs.")
+    add_hover(repairButton,          "Restore your game files from a clean backup copy of the game.")
+    add_hover(CreditsButton,         "View the credits for the mods used in this patch.")
+
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
@@ -575,6 +642,15 @@ try:
 
     mainMenuButton.pack(pady=paddingYvalue,fill=X)
 
+    # Apply hover effects to settings-page buttons
+    add_hover(awakeningAuraButton,    "Toggle the awakening aura visual effect on/off to save GPU performance.")
+    add_hover(breakerGrabButton,      "Toggle the breaker grab screen effect on/off.")
+    add_hover(hakugekiButton,         "Toggle the Hakugeki flash effect on/off.")
+    add_hover(hitEffectButton,        "Toggle hit impact visual effects on/off.")
+    add_hover(reverseGlobeButton,     "Toggle the reverse globe screen effect on/off.")
+    add_hover(skillActivationButton,  "Toggle the skill activation flash effect on/off.")
+    add_hover(mainMenuButton,         "Return to the main menu.")
+
     #game modes page
     labelTitleGameModes.pack(pady=paddingYvalue)
     labelSubTitleGameModes.pack(pady=paddingYvalue)
@@ -627,6 +703,13 @@ try:
     baseOnlyButton.pack(pady=paddingYvalue, fill=X)
     eightKonpakus.pack(pady=paddingYvalue, fill=X)
     gameModesMenuButton.pack(pady=paddingYvalue, fill=X)
+
+    # Apply hover effects to game-modes-page buttons 
+    add_hover(teamBattleButton,        "Toggle Team Battle mode: allows team fights.")
+    add_hover(instantEvoAndSublimation,"Toggle Instant Evolution & Sublimation: evolution and sublimation happen immediately.")
+    add_hover(baseOnlyButton,          "Toggle Base Only mode: disables evolutions and sublimations entirely.")
+    add_hover(eightKonpakus,           "Toggle 8 Konpakus mode: each player starts with 8 Konpaku stocks (revive characters start with 7).")
+    add_hover(gameModesMenuButton,     "Return to the main menu.")
 
     #repairPage
     labelRepairText = Label(
