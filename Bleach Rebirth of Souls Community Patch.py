@@ -707,7 +707,7 @@ try:
     # Apply hover effects to game-modes-page buttons 
     add_hover(teamBattleButton,        "Toggle Team Battle mode: allows team fights.")
     add_hover(instantEvoAndSublimation,"Toggle Instant Evolution & Sublimation: evolution and sublimation happen immediately.")
-    add_hover(baseOnlyButton,          "Toggle Base Only mode: disables evolutions and sublimations entirely.")
+    add_hover(baseOnlyButton,          "Toggle Base Only mode: disables evolutions and sublimations entirely. Every character starts with 6 konpaku stocks")
     add_hover(eightKonpakus,           "Toggle 8 Konpakus mode: each player starts with 8 Konpaku stocks (revive characters start with 7).")
     add_hover(gameModesMenuButton,     "Return to the main menu.")
 
