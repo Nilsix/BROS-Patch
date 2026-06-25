@@ -142,33 +142,15 @@ Fixed a bug where he would do the full flashstep follow up string on guard inste
 Fixed a bug where Dangai would be able to cancel his whiffed heavy -> Hakugeki.
 
 
-Dash Attack : 
+Dash Attack (all levels): 
 	slow motion rate : 2-> 1
 	his dash attack speed is now the same speed as his old dash attack
-SP2 (all levels): 
-	first hit damage : 600 -> 1000
-	damage : 300 -> 1000
 LV1 : 
-	Sig : 
-		damage : 800 -> 1200
-		Fighting spirit generated to the opponent : 2.0 -> 1.0
-	Tilt : 
-		damage : 600 -> 800
-	SP2 : 
-		damage : 600 -> 2500
-		hitstun -> 100 -> 40
-LVL2 : 
-	Tilt : 
-		damage : 750 -> 1000
-	SP2 : 
-		damage : 800 -> 3000
-		hitstun : 100 -> 40
-
+	Fighting spirit generated to the opponent : 2.0 -> 1.0
 LVL3 :
-	SP2 :
-		hitstun 100 -> 55
 	Tilt : 
-		damage: 1000 -> 300
+		scaling : 0.7 -> 0.3 
+		the next move after tilt will deal 30% of it's damage instead of 70%
 	SIG :
 		hitstun : 40 -> 20
 		cannot combo after sig but gets oki from it
