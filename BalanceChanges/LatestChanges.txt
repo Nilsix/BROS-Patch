@@ -369,7 +369,7 @@ RANGIKU (changes made by Bergen) :
 		guard damage : 600 -> 400
 
 
-GIN (changes made by Nilsix) :
+GIN (changes made by Nilsix and HBC) :
 	BASE AND EVO :
 	SP1 :
 		Removed timestop on the counter (speed 0.001 -> 1.00) 
@@ -378,6 +378,9 @@ GIN (changes made by Nilsix) :
 	light1 : 
 		RotateSpeed : 0->2
 		Gin can now punish flashsteps and sidesteps with light1
+	heavy 1 : 
+		RotateSpeed : 0->2
+		Slightly improved heavy tracking
 	SP2:
 		blockstun : 20->0
 		whiif recovery : 121 -> 140
@@ -400,6 +403,11 @@ GIN (changes made by Nilsix) :
 			can still tilt-> sig cancel (only on block/hit)
 
 		being able to whiff tilt into movement was kinda stupid and rewarded dumb plays, especially since gin already has mobility, you now need to think more about your tilt spacing because you cannot whiff cancel it anymore
+		SP1 (counter activation) : 
+			recovery : 60 -> 30
+			allows Gin to be able to act faster after his sp1 if the counter is activated.
+			This protects him against setups where people would activate his counter with a first hit then meaty him with a second hit, which makes no sense balance wise to be punished for countering right
+			
 
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
