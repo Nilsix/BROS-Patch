@@ -27,7 +27,7 @@ EVO :
 	SP1 :
 		damage value : 400 -> 300
 	SP2 : 
-		damage value 300 -> 200 
+		damage value 300 -> 150 
 		Yamamoto's sp2 is a really versatile tool, dp, combo starter, reduce his inferno gauge back to 0, we are tweaking his dmg a little, he will still hit hard because he can still combo after tho.
 	
 	Yamamoto's identity is being able to output a huge amount of damage at once, and it should stay that way, with that said, we tweaked his damage a little so he has less room to 0-100, he should mostly stay the same damage wise but on some specific occasions
