@@ -393,6 +393,8 @@ GIN (changes made by Nilsix and HBC) :
 	Gin's flashstep can now be punished
 
 	Base: 
+		Dash attack : 
+			Gin cannot whiff his dash attack and then cancel it into sig
 		Tilt (tip) :
 		Hitstun : 30->33
 		Gin can now consistently combo tilt (tip)->heavy in base
@@ -407,7 +409,7 @@ GIN (changes made by Nilsix and HBC) :
 			recovery : 60 -> 30
 			allows Gin to be able to act faster after his sp1 if the counter is activated.
 			This protects him against setups where people would activate his counter with a first hit then meaty him with a second hit, which makes no sense balance wise to be punished for countering right
-			
+
 
 TOSEN (changes made by Nilsix) : 
 	Health (evo) : 10000 -> 11000
