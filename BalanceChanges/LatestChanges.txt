@@ -152,8 +152,8 @@ LVL3 :
 		scaling : 0.7 -> 0.3 
 		the next move after tilt will deal 30% of it's damage instead of 70%
 	SIG :
-		sidestep cancel : removed
-		Dangai Ihigo cannot sig->sidestep anymore
+		dash cancel cancel : removed
+		Dangai Ihigo cannot sig->dash cancel anymore
 
 .
 Nell (changes by Nilsix and Bergen)
