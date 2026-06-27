@@ -289,7 +289,6 @@ SP2:
 DP (invincible after 4 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
-FS required to go from Base -> awakening: 2.75 -> 2.5
 Light range: 2.0 -> 2.2
 
 SP2:
