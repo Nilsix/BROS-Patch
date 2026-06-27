@@ -281,24 +281,10 @@ try:
 
             #gamemode injection
             if gameMode != "Default":
-                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}")
+                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
                 dstPath = os.path.join(game_path,"Script")
                 
-                if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
-                    shutil.copy(
-                        os.path.join(srcPath,"CharaStatus.fsv"),
-                        os.path.join(dstPath,"CharaStatus.fsv"))
-
-                if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
-                    shutil.copy(
-                        os.path.join(srcPath,"CommonParam.fsv"),
-                        os.path.join(dstPath,"CommonParam.fsv"))
-                    
-                if os.path.exists(os.path.join(srcPath,"Action")):
-                    shutil.copytree(
-                        os.path.join(srcPath,"Action"),
-                        os.path.join(dstPath,"Action"),
-                        dirs_exist_ok=True)
+                shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
 
             
             #team battle injection
