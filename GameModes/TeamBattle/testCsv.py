@@ -1,0 +1,92 @@
+import csv
+import os     
+import subprocess
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.join(BASE_DIR,"..")
+
+
+
+def applyKonpakuChanges(id,value):
+    revValue = value
+    if id == "35" and value == 9:
+        value = 5
+    elif id == "01" or id == "20":
+        if value == 9:
+            value = 8
+        revValue +=2
+
+    id = "pl0"+id
+    print(id)
+    csvPath = os.path.join(BASE_DIR,"CharaStatus.csv")
+    with open(csvPath,"r",encoding="utf8") as f:
+        rows = list(csv.DictReader(f))
+        for row in rows:
+            if row["_csv0"] == id:
+                row["soul_num"] = value
+                row["evo_soul_num"] = value
+                row["rev_soul_num"] = revValue
+
+    with open(csvPath,"w",newline="",encoding="utf-8") as f:
+        writer = csv.DictWriter(f,fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+options = -1
+
+while options != 0:
+    print("""00 = ICHIGO KUROSAKI
+01 = ICHIGO KUROSAKI (BANKAI)
+02 = ICHIGO KUROSAKI (FINAL GETSUGATENSHO)
+03 = URYU ISHIDA
+04 = YASUTORA SADO
+06 = KISUKE URAHARA
+07 = YORUICHI SHIHOIN
+08 = RENJI ABARAI
+10 = RUKIA KUCHIKI
+11 = SHUHEI HISAGI
+12 = RANGIKU MATSUMOTO
+13 = IZURU KIRA
+14 = IKKAKU MADARAME
+15 = YUMICHIKA AYASEGAWA
+16 = SHIGEKUNI GENRYUSAI YAMAMOTO
+17 = SOI FON
+18 = GIN ICHIMARU
+19 = RETSU UNOHANA
+20 = SOSUKE AIZEN
+22 = BYAKUYA KUCHIKI
+23 = SAJIN KOMAMURA
+24 = SHUNSUI KYORAKU
+25 = KANAME TOSEN
+26 = TOSHIRO HITSUGAYA
+27 = KENPACHI ZARAKI
+29 = MAYURI KUROTSUCHI 
+31 = KAIEN SHIBA
+32 = SHINJI HIRAKO
+33 = COYOTE STARK
+35 = TIER HALIBEL
+36 = ULQUIORRA SHIFAR
+37 = NNOITORA GILGA
+38 = GRIMMJOW JEAGERJAQUES
+39 = SZAYELAPORRO GRANTZ
+42 = NELLIEL TU ODELSCHWANCK
+50 = ICHIBE HOUSUBE 
+51 = ICHIGO KUROSAKI
+52 = YHWACH""")
+
+    WinnerInput = input("Id Winner : ")
+    winnerKonpakuRemaining = int(input("remaining konpakus : "))
+    LoserInput = input("Id Loser : ")
+
+    applyKonpakuChanges(WinnerInput, winnerKonpakuRemaining)
+    applyKonpakuChanges(LoserInput, 9)
+    subprocess.run([os.path.join(BASE_DIR,"convertToFsvAndPush.bat")], shell=True)
+    options = int(input("""
+Next game (1)
+Reset Chara
+Quit (0)
+Choose an option : """))
+    if options == 0:
+        subprocess.run([os.path.join(BASE_DIR,"resetCharaStatus.bat")], shell=True)
+
