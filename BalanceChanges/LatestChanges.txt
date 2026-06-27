@@ -115,6 +115,9 @@ NNoitra (changes made by Nilsix):
 	These changes removes Nnoitra's ability to do his dash light-> sp2 unblockable setup
 	he is still + on block after dash light, against all tiers of jabs
 
+Szayelporro Grantz (changes made by Bergen):
+FS required to go from base to awakening changed from 3.0 -> 2.75
+
 Toshiro (changes made by Nilsix): 	
 	EVO : 
 		SP2 : 
