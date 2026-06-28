@@ -75,7 +75,7 @@ cocoon:
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
 evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 3.0
-	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.0
+	fighting spirit required to go from evo -> revo decreased from 2.0 -> 0.5
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
 	reduced the recovery on the frontstep from 42 -> 30
