@@ -240,18 +240,24 @@ Yoruichi (changes made by Nilsix and Bergen):
 			speed: 0.001 -> 1.000
 			"Consistency fix for all sp counters"
 	Evo :
-		Heavy 1 :
-			scaling : 0.8 -> 0.6
-				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
 				
 		Forward sig : 
 			blockstun 14->9
 		"anken->forward dash is unsafe now"
 
-	Flashstep followup (last hit) : 
-		hitstun : 36->35
+		SP1 (flashmaster):
+			hitstun 50->48 
+		
+		Tilt : 
+			slow_motion_rate (animation speed) : 0.5 -> 0.35
+		
+		"Yoru can still sp1 (flashmaster-> heavy), but those changes allows sp1 (flashmaster) -> tilt to be able to be stopped universally by throwing on wakeup, not making it an unblockable anymore
+		This also makes it more consitent to sidestep/backstep her tilt in general"
 
-	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
+		Flashstep followup (last hit) : 
+			hitstun : 36->31
+		
+		"Flashstep followup -> dash light is still an oki, but now she cannot do flashstep followup -> yellow"
 
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
