@@ -43,8 +43,7 @@ EVO :
 		damage value : 400 -> 200
 		
 	SP2 : 
-		damage value 300 -> 150 
-		Yamamoto's sp2 is a really versatile tool, dp, combo starter, reduce his inferno gauge back to 0, we are tweaking his dmg a little, he will still hit hard because he can still combo after tho.
+		pushback on hit 0.2->1
 
 Kaien : 
 	Flashstep on block : 
