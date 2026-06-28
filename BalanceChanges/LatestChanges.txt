@@ -113,7 +113,15 @@ NNoitra (changes made by Nilsix):
 	he is still + on block after dash light, against all tiers of jabs
 
 Szayelporro Grantz (changes made by Bergen):
-FS required to go from base to awakening changed from 3.0 -> 2.75
+General Changes:
+	increased recovery on SP2 from 80 -> 100
+	dash light guard stun increased from 18 -> 20 and recovery decreased from 52 -> 42 to make it safe on block 
+
+Base:
+	FS required to go from base to awakening changed from 3.0 -> 2.75
+Evo:
+	sig recovery increased from 56 -> 86 on whiff
+	sig (level 1 + level 2) fighting spirit gain increased by 20% on hit
 
 Toshiro (changes made by Nilsix): 	
 	EVO : 
