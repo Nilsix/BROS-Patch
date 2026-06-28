@@ -761,4 +761,4 @@ except Exception as e:
     except:
         pass
     print(f'Error : {e}')
-    input("ping the error to Nilsix")
+    input("Please ping the error to Nilsix")
