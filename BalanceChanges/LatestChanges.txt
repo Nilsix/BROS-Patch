@@ -23,27 +23,31 @@ BASE AND EVO :
 	Sig : 
 		rotateSpeed -> speed rate : 1 -> 0
 		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
-EVO : 
-	Heavy 1 : 
-	all dmg values reduced by 100
-
-	Heavy 2 : 
-	all dmg values reduced by 100
-
-	Tilt : 
-		slow_motion_rate 0.2 -> 1
-		Yamamoto got his old tilt speed back
-
-	Sig_1 : 
-	all dmg values : 200->150
-	Sig_2 : 
-	all dmg values : 300->200
-
-	SP1 (charged) :
-		damage value : 400 -> 200
-		
 	SP2 : 
-		pushback on hit 0.2->1
+		pushback on hit 0.2->5
+		Yamamoto cannot combo after SP2 anymore
+	Hoho followup : 
+		first hit damage value : 500 -> 400
+		damage value : 150 -> 100
+
+	EVO : 
+		Tilt : 
+			slow_motion_rate 0.2 -> 1
+			Yamamoto got his old tilt speed back
+
+		Sig_1 : 
+		all hits dmg values : 200->150
+
+		Sig_2 : 
+		all hits dmg values : 300->200
+
+		SP1 (charged) :
+			damage value : 400 -> 200
+	
+	Known issue : 
+		his SP2 can whiff up close against someone grabbing at the same time, this will be fixed in the future 
+			
+	
 
 Kaien : 
 	Flashstep on block : 
