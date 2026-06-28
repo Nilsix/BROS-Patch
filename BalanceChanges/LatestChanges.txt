@@ -28,8 +28,6 @@ BASE AND EVO :
 		Yamamoto cannot combo after SP2 anymore
 	Hoho followup : 
 		first hit damage value : 500 -> 400
-		middle hits damage value : 150 -> 100
-		last hit damage value : 
 
 	EVO : 
 		Tilt : 
