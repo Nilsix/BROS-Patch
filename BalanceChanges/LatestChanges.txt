@@ -298,7 +298,7 @@ DP (invincible after 4 frames of activation), hits from behind, +28% damage
 Light range: 2.0 -> 2.2
 
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing ON (10 ->30)
 - hitstun 52 -> 40
 - guardstun reduced to 05
@@ -318,7 +318,7 @@ flashstep followup on guard being unsafe bug:
 - reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
 
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
@@ -351,7 +351,7 @@ SP1 Maximum Guaranteed Damage increased:
 
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
@@ -668,7 +668,7 @@ she could just mix up with anken and at the same time get insane damage with ank
 Now if Soi Fon want to mix with anken, she has to accept that she will lose damage on the sp1 loops.
 
 
-KISUKE (changes made by Nilsix and Bergen):
+KISUKE (changes made by Nilsix):
 Fixed a bug where Kisuke was able to can the whiff of a heavy1 -> Hakugeki
 increased the recovery on kisuke's heavy 1 from 48 -> 55 
 
