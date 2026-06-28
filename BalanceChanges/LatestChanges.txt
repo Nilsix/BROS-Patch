@@ -155,9 +155,6 @@ Shunsui (changes made by Nilsix):
 	
 	Shunsui stays relatively the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
-	His sig requires more commitement since whiffing it implies more risk, which makes sense since sig is a button with almost no weakness (+ on block, feintable, neutral skip, armor)
-
-
 
 
 Dangai Ichigo (changes by Nilsix and Bergen)
@@ -195,7 +192,7 @@ YWACH (Changes Made by Bergen and Goose)
 
 Gave Yhwach 9 stocks
 
-removed SP2 timestop (Changed speed from 0.001 -> 0.1)
+removed SP2 timestop (Changed recovery from 80 -> 88)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
 light2 SP regen rate 2.0 -> 2.6
