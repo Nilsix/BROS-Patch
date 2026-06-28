@@ -261,7 +261,7 @@ Mayuri (changes made by Nilsix) :
 	dash light[2] :
 		pushblock = 1 - -0.5
 
-Mayuri can now properly mixup after hitting both hit of a dash light on block
+	Mayuri can now properly mixup after hitting both hit of a dash light on block
 
 
 GRIMMJOW (changes made by Nilsix) :
@@ -409,8 +409,8 @@ GIN (changes made by Nilsix and HBC) :
 		Dash attack : 
 			Gin cannot whiff his dash attack and then cancel it into sig
 		Tilt (tip) :
-		Hitstun : 30->33
-		Gin can now consistently combo tilt (tip)->heavy in base
+			Hitstun : 30->33
+			Gin can now consistently combo tilt (tip)->heavy in base
 
 	EVO : 
 		tilt :
@@ -418,10 +418,7 @@ GIN (changes made by Nilsix and HBC) :
 			can still tilt-> sig cancel (only on block/hit)
 
 		being able to whiff tilt into movement was kinda stupid and rewarded dumb plays, especially since gin already has mobility, you now need to think more about your tilt spacing because you cannot whiff cancel it anymore
-		SP1 (counter activation) : 
-			recovery : 60 -> 30
-			allows Gin to be able to act faster after his sp1 if the counter is activated.
-			This protects him against setups where people would activate his counter with a first hit then meaty him with a second hit, which makes no sense balance wise to be punished for countering right
+		
 
 
 TOSEN (changes made by Nilsix) : 
