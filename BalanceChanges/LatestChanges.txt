@@ -38,7 +38,7 @@ BASE AND EVO :
 			Yamamoto got his old tilt speed back
 
 		SP1 (charged) :
-			damage value : 400 -> 250
+			damage value : 400 -> 200
 	
 	Known issue : 
 		his SP2 can whiff up close against someone grabbing at the same time, this will be fixed in the future 
