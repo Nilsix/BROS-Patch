@@ -232,21 +232,26 @@ Yoruichi (changes made by Nilsix and Bergen):
 		sp_atk01 damage increased from 250 -> 800 (175 per hit 4 times since hit_count was changed from 1 -> 4 + 			hit_stop_speed from 0.05 -> 0.25 to fix the animation)
 		sp_atk01_2 damage reduced from 900 -> 400 (133.33 per hit) to match the original damage
 		sp_atk01_2_0 damage increased from 900 -> 950 (333.33 per hit) to match the original damage
-
-	Light1 (base and Evo)
-		Rotate Speed : 0->2 
-	Yoruichi can now punish flashsteps
-	SP2 (base and Evo):
-		speed: 0.001 -> 1.000
-	Consistency fix for all sp counters
-	Forward sig : 
-		blockstun 14->9
-	anken->forward dash is unsafe now
+	Base and Evo : 
+		Light1 
+			Rotate Speed : 0->2 
+			"Yoruichi can now punish flashsteps"
+		SP2 
+			speed: 0.001 -> 1.000
+			"Consistency fix for all sp counters"
+	Evo :
+		Heavy 1 :
+			scaling : 0.8 -> 0.6
+				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
+				
+		Forward sig : 
+			blockstun 14->9
+		"anken->forward dash is unsafe now"
 
 	Flashstep followup (last hit) : 
-		hitstun : 36->26
+		hitstun : 36->35
 
-	She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup
+	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
 
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
