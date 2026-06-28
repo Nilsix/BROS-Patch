@@ -29,8 +29,6 @@ BASE AND EVO :
 		pushback on hit 0.2->5
 		Yamamoto cannot combo after SP2 anymore
 	
-	Hoho followup : 
-		first hit damage value : 500 -> 100
 
 	EVO : 
 		Tilt : 
@@ -164,10 +162,11 @@ LV1 :
 	Fighting spirit generated to the opponent : 2.0 -> 1.0
 LVL3 :
 	Tilt : 
-		scaling : 0.7 -> 0.3 
-		the next move after tilt will deal 30% of it's damage instead of 70%
+		damage value : 1000 -> 1500
+		hitstun : 40 -> 35
+		Dangai cannot combo into light 1 anymore
 	SIG :
-		dash cancel cancel : removed
+		dash cancel : removed
 		Dangai Ihigo cannot sig->dash cancel anymore
 
 .
