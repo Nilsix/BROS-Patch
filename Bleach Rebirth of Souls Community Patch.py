@@ -32,16 +32,27 @@ except :
     except:
         pass
 
-def open_file(path):
-    if platform.system() == "Windows":
-        os.startfile(path)
-    elif platform.system() == "Darwin":
-        subprocess.run(["open", path])
-    else:
-        subprocess.run(["xdg-open", path])
+
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+
+    def refresh_launcher():
+        subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
+        try :
+            winsound.PlaySound(None,winsound.SND_PURGE)
+        except:
+            pass
+        exit()
+    
+    def open_file(path):
+        if platform.system() == "Windows":
+            os.startfile(path)
+        elif platform.system() == "Darwin":
+            subprocess.run(["open", path])
+        else:
+            subprocess.run(["xdg-open", path])
    
     template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
     config_path = os.path.join(BASE_DIR,"Json","config.json")
@@ -152,9 +163,8 @@ try:
         except:
             pass
         print("Git update failed :", e)
-        print("Please delete this folder and redo the installation, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself even if you see 'done' written on the installation window")
+        print("Please relaunch the installer script, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself please")
         a = input("Press Enter to exit ")
-
         exit()
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
@@ -175,7 +185,10 @@ try:
         while(flag):
             messagebox.showinfo("Bleach not found","BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder, press ok then select it")
             game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
-
+            
+            if game_path == "":
+                exit()
+            
             if"BLEACH_Rebirth_of_Souls.exe" in game_path:
                 flag = False
 
@@ -368,14 +381,8 @@ try:
             except:
                 print("Error opening credits.txt")
 
-    def ostSettings(button):
-        if config["OST_MOD"] == "ON":
-            config["OST_MOD"] = "OFF"
-        else:
-            config["OST_MOD"] = "ON"
 
         saveJson()
-        button.config(text=f'OST Mod : ( currently : {config["OST_MOD"]} )')
 
     def changeGamePath():
         flag = True
@@ -545,7 +552,6 @@ try:
     joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/fSbsZE3qSZ"))
     changeGamePathButton =  Button(mainPage,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(mainPage,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
-    ostSettingsButton =  Button(mainPage,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
     CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
@@ -754,5 +760,5 @@ except Exception as e:
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
     except:
         pass
-    print(e)
+    print(f'Error : {e}')
     input("ping the error to Nilsix")
