@@ -250,12 +250,12 @@ try:
             pygame.mixer.music.stop()
         except:
             pass
-        try:
-            #folder injection
-            injectFolder(gameVersion,"Script")
+        
+        #folder injection
+        injectFolder(gameVersion,"Script")
 
-            #ost choice
-            #ostFolder = ""
+        #ost choice
+        #ostFolder = ""
             #if config["OST_MOD"] == "ON":
                 #ostFolder = "Mod"
             #else : 
@@ -268,37 +268,33 @@ try:
                 #)
 
         
-            #Performance Mode injection
-            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
-                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
-            
-            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"middle"),
-                        os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
-            
-            for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
-                injectPerformanceFiles(folder,config[folder])
-            
-
-            #gamemode injection
-            if gameMode != "Default":
-                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-                dstPath = os.path.join(game_path,"Script")
-                
-                shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-
-            
-            #team battle injection
-            if config["TEAM_BATTLE"] == "ON":
-                srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
-                dstPath = os.path.join(game_path,"Script")   
-                shutil.copy(
-                    os.path.join(srcPath,"CharaStatus.fsv"),
-                    os.path.join(dstPath,"CharaStatus.fsv"))
-                
+        #Performance Mode injection
+        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
+                    os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
         
+        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"middle"),
+                    os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+            
+        for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
+            injectPerformanceFiles(folder,config[folder])
+            
 
-        except Exception as e:
-            print("Error copying files:", e)
+        #gamemode injection
+        if gameMode != "DEFAULT":
+            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
+            dstPath = os.path.join(game_path,"Script")
+            
+            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
+
+            
+        #team battle injection
+        if config["TEAM_BATTLE"] == "ON":
+            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
+            dstPath = os.path.join(game_path,"Script")   
+            shutil.copy(
+                os.path.join(srcPath,"CharaStatus.fsv"),
+                os.path.join(dstPath,"CharaStatus.fsv"))
+            print("copied team files")
 
         forlater = """
         else:

@@ -3,7 +3,7 @@ import os
 import subprocess
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT_DIR = os.path.join(BASE_DIR,"..")
+TEAM_BATTLE_DIR = os.path.join(BASE_DIR,"..","GameModes","TeamBattle")
 
 
 
@@ -17,8 +17,7 @@ def applyKonpakuChanges(id,value):
         revValue +=2
 
     id = "pl0"+id
-    print(id)
-    csvPath = os.path.join(BASE_DIR,"CharaStatus.csv")
+    csvPath = os.path.join(TEAM_BATTLE_DIR,"CharaStatus.csv")
     with open(csvPath,"r",encoding="utf8") as f:
         rows = list(csv.DictReader(f))
         for row in rows:
@@ -35,7 +34,17 @@ def applyKonpakuChanges(id,value):
 
 options = -1
 
-while options != 0:
+
+options = int(input("""
+Quit (0)               
+Update CharaStatus (1)
+Reset CharaStatus (2)
+
+Choose an option : """))
+    
+if options == 0:
+    exit()
+elif options == 1:
     print("""00 = ICHIGO KUROSAKI
 01 = ICHIGO KUROSAKI (BANKAI)
 02 = ICHIGO KUROSAKI (FINAL GETSUGATENSHO)
@@ -72,21 +81,16 @@ while options != 0:
 39 = SZAYELAPORRO GRANTZ
 42 = NELLIEL TU ODELSCHWANCK
 50 = ICHIBE HOUSUBE 
-51 = ICHIGO KUROSAKI
+51 = ICHIGO KUROSAKI TYBW
 52 = YHWACH""")
 
-    WinnerInput = input("Id Winner : ")
+    WinnerInput = input("\nWinner ID : ")
     winnerKonpakuRemaining = int(input("remaining konpakus : "))
-    LoserInput = input("Id Loser : ")
+    LoserInput = input("\nLoser ID : ")
 
     applyKonpakuChanges(WinnerInput, winnerKonpakuRemaining)
     applyKonpakuChanges(LoserInput, 9)
-    subprocess.run([os.path.join(BASE_DIR,"convertToFsvAndPush.bat")], shell=True)
-    options = int(input("""
-Next game (1)
-Reset Chara
-Quit (0)
-Choose an option : """))
-    if options == 0:
-        subprocess.run([os.path.join(BASE_DIR,"resetCharaStatus.bat")], shell=True)
-
+    subprocess.run([os.path.join(TEAM_BATTLE_DIR,"convertToFsvAndPush.bat")], shell=True)
+    print("\nChanges applied")
+elif options == 2:
+    subprocess.run([os.path.join(TEAM_BATTLE_DIR,"resetCharaStatus.bat")], shell=True)
