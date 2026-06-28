@@ -10,8 +10,11 @@ Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 Fighting Spirit gained from yellow reverse : 0.001 -> 0.0005
 
+
 Blue Reverse range increased from 5 -> 20 and size *4 times bigger to make it fullscreen
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
+Yellow Reverse guardstun reduced from 14 -> 12 to remove yellow unblockable setups
+White Reverse guardstun reduced from 31 -> 29 to remove yellow white setups
 
 
 Kira : 
