@@ -10,8 +10,11 @@ Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 Fighting Spirit gained from yellow reverse : 0.001 -> 0.0005
 
+
 Blue Reverse range increased from 5 -> 20 and size *4 times bigger to make it fullscreen
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
+Yellow Reverse guardstun reduced from 14 -> 12 to remove yellow unblockable setups
+White Reverse guardstun reduced from 31 -> 29 to remove yellow white setups
 
 
 Kira : 
@@ -72,7 +75,7 @@ cocoon:
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
 evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 3.0
-	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.0
+	fighting spirit required to go from evo -> revo decreased from 2.0 -> 0.5
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
 	reduced the recovery on the frontstep from 42 -> 30
@@ -152,9 +155,6 @@ Shunsui (changes made by Nilsix):
 	
 	Shunsui stays relatively the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
-	His sig requires more commitement since whiffing it implies more risk, which makes sense since sig is a button with almost no weakness (+ on block, feintable, neutral skip, armor)
-
-
 
 
 Dangai Ichigo (changes by Nilsix and Bergen)
@@ -192,7 +192,7 @@ YWACH (Changes Made by Bergen and Goose)
 
 Gave Yhwach 9 stocks
 
-removed SP2 timestop (Changed speed from 0.001 -> 0.1)
+removed SP2 timestop (Changed recovery from 80 -> 88)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
 light2 SP regen rate 2.0 -> 2.6
@@ -490,12 +490,14 @@ Base :
 	dash light (whiff) -> hakugeki : removed
 	light1 (whiff) hakugeki : removed
 	heavy 1 (whiff) hakugeki : removed
+	dash light:
+		Collision POS on the Z axis changed to 0.2 to make it match the animation
+	
 
 Light 1 (base evo and reawakening) : 
 	
 	rotate speed : 0 -> 2.0
 	ulquiorra can now punish flashstep
-	
 	light1 : 
 		guard damage : 175->100
 	
@@ -526,6 +528,8 @@ Light 1 (base evo and reawakening) :
 	cannot timestop anymore
 
 	EVO: 
+		dash light:
+			Collision POS on the Z axis changed from 1.5 -> 1.0 to make it match the animation
 		heavy2->sig : 
 			blockstun : 36->28
 		is now minus on block (cannot step, but can flashstep)
