@@ -1,0 +1,13 @@
+just notes that will be deleted later on
+
+Balance
+fix all the grab dash SP1/SP2 
+
+Fix dangai SP2
+
+yoruichi:
+remove physical part of her tilt
+increase hitstun of hoho followup enough so you can't backdash the oki but not enough where you can yellow
+
+Legacy patches : 
+man I gotta find that right folder with whiff->yellow, hold kikkon->hakugeki so bad ;(

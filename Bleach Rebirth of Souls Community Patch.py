@@ -5,16 +5,9 @@ from tkinter import ttk
 import json
 import shutil
 import os
-import subprocess   
-import platform
-try :
-    import ctypes
-except:
-    pass
-try:
-    import winsound
-except:
-    pass
+import subprocess
+import ctypes
+import winsound
 import sys
 import webbrowser
 from pathlib import Path
@@ -32,27 +25,8 @@ except :
     except:
         pass
 
-
-
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
-
-    def refresh_launcher():
-        subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-        try :
-            winsound.PlaySound(None,winsound.SND_PURGE)
-        except:
-            pass
-        exit()
-    
-    def open_file(path):
-        if platform.system() == "Windows":
-            os.startfile(path)
-        elif platform.system() == "Darwin":
-            subprocess.run(["open", path])
-        else:
-            subprocess.run(["xdg-open", path])
    
     template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
     config_path = os.path.join(BASE_DIR,"Json","config.json")
@@ -71,10 +45,7 @@ try:
         config = json.load(f)
     
     window = Tk()
-    try:
-        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
-    except:
-        pass
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     window.title("Bleach Community Patch")
     window.geometry("1080x800")
     window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
@@ -151,20 +122,15 @@ try:
         #if there is an update, will relaunch the launcher so the code actually gets reset too
         else:
             subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-            try :
-                winsound.PlaySound(None,winsound.SND_PURGE)
-            except:
-                pass
+            winsound.PlaySound(None,winsound.SND_PURGE)
             exit()
 
     except Exception as e:
-        try:
-            ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
-        except:
-            pass
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
         print("Git update failed :", e)
-        print("Please relaunch the installer script, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself please")
+        print("Please delete this folder and redo the installation, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself even if you see 'done' written on the installation window")
         a = input("Press Enter to exit ")
+
         exit()
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
@@ -174,10 +140,7 @@ try:
         pygame.mixer.music.load(launcherOstPath)
         pygame.mixer.music.play(loops=-1)
     except:
-        try:
-            winsound.PlaySound(launcherOstPath,winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
-        except:
-            pass
+        winsound.PlaySound(launcherOstPath,winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
     game_path = config.get("GAME_PATH","")
 
     if not game_path or game_path == "" or not "BLEACH Rebirth of Souls" in game_path:
@@ -185,10 +148,7 @@ try:
         while(flag):
             messagebox.showinfo("Bleach not found","BLEACH_Rebirth_of_Souls.exe not found. You can find it in your steam folder, press ok then select it")
             game_path = filedialog.askopenfilename(title="Select Bleach rebirth of souls",filetypes=[("Executable files", "*.exe")])
-            
-            if game_path == "":
-                exit()
-            
+
             if"BLEACH_Rebirth_of_Souls.exe" in game_path:
                 flag = False
 
@@ -249,28 +209,24 @@ try:
             pygame.mixer.music.load(repairWaitOstPath)
             pygame.mixer.music.play(loops=-1)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(repairWaitOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
-            except:
-                pass
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairWaitOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
+            pass
         
         try:
             subprocess.run([
                 "robocopy", repair_game_path, game_path, "/E", "/XO"
             ], capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
-        except:
-            shutil.copytree(repair_game_path, game_path, dirs_exist_ok=True)
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred during the repair process: {e}")
+            return
         try:
             pygame.mixer.music.stop()
             pygame.mixer.music.load(repairEndOstPath)
             pygame.mixer.music.play(loops=-1)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(repairEndOstPath, winsound.SND_ASYNC)
-            except:
-                pass
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairEndOstPath, winsound.SND_ASYNC)
         messagebox.showinfo("Repair", "Files repaired successfully!")
         backToMainMenu()
         launcherOstPath = os.path.join(BASE_DIR,"ressources","LauncherOst.wav")
@@ -279,17 +235,14 @@ try:
             pygame.mixer.music.load(launcherOstPath)
             pygame.mixer.music.play(loops=-1)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
-            except:
-                pass
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
         
         
                 
 
         
-    
+
 
     def launch(gameVersion):
         window.destroy()
@@ -297,12 +250,12 @@ try:
             pygame.mixer.music.stop()
         except:
             pass
-        
-        #folder injection
-        injectFolder(gameVersion,"Script")
+        try:
+            #folder injection
+            injectFolder(gameVersion,"Script")
 
-        #ost choice
-        #ostFolder = ""
+            #ost choice
+            #ostFolder = ""
             #if config["OST_MOD"] == "ON":
                 #ostFolder = "Mod"
             #else : 
@@ -315,33 +268,51 @@ try:
                 #)
 
         
-        #Performance Mode injection
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
-                    os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
+            #Performance Mode injection
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"high"),
+                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
+            
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"middle"),
+                        os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+            
+            for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
+                injectPerformanceFiles(folder,config[folder])
+            
+
+            #gamemode injection
+            if gameMode != "Default":
+                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}")
+                dstPath = os.path.join(game_path,"Script")
+                
+                if os.path.exists(os.path.join(srcPath,"CharaStatus.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CharaStatus.fsv"),
+                        os.path.join(dstPath,"CharaStatus.fsv"))
+
+                if os.path.exists(os.path.join(srcPath,"CommonParam.fsv")):
+                    shutil.copy(
+                        os.path.join(srcPath,"CommonParam.fsv"),
+                        os.path.join(dstPath,"CommonParam.fsv"))
+                    
+                if os.path.exists(os.path.join(srcPath,"Action")):
+                    shutil.copytree(
+                        os.path.join(srcPath,"Action"),
+                        os.path.join(dstPath,"Action"),
+                        dirs_exist_ok=True)
+
+            
+            #team battle injection
+            if config["TEAM_BATTLE"] == "ON":
+                srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
+                dstPath = os.path.join(game_path,"Script")   
+                shutil.copy(
+                    os.path.join(srcPath,"CharaStatus.fsv"),
+                    os.path.join(dstPath,"CharaStatus.fsv"))
+                
         
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe_effect_remover_by_grifo',f'{config["reverse_globe_effect_remover_by_grifo"]}',"middle"),
-                    os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
-            
-        for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
-            injectPerformanceFiles(folder,config[folder])
-            
 
-        #gamemode injection
-        if gameMode != "DEFAULT":
-            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-            dstPath = os.path.join(game_path,"Script")
-            
-            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-
-            
-        #team battle injection
-        if config["TEAM_BATTLE"] == "ON":
-            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
-            dstPath = os.path.join(game_path,"Script")   
-            shutil.copy(
-                os.path.join(srcPath,"CharaStatus.fsv"),
-                os.path.join(dstPath,"CharaStatus.fsv"))
-            print("copied team files")
+        except Exception as e:
+            print("Error copying files:", e)
 
         forlater = """
         else:
@@ -360,29 +331,32 @@ try:
             """
 
         try:
-            open_file("steam://rungameid/1689620")
-        except:
-            print("Error launching game")
-        
+            os.startfile("steam://rungameid/1689620")
+            
+        except Exception as e:
+            print("Error launching game:", e)
         
 
     def readBalanceChanges():
         balance_file = os.path.join(BASE_DIR, "BalanceChanges/LatestChanges.txt")
         if os.path.exists(balance_file):
-            open_file(balance_file)
+            os.startfile(balance_file)
         else:
             print("BalanceChanges.txt not found")
     
     def readCredits():
         creditsFile = os.path.join(BASE_DIR,"Credits","credits.txt")
         if os.path.exists(creditsFile):
-            try:
-                open_file(creditsFile)
-            except:
-                print("Error opening credits.txt")
+            os.startfile(creditsFile)
 
+    def ostSettings(button):
+        if config["OST_MOD"] == "ON":
+            config["OST_MOD"] = "OFF"
+        else:
+            config["OST_MOD"] = "ON"
 
         saveJson()
+        button.config(text=f'OST Mod : ( currently : {config["OST_MOD"]} )')
 
     def changeGamePath():
         flag = True
@@ -552,6 +526,7 @@ try:
     joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/fSbsZE3qSZ"))
     changeGamePathButton =  Button(mainPage,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(mainPage,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
+    ostSettingsButton =  Button(mainPage,text=f'OST Mod :  ( currently : {config["OST_MOD"]} )',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda: ostSettings(ostSettingsButton))
     lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
     CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
@@ -756,9 +731,6 @@ try:
 
     window.mainloop()
 except Exception as e:
-    try :
-        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
-    except:
-        pass
-    print(f'Error : {e}')
-    input("Please ping the error to Nilsix")
+    ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+    print(e)
+    input("ping the error to Nilsix")
