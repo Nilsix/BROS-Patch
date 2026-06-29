@@ -34,6 +34,18 @@ except :
 
 
 
+try:
+    from PIL import Image, ImageTk
+    PIL_AVAILABLE = True
+except ImportError:
+    subprocess.run([sys.executable, "-m", "pip", "install", "Pillow"], capture_output=True)
+    try:
+        from PIL import Image, ImageTk
+        PIL_AVAILABLE = True
+    except:
+        PIL_AVAILABLE = False
+
+
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     
@@ -84,6 +96,55 @@ try:
     labelcolor = "#D9B8D4"
     window.config(background=bgcolor)
     gameMode = "DEFAULT"
+
+    # ── Launcher background image ──────────────────────────────────────────
+    _bg_photo_cache = {}
+
+    def _make_bg_photo(width, height):
+        """Load launcher_bg.webp from ressources/, fade it to 28% over bgcolor, return PhotoImage."""
+        img_path = os.path.join(BASE_DIR, "ressources", "launcher_bg.webp")
+        cache_key = (width, height)
+        if cache_key in _bg_photo_cache:
+            return _bg_photo_cache[cache_key]
+        if not PIL_AVAILABLE or not os.path.exists(img_path):
+            return None
+        try:
+            img = Image.open(img_path).convert("RGBA")
+            img = img.resize((width, height), Image.LANCZOS)
+            # Blend: 28% image over solid bgcolor so buttons stay readable
+            overlay = Image.new("RGBA", (width, height), (0x4A, 0x19, 0x42, 255))
+            blended = Image.blend(overlay, img, alpha=0.28)
+            photo = ImageTk.PhotoImage(blended)
+            _bg_photo_cache[cache_key] = photo
+            return photo
+        except Exception:
+            return None
+
+    _page_bg_labels = {}
+
+    def _apply_bg_to_page(page, name):
+        w = max(window.winfo_width(), 480)
+        h = max(window.winfo_height(), 360)
+        photo = _make_bg_photo(w, h)
+        if photo is None:
+            return
+        if name not in _page_bg_labels:
+            lbl = Label(page, bd=0, highlightthickness=0)
+            lbl.place(x=0, y=0, relwidth=1, relheight=1)
+            lbl.lower()
+            _page_bg_labels[name] = lbl
+        _page_bg_labels[name].config(image=photo)
+
+    def _apply_all_bg(event=None):
+        if not hasattr(window, "_bg_pages"):
+            return
+        _bg_photo_cache.clear()   # invalidate size cache on resize
+        for page, name in window._bg_pages:
+            _apply_bg_to_page(page, name)
+
+    window.bind("<Configure>",
+        lambda e: window.after_idle(_apply_all_bg) if e.widget is window else None)
+    # ──────────────────────────────────────────────────────────────────────
 
     # ── Hover helpers ──────────────────────────────────────────────────────────
     HOVER_BG   = "#F5D6F0"   # light lilac highlight on mouse-over
@@ -416,6 +477,15 @@ try:
     settingsPage = Frame(container,bg=bgcolor)
     gameModesPage = Frame(container,bg=bgcolor)
     repairPage = Frame(container,bg=bgcolor)
+
+    # Register all pages so the bg helper knows which frames to paint
+    window._bg_pages = [
+        (mainPage,      "main"),
+        (settingsPage,  "settings"),
+        (gameModesPage, "gamemodes"),
+        (repairPage,    "repair"),
+    ]
+    window.after(150, _apply_all_bg)
 
     titleText = "Bleach Rebirth of Souls community patch launcher"
     subTitleText = "made by Nilsix :3"
