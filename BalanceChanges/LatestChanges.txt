@@ -37,6 +37,7 @@ BASE AND EVO :
 		Tilt : 
 			slow_motion_rate 0.2 -> 1
 			Yamamoto got his old tilt speed back
+			hi03 and hi03_2 Burn Gauge generation (add_unique_value) reduced from 0.2 + 0.2 -> 0.15 + 0.15
 
 		SP1 (charged) :
 			damage value : 400 -> 200
@@ -234,40 +235,38 @@ Signature (Neutral):
 
   * reduced pushback on the projectile from 1.0 -> 0.5 and the sword from 2.0 -> 1.0
 
+
+
 Yoruichi (changes made by Nilsix and Bergen):
-	Base:
-		Changed her first part of the flashmaster sp1 (neutral and combo variants) into the non-flashmaster sp1 to fix a 		healing reverse issue
-		sp_atk01 damage increased from 250 -> 800 (175 per hit 4 times since hit_count was changed from 1 -> 4 + 			hit_stop_speed from 0.05 -> 0.25 to fix the animation)
-		sp_atk01_2 damage reduced from 900 -> 400 (133.33 per hit) to match the original damage
-		sp_atk01_2_0 damage increased from 900 -> 950 (333.33 per hit) to match the original damage
-	Base and Evo : 
-		Light1 
-			Rotate Speed : 0->2 
-			"Yoruichi can now punish flashsteps"
-		SP2 
-			speed: 0.001 -> 1.000
-			"Consistency fix for all sp counters"
-	Evo :
-		Heavy 1 :
-			scaling : 0.8 -> 0.6
-				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
-				
-		Forward sig : 
-			blockstun 14->9
-		"anken->forward dash is unsafe now"
-
-	Flashstep followup (last hit) : 
-		hitstun : 36->35
-
-	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
-
+    Base:
+        Changed her first part of the flashmaster sp1 (neutral and combo variants) into the non-flashmaster sp1 to fix a         healing reverse issue
+        sp_atk01 damage increased from 250 -> 800 (175 per hit 4 times since hit_count was changed from 1 -> 4 +             hit_stop_speed from 0.05 -> 0.25 to fix the animation)
+        sp_atk01_2 damage reduced from 900 -> 400 (133.33 per hit) to match the original damage
+        sp_atk01_2_0 damage increased from 900 -> 950 (333.33 per hit) to match the original damage
+    Base and Evo : 
+        Light1 
+            Rotate Speed : 0->2 
+            "Yoruichi can now punish flashsteps"            "Yoruichi can now punish flashsteps"
+        SP2 
+            speed: 0.001 -> 1.000
+            "Consistency fix for all sp counters"
+    Evo :
+        Forward sig : 
+            blockstun 14->9
+        "anken->forward dash is unsafe now"
+        SP1 (flashmaster):
+            hitstun 50->42
+            "Altough it's also a damage nerf because she cannot do sp1 (flashmaster) -> heavy (she can still light), the main goal of that hitstun nerf is to remove the sp1 (flashmaster) -> tilt unblockable without needing to reduce the speed of her tilt
+        Flashstep followup (last hit) : 
+            hitstun : 36->31
+        "Flashstep followup -> dash light is still an oki, but now she cannot do flashstep followup -> yellow"
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
-this was deemed too much now that she can punish flashstep, this will encourage yoru players to get in more using her close options, the way a rushdown character should be
-		
-
+this was deemed too much now that she can punish flashstep, this will encourage yoru players to get in more using her close options, the way a rushdown character should bethis was deemed too much now that she can punish flashstep, this will encourage yoru players to get in more using her close options, the way a rushdown character should be
 
 	
+
+
 Mayuri (changes made by Nilsix) : 
 	dash light[1] (base and evo):
 		pushblock : 0 -> -0.5
