@@ -327,6 +327,15 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
+            print(f"DANS GAMEMODE: {gameMode}")
+            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
+            dstPath = os.path.join(game_path,"Script")
+            print(f"GameMode src: {srcPath}")
+            print(f"GameMode dst: {dstPath}")
+            print(f"GameMode src exists: {os.path.exists(srcPath)}")
+            
+            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
+            print("GameMode injection completed")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
             
@@ -366,11 +375,7 @@ try:
         
 
     def readBalanceChanges():
-        balance_file = os.path.join(BASE_DIR, "BalanceChanges/LatestChanges.txt")
-        if os.path.exists(balance_file):
-            open_file(balance_file)
-        else:
-            print("BalanceChanges.txt not found")
+        webbrowser.open("https://rebalance-of-souls.github.io/reBalanceOfSouls.github.io/")
     
     def readCredits():
         creditsFile = os.path.join(BASE_DIR,"Credits","credits.txt")
