@@ -524,7 +524,7 @@ try:
     
     def teamBattleFunc():
         if not os.path.exists(os.path.join(BASE_DIR,"GameModes","TeamBattle","TokenOpen.txt")):
-            messagebox.showinfo("Team Battle", "You need to contact a Team Battle host to be able to join a team battle, for that, ping one on discord using @Team Battle Host")
+            messagebox.showinfo("Team Battle", "You need to contact a Team Battle host to be able to join a team battle, for that, ping one on the discord using @Team Battle Host")
             return
         config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
         saveJson()
@@ -564,7 +564,13 @@ try:
             # Copy the dangai files to the save data path
             shutil.copy2(theDangaiFiles, saveDataPath)
             messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
-        
+    
+    def refreshLauncher():
+        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+        if result.returncode == 0:
+            messagebox.showinfo("Refresh", "Launcher refreshed successfully!")
+        else:
+            messagebox.showerror("Refresh", f"Error refreshing launcher: {result.stderr}")
     
    
    
@@ -581,7 +587,7 @@ try:
     gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
     unlockDangaiIchigoButton = Button(mainPage,text="Unlock Dangai Ichigo",font=("Courrier",textSize),bg="white",fg=bgcolor,command=unlockDangaiIchigo)
     repairButton = Button(mainPage,text="Repair files",font=("Courrier",textSize),bg="white",fg=bgcolor,command=repair)
-    
+    refreshLauncherButton = Button(mainPage,text="Refresh launcher",font=("Courrier",textSize),bg="white",fg=bgcolor,command=refreshLauncher)
 
 
 
@@ -595,6 +601,7 @@ try:
     add_hover(repairButton,          "Restore your game files from a clean backup copy of the game.")
     add_hover(CreditsButton,         "View the credits for the mods used in this patch.")
     add_hover(unlockDangaiIchigoButton, "Unlocks Dangai Ichigo")
+    add_hover(refreshLauncherButton, "Refresh the launcher to get the latest updates.")
 
     #pack
     labelTitle.pack()
@@ -610,6 +617,7 @@ try:
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
     repairButton.pack(pady=paddingYvalue,fill=X)
     unlockDangaiIchigoButton.pack(pady=paddingYvalue,fill=X)
+    refreshLauncherButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
 
