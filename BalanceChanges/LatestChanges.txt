@@ -248,18 +248,34 @@ Yoruichi (changes made by Nilsix and Bergen):
 			speed: 0.001 -> 1.000
 			"Consistency fix for all sp counters"
 	Evo :
+<<<<<<< HEAD
 		Heavy 1 :
 			scaling : 0.8 -> 0.6
 				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
+=======
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 				
 		Forward sig : 
 			blockstun 14->9
 		"anken->forward dash is unsafe now"
+<<<<<<< HEAD
 
 	Flashstep followup (last hit) : 
 		hitstun : 36->35
 
 	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
+=======
+
+		SP1 (flashmaster):
+			hitstun 50->42
+
+			"Altough it's also a damage nerf because she cannot do sp1 (flashmaster) -> heavy (she can still light), the main goal of that hitstun nerf is to remove the sp1 (flashmaster) -> tilt unblockable without needing to reduce the speed of her tilt
+
+		Flashstep followup (last hit) : 
+			hitstun : 36->31
+		
+		"Flashstep followup -> dash light is still an oki, but now she cannot do flashstep followup -> yellow"
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
@@ -484,12 +500,14 @@ Base :
 	dash light (whiff) -> hakugeki : removed
 	light1 (whiff) hakugeki : removed
 	heavy 1 (whiff) hakugeki : removed
+	dash light:
+		Collision POS on the Z axis changed to 0.2 to make it match the animation
+	
 
 Light 1 (base evo and reawakening) : 
 	
 	rotate speed : 0 -> 2.0
 	ulquiorra can now punish flashstep
-	
 	light1 : 
 		guard damage : 175->100
 	
@@ -520,6 +538,8 @@ Light 1 (base evo and reawakening) :
 	cannot timestop anymore
 
 	EVO: 
+		dash light:
+			Collision POS on the Z axis changed from 1.5 -> 1.0 to make it match the animation
 		heavy2->sig : 
 			blockstun : 36->28
 		is now minus on block (cannot step, but can flashstep)
