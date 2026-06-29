@@ -205,12 +205,8 @@ try:
     def injectFolder(files,folderName):
             action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
             action_dst = os.path.join(game_path,f'{folderName}')
-            print(f"injectFolder: src={action_src}")
-            print(f"injectFolder: dst={action_dst}")
-            print(f"injectFolder: src exists={os.path.exists(action_src)}")
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
-            print(f"injectFolder: copied successfully")
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
@@ -296,7 +292,6 @@ try:
     
 
     def launch(gameVersion):
-        print(f"launch called with gameVersion: {gameVersion}")
         window.destroy()
         try: 
             pygame.mixer.music.stop()
@@ -304,10 +299,6 @@ try:
             pass
         
         #folder injection
-<<<<<<< HEAD
-=======
-        print(f"Injecting from GameVersions/{gameVersion}/Script")
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
         injectFolder(gameVersion,"Script")
 
         #ost choice
@@ -337,46 +328,20 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
-<<<<<<< HEAD
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
             
             shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-=======
-            print(f"DANS GAMEMODE: {gameMode}")
-            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-            dstPath = os.path.join(game_path,"Script")
-            print(f"GameMode src: {srcPath}")
-            print(f"GameMode dst: {dstPath}")
-            print(f"GameMode src exists: {os.path.exists(srcPath)}")
-            
-            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-            print("GameMode injection completed")
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
             
         #team battle injection
         if config["TEAM_BATTLE"] == "ON":
-<<<<<<< HEAD
             srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
             dstPath = os.path.join(game_path,"Script")   
             shutil.copy(
                 os.path.join(srcPath,"CharaStatus.fsv"),
                 os.path.join(dstPath,"CharaStatus.fsv"))
             print("copied team files")
-=======
-            print("TEAM_BATTLE is ON")
-            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
-            dstPath = os.path.join(game_path,"Script")   
-            print(f"TeamBattle copying CharaStatus.fsv from {srcPath} to {dstPath}")
-            shutil.copy(
-                os.path.join(srcPath,"CharaStatus.fsv"),
-                os.path.join(dstPath,"CharaStatus.fsv"))
-            print("TeamBattle injection completed")
-        else:
-            print("TEAM_BATTLE is OFF")
-            
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
         forlater = """
         else:
@@ -437,8 +402,6 @@ try:
 
         with open(config_path, "w") as f:
             json.dump(config, f)
-            
-        labelGamePath.config(text=f'Current game path : {game_path}')
         
    
     def gameModesMenu():
@@ -471,8 +434,7 @@ try:
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
     for folder in os.listdir(gameVersionsPath):
-        print(folder)
-        gameVersionsList.append(folder)
+            gameVersionsList.append(folder)
     brosVersionList = ttk.Combobox(
         mainPage,
         textvariable=brosVersion,
@@ -485,7 +447,6 @@ try:
 
     def preLauncher():
         if brosVersionList.get() != "Choose a game version":
-            print(brosVersionList.get())
             launch(brosVersionList.get())
         
     def performanceSettingsMenu():
@@ -586,6 +547,8 @@ try:
     paddingYvalue = 10
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
+    launchBrosButton = Button(mainPage,text="Launch Bleach Rebirth of Souls",font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("Bros"))
+    launchBrosPatchButton =  Button(mainPage,text=f'Launch Bleach Rebirth of Souls Community Patch',font=("Courrier",textSize),bg="white",fg=bgcolor,command=lambda : launch("BrosCommunityPatch"))
     joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/fSbsZE3qSZ"))
     changeGamePathButton =  Button(mainPage,text=f'Change your game path',font=("Courrier",textSize),bg="white",fg=bgcolor,command=changeGamePath)
     readBalanceChangesButton =  Button(mainPage,text=f'Read balance changes',font=("Courrier",textSize),bg="white",fg=bgcolor,command=readBalanceChanges)
