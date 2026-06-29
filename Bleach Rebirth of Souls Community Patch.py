@@ -304,7 +304,10 @@ try:
             pass
         
         #folder injection
+<<<<<<< HEAD
+=======
         print(f"Injecting from GameVersions/{gameVersion}/Script")
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
         injectFolder(gameVersion,"Script")
 
         #ost choice
@@ -334,6 +337,12 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
+<<<<<<< HEAD
+            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
+            dstPath = os.path.join(game_path,"Script")
+            
+            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
+=======
             print(f"DANS GAMEMODE: {gameMode}")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
@@ -343,10 +352,19 @@ try:
             
             shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
             print("GameMode injection completed")
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
             
         #team battle injection
         if config["TEAM_BATTLE"] == "ON":
+<<<<<<< HEAD
+            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
+            dstPath = os.path.join(game_path,"Script")   
+            shutil.copy(
+                os.path.join(srcPath,"CharaStatus.fsv"),
+                os.path.join(dstPath,"CharaStatus.fsv"))
+            print("copied team files")
+=======
             print("TEAM_BATTLE is ON")
             srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
             dstPath = os.path.join(game_path,"Script")   
@@ -358,6 +376,7 @@ try:
         else:
             print("TEAM_BATTLE is OFF")
             
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
         forlater = """
         else:

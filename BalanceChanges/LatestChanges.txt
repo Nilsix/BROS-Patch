@@ -248,10 +248,23 @@ Yoruichi (changes made by Nilsix and Bergen):
 			speed: 0.001 -> 1.000
 			"Consistency fix for all sp counters"
 	Evo :
+<<<<<<< HEAD
+		Heavy 1 :
+			scaling : 0.8 -> 0.6
+				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
+=======
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 				
 		Forward sig : 
 			blockstun 14->9
 		"anken->forward dash is unsafe now"
+<<<<<<< HEAD
+
+	Flashstep followup (last hit) : 
+		hitstun : 36->35
+
+	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
+=======
 
 		SP1 (flashmaster):
 			hitstun 50->42
@@ -262,6 +275,7 @@ Yoruichi (changes made by Nilsix and Bergen):
 			hitstun : 36->31
 		
 		"Flashstep followup -> dash light is still an oki, but now she cannot do flashstep followup -> yellow"
+>>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
@@ -693,26 +707,151 @@ dash light -> whiff cancel -> hakugeki : removed
 		Rotate speed : 0->2
 	Kisuke can now punish Flashsteps
 
+
+
+
+
+
+
+
 SHUHEI Changes(by efra):
-	changed base and evo SP2 speed from 0.001 -> 1.000
+
+
+Base & Awakening:
+
+Back Step Cancel Timing has been reduced from 52 -> 42
+Notes: Shuhei is all about zoning with his buttons but due to the slower back step cancel compared to the rest of the cast, he could not zone effectively. He would be forced to stand still at medium ranges due to being punished from moving very easily. To make his movement less punishing as well as increase his zoning potential, this change was made to speed up his back dash.
+
+Heavy Tilt guard stun from hit 2 has been increased from 20 -> 24
+Notes: This change was made so shuhei is able to block after this move is blocked. He would previously get punished for free with many different buttons and moves. This change gives shuhei more advantage without it becoming problematic.
+
+Light 3 guard damage has been reduced from 300 -> 150
+Notes: Guard damage and guard break setups are a big problem on some characters and shuhei is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+Sig cancel timing was reduced from 52 -> 32
+Sig hit and guard stun was increased. (Base: Hit Stun 46 -> 47, Guard Stun 38 -> 47. Awakening: Hit Stun 36 -> 47, Guard Stun 28 -> 47)
+Notes: Shuhei's sig both during hit and on block was negative enough to be freely punished by whatever move an opponent desired. Not only does this make this move one of the worst moves in the game, it made this button useless for shuhei. Cancel timing was reduced due to coding of directly being tied to cancel recovery. To not make shuhei very plus off this new cancel timing, adjusting hit and guard stun was necessary. With both changes together, shuhei is no longer punishable on hit or block but is also not plus enough to press any button or step in any direction.
+
+SP1 (0-5 fear in base/ 3-8 fear in awakening [White Fear]) fighting spirit gain has been decreased from 0.3 -> 0
+Notes: This change was done to fix a bug where sometimes in neutral shuhei would get and give a lot more fighting spirit than intended. To mitigate this bug from happening and considering current universal fighting spirit changes, this was the best course of action.
+
+SP1 (10+ fear in base/13+ fear in awakening [Red Fear]) guard damage from Hit 1 and 2 has been reduced from 150 -> 000	
+Notes: Guard damage and guard break setups are a big problem on some characters and shuhei is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+SP2 start up speed was increased from 0.001 to 1.0
+Notes: Due to the amount of slow down this move had, opponents would buffer a move but would not come out. This sp move is a counter so this act of eating an input hurts shuhei since he no longer counters a button that should've come out. With the speed increase, if an opponent presses a button while shuhei's sp2 is active, the button will come out.
 
 Base:
 
 Heavy 2 Guard damage from Hit 1 & 2 has been reduced from 200 -> 90
 Hit 3 guard damage has been reduced from 250 -> 140.
+Notes: Guard damage and guard break setups are a big problem on some characters and shuhei is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
 
-
-Awakewning:
+Awakening:
 
 Heavy 2 guard damage from Hits 6 & 7 has been reduced from 300 -> 150.
+Notes: Guard damage and guard break setups are a big problem on some characters and shuhei is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+
+
+
+
+
+
+
+
+
+Kenny changes (by efra):
 
 
 Base & Awakening:
 
-Light 3 guard damage has been reduced from 300 -> 150
+Heavy 1 guard damage was reduced from 225 -> 100
 
-SP1 guard damage from Hit 1 and 2 has been reduced from 150 -> 000
+Light 1 guard damage was reduced from 175 -> 85
 
+Light 2 guard damage was reduced from 175 -> 85
+
+Light 3 guard damage was reduced from 300 -> 150
+Notes: Guard damage and guard break setups are a big problem on some characters and kenny is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+
+Base:
+
+Heavy 2 guard damage on hit 1 & 2 was reduced from 150 -> 50
+Guard damage from hit 3 was reduced from 400 -> 200
+
+SP1 guard damage from hit 1 was reduced from 300 -> 100
+Notes: Guard damage and guard break setups are a big problem on some characters and kenny is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+Awakening:
+
+Heavy 2 guard damage from hits 1-8 were reduced from 75 -> 15 each
+Guard damage from hit 9 was reduced from 400 -> 200
+
+SP1 guard damage from hits 1 & 2 were reduced from 210 -> 120
+Notes: Guard damage and guard break setups are a big problem on some characters and kenny is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+
+
+
+
+
+Stark changes (by efra)
+
+
+Base:
+
+Unique Value 8 was changed from 90 -> 80
+Notes: This makes sig charge ramp up faster, which gives stark more charge when reloading for longer periods
+
+Light 1 push back on guard was increased from 0.5 -> 0.8
+
+Light 2 push back on guard was increased from 1 -> 1.5
+Notes: Stark had a true infinite block string in base which was impossible to get out of (other than blue). To mitigate this playstyle, block push back was increased by little amounts so the loop is no longer an infinite and doesn't give stark too much free space from it.
+
+
+Heavy 2 guard damage from hits 1 & 3 were reduced from 225 -> 125
+Guard damage from hits 2 & 4 were reduced from 250 -> 150
+Notes: This move does not have an sp2 variant in the code yet so this change also affects him without sp2. Stark's guard break potential in neutral was strong due to the amount of guard the second hit of heavy did. This change helps keep heavy 2 in check while still taking the same amount of sp to do the move. This move will unlikely be used outside of sp2 which already limits this move's guard break potential
+
+
+SP1 damage was increased across the board, damage depends on the version used
+SP1 (50-87sp when activated) damage was increased from 1000 -> 2500
+SP1 (88-124sp when activated) damage was increased from 250 x 3 (750 total) -> 550 x 3 (1650 total)
+SP1 (125+sp when activated) damage was increased from 150 x 7 -> 350 (1050 total) -> x 7 (3500 total)
+Notes: SP2 was the only option stark goes for in normal/optimal play. We wanted to give a reason to use sp1 more often. To give incentive to use this button, damage was increased across the board, with much more damage being given the more sp stark has before sp1 usage. This scale in damage makes it so stark doesn't have a damaging dp when low in sp, likely due to high opponent pressure.
+
+
+SP2 speed was increased from 0.001 -> 0.1
+Notes: Due to the high amounts of screen slow down when using sp2, this button was used for an un-counterable mix that happened when dashing into opponents. To mitigate this, speed was increased so using this move as free mix is way harder to time and do, with most results ending in stark getting hit.
+
+While SP2 is active:
+
+Heavy 1 guard damage was reduced from 250 -> 0
+
+Heavy Tilt guard damage was reduced from hit 2 300 - 150
+Hit 4 240 -> 140
+Notes: These moves had versions already connected to sp2. All buttons were intended to be sp2 active only changes but due to limitations, base form is tweaked. Due to guard break potential being high when sp2 is active, guard damage was reduced to give opponents more of a fighting chance in neutral to outlive sp2.
+
+
+Awakening:
+
+Dash Light guard damage was reduced from 175 -> 100
+
+Heavy 1 guard damage was reduced from 225 -> 100
+
+Heavy 2 guard damage from hits 1 & 3-5 were reduced from 100 -> 50
+Hit 2 reduced from 200 -> 100
+Wolf hits guard damage reduced from 100 -> 0
+
+Light 2 guard damage reduced from 175 -> 100
+
+Light 3 guard damage reduced from hits 1 & 2 150 -> 75
+Notes: Guard damage and guard break setups are a big problem on some characters and kenny is one of them. He uses a mix of all of his buttons to get guaranteed hakugeki break setups to take free health stocks. To avoid this, guard damage was reduced to mitigate this style of play.
+
+Wolves thrown after a button increased push back from 0.7 -> 3.0
+Notes: Stark had free loops after throwing a wolf on block and that was a big part in guard break setups. Push back was increased so loops will no longer happen for free.
 
 
 Ikkaku Changes (By RedZekrom913)
@@ -720,6 +859,9 @@ Ikkaku Changes (By RedZekrom913)
 Awakening: 
 
 	Changed damage_move_rate on SP1 heavy from 1.0 to 0.05 and coil_radius from 2.8 to 3.3 to make his SP! heavy into SP1 light loops consistently work against all characters
+
+
+
 
 
 Shinji Changes (By RedZekrom913) 
