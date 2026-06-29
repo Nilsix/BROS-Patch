@@ -4,7 +4,17 @@ import subprocess
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEAM_BATTLE_DIR = os.path.join(BASE_DIR,"..","GameModes","TeamBattle")
+gameVersionsPath = os.path.join(BASE_DIR,"..","GameVersions.txt")
 
+gameVersionsList = []
+for folder in os.listdir(gameVersionsPath):
+    gameVersionsList.append(folder)
+
+
+def checkTokenOpen():
+    if os.path.exists(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")):
+        return True
+    return False
 
 
 def applyKonpakuChanges(id,value):
@@ -31,14 +41,27 @@ def applyKonpakuChanges(id,value):
         writer.writeheader()
         writer.writerows(rows)
 
-
 options = -1
+if checkTokenOpen() == False:
+    options = int(input("""Quit (0)
+Open server (1)"""))
 
+    if options == 1:
+        for i,version in enumerate(gameVersionsList):
+            print(f"{i} = {version}")
+        chooseGameVersion = int(input("Choose a game version : "))
+        
+        subprocess.run(["touch", os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")])
+        convertToCsvPath = os.path.join(TEAM_BATTLE_DIR,"convertToCsv.bat")
+        shutil.copy(os.path.join(gameVersionsPath,gameVersionsList[chooseGameVersion],"CharaStatus.fsv"),os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
+        subprocess.run(convertToCsvPath,shell=True)
+    exit()
 
 options = int(input("""
 Quit (0)               
 Update CharaStatus (1)
 Reset CharaStatus (2)
+Close server (3)
 
 Choose an option : """))
     
@@ -94,3 +117,7 @@ elif options == 1:
     print("\nChanges applied")
 elif options == 2:
     subprocess.run([os.path.join(TEAM_BATTLE_DIR,"resetCharaStatus.bat")], shell=True)
+elif options == 3:
+    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")])
+    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"CharaStatus.csv")])
+    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv")])

@@ -561,6 +561,22 @@ try:
         instantEvoAndSublimation.config(text=f'Instant Evo and Sublimation : (Currently {"ON" if gameMode == "InstantEvoAndSublimation" else "OFF"})')
         eightKonpakus.config(text=f'8 Konpakus : (Currently {"ON" if gameMode == "EightKonpakus" else "OFF"})')
     
+    def unlockDangaiIchigo():
+        result = messagebox.askyesno("Unlock Dangai Ichigo", "Unlocking Dangai Ichigo this way will reset your ranked progress, are you sure you want to continue?")
+        theDangaiFiles = os.path.join(BASE_DIR,"ressources","saveData.bin")
+        if result:
+            appdataPath = os.getenv("APPDATA")
+            try:
+                saveDataPath = os.path.join(appdataPath,"BLEACH Rebirth of Souls","Savedata","76561198411782699","saveData.bin")
+            except Exception as e:
+                messagebox.showerror("Error", f"Error: {e}")
+                return
+            # Copy the dangai files to the save data path
+            shutil.copy2(theDangaiFiles, saveDataPath)
+            messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
+        
+    
+   
    
 
     textSize = 18
@@ -573,6 +589,7 @@ try:
     lowSpecButton =  Button(mainPage,text=f'FPS Booster settings',font=("Courrier",textSize),bg="white",fg=bgcolor,command=performanceSettingsMenu)
     CreditsButton = Button(mainPage,text="Credits",font=("Courrier",textSize),bg="white",fg=bgcolor,command=readCredits)
     gameModesButton = Button(mainPage,text="Game Modes",font=("Courrier",textSize),bg="white",fg=bgcolor,command=gameModesMenu)
+    unlockDangaiIchigoButton = Button(mainPage,text="Unlock Dangai Ichigo",font=("Courrier",textSize),bg="white",fg=bgcolor,command=unlockDangaiIchigo)
     repairButton = Button(mainPage,text="Repair files",font=("Courrier",textSize),bg="white",fg=bgcolor,command=repair)
     
 
@@ -587,6 +604,7 @@ try:
     add_hover(lowSpecButton,         "Toggle per-effect FPS booster settings to improve performance on lower-end PCs.")
     add_hover(repairButton,          "Restore your game files from a clean backup copy of the game.")
     add_hover(CreditsButton,         "View the credits for the mods used in this patch.")
+    add_hover(unlockDangaiIchigoButton, "Unlocks Dangai Ichigo")
 
     #pack
     labelTitle.pack()
@@ -601,6 +619,7 @@ try:
     #ostSettingsButton.pack(pady=paddingYvalue,fill=X)
     lowSpecButton.pack(pady=paddingYvalue,fill=X)
     repairButton.pack(pady=paddingYvalue,fill=X)
+    unlockDangaiIchigoButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
 
@@ -759,6 +778,14 @@ try:
         repairPage,
         text="Repairing files. Please wait",
         font=("Courrier", 35),
+        bg=bgcolor,
+        fg=labelcolor
+    )
+
+    labelSubtitleRepairText = Label(
+        repairPage,
+        text="Repairing files. Please wait",
+        font=("Courrier", 20),
         bg=bgcolor,
         fg=labelcolor
     )
