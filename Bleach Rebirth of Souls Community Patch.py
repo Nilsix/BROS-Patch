@@ -383,11 +383,7 @@ try:
         
 
     def readBalanceChanges():
-        balance_file = os.path.join(BASE_DIR, "BalanceChanges/LatestChanges.txt")
-        if os.path.exists(balance_file):
-            open_file(balance_file)
-        else:
-            print("BalanceChanges.txt not found")
+        webbrowser.open("https://rebalance-of-souls.github.io/reBalanceOfSouls.github.io/")
     
     def readCredits():
         creditsFile = os.path.join(BASE_DIR,"Credits","credits.txt")
