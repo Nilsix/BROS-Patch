@@ -845,8 +845,10 @@ Awakening:
 
 
 
-Shinji Changes (By RedZekrom913) 
 
+Shinji Changes (By RedZekrom913) 
 General:
 	Can now combo heavy after a successful sig counter
 	Fixed spacing and frame data when Sakanade is active
+	Changed guard_fix_time on special flash from 24 to 29 to make it plus on block giving similar plus frames as light 3.
+	Increased movement speed by 10%
