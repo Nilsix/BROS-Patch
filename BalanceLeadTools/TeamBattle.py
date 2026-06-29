@@ -1,10 +1,11 @@
 import csv
 import os     
 import subprocess
+import shutil
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEAM_BATTLE_DIR = os.path.join(BASE_DIR,"..","GameModes","TeamBattle")
-gameVersionsPath = os.path.join(BASE_DIR,"..","GameVersions.txt")
+gameVersionsPath = os.path.join(BASE_DIR,"..","GameVersions")
 
 gameVersionsList = []
 for folder in os.listdir(gameVersionsPath):
@@ -44,17 +45,19 @@ def applyKonpakuChanges(id,value):
 options = -1
 if checkTokenOpen() == False:
     options = int(input("""Quit (0)
-Open server (1)"""))
+Open server (1)
+
+Choose an option : """))
 
     if options == 1:
         for i,version in enumerate(gameVersionsList):
             print(f"{i} = {version}")
         chooseGameVersion = int(input("Choose a game version : "))
         
-        subprocess.run(["touch", os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")])
-        convertToCsvPath = os.path.join(TEAM_BATTLE_DIR,"convertToCsv.bat")
-        shutil.copy(os.path.join(gameVersionsPath,gameVersionsList[chooseGameVersion],"CharaStatus.fsv"),os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
-        subprocess.run(convertToCsvPath,shell=True)
+        
+        open(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt"), "w").close()
+        shutil.copy(os.path.join(gameVersionsPath,gameVersionsList[chooseGameVersion],"Script","CharaStatus.fsv"),os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
+        subprocess.run("convertToCsv.bat",shell=True,cwd=TEAM_BATTLE_DIR)
     exit()
 
 options = int(input("""
@@ -118,6 +121,6 @@ elif options == 1:
 elif options == 2:
     subprocess.run([os.path.join(TEAM_BATTLE_DIR,"resetCharaStatus.bat")], shell=True)
 elif options == 3:
-    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")])
-    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"CharaStatus.csv")])
-    subprocess.run(["rm", os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv")])
+    os.remove(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt"))
+    os.remove(os.path.join(TEAM_BATTLE_DIR,"CharaStatus.csv"))
+    os.remove(os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))

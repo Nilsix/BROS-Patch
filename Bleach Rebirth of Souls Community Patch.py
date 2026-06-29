@@ -288,15 +288,9 @@ try:
                 winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
             except:
                 pass
-        
-        
-                
-
-        
-    
 
     def launch(gameVersion):
-        print(f"launch called with gameVersion: {gameVersion}")
+        subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         window.destroy()
         try: 
             pygame.mixer.music.stop()
@@ -304,10 +298,6 @@ try:
             pass
         
         #folder injection
-<<<<<<< HEAD
-=======
-        print(f"Injecting from GameVersions/{gameVersion}/Script")
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
         injectFolder(gameVersion,"Script")
 
         #ost choice
@@ -337,46 +327,20 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
-<<<<<<< HEAD
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
             
             shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-=======
-            print(f"DANS GAMEMODE: {gameMode}")
-            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-            dstPath = os.path.join(game_path,"Script")
-            print(f"GameMode src: {srcPath}")
-            print(f"GameMode dst: {dstPath}")
-            print(f"GameMode src exists: {os.path.exists(srcPath)}")
-            
-            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-            print("GameMode injection completed")
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
             
         #team battle injection
         if config["TEAM_BATTLE"] == "ON":
-<<<<<<< HEAD
             srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
             dstPath = os.path.join(game_path,"Script")   
             shutil.copy(
                 os.path.join(srcPath,"CharaStatus.fsv"),
                 os.path.join(dstPath,"CharaStatus.fsv"))
             print("copied team files")
-=======
-            print("TEAM_BATTLE is ON")
-            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
-            dstPath = os.path.join(game_path,"Script")   
-            print(f"TeamBattle copying CharaStatus.fsv from {srcPath} to {dstPath}")
-            shutil.copy(
-                os.path.join(srcPath,"CharaStatus.fsv"),
-                os.path.join(dstPath,"CharaStatus.fsv"))
-            print("TeamBattle injection completed")
-        else:
-            print("TEAM_BATTLE is OFF")
-            
->>>>>>> 718b9eee4337b9ec7ef6e25e5e17658dbce5f517
 
         forlater = """
         else:
@@ -485,7 +449,6 @@ try:
 
     def preLauncher():
         if brosVersionList.get() != "Choose a game version":
-            print(brosVersionList.get())
             launch(brosVersionList.get())
         
     def performanceSettingsMenu():
@@ -555,6 +518,9 @@ try:
         actualiseGameModeButtons()
     
     def teamBattleFunc():
+        if not os.path.exists(os.path.join(BASE_DIR,"GameModes","TeamBattle","TokenOpen.txt")):
+            messagebox.showinfo("Team Battle", "You need to contact a Team Battle host to be able to join a team battle, for that, ping one on discord using @Team Battle Host")
+            return
         config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
         saveJson()
         teamBattleButton.config(text=f'Team Battle : (Currently {"ON" if config["TEAM_BATTLE"] == "ON" else "OFF"})')

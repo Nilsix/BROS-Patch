@@ -1,10 +1,12 @@
 @echo off
-if exist CharaStatus.csv (
-	python fsv2csv.py to_fsv CharaStatus.csv
+if exist CharaStatus.fsv (
+	python fsv2csv.py to_csv "CharaStatus.fsv"
 )
 
-if exist CommonParam.csv (
-	python fsv2csv.py to_fsv "CommonParam.csv
+if exist CommonParam.fsv (
+	python fsv2csv.py to_csv "CommonParam.fsv"
 )
+
+pause
 
 
