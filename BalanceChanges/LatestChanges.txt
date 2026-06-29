@@ -305,8 +305,6 @@ SP2:
 DP (invincible after 4 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
-Light range: 2.0 -> 2.2
-
 SP2:
 - DP (invincible after 5 frames of activation)
 - homing ON (10 ->30)
