@@ -10,8 +10,11 @@ Fighting spirit generated when blocking an attack : 1 -> 0.5
 Fighting spirit generated when holding the dash button : 0.0012 -> 0.0050
 Fighting Spirit gained from yellow reverse : 0.001 -> 0.0005
 
+
 Blue Reverse range increased from 5 -> 20 and size *4 times bigger to make it fullscreen
 White Reverse hitstun reduced: 35 -> 34 (white -> tier 1 light doesn't combo anymore)
+Yellow Reverse guardstun reduced from 14 -> 12 to remove yellow unblockable setups
+White Reverse guardstun reduced from 31 -> 29 to remove yellow white setups
 
 
 Kira : 
@@ -20,31 +23,28 @@ Base and Evo :
 
 Yamamoto (changes made by Nilsix): 
 BASE AND EVO : 
+	
 	Sig : 
 		rotateSpeed -> speed rate : 1 -> 0
 		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
-EVO : 
-	Heavy 1 : 
-	all dmg values reduced by 100
-
-	Heavy 2 : 
-	all dmg values reduced by 100
-
-	Tilt : 
-		slow_motion_rate 0.2 -> 1
-		Yamamoto got his old tilt speed back
-
-	Sig_1 : 
-	all dmg values : 200->150
-	Sig_2 : 
-	all dmg values : 300->200
-
-	SP1 (charged) :
-		damage value : 400 -> 200
-		
+	
 	SP2 : 
-		damage value 300 -> 150 
-		Yamamoto's sp2 is a really versatile tool, dp, combo starter, reduce his inferno gauge back to 0, we are tweaking his dmg a little, he will still hit hard because he can still combo after tho.
+		pushback on hit 0.2->5
+		Yamamoto cannot combo after SP2 anymore
+	
+
+	EVO : 
+		Tilt : 
+			slow_motion_rate 0.2 -> 1
+			Yamamoto got his old tilt speed back
+
+		SP1 (charged) :
+			damage value : 400 -> 200
+	
+	Known issue : 
+		his SP2 can whiff up close against someone grabbing at the same time, this will be fixed in the future 
+			
+	
 
 Kaien : 
 	Flashstep on block : 
@@ -75,7 +75,7 @@ cocoon:
 	changed the guardstun on the tilt from 28 to 33 to make it plus on block
 evo:
 	fighting spirit required to go from evo -> sublimation increased from 2.5 -> 3.0
-	fighting spirit required to go from evo -> revo decreased from 2.0 -> 1.0
+	fighting spirit required to go from evo -> revo decreased from 2.0 -> 0.5
 	reduced heavy 2 (all variations) damage by 15%
 	reduced tilt 3 (Senju Koten Taihou) guard stun on the last hit from 26 -> 24.
 	reduced the recovery on the frontstep from 42 -> 30
@@ -115,6 +115,17 @@ NNoitra (changes made by Nilsix):
 	These changes removes Nnoitra's ability to do his dash light-> sp2 unblockable setup
 	he is still + on block after dash light, against all tiers of jabs
 
+Szayelporro Grantz (changes made by Bergen):
+General Changes:
+	increased recovery on SP2 from 80 -> 100
+	dash light guard stun increased from 18 -> 20 and recovery decreased from 52 -> 42 to make it safe on block 
+
+Base:
+	FS required to go from base to awakening changed from 3.0 -> 2.75
+Evo:
+	sig recovery increased from 56 -> 86 on whiff
+	sig (level 1 + level 2) fighting spirit gain increased by 20% on hit
+
 Toshiro (changes made by Nilsix): 	
 	EVO : 
 		SP2 : 
@@ -144,9 +155,6 @@ Shunsui (changes made by Nilsix):
 	
 	Shunsui stays relatively the same but lost his ability to guard break consistently, SP2 being a fast full screen whiff punish damaging move that was safe on block made no sense balance wise so we are changing that, 
 	this technically changes nothing for good Shunsui players since they would normally whiff punish properly with it, but this prevents the move from being thrown around stupidly without any consequences
-	His sig requires more commitement since whiffing it implies more risk, which makes sense since sig is a button with almost no weakness (+ on block, feintable, neutral skip, armor)
-
-
 
 
 Dangai Ichigo (changes by Nilsix and Bergen)
@@ -162,10 +170,11 @@ LV1 :
 	Fighting spirit generated to the opponent : 2.0 -> 1.0
 LVL3 :
 	Tilt : 
-		scaling : 0.7 -> 0.3 
-		the next move after tilt will deal 30% of it's damage instead of 70%
+		damage value : 1000 -> 1500
+		hitstun : 40 -> 35
+		Dangai cannot combo into light 1 anymore
 	SIG :
-		dash cancel cancel : removed
+		dash cancel : removed
 		Dangai Ihigo cannot sig->dash cancel anymore
 
 .
@@ -183,7 +192,7 @@ YWACH (Changes Made by Bergen and Goose)
 
 Gave Yhwach 9 stocks
 
-removed SP2 timestop (Changed speed from 0.001 -> 0.1)
+removed SP2 timestop (Changed recovery from 80 -> 88)
 increase SP regen on his lights by 30% across all modes:
 light1 SP regen rate 4.0 -> 5.2
 light2 SP regen rate 2.0 -> 2.6
@@ -231,21 +240,26 @@ Yoruichi (changes made by Nilsix and Bergen):
 		sp_atk01 damage increased from 250 -> 800 (175 per hit 4 times since hit_count was changed from 1 -> 4 + 			hit_stop_speed from 0.05 -> 0.25 to fix the animation)
 		sp_atk01_2 damage reduced from 900 -> 400 (133.33 per hit) to match the original damage
 		sp_atk01_2_0 damage increased from 900 -> 950 (333.33 per hit) to match the original damage
-
-	Light1 (base and Evo)
-		Rotate Speed : 0->2 
-	Yoruichi can now punish flashsteps
-	SP2 (base and Evo):
-		speed: 0.001 -> 1.000
-	Consistency fix for all sp counters
-	Forward sig : 
-		blockstun 14->9
-	anken->forward dash is unsafe now
+	Base and Evo : 
+		Light1 
+			Rotate Speed : 0->2 
+			"Yoruichi can now punish flashsteps"
+		SP2 
+			speed: 0.001 -> 1.000
+			"Consistency fix for all sp counters"
+	Evo :
+		Heavy 1 :
+			scaling : 0.8 -> 0.6
+				"increased the scaling on her heavy1, this will reduce the damage of her sp1 (flashmaster->heavy1 combos)"
+				
+		Forward sig : 
+			blockstun 14->9
+		"anken->forward dash is unsafe now"
 
 	Flashstep followup (last hit) : 
-		hitstun : 36->26
+		hitstun : 36->35
 
-	She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup
+	"She still keeps her flash step followup oki but she cannot yellow reverse after flashstep followup"
 
 Notes : 
 anken dash was a tool that allowed a rushdown character to play like a zoner that turn into a mix up demon, not only does she keeps you away but anken dash also allowed you to win neutral into a free mixup,
@@ -260,7 +274,7 @@ Mayuri (changes made by Nilsix) :
 	dash light[2] :
 		pushblock = 1 - -0.5
 
-Mayuri can now properly mixup after hitting both hit of a dash light on block
+	Mayuri can now properly mixup after hitting both hit of a dash light on block
 
 
 GRIMMJOW (changes made by Nilsix) :
@@ -289,11 +303,10 @@ SP2:
 DP (invincible after 4 frames of activation), hits from behind, +28% damage
 
 ==================== BASE ====================
-FS required to go from Base -> awakening: 2.75 -> 2.5
 Light range: 2.0 -> 2.2
 
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing ON (10 ->30)
 - hitstun 52 -> 40
 - guardstun reduced to 05
@@ -313,7 +326,7 @@ flashstep followup on guard being unsafe bug:
 - reduced guardstun on the first hit of the flashstep followup from 25 -> 24 to make him trade with tier3 lights
 
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing (speed of XY: 30)
 - hitstun 80 -> 40
 - guardstun reduced to 05
@@ -346,7 +359,7 @@ SP1 Maximum Guaranteed Damage increased:
 
 SP1 range: 11 -> 15 (to stop SP1 from dropping after heavy 2)
 SP2:
-- DP (invincible after 10 frames of activation)
+- DP (invincible after 5 frames of activation)
 - homing ON (speed of XY: 30)
 - hitstun 82 -> 40
 - guardstun reduced to 05
@@ -409,8 +422,8 @@ GIN (changes made by Nilsix and HBC) :
 		Dash attack : 
 			Gin cannot whiff his dash attack and then cancel it into sig
 		Tilt (tip) :
-		Hitstun : 30->33
-		Gin can now consistently combo tilt (tip)->heavy in base
+			Hitstun : 30->33
+			Gin can now consistently combo tilt (tip)->heavy in base
 
 	EVO : 
 		tilt :
@@ -418,10 +431,7 @@ GIN (changes made by Nilsix and HBC) :
 			can still tilt-> sig cancel (only on block/hit)
 
 		being able to whiff tilt into movement was kinda stupid and rewarded dumb plays, especially since gin already has mobility, you now need to think more about your tilt spacing because you cannot whiff cancel it anymore
-		SP1 (counter activation) : 
-			recovery : 60 -> 30
-			allows Gin to be able to act faster after his sp1 if the counter is activated.
-			This protects him against setups where people would activate his counter with a first hit then meaty him with a second hit, which makes no sense balance wise to be punished for countering right
+		
 
 
 TOSEN (changes made by Nilsix) : 
@@ -666,7 +676,7 @@ she could just mix up with anken and at the same time get insane damage with ank
 Now if Soi Fon want to mix with anken, she has to accept that she will lose damage on the sp1 loops.
 
 
-KISUKE (changes made by Nilsix and Bergen):
+KISUKE (changes made by Nilsix):
 Fixed a bug where Kisuke was able to can the whiff of a heavy1 -> Hakugeki
 increased the recovery on kisuke's heavy 1 from 48 -> 55 
 

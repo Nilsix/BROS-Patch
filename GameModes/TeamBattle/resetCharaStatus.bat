@@ -1,6 +1,6 @@
 @echo off
+cd /d "%~dp0"
 
 copy "originalCharaStatus\CharaStatus.csv" .
-
-convertToFsvAndPush
+call convertToFsvAndPush.bat
 
