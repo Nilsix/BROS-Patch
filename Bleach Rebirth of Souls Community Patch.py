@@ -19,8 +19,8 @@ import sys
 import webbrowser
 from pathlib import Path
 
-#input("Patch is on maintenance before the public release ,please wait")
-#exit()
+input("Patch is on maintenance before the public release ,please wait")
+exit()
 
 try: 
     import pygame
@@ -36,6 +36,31 @@ except :
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    try:
+        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+        output = result.stdout.strip()
+        if "Already up to date." in output:
+            pass
+        
+        #if there is an update, will relaunch the launcher so the code actually gets reset too
+        else:
+            subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
+            try :
+                winsound.PlaySound(None,winsound.SND_PURGE)
+            except:
+                pass
+            exit()
+
+    except Exception as e:
+        try:
+            ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+        except:
+            pass
+        print("Git update failed :", e)
+        print("Please relaunch the installer script, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself please")
+        a = input("Press Enter to exit ")
+        exit()
     
 
     def refresh_launcher():
@@ -142,30 +167,7 @@ try:
             Tooltip(btn, tooltip_text)
     # ──────────────────────────────────────────────────────────────────────────
      
-    try:
-        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
-        output = result.stdout.strip()
-        if "Already up to date." in output:
-            pass
-        
-        #if there is an update, will relaunch the launcher so the code actually gets reset too
-        else:
-            subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-            try :
-                winsound.PlaySound(None,winsound.SND_PURGE)
-            except:
-                pass
-            exit()
-
-    except Exception as e:
-        try:
-            ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
-        except:
-            pass
-        print("Git update failed :", e)
-        print("Please relaunch the installer script, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself please")
-        a = input("Press Enter to exit ")
-        exit()
+    
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
     launcherOstPath = os.path.join(ressourcesPath,"LauncherOst.wav")
