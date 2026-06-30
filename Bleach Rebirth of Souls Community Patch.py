@@ -19,7 +19,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-input("Patch is not supposed to be out now,please wait")
+input("Patch is on maintenance before the public release ,please wait")
 exit()
 
 try: 
