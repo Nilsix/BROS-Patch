@@ -51,6 +51,15 @@ Kaien :
 	Flashstep on block : 
 		minus -> 0 on block
 
+Renji Abarai (changes made by Bergen):
+Giant Form:
+	Reduced chip damage during SP2 active for heavy 1, heavy 2 and signature (0.5 -> 0.15)
+Weakened Form:
+	increased weakened form hp from 9000 -> 9500 to match komamura's
+	Reduced damage from 1200 -> 780 
+	increased hitstun on last hit from 30 -> 50 and reduced recovery on a landed counter to make it combo.
+	increased recovery on a whiffed counter from 60 -> 70
+	
 
 Shikai Ichigo (changes made by Bergen):
 evo:	
