@@ -20,21 +20,6 @@ import webbrowser
 from pathlib import Path
 
 try: 
-    import pygame
-except :
-    try:
-        subprocess.run(
-            [sys.executable,"-m","pip","install","pygame"]
-        )
-    except:
-        pass
-    try:
-        import pygame
-    except:
-        pass
-
-
-try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
     try:
@@ -170,15 +155,11 @@ try:
 
     ressourcesPath = os.path.join(BASE_DIR,"ressources")
     launcherOstPath = os.path.join(ressourcesPath,"LauncherOst.wav")
+    
     try:
-        pygame.mixer.init()
-        pygame.mixer.music.load(launcherOstPath)
-        pygame.mixer.music.play(loops=-1)
+        winsound.PlaySound(launcherOstPath,winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
     except:
-        try:
-            winsound.PlaySound(launcherOstPath,winsound.SND_FILENAME | winsound.SND_ASYNC | winsound.SND_LOOP)
-        except:
-            pass
+        pass
     game_path = config.get("GAME_PATH","")
 
     if not game_path or game_path == "" or not "BLEACH Rebirth of Souls" in game_path:
@@ -248,17 +229,13 @@ try:
         
         repairWaitOstPath = os.path.join(BASE_DIR,"ressources","RepairWaitOst.wav")
         repairEndOstPath = os.path.join(BASE_DIR,"ressources","RepairEndOst.wav")
+        
+        
         try:
-            pass
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load(repairWaitOstPath)
-            pygame.mixer.music.play(loops=-1)
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairWaitOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(repairWaitOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
-            except:
-                pass
+            pass
         
         try:
             subprocess.run([
@@ -266,38 +243,25 @@ try:
             ], capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
         except:
             shutil.copytree(repair_game_path, game_path, dirs_exist_ok=True)
+       
         try:
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load(repairEndOstPath)
-            pygame.mixer.music.play(loops=-1)
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(repairEndOstPath, winsound.SND_ASYNC)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(repairEndOstPath, winsound.SND_ASYNC)
-            except:
-                pass
+            pass
         messagebox.showinfo("Repair", "Files repaired successfully!")
         backToMainMenu()
         launcherOstPath = os.path.join(BASE_DIR,"ressources","LauncherOst.wav")
+        
         try:
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load(launcherOstPath)
-            pygame.mixer.music.play(loops=-1)
+            winsound.PlaySound(None, winsound.SND_PURGE)
+            winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
         except:
-            try:
-                winsound.PlaySound(None, winsound.SND_PURGE)
-                winsound.PlaySound(launcherOstPath, winsound.SND_ASYNC | winsound.SND_LOOP)
-            except:
-                pass
+            pass
 
     def launch(gameVersion):
         subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         window.destroy()
-        try: 
-            pygame.mixer.music.stop()
-        except:
-            pass
-        
         #folder injection
         injectFolder(gameVersion,"Script")
 
