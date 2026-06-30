@@ -59,8 +59,6 @@ try:
         a = input("Press Enter to exit ")
         exit()
     
-    input("Перестаньте уже сливать наши материалы. Это отвратительно, грубо и абсолютно неуважительно. Из-за такого поведения репутация российского сообщества становится ещё хуже. Хоть раз ведите себя как нормальные, цивилизованные люди.")
-    exit()
     def refresh_launcher():
         subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
         try :
