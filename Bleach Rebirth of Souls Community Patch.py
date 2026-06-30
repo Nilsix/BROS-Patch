@@ -19,9 +19,6 @@ import sys
 import webbrowser
 from pathlib import Path
 
-input("Patch is on maintenance before the public release ,please wait")
-exit()
-
 try: 
     import pygame
 except :
@@ -101,7 +98,7 @@ try:
     except:
         pass
     window.title("Bleach Community Patch")
-    window.geometry("1080x850")
+    window.geometry("1080x860")
     window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
     #minimum size of the window
     window.minsize(480,360)
@@ -437,6 +434,7 @@ try:
     labelTitleRepair = Label(repairPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
     labelSubTitleRepair = Label(repairPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
@@ -526,6 +524,8 @@ try:
     
     def teamBattleFunc():
         if not os.path.exists(os.path.join(BASE_DIR,"GameModes","TeamBattle","TokenOpen.txt")):
+            config["TEAM_BATTLE"] = "OFF"
+            saveJson()
             messagebox.showinfo("Team Battle", "You need to contact a Team Battle host to be able to join a team battle, for that, ping one on the discord using @Team Battle Host")
             return
         config["TEAM_BATTLE"] = "ON" if config["TEAM_BATTLE"] == "OFF" else "OFF"
@@ -610,7 +610,8 @@ try:
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
-    labelGamePath.pack(pady=paddingYvalue,fill=X)
+    labelWarning.pack(fill=X)
+    labelGamePath.pack(fill=X)
     brosVersionList.pack(pady=paddingYvalue,fill=X)
     launchButton.pack()
     joinDiscordButton.pack(pady=paddingYvalue,fill=X)

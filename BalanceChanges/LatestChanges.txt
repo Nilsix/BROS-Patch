@@ -396,7 +396,7 @@ RANGIKU (changes made by Bergen) :
 		guard damage : 600 -> 400
 
 
-GIN (changes made by Nilsix and HBC) :
+GIN (changes made by Nilsix) :
 	BASE AND EVO :
 	SP1 :
 		Removed timestop on the counter (speed 0.001 -> 1.00) 
