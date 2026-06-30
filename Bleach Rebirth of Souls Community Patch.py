@@ -19,7 +19,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-
+break_patch_on_purpose
 
 try: 
     import pygame
@@ -31,7 +31,6 @@ except :
         import pygame
     except:
         pass
-
 
 
 try: 
