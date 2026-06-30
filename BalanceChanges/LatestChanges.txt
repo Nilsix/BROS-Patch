@@ -54,9 +54,9 @@ Kaien :
 
 Shikai Ichigo (changes made by Bergen):
 evo:	
-	Fighting Spirit required to reach sublimation increased from 3.5 -> 7.0
+	Fighting Spirit required to reach sublimation increased from 3.5 -> 5.9
 	increased sp1(non-white) damage by 15% 
-	decreased sp1(white) damage by 50%
+	decreased sp1(white) damage by 70%
 	increase sp1(white) projectile speed by 100% and distance limit by 20%
 	added sp1 tilt (in white)
 	sp1 tilt can combo into an sp1 with a microwalk
