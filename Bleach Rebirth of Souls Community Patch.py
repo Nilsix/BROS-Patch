@@ -19,7 +19,7 @@ import sys
 import webbrowser
 from pathlib import Path
 
-break_patch_on_purpose
+input("Patch is not supposed to be out now,please wait")
 
 try: 
     import pygame
