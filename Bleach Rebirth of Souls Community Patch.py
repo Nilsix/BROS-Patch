@@ -341,6 +341,12 @@ try:
 
     def readBalanceChanges():
         webbrowser.open("https://rebalance-of-souls.github.io/reBalanceOfSouls.github.io/")
+        latestChangesPath = os.path.join(BASE_DIR,"BalanceChanges","LatestChanges.txt")
+       
+        try:
+            open_file(latestChangesPath)
+        except:
+            print("Error opening LatestChanges.txt")
     
     def readCredits():
         creditsFile = os.path.join(BASE_DIR,"Credits","credits.txt")
