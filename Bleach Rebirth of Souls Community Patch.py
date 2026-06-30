@@ -26,7 +26,7 @@ except :
         subprocess.run(
             [sys.executable,"-m","pip","install","pygame"]
         )
-    except
+    except:
         pass
     try:
         import pygame
