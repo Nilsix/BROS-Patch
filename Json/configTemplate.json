@@ -1,8 +1,9 @@
 {"GAME_PATH": "",
-"awakeningaura_effects_by_grifo":"original",
-"breaker_grab_effect_remover_by_grifo":"original",
-"hakugeki_effect_remover_by_grifo":"original",
-"hit_effect_remover_by_grifo":"original",
-"reverse_globe_effect_remover_by_grifo":"original",
-"skill_activation_effect_remover_by_grifo":"original",
-"TEAM_BATTLE": "OFF"}
+"awakeningaura":"original",
+"breaker_grab":"original",
+"hakugeki":"original",
+"hit":"original",
+"reverse_globe":"original",
+"skill_activation":"original",
+"TEAM_BATTLE": "OFF",
+"UPDATE_TOKEN":""}
