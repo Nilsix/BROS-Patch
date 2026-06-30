@@ -22,9 +22,12 @@ from pathlib import Path
 try: 
     import pygame
 except :
-    subprocess.run(
-        [sys.executable,"-m","pip","install","pygame"]
-    )
+    try:
+        subprocess.run(
+            [sys.executable,"-m","pip","install","pygame"]
+        )
+    except
+        pass
     try:
         import pygame
     except:
