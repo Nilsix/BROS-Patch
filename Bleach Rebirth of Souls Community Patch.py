@@ -553,7 +553,7 @@ try:
         eightKonpakus.config(text=f'8 Konpakus : (Currently {"ON" if gameMode == "EightKonpakus" else "OFF"})')
     
     def unlockDangaiIchigo():
-        result = messagebox.askyesno("Unlock Dangai Ichigo", "Unlocking Dangai Ichigo this way will reset your ranked progress, are you sure you want to continue?")
+        result = messagebox.askyesno("Unlock Dangai Ichigo", "Unlocking Dangai Ichigo this way will reset your settings and ranked progress , are you sure you want to continue?")
         theDangaiFiles = os.path.join(BASE_DIR,"ressources","savedata.bin")
         if result:
             appdataPath = os.getenv("APPDATA")
