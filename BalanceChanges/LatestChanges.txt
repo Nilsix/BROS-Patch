@@ -405,15 +405,9 @@ GIN (changes made by Nilsix and HBC) :
 	light1 : 
 		RotateSpeed : 0->2
 		Gin can now punish flashsteps and sidesteps with light1
-	heavy 1 : 
-		RotateSpeed : 0->2
-		Slightly improved heavy tracking
 	SP2:
 		blockstun : 20->0
 		whiif recovery : 121 -> 140
-
-	
-
 	Flashstep :
 		frames : -1-> 9
 
