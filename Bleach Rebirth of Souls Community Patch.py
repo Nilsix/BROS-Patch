@@ -19,7 +19,8 @@ import sys
 import webbrowser
 from pathlib import Path
 
-input("Patch is not supposed to be out now,please wait")
+#input("Patch is not supposed to be out now,please wait")
+#exit()
 
 try: 
     import pygame
@@ -552,16 +553,18 @@ try:
     
     def unlockDangaiIchigo():
         result = messagebox.askyesno("Unlock Dangai Ichigo", "Unlocking Dangai Ichigo this way will reset your ranked progress, are you sure you want to continue?")
-        theDangaiFiles = os.path.join(BASE_DIR,"ressources","saveData.bin")
+        theDangaiFiles = os.path.join(BASE_DIR,"ressources","savedata.bin")
         if result:
             appdataPath = os.getenv("APPDATA")
             try:
-                saveDataPath = os.path.join(appdataPath,"BLEACH Rebirth of Souls","Savedata","76561198411782699","saveData.bin")
+                saveDataPath = os.path.join(appdataPath,"BLEACH Rebirth of Souls","Savedata")
+                for folder in os.listdir(saveDataPath):
+                    shutil.copy(theDangaiFiles, os.path.join(saveDataPath, folder))
             except Exception as e:
                 messagebox.showerror("Error", f"Error: {e}")
                 return
             # Copy the dangai files to the save data path
-            shutil.copy2(theDangaiFiles, saveDataPath)
+            #shutil.copy2(theDangaiFiles, saveDataPath)
             messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
     
     def refreshLauncher():
