@@ -29,18 +29,21 @@ BASE AND EVO :
 		Fixed an issue where yamamoto would hit sig from behind against an imperfect flashstep
 	
 	SP2 : 
-		pushback on hit 0.2->5
-		Yamamoto cannot combo after SP2 anymore
-	
-
+		hitstun (last hit) : 78 -> 66
+		can still combo after sp2, but only with light1
 	EVO : 
 		Tilt : 
 			slow_motion_rate 0.2 -> 1
 			Yamamoto got his old tilt speed back
-			hi03 and hi03_2 Burn Gauge generation (add_unique_value) reduced from 0.2 + 0.2 -> 0.15 + 0.15
 
 		SP1 (charged) :
 			damage value : 400 -> 200
+	
+		sig(1): 
+			damage : 1250 -> 750
+
+		sig(2): 
+			damage : 1500 -> 1000
 	
 	Known issue : 
 		his SP2 can whiff up close against someone grabbing at the same time, this will be fixed in the future 
