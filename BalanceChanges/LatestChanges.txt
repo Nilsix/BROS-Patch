@@ -660,6 +660,11 @@ Base :
 
 	raw[876] <<max_dist>>	
 	3.5 -> 4.7			(Adjusts the movement distance of Byakuya for the in-combo Hakugeki to correctly connect)
+=================================================================================	
+(combo route) <<Byak Evo Sig>>
+
+	removed byakuya's ability to continue into sig 2 and sig 3 after sig 1 if he whiffs an attack
+
 
 	
 
