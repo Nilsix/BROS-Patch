@@ -30,12 +30,13 @@ try:
         
         #if there is an update, will relaunch the launcher so the code actually gets reset too
         else:
-            input("A new update came out : please press enter to close this window then restart your launcher to apply it")
-            try :
-                winsound.PlaySound(None,winsound.SND_PURGE)
-            except:
-                pass
-            exit()
+            pass
+            #subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
+            #try :
+                #winsound.PlaySound(None,winsound.SND_PURGE)
+            #except:
+                #pass
+            #exit()
 
     except Exception as e:
         try:
