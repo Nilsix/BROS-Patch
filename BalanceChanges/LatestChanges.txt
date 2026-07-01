@@ -272,7 +272,7 @@ Yoruichi (changes made by Nilsix and Bergen):
             hitstun 50->42
             "Altough it's also a damage nerf because she cannot do sp1 (flashmaster) -> heavy (she can still light), the main goal of that hitstun nerf is to remove the sp1 (flashmaster) -> tilt unblockable without needing to reduce the speed of her tilt
 			
-			knockback on hit : 0.4 -> 0
+			knockback on hit : 0.4 -> 0.2
 			"Fixed an issue where sp1(flashmaster) -> light1 would whiff against some characters 
 		Flashstep followup (last hit) : 
             hitstun : 36->31
