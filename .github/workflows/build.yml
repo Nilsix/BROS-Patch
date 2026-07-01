@@ -1,0 +1,59 @@
+name: Build launcher
+
+# Builds the self-contained Windows + Linux executables.
+# - push a tag like v1.0.0  -> binaries are built AND attached to a GitHub Release
+# - run manually (Actions tab "Run workflow") -> binaries uploaded as artifacts
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write          # needed to create/update the Release
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            asset: BleachCommunityPatch-windows.exe
+            built: dist/BleachCommunityPatch.exe
+          - os: ubuntu-latest
+            asset: BleachCommunityPatch-linux
+            built: dist/BleachCommunityPatch
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Tkinter (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y python3-tk
+
+      - name: Install build dependencies
+        run: python -m pip install --upgrade pip pyinstaller pygame
+
+      - name: Build executable
+        run: pyinstaller --noconfirm bleach_launcher.spec
+
+      - name: Rename for release
+        shell: bash
+        run: cp "${{ matrix.built }}" "${{ matrix.asset }}"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: ${{ matrix.asset }}
+
+      - name: Attach to Release (tagged builds only)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.asset }}

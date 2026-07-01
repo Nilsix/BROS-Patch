@@ -19,57 +19,38 @@ import sys
 import webbrowser
 from pathlib import Path
 
-try: 
+# pygame is bundled inside the launcher binary; if it is somehow missing we
+# just run without music rather than trying to pip-install it.
+try:
     import pygame
-except :
-    try:
-        subprocess.run(
-            [sys.executable,"-m","pip","install","pygame"]
-        )
-    except:
-        pass
-    try:
-        import pygame
-    except:
-        pass
+except Exception:
+    pygame = None
 
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+    # The bundled launcher (bootstrap) already syncs this folder to the latest
+    # version before we start, so there is no git/pull step here any more.
+    # We just expose a helper so the in-app buttons can fetch updates on demand.
+    sys.path.insert(0, BASE_DIR)
     try:
-        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
-        output = result.stdout.strip()
-        if "Already up to date." in output:
-            pass
-        
-        #if there is an update, will relaunch the launcher so the code actually gets reset too
-        else:
-            subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-            try :
-                winsound.PlaySound(None,winsound.SND_PURGE)
-            except:
-                pass
-            exit()
+        import updater
+    except Exception:
+        updater = None
 
-    except Exception as e:
+    def pull_latest():
+        """Fetch the newest patch files over HTTPS (no git needed).
+        Returns True on success, False otherwise."""
+        if updater is None:
+            return False
         try:
-            ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
-        except:
-            pass
-        print("Git update failed :", e)
-        print("Please relaunch the installer script, while installing make sure to wait for the installer window to close itself, DO NOT close it yourself please")
-        a = input("Press Enter to exit ")
-        exit()
-    
-    def refresh_launcher():
-        subprocess.run(os.path.join(BASE_DIR,"Bleach Rebirth of Souls Community Patch.py"),shell=True)
-        try :
-            winsound.PlaySound(None,winsound.SND_PURGE)
-        except:
-            pass
-        exit()
-    
+            updater.update(BASE_DIR)
+            return True
+        except Exception as e:
+            print("Update failed:", e)
+            return False
+
     def open_file(path):
         if platform.system() == "Windows":
             os.startfile(path)
@@ -291,7 +272,7 @@ try:
                 pass
 
     def launch(gameVersion):
-        subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+        pull_latest()
         window.destroy()
         try: 
             pygame.mixer.music.stop()
@@ -572,11 +553,10 @@ try:
             messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
     
     def refreshLauncher():
-        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
-        if result.returncode == 0:
-            messagebox.showinfo("Refresh", "Launcher refreshed successfully!")
+        if pull_latest():
+            messagebox.showinfo("Refresh", "Launcher refreshed successfully! Restart the launcher to apply any code changes.")
         else:
-            messagebox.showerror("Refresh", f"Error refreshing launcher: {result.stderr}")
+            messagebox.showerror("Refresh", "Could not refresh. Please check your internet connection and try again.")
     
    
    
