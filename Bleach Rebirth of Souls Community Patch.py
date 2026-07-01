@@ -82,8 +82,7 @@ try:
     
     window = Tk()
     try:
-        pass
-        #ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     except:
         pass
     window.title("Bleach Community Patch")
