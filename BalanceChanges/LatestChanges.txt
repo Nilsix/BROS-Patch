@@ -189,6 +189,7 @@ LVL3 :
 		hitstun : 40 -> 35
 		Dangai cannot combo into light 1 anymore
 	SIG :
+		hitstun 20 -> 25
 		dash cancel : removed
 		Dangai Ihigo cannot sig->dash cancel anymore
 
