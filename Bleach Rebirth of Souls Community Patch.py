@@ -22,6 +22,24 @@ from pathlib import Path
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+    # ── Version info ─────────────────────────────────────────────────────────
+    # PATCH_VERSION: bump this by hand whenever you want the displayed version
+    # number to change (ex: "1.0" -> "1.1"). This is NOT automatic on purpose.
+    PATCH_VERSION = "1.0"
+
+    def get_snapshot():
+        """Returns the short git commit hash currently checked out.
+        This updates automatically every time the launcher does a 'git pull',
+        so it always reflects whatever was last pushed to GitHub."""
+        try:
+            result = subprocess.run(
+                ["git", "-C", BASE_DIR, "rev-parse", "--short", "HEAD"],
+                check=True, capture_output=True, text=True
+            )
+            return result.stdout.strip()
+        except Exception:
+            return "unknown"
+
     try:
         result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
@@ -79,7 +97,9 @@ try:
 
     with open(config_path, "r") as f:
         config = json.load(f)
-    
+
+    VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
+
     window = Tk()
     try:
         ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
@@ -409,6 +429,7 @@ try:
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    labelVersion = Label(mainPage,text=VERSION_STRING,font=("Courrier",10),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
@@ -583,6 +604,7 @@ try:
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
+    labelVersion.pack()
     labelWarning.pack(fill=X)
     labelGamePath.pack(fill=X)
     brosVersionList.pack(pady=paddingYvalue,fill=X)
