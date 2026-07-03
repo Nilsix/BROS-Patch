@@ -99,7 +99,8 @@ try:
         config = json.load(f)
 
     VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
-
+    if VERSION_STRING != config["VERSION"] : 
+        
     window = Tk()
     try:
         pass
