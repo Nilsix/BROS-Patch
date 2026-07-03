@@ -63,7 +63,7 @@ try:
                 #winsound.PlaySound(None,winsound.SND_PURGE)
             #except:
                 #pass
-            input("A new update just dropped, press enter to close this window then reopen your launcher.")
+            input("A new update just dropped, press enter to close this window then reopen your launcher")
             exit()
 
     except Exception as e:
@@ -97,7 +97,7 @@ try:
     admin_config_path = None
 
     try:
-        if os.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
+        if os.path.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
             admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
     except:
         admin_config_path = None
