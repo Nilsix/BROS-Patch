@@ -306,7 +306,7 @@ GRIMMJOW (changes made by Nilsix) :
 
 
 
-ISHIDA URYU (Rework by Bergen)
+ISHIDA URYU (Rework by Bergen
 
 ==================== GENERAL ====================
 SP2:
