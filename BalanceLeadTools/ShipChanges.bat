@@ -7,3 +7,6 @@ git commit -m "%commitText%"
 git push
 
 pause
+
+cd ..
+py Bleach Rebirth of Souls Community Patch.py
