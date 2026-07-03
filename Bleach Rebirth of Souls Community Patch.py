@@ -93,7 +93,8 @@ try:
     admin_config_path = None
 
     try:
-        admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
+        if os.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
     except:
         admin_config_path = None
     
@@ -122,19 +123,22 @@ try:
 
     VERSION_STRING = f"{get_snapshot()}"
     if admin_config != None:
-        if VERSION_STRING != admin_config["VERSION"] : 
-            admin_config["VERSION"] = VERSION_STRING
-            with open(admin_config_path,"w") as f:
-                json.dump(admin_config,f)
+        try:
+            if VERSION_STRING != admin_config["VERSION"] : 
+                admin_config["VERSION"] = VERSION_STRING
+                with open(admin_config_path,"w") as f:
+                    json.dump(admin_config,f)
 
-            hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
-            
-            if admin_config["ADMIN_ID"] == hash:
-                webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
-                try : 
-                    requests.post(webhook_url, json={"content": "Launcher latest version : " + VERSION_STRING})
-                except:
-                    pass
+                hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
+                
+                if admin_config["ADMIN_ID"] == hash:
+                    webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+                    try : 
+                        requests.post(webhook_url, json={"content": "Launcher latest version : " + VERSION_STRING})
+                    except:
+                        pass
+        except:
+            pass
        
 
     window = Tk()
