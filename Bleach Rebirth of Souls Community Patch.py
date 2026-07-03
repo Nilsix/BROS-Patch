@@ -97,15 +97,19 @@ try:
 
     with open(config_path, "r") as f:
         config = json.load(f)
+    
+    def saveJson():
+        with open(config_path,"w") as f:
+            json.dump(config,f)
 
     VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
     if VERSION_STRING != config["VERSION"] : 
-        pass
+        config["VERSION"] = VERSION_STRING
+        saveJson()
 
     window = Tk()
     try:
-        pass
-        #ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
     except:
         pass
     window.title("Bleach Community Patch")
@@ -204,9 +208,7 @@ try:
         with open(config_path, "w") as f:
             json.dump(config, f)
 
-    def saveJson():
-        with open(config_path,"w") as f:
-            json.dump(config,f)
+   
 
     def injectFolder(files,folderName):
             action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
@@ -432,7 +434,7 @@ try:
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
-    labelVersion = Label(mainPage,text=VERSION_STRING,font=("Courrier",10),bg=bgcolor,fg=labelcolor)
+    labelVersion = Label(mainPage,text=config["VERSION"],font=("Courrier",10),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
