@@ -128,7 +128,7 @@ try:
                 json.dump(admin_config,f)
 
             hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
-            print(f'hash : {hash}')
+            
             if admin_config["ADMIN_ID"] == hash:
                 webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
                 try : 
@@ -243,12 +243,9 @@ try:
     def injectFolder(files,folderName):
             action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
             action_dst = os.path.join(game_path,f'{folderName}')
-            print(f"injectFolder: src={action_src}")
-            print(f"injectFolder: dst={action_dst}")
-            print(f"injectFolder: src exists={os.path.exists(action_src)}")
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
-            print(f"injectFolder: copied successfully")
+            
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
@@ -348,15 +345,11 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
-            print(f"DANS GAMEMODE: {gameMode}")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
-            print(f"GameMode src: {srcPath}")
-            print(f"GameMode dst: {dstPath}")
-            print(f"GameMode src exists: {os.path.exists(srcPath)}")
+            
             
             shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-            print("GameMode injection completed")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
             
@@ -370,7 +363,7 @@ try:
             shutil.copy(
                 os.path.join(srcPath,"CharaStatus.fsv"),
                 os.path.join(dstPath,"CharaStatus.fsv"))
-            print("copied team files")
+            
 
         forlater = """
         else:
@@ -469,7 +462,6 @@ try:
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
     for folder in os.listdir(gameVersionsPath):
-        print(folder)
         gameVersionsList.append(folder)
     brosVersionList = ttk.Combobox(
         mainPage,
