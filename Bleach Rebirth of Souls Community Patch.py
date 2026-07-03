@@ -23,7 +23,10 @@ try:
     import requests 
 except:
     pass
-import hashlib
+try:
+    import hashlib
+except:
+    pass
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
