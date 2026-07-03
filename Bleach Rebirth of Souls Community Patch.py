@@ -124,7 +124,7 @@ try:
             json.dump(config,f)
 
     VERSION_STRING = f"{get_snapshot()}"
-    if admin_config != None:
+    if admin_config_path != None:
         try:
             if VERSION_STRING != admin_config["VERSION"] : 
                 admin_config["VERSION"] = VERSION_STRING
