@@ -10,3 +10,5 @@ pause
 
 cd ..
 py Bleach Rebirth of Souls Community Patch.py
+
+pause
