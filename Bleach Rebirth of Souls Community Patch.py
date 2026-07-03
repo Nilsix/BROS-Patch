@@ -113,7 +113,10 @@ try:
         saveJson()
         if config["ID"] == "Nilsix":
             webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
-
+            try : 
+                requests.post(webhook_url, json={"content": "Current latest version : " + VERSION_STRING})
+            except:
+                pass
 
     window = Tk()
     try:
