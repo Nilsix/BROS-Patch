@@ -89,6 +89,13 @@ try:
    
     template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
     config_path = os.path.join(BASE_DIR,"Json","config.json")
+    admin_config_path = None
+
+    try:
+        admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
+    except:
+        admin_config_path = None
+    
     if not os.path.exists(config_path):
         shutil.copy(template_path,config_path)
     else:
@@ -103,20 +110,26 @@ try:
     with open(config_path, "r") as f:
         config = json.load(f)
     
+    if admin_config_path is not None:
+        with open(admin_config_path, "r") as f:
+            admin_config = json.load(f)
+    
+    
     def saveJson():
         with open(config_path,"w") as f:
             json.dump(config,f)
 
     VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
-    if VERSION_STRING != config["VERSION"] : 
-        config["VERSION"] = VERSION_STRING
-        saveJson()
-        if config["ID"] == "Nilsix":
-            webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
-            try : 
-                requests.post(webhook_url, json={"content": "Current latest version : " + VERSION_STRING})
-            except:
-                pass
+    if admin_config != None:
+        if VERSION_STRING != admin_config["VERSION"] : 
+            admin_config["VERSION"] = VERSION_STRING
+            saveJson()
+            if admin_config["ADMIN_ID"] == "Nilsix":
+                webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+                try : 
+                    requests.post(webhook_url, json={"content": "Current latest version : " + VERSION_STRING})
+                except:
+                    pass
 
     window = Tk()
     try:
