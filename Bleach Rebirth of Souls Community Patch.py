@@ -111,6 +111,8 @@ try:
 
     with open(config_path, "r") as f:
         config = json.load(f)
+
+    admin_config = None
     
     if admin_config_path is not None:
         with open(admin_config_path, "r") as f:
