@@ -63,7 +63,7 @@ try:
                 #winsound.PlaySound(None,winsound.SND_PURGE)
             #except:
                 #pass
-            input("A new update just dropped, please restart your launcher to apply it")
+            input("A new update just dropped, press enter to close this window then reopen your launcher")
             exit()
 
     except Exception as e:
