@@ -19,6 +19,11 @@ import sys
 import webbrowser
 from pathlib import Path
 
+try:
+    import requests 
+except:
+    pass
+
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -106,6 +111,9 @@ try:
     if VERSION_STRING != config["VERSION"] : 
         config["VERSION"] = VERSION_STRING
         saveJson()
+        if config["ID"] == "Nilsix":
+            webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+
 
     window = Tk()
     try:
