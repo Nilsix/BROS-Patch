@@ -23,6 +23,7 @@ try:
     import requests 
 except:
     pass
+import hashlib
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +31,7 @@ try:
     # ── Version info ─────────────────────────────────────────────────────────
     # PATCH_VERSION: bump this by hand whenever you want the displayed version
     # number to change (ex: "1.0" -> "1.1"). This is NOT automatic on purpose.
-    PATCH_VERSION = "1.0"
+    #PATCH_VERSION = "1.0"
 
     def get_snapshot():
         """Returns the short git commit hash currently checked out.
@@ -119,17 +120,22 @@ try:
         with open(config_path,"w") as f:
             json.dump(config,f)
 
-    VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
+    VERSION_STRING = f"{get_snapshot()}"
     if admin_config != None:
         if VERSION_STRING != admin_config["VERSION"] : 
             admin_config["VERSION"] = VERSION_STRING
-            saveJson()
-            if admin_config["ADMIN_ID"] == "Nilsix":
+            with open(admin_config_path,"w") as f:
+                json.dump(admin_config,f)
+
+            hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
+            print(f'hash : {hash}')
+            if admin_config["ADMIN_ID"] == hash:
                 webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
                 try : 
-                    requests.post(webhook_url, json={"content": "Current latest version : " + VERSION_STRING})
+                    requests.post(webhook_url, json={"content": "Launcher latest version : " + VERSION_STRING})
                 except:
                     pass
+       
 
     window = Tk()
     try:
@@ -458,7 +464,7 @@ try:
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
-    labelVersion = Label(mainPage,text=config["VERSION"],font=("Courrier",10),bg=bgcolor,fg=labelcolor)
+    labelVersion = Label(mainPage,text=f'Launcher version : {VERSION_STRING}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
