@@ -9,6 +9,6 @@ git push
 pause
 
 cd ..
-py Bleach Rebirth of Souls Community Patch.py
+py "Bleach Rebirth of Souls Community Patch.py"
 
 pause
