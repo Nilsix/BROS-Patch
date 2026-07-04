@@ -7,6 +7,3 @@ git commit -m "%commitText%"
 git push
 
 pause
-py "Bleach Rebirth of Souls Community Patch.py"
-
-pause

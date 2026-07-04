@@ -269,11 +269,12 @@ Yoruichi (changes made by Nilsix and Bergen):
         Forward sig : 
             blockstun 14->9
         "anken->forward dash is unsafe now"
-        
-		Heavy 1 : 
-			scaling : 0.8 -> 0.6 : 
-			"the next move after heavy 1 will do 60% of it's damage instead of 80%"
-
+        SP1 (flashmaster):
+            hitstun 50->42
+            "Altough it's also a damage nerf because she cannot do sp1 (flashmaster) -> heavy (she can still light), the main goal of that hitstun nerf is to remove the sp1 (flashmaster) -> tilt unblockable without needing to reduce the speed of her tilt
+			
+			knockback on hit : 0.4 -> 0.2
+			"Fixed an issue where sp1(flashmaster) -> light1 would whiff against some characters 
 		Flashstep followup (last hit) : 
             hitstun : 36->31
         "Flashstep followup -> dash light is still an oki, but now she cannot do flashstep followup -> yellow"
