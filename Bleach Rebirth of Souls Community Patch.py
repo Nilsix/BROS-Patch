@@ -19,13 +19,22 @@ import sys
 import webbrowser
 from pathlib import Path
 
+try:
+    import requests 
+except:
+    pass
+try:
+    import hashlib
+except:
+    pass
+
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
     # ── Version info ─────────────────────────────────────────────────────────
     # PATCH_VERSION: bump this by hand whenever you want the displayed version
     # number to change (ex: "1.0" -> "1.1"). This is NOT automatic on purpose.
-    PATCH_VERSION = "1.0"
+    #PATCH_VERSION = "1.0"
 
     def get_snapshot():
         """Returns the short git commit hash currently checked out.
@@ -54,7 +63,8 @@ try:
                 #winsound.PlaySound(None,winsound.SND_PURGE)
             #except:
                 #pass
-            #exit()
+            input("A new update just dropped, press enter to close this window then reopen your launcher")
+            exit()
 
     except Exception as e:
         try:
@@ -84,6 +94,14 @@ try:
    
     template_path = os.path.join(BASE_DIR,"Json","configTemplate.json")
     config_path = os.path.join(BASE_DIR,"Json","config.json")
+    admin_config_path = None
+
+    try:
+        if os.path.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
+    except:
+        admin_config_path = None
+    
     if not os.path.exists(config_path):
         shutil.copy(template_path,config_path)
     else:
@@ -98,7 +116,36 @@ try:
     with open(config_path, "r") as f:
         config = json.load(f)
 
-    VERSION_STRING = f"Version {PATCH_VERSION} (snapshot {get_snapshot()})"
+    admin_config = None
+    
+    if admin_config_path is not None:
+        with open(admin_config_path, "r") as f:
+            admin_config = json.load(f)
+    
+    
+    def saveJson():
+        with open(config_path,"w") as f:
+            json.dump(config,f)
+
+    VERSION_STRING = f"{get_snapshot()}"
+    if admin_config_path != None:
+        try:
+            if VERSION_STRING != admin_config["VERSION"] : 
+                admin_config["VERSION"] = VERSION_STRING
+                with open(admin_config_path,"w") as f:
+                    json.dump(admin_config,f)
+
+                hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
+                
+                if admin_config["ADMIN_ID"] == hash:
+                    webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+                    try : 
+                        requests.post(webhook_url, json={"content": "Launcher latest version : " + VERSION_STRING})
+                    except:
+                        pass
+        except:
+            pass
+       
 
     window = Tk()
     try:
@@ -106,7 +153,7 @@ try:
     except:
         pass
     window.title("Bleach Community Patch")
-    window.geometry("1080x860")
+    window.geometry("1080x900")
     window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
     #minimum size of the window
     window.minsize(480,360)
@@ -201,19 +248,14 @@ try:
         with open(config_path, "w") as f:
             json.dump(config, f)
 
-    def saveJson():
-        with open(config_path,"w") as f:
-            json.dump(config,f)
+   
 
     def injectFolder(files,folderName):
             action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
             action_dst = os.path.join(game_path,f'{folderName}')
-            print(f"injectFolder: src={action_src}")
-            print(f"injectFolder: dst={action_dst}")
-            print(f"injectFolder: src exists={os.path.exists(action_src)}")
             shutil.rmtree(action_dst)
             shutil.copytree(action_src, action_dst)
-            print(f"injectFolder: copied successfully")
+            
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
         shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
@@ -313,15 +355,11 @@ try:
 
         #gamemode injection
         if gameMode != "DEFAULT":
-            print(f"DANS GAMEMODE: {gameMode}")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
-            print(f"GameMode src: {srcPath}")
-            print(f"GameMode dst: {dstPath}")
-            print(f"GameMode src exists: {os.path.exists(srcPath)}")
+            
             
             shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-            print("GameMode injection completed")
             srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
             dstPath = os.path.join(game_path,"Script")
             
@@ -335,7 +373,7 @@ try:
             shutil.copy(
                 os.path.join(srcPath,"CharaStatus.fsv"),
                 os.path.join(dstPath,"CharaStatus.fsv"))
-            print("copied team files")
+            
 
         forlater = """
         else:
@@ -429,12 +467,11 @@ try:
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
-    labelVersion = Label(mainPage,text=VERSION_STRING,font=("Courrier",10),bg=bgcolor,fg=labelcolor)
+    labelVersion = Label(mainPage,text=f'Launcher version : {VERSION_STRING}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     brosVersion = StringVar()
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
     for folder in os.listdir(gameVersionsPath):
-        print(folder)
         gameVersionsList.append(folder)
     brosVersionList = ttk.Combobox(
         mainPage,
