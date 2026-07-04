@@ -327,6 +327,7 @@ try:
         window.destroy()
         #folder injection
         injectFolder(gameVersion,"Script")
+        injectFolder(gameVersion,"Motion")
 
         #ost choice
         #ostFolder = ""
