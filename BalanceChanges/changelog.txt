@@ -1,0 +1,5 @@
+TYBW ICHIGO Balance change
+    Base and Evo :
+        Light2 :
+            blockstun : 28->27
+    "light2 on block -> light1 no longer frametraps tier 1 lights"
