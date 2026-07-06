@@ -251,17 +251,23 @@ try:
    
 
     def injectFolder(files,folderName):
-            action_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
-            action_dst = os.path.join(game_path,f'{folderName}')
-            shutil.rmtree(action_dst)
-            shutil.copytree(action_src, action_dst)
+            folder_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
+            folder_dst = os.path.join(game_path,f'{folderName}')
+            try:
+                subprocess.run(["robocopy",folder_src,folder_dst,"/MIR"],capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
+            except Exception as e:
+                shutil.rmtree(folder_dst)
+                shutil.copytree(folder_src, folder_dst)
             
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
-                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
-                        os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+        try:
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
+                            os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",f'{folderName}',f'{lowspecmodornot}'),
+                            os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+        except Exception as e:
+            print(f"Error injecting performance files: {e}")
     
     def repair():
         messagebox.showinfo("Repair", "Please select the BLEACH_Rebirth_of_Souls.exe file from a clean backup folder of the game (your backup folder, not your main Bros folder)")
