@@ -1,11 +1,14 @@
+Gin Hotfix : 
+    Evo : 
+        Heavy 2 (last hit (occurence 11)) :
+            Hitstun : 40 -> 38
+        "Removes heavy2 -> sig cancel -> dash light infinite
+        However, he can still heavy2 -> sig cancel -> dash light while in white reverse, as this is a loop and not an infinite, the combo is tigher to do tho because of the decreased hitstun"
+        
+
 TYBW ICHIGO Balance change
     Base and Evo :
         Light2 :
             blockstun : 28->27
     "light2 on block -> light1 no longer frametraps tier 1 lights online"
 
-Gin Hotfix : 
-    Evo : 
-        Heavy 2 (last hit (occurence 11)) :
-            Hitstun : 40 ->
-        "Removes heavy2 -> sig cancel -> dash light infinite"
