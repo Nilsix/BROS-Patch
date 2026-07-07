@@ -30,7 +30,7 @@ except:
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
+    
     # ── Version info ─────────────────────────────────────────────────────────
     # PATCH_VERSION: bump this by hand whenever you want the displayed version
     # number to change (ex: "1.0" -> "1.1"). This is NOT automatic on purpose.
