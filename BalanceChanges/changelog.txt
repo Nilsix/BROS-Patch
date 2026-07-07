@@ -1,3 +1,7 @@
+Shuhei Balance change: 
+    Base and Evo:
+        Sig:
+            Blockstun : 47 -> 35
 Gin Hotfix : 
     Evo : 
         Heavy 2 (last hit (occurence 11)) :

@@ -5,11 +5,7 @@ import shutil
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEAM_BATTLE_DIR = os.path.join(BASE_DIR,"..","GameModes","TeamBattle")
-gameVersionsPath = os.path.join(BASE_DIR,"..","GameVersions")
-
-gameVersionsList = []
-for folder in os.listdir(gameVersionsPath):
-    gameVersionsList.append(folder)
+charastatusPath = os.path.join(BASE_DIR,"..","GameVersions","Bleach Rebirth of Souls Community Patch","Script","CharaStatus.fsv")
 
 
 def checkTokenOpen():
@@ -50,13 +46,10 @@ Open server (1)
 Choose an option : """))
 
     if options == 1:
-        for i,version in enumerate(gameVersionsList):
-            print(f"{i} = {version}")
-        chooseGameVersion = int(input("Choose a game version : "))
-        
         
         open(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt"), "w").close()
-        shutil.copy(os.path.join(gameVersionsPath,gameVersionsList[chooseGameVersion],"Script","CharaStatus.fsv"),os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
+        shutil.copy(charastatusPath,os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
+        shutil.copy(charastatusPath,os.path.join(TEAM_BATTLE_DIR,"originalCharaStatus","CharaStatus.fsv"))
         subprocess.run("convertToCsv.bat",shell=True,cwd=TEAM_BATTLE_DIR)
     exit()
 
