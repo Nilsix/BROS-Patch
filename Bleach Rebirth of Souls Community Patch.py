@@ -53,7 +53,6 @@ try:
             subprocess.run(["git","-C",BASE_DIR,"fetch"], check=True, capture_output=True, text=True)
             subprocess.run(["git","-C",BASE_DIR,"reset","--hard","origin/main"], check=True, capture_output=True, text=True)
             subprocess.run(["git","-C",BASE_DIR,"clean","-fd","-e","Json"], check=True, capture_output=True, text=True)
-            print("not in dev mode")
         return subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
     try: 
         result = pulling_from_git()
