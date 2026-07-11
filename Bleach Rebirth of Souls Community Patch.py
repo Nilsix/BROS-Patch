@@ -564,7 +564,7 @@ try:
 
     
 
-    titleText = "Bleach Rebirth of Souls community patch launcher (Dev Build)"
+    titleText = "Bleach Rebirth of Souls community patch launcher"
     subTitleText = "made by Nilsix :3"
     #labels
     labelTitle = Label(mainPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
