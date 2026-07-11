@@ -102,8 +102,8 @@ try:
     admin_config_path = None
 
     try:
-        if os.path.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
-            admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
+        if os.path.exists(os.path.join(BASE_DIR,"adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"adminConfig.json")
     except:
         admin_config_path = None
     
@@ -255,14 +255,18 @@ try:
 
    
 
-    def injectFolder(files,folderName):
+    def injectFolder(files,folderName,fullFolder=True):
             folder_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{folderName}')
             folder_dst = os.path.join(game_path,f'{folderName}')
-            try:
-                subprocess.run(["robocopy",folder_src,folder_dst,"/MIR"],capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
-            except Exception as e:
-                shutil.rmtree(folder_dst)
-                shutil.copytree(folder_src, folder_dst)
+            
+            if fullFolder:
+                try:
+                    subprocess.run(["robocopy",folder_src,folder_dst,"/MIR"],capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
+                except Exception as e:
+                    shutil.rmtree(folder_dst)
+                    shutil.copytree(folder_src, folder_dst)
+            else:
+                shutil.copytree(folder_src, folder_dst,dirs_exist_ok=True)
             
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
@@ -337,6 +341,7 @@ try:
         pulling_from_git()
         window.destroy()
         #folder injection
+
         injectFolder(gameVersion,"Script")
 
         #ost choice
