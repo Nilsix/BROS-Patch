@@ -13,3 +13,5 @@ BrosCommunityEditionFiles/bgm.bnk filter=lfs diff=lfs merge=lfs -text
 *.json   text eol=lf
 *.txt    text eol=lf
 *.bat    text eol=crlf
+
+*.dll binary

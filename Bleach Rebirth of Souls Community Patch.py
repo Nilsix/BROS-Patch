@@ -30,7 +30,9 @@ except:
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
+
+    reworks = ["OFF"]
+
     # ── Version info ─────────────────────────────────────────────────────────
     # PATCH_VERSION: bump this by hand whenever you want the displayed version
     # number to change (ex: "1.0" -> "1.1"). This is NOT automatic on purpose.
@@ -48,14 +50,9 @@ try:
             return result.stdout.strip()
         except Exception:
             return "unknown"
-    def pulling_from_git():
-        if os.path.exists(os.path.join(BASE_DIR,"BalanceLeadTools","DevToken.txt")) == False:
-            subprocess.run(["git","-C",BASE_DIR,"fetch"], check=True, capture_output=True, text=True)
-            subprocess.run(["git","-C",BASE_DIR,"reset","--hard","origin/main"], check=True, capture_output=True, text=True)
-            subprocess.run(["git","-C",BASE_DIR,"clean","-fd","-e","Json"], check=True, capture_output=True, text=True)
-        return subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
-    try: 
-        result = pulling_from_git()
+
+    try:
+        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         output = result.stdout.strip()
         if "Already up to date." in output:
             pass
@@ -102,8 +99,8 @@ try:
     admin_config_path = None
 
     try:
-        if os.path.exists(os.path.join(BASE_DIR,"adminConfig.json")):
-            admin_config_path = os.path.join(BASE_DIR,"adminConfig.json")
+        if os.path.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
     except:
         admin_config_path = None
     
@@ -267,6 +264,16 @@ try:
                     shutil.copytree(folder_src, folder_dst)
             else:
                 shutil.copytree(folder_src, folder_dst,dirs_exist_ok=True)
+    
+    def injectEffects(files,effectFolder):
+        effect_src = os.path.join(BASE_DIR,"GameVersions",f"{files}",f'{effectFolder}',"Effect","spfx","com")
+        effect_dst = os.path.join(game_path,f'{effectFolder}',"Effect","spfx","com")
+        try:
+            subprocess.run(["robocopy",effect_src,effect_dst,"/MIR"],capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
+        except Exception as e:
+            shutil.rmtree(effect_dst)
+            shutil.copytree(effect_src, effect_dst)
+
             
 
     def injectPerformanceFiles(folderName,lowspecmodornot):
@@ -337,80 +344,165 @@ try:
         except:
             pass
 
+    def setup_matchmaking(target_path, gameVersion):
+        """Install the in-game matchmaking loader (dinput8.dll) and stamp a
+        match code so only players on the SAME patch version + build match.
+        Vanilla players have no loader and are excluded automatically."""
+        import zlib
+        src = os.path.join(BASE_DIR, "Files", "Matchmaking", "dinput8.dll")
+        try:
+            shutil.copy(src, os.path.join(target_path, "dinput8.dll"))
+        except Exception as e:
+            print(f"[matchmaking] could not install dinput8.dll: {e}")
+            return
+        # Match pool is derived AUTOMATICALLY from the current GitHub build
+        # (the commit SHA from get_snapshot()) plus the selected game version.
+        # crc32 turns the SHA (hex letters + digits) into a number. Every push
+        # yields a new SHA -> a fresh pool, so players on a different build /
+        # game version / vanilla won't match you. No manual bumping needed.
+        build = get_snapshot() or "unknown"
+        seed = f"{build}|{gameVersion}"
+        code = 100000 + (zlib.crc32(seed.encode("utf-8")) % 800000)
+        try:
+            with open(os.path.join(target_path, "patch_ranked.txt"), "w") as f:
+                f.write(str(code) + "\n")
+        except Exception as e:
+            print(f"[matchmaking] could not write match code: {e}")
+
+    def remove_matchmaking(target_path):
+        """Revert online segregation: remove the loader so vanilla launches
+        cleanly under EasyAntiCheat."""
+        p = os.path.join(target_path, "dinput8.dll")
+        try:
+            if os.path.exists(p):
+                os.remove(p)
+        except Exception as e:
+            print(f"[matchmaking] could not remove dinput8.dll: {e}")
+
+    def launch_patched(target_path):
+        """Launch the game exe directly. Required because EasyAntiCheat blocks
+        the injected dinput8.dll on the normal Steam launch path (crash).
+        Steam must be running for online play."""
+        exe = os.path.join(target_path, "BLEACH_Rebirth_of_Souls.exe")
+        try:
+            subprocess.Popen([exe], cwd=target_path)
+        except Exception as e:
+            print(f"Error launching patched game: {e}")
+
     def launch(gameVersion):
-        pulling_from_git()
-        window.destroy()
-        #folder injection
-
-        injectFolder(gameVersion,"Script")
-
-        #ost choice
-        #ostFolder = ""
-            #if config["OST_MOD"] == "ON":
-                #ostFolder = "Mod"
-            #else : 
-                #ostFolder = "Default"
-            #ostPath = os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}","bgm.bnk")
-            #if os.path.exists(ostPath):
-                #shutil.copy(
-                    #ostPath,
-                    #os.path.join(game_path, "Sound")
-                #)
-
-        
-        #Performance Mode injection
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe',f'{config["reverse_globe"]}',"high"),
-                    os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
-        
-        shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe',f'{config["reverse_globe"]}',"middle"),
-                    os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
-            
-        for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
-            injectPerformanceFiles(folder,config[folder])
-            
-
-        #gamemode injection
-        if gameMode != "DEFAULT":
-            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-            dstPath = os.path.join(game_path,"Script")
-            
-            
-            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-            srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
-            dstPath = os.path.join(game_path,"Script")
-            
-            shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
-
-            
-        #team battle injection
-        if config["TEAM_BATTLE"] == "ON":
-            srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
-            dstPath = os.path.join(game_path,"Script")   
-            shutil.copy(
-                os.path.join(srcPath,"CharaStatus.fsv"),
-                os.path.join(dstPath,"CharaStatus.fsv"))
-            
-
-        forlater = """
-        else:
-            src = Path(os.path.join(BASE_DIR,"Files",choice))
-            dst = Path(game_path)
-
-            dst.mkdir(parents=True,exist_ok=True)
-
-            for item in src.rglob("*"):
-                if item.is_file:
-                    relative_path = item.relative_to(src)
-                    target_file = dst / relative_path
-
-                    target_file.parent.mkdir(parents=True,exist_ok=True)
-                    shutil.copy2(item,target_file)
-            """
+        subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
 
         try:
-            open_file("steam://rungameid/1689620")
-        except:
-            print("Error launching game")
+            #folder injection
+            injectFolder(gameVersion,"Script")
+            injectFolder(gameVersion,"Motion")
+            injectFolder(gameVersion,"00High",False)
+            injectFolder(gameVersion,"01MIDDLE",False)
+
+
+
+            #ost choice
+            #ostFolder = ""
+                #if config["OST_MOD"] == "ON":
+                    #ostFolder = "Mod"
+                #else : 
+                    #ostFolder = "Default"
+                #ostPath = os.path.join(BASE_DIR,"Files","OST",f"{ostFolder}","bgm.bnk")
+                #if os.path.exists(ostPath):
+                    #shutil.copy(
+                        #ostPath,
+                        #os.path.join(game_path, "Sound")
+                    #)
+
+        
+            #Performance Mode injection
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe',f'{config["reverse_globe"]}',"high"),
+                        os.path.join(game_path,"00HIGH","Effect","spfx","com"),dirs_exist_ok=True)
+        
+            shutil.copytree(os.path.join(BASE_DIR,"Files","Spec Mod",'reverse_globe',f'{config["reverse_globe"]}',"middle"),
+                        os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
+            
+            for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
+                injectPerformanceFiles(folder,config[folder])
+        
+            reworkPath = os.path.join(BASE_DIR,"Reworks")
+            for rework in reworks:
+                if rework != "OFF":
+                    scriptPath = os.path.join(reworkPath,rework,"Script")
+                    motionPath = os.path.join(reworkPath,rework,"Motion")
+                
+                    if os.path.exists(scriptPath):
+                        shutil.copytree(scriptPath,os.path.join(game_path,"Script"),dirs_exist_ok=True)
+                    if os.path.exists(motionPath):
+                        shutil.copytree(motionPath,os.path.join(game_path,"Motion"),dirs_exist_ok=True)
+                
+
+            #gamemode injection
+            if gameMode != "DEFAULT":
+                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
+                dstPath = os.path.join(game_path,"Script")
+            
+            
+                shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
+                srcPath = os.path.join(BASE_DIR,"GameModes",f"{gameMode}","Script")
+                dstPath = os.path.join(game_path,"Script")
+            
+                shutil.copytree(srcPath, dstPath, dirs_exist_ok=True)
+
+            
+            #team battle injection
+            if config["TEAM_BATTLE"] == "ON":
+                srcPath = os.path.join(BASE_DIR,"GameModes","TeamBattle")
+                dstPath = os.path.join(game_path,"Script")   
+                shutil.copy(
+                    os.path.join(srcPath,"CharaStatus.fsv"),
+                    os.path.join(dstPath,"CharaStatus.fsv"))
+            
+
+            forlater = """
+            else:
+                src = Path(os.path.join(BASE_DIR,"Files",choice))
+                dst = Path(game_path)
+
+                dst.mkdir(parents=True,exist_ok=True)
+
+                for item in src.rglob("*"):
+                    if item.is_file:
+                        relative_path = item.relative_to(src)
+                        target_file = dst / relative_path
+
+                        target_file.parent.mkdir(parents=True,exist_ok=True)
+                        shutil.copy2(item,target_file)
+                """
+
+            # --- matchmaking segregation + EAC-aware launch --------------------
+            # Only true Vanilla launches via Steam (EAC on, no loader). Every
+            # other version - Community Patch AND any other custom version
+            # (e.g. a future variant) - launches the exe directly (EAC off,
+            # required for the loader). Each one still gets its OWN matchmaking
+            # pool automatically: setup_matchmaking's seed includes gameVersion,
+            # so a Community Patch player and an "other version" player will
+            # never be given the same match code even though both skip Steam.
+            VANILLA_VERSION = "Bleach Rebirth of Souls"
+            if gameVersion != VANILLA_VERSION:
+                setup_matchmaking(game_path, gameVersion)
+                launch_patched(game_path)
+            else:
+                remove_matchmaking(game_path)
+                try:
+                    open_file("steam://rungameid/1689620")
+                except:
+                    print("Error launching game")
+        except Exception as e:
+            messagebox.showerror(
+                "Launch Error",
+                f"Something went wrong while preparing '{gameVersion}' for launch:\n\n{e}\n\n"
+                "The game was not launched. Please check that this version's folder "
+                "under GameVersions has all required subfolders (Script, Motion, 00High, 01MIDDLE)."
+            )
+            return
+
+        window.destroy()
         
         
 
@@ -468,8 +560,11 @@ try:
     settingsPage = Frame(container,bg=bgcolor)
     gameModesPage = Frame(container,bg=bgcolor)
     repairPage = Frame(container,bg=bgcolor)
+    reworksPage = Frame(container,bg=bgcolor)
 
-    titleText = "Bleach Rebirth of Souls community patch launcher"
+    
+
+    titleText = "Bleach Rebirth of Souls community patch launcher (Dev Build)"
     subTitleText = "made by Nilsix :3"
     #labels
     labelTitle = Label(mainPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
@@ -481,9 +576,12 @@ try:
     labelTitleRepair = Label(repairPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
     labelSubTitleRepair = Label(repairPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelRepairText = Label(repairPage,text="Repairing Files",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    labelTitleReworks = Label(reworksPage, text=titleText, font=("Arial",30),bg=bgcolor,fg=labelcolor)
+    labelSubTitleReworks = Label(reworksPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelVersion = Label(mainPage,text=f'Launcher version : {VERSION_STRING}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    
     brosVersion = StringVar()
     gameVersionsList = []
     gameVersionsPath = os.path.join(BASE_DIR,"GameVersions")
@@ -617,16 +715,24 @@ try:
             messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
     
     def refreshLauncher():
-        result = pulling_from_git()
+        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
         if result.returncode == 0:
             messagebox.showinfo("Refresh", "Launcher refreshed successfully!")
         else:
             messagebox.showerror("Refresh", f"Error refreshing launcher: {result.stderr}")
     
+    def reworksMenu():
+        reworksPage.tkraise()
    
-   
+    def byakuyaReworkToggle():
+        global reworks
+        if reworks[0] == "OFF":
+            reworks[0] = "Byakuya"
+        else:
+            reworks[0] = "OFF"
+        reworksByakuyaButton.config(text=f'Byakuya Rework : {"ON" if reworks[0] == "Byakuya" else "OFF"}')
 
-    textSize = 18
+    textSize = 15
     paddingYvalue = 10
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
@@ -639,7 +745,8 @@ try:
     unlockDangaiIchigoButton = Button(mainPage,text="Unlock Dangai Ichigo",font=("Courrier",textSize),bg="white",fg=bgcolor,command=unlockDangaiIchigo)
     repairButton = Button(mainPage,text="Repair files",font=("Courrier",textSize),bg="white",fg=bgcolor,command=repair)
     refreshLauncherButton = Button(mainPage,text="Refresh launcher",font=("Courrier",textSize),bg="white",fg=bgcolor,command=refreshLauncher)
-
+    reworksPageButton = Button(mainPage,text="Reworks",font=("Courrier",textSize),bg="white",fg=bgcolor,command=reworksMenu)
+   
 
 
     # Apply hover effects to main-page buttons 
@@ -671,11 +778,15 @@ try:
     repairButton.pack(pady=paddingYvalue,fill=X)
     unlockDangaiIchigoButton.pack(pady=paddingYvalue,fill=X)
     refreshLauncherButton.pack(pady=paddingYvalue,fill=X)
+    #reworksPageButton.pack(pady=paddingYvalue,fill=X)
     CreditsButton.pack(pady=paddingYvalue,fill=X)
 
 
     labelTitleSettings.pack()
     labelSubTitleSettings.pack()
+
+    labelTitleReworks.pack()
+    labelSubTitleReworks.pack()
 
 
     #Settings page
@@ -846,7 +957,12 @@ try:
     labelSubTitleRepair.pack(pady=paddingYvalue)
     labelRepairText.pack(pady=200)
 
-    for page in(mainPage,settingsPage,gameModesPage,repairPage):
+    reworksByakuyaButton = Button(reworksPage,text=f'Byakuya Rework : {"ON" if reworks[0] == "Byakuya" else "OFF"}',font=("Courrier",textSize),bg="white",fg=bgcolor,command=byakuyaReworkToggle)
+    reworksBackToMenuButton = Button(reworksPage,text="Back to menu",font=("Courrier",textSize),bg="white",fg=bgcolor,command=mainPage.tkraise)
+    reworksByakuyaButton.pack(pady=paddingYvalue, fill=X)
+    reworksBackToMenuButton.pack(pady=paddingYvalue, fill=X)
+
+    for page in(mainPage,settingsPage,gameModesPage,repairPage,reworksPage):
         page.grid(row=0,column=0,sticky="nsew")
     mainPage.tkraise()
 

@@ -40,7 +40,7 @@ TARGET_ENTRIES = [
     # Ajoute d'autres entries ici si besoin
 ]
 OLD_VALUE = b"50"  # current value in pl022.tadjpkg for this entry
-NEW_VALUE = b"100"
+NEW_VALUE = b"130"
 
 raw = bytearray(open(INPUT_FILE, "rb").read())
 

@@ -1,2 +1,2 @@
-Download link for the patch : https://github.com/Nilsix/Installer-Bleach-Rebirth-of-Souls-Community-Patch
-
+# Bleach-Rebalance-Of-Souls-Dev-Environment
+The dev environment for testing and pushing out updates to Bleach Rebirth of souls
