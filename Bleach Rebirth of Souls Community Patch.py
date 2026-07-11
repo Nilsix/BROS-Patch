@@ -99,8 +99,8 @@ try:
     admin_config_path = None
 
     try:
-        if os.path.exists(os.path.join(BASE_DIR,"Json","adminConfig.json")):
-            admin_config_path = os.path.join(BASE_DIR,"Json","adminConfig.json")
+        if os.path.exists(os.path.join(BASE_DIR,"adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"adminConfig.json")
     except:
         admin_config_path = None
     
