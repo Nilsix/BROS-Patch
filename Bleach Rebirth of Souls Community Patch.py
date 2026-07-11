@@ -50,9 +50,17 @@ try:
             return result.stdout.strip()
         except Exception:
             return "unknown"
+    
+    def pulling_from_git():
+        if os.path.exists(os.path.join(BASE_DIR,"BalanceLeadTools","DevToken.txt")) == False:
+            subprocess.run(["git","-C",BASE_DIR,"fetch"], check=True, capture_output=True, text=True)
+            subprocess.run(["git","-C",BASE_DIR,"reset","--hard","origin/main"], check=True, capture_output=True, text=True)
+            subprocess.run(["git","-C",BASE_DIR,"clean","-fd","-e","Json"], check=True, capture_output=True, text=True)
+        return subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+
 
     try:
-        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+        result = pulling_from_git()
         output = result.stdout.strip()
         if "Already up to date." in output:
             pass
@@ -390,8 +398,7 @@ try:
             print(f"Error launching patched game: {e}")
 
     def launch(gameVersion):
-        subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
-
+        pulling_from_git()
         try:
             #folder injection
             injectFolder(gameVersion,"Script")
@@ -715,7 +722,7 @@ try:
             messagebox.showinfo("Dangai Ichigo unlocked", "Dangai Ichigo unlocked successfully!")
     
     def refreshLauncher():
-        result = subprocess.run(["git", "-C", BASE_DIR, "pull"], check=True, capture_output=True, text=True)
+        result = pulling_from_git()
         if result.returncode == 0:
             messagebox.showinfo("Refresh", "Launcher refreshed successfully!")
         else:
