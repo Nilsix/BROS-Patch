@@ -430,7 +430,8 @@ try:
                         os.path.join(game_path,"01MIDDLE","Effect","spfx","com"),dirs_exist_ok=True)
             
             for folder in os.listdir(os.path.join(BASE_DIR,"Files","Spec Mod")):
-                injectPerformanceFiles(folder,config[folder])
+                if folder != "reverse_globe":
+                    injectPerformanceFiles(folder,config[folder])
         
             reworkPath = os.path.join(BASE_DIR,"Reworks")
             for rework in reworks:
