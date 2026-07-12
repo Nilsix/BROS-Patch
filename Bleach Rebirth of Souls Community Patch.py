@@ -772,7 +772,7 @@ try:
     labelTitle.pack()
     labelSubTitle.pack()
     labelVersion.pack()
-    labelWarning.pack(fill=X)
+    #labelWarning.pack(fill=X)
     labelGamePath.pack(fill=X)
     brosVersionList.pack(pady=paddingYvalue,fill=X)
     launchButton.pack()
