@@ -127,7 +127,7 @@ def launch(gameVersion):
     try:
         injectFolder(gameVersion, "Script")
         injectFolder(gameVersion, "Motion")
-        injectFolder(gameVersion, "00High", False)
+        injectFolder(gameVersion, "00HIGH", False)
         injectFolder(gameVersion, "01MIDDLE", False)
 
         shutil.copytree(os.path.join(BASE_DIR, "Files", "Spec Mod", "reverse_globe", f'{config["reverse_globe"]}', "high"),

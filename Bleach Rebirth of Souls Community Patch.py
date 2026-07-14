@@ -418,7 +418,7 @@ try:
             #folder injection
             injectFolder(gameVersion,"Script")
             injectFolder(gameVersion,"Motion")
-            injectFolder(gameVersion,"00High",False)
+            injectFolder(gameVersion,"00HIGH",False)
             injectFolder(gameVersion,"01MIDDLE",False)
 
 
