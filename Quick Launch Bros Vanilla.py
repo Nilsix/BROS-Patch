@@ -33,6 +33,13 @@ def get_snapshot():
 
 
 def pulling_from_git():
+    # Ensure git can write the deep Effect/spfx/... paths that blow past the
+    # legacy 260-char Windows limit. core.longpaths makes git use \\?\ extended
+    # paths internally -- no admin, no registry change, no reboot. A partial
+    # "Filename too long" clone then self-heals on launch: the objects are
+    # already downloaded, so the reset --hard below writes the missing
+    # long-path files with zero action from the user.
+    subprocess.run(["git", "-C", BASE_DIR, "config", "core.longpaths", "true"], capture_output=True, text=True)
     if not os.path.exists(os.path.join(BASE_DIR, "BalanceLeadTools", "DevToken.txt")):
         subprocess.run(["git", "-C", BASE_DIR, "fetch"], check=True, capture_output=True, text=True)
         subprocess.run(["git", "-C", BASE_DIR, "reset", "--hard", "origin/main"], check=True, capture_output=True, text=True)
@@ -100,9 +107,16 @@ def remove_matchmaking(target_path):
 
 
 def launch_patched(target_path):
+    # On Windows start the .exe directly (needed so EasyAntiCheat doesn't block
+    # the injected dinput8.dll). On Linux/macOS a Windows .exe can't be exec'd
+    # directly (OSError: [Errno 8] Exec format error) -- it only runs through
+    # Steam/Proton -- so launch it via Steam's app URL instead.
     exe = os.path.join(target_path, "BLEACH_Rebirth_of_Souls.exe")
     try:
-        subprocess.Popen([exe], cwd=target_path)
+        if platform.system() == "Windows":
+            subprocess.Popen([exe], cwd=target_path)
+        else:
+            open_file("steam://rungameid/1689620")
     except Exception as e:
         print(f"Error launching patched game: {e}")
 
