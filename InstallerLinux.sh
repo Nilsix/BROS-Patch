@@ -6,8 +6,8 @@
 #   chmod +x InstallerLinux.sh && ./InstallerLinux.sh
 #
 # Works on Debian/Ubuntu (apt), Fedora/RHEL (dnf), Arch (pacman) and
-# openSUSE (zypper). Installs Python 3 + Tkinter + pygame + Git, then
-# clones (or updates) the patch. Safe to run more than once.
+# openSUSE (zypper). Installs Python 3 + Tkinter + Git, then clones (or
+# updates) the patch. Safe to run more than once.
 
 set -euo pipefail
 
@@ -17,6 +17,7 @@ LAUNCHER="Bleach Rebirth of Souls Community Patch.py"
 
 say()  { printf '\n\033[1;36m==>\033[0m %s\n' "$1"; }
 ok()   { printf '\033[1;32m   ok\033[0m %s\n' "$1"; }
+warn() { printf '\033[1;33m   warning\033[0m %s\n' "$1"; }
 die()  { printf '\n\033[1;31mError:\033[0m %s\n' "$1" >&2; exit 1; }
 
 # --- privilege helper: use sudo only if we are not already root -------------
@@ -38,27 +39,28 @@ elif command -v pacman   >/dev/null 2>&1; then PM="pacman"
 elif command -v zypper   >/dev/null 2>&1; then PM="zypper"
 else
   die "Could not find a supported package manager (apt, dnf, pacman, zypper).
-Please install manually: python3, python3-tk/tkinter, python3-pip, git, and python3-pygame."
+Please install manually: python3, python3-tk/tkinter, python3-pip, git and python3-requests."
 fi
 ok "Using $PM"
 
 # --- install system dependencies --------------------------------------------
 # Note: python3-tk is REQUIRED - the launcher uses Tkinter for its window.
-# We install pygame from the distro repo when possible (avoids PEP 668 issues).
-say "Installing Python 3, Tkinter, pip, Git and pygame (you may be asked for your password)..."
+# requests is the launcher's only third-party dependency; we install it from
+# the distro repo when possible (avoids PEP 668 issues).
+say "Installing Python 3, Tkinter, pip, Git and requests (you may be asked for your password)..."
 case "$PM" in
   apt)
     $SUDO apt-get update
-    $SUDO apt-get install -y python3 python3-tk python3-pip git python3-pygame
+    $SUDO apt-get install -y python3 python3-tk python3-pip git python3-requests
     ;;
   dnf)
-    $SUDO dnf install -y python3 python3-tkinter python3-pip git python3-pygame
+    $SUDO dnf install -y python3 python3-tkinter python3-pip git python3-requests
     ;;
   pacman)
-    $SUDO pacman -Sy --needed --noconfirm python tk python-pip git python-pygame
+    $SUDO pacman -Sy --needed --noconfirm python tk python-pip git python-requests
     ;;
   zypper)
-    $SUDO zypper --non-interactive install python3 python3-tk python3-pip git python3-pygame
+    $SUDO zypper --non-interactive install python3 python3-tk python3-pip git python3-requests
     ;;
 esac
 ok "System packages installed"
@@ -73,23 +75,32 @@ done
 [ -n "$PY" ] || die "Python 3 with Tkinter is still not available. Check that the install step above succeeded."
 ok "Python: $($PY --version 2>&1) at $(command -v "$PY")"
 
-# --- make sure pygame is importable (fallback to pip if distro pkg missing) --
-if ! "$PY" -c "import pygame" >/dev/null 2>&1; then
-  say "Installing pygame via pip as a fallback..."
-  "$PY" -m pip install --user --upgrade pygame \
-    || "$PY" -m pip install --user --break-system-packages --upgrade pygame \
-    || die "Could not install pygame. Try: $PY -m pip install --user pygame"
+# --- make sure requests is importable (fallback to pip if distro pkg missing)
+# This is non-fatal: the launcher runs without requests (only an online version
+# ping uses it), so we warn instead of aborting if it cannot be installed.
+if ! "$PY" -c "import requests" >/dev/null 2>&1; then
+  say "Installing requests via pip as a fallback..."
+  if "$PY" -m pip install --user --upgrade requests >/dev/null 2>&1 \
+     || "$PY" -m pip install --user --break-system-packages --upgrade requests >/dev/null 2>&1; then
+    ok "requests installed"
+  else
+    warn "Could not install 'requests'. The launcher will still work; only the online version check is skipped."
+  fi
+else
+  ok "requests is available"
 fi
-ok "pygame is available"
 
 # --- clone or update the patch ----------------------------------------------
+# core.longpaths is harmless on Linux and keeps behaviour identical across all
+# three OS installers.
 if [ -d "$REPO_DIR/.git" ]; then
   say "Patch already downloaded - updating it..."
+  git -C "$REPO_DIR" config core.longpaths true || true
   git -C "$REPO_DIR" pull --ff-only || die "Update failed. Delete the '$REPO_DIR' folder and run this again."
   ok "Patch updated"
 else
   say "Downloading the patch..."
-  git clone "$REPO_URL" "$REPO_DIR" || die "Download failed. Check your internet connection and try again."
+  git clone -c core.longpaths=true "$REPO_URL" "$REPO_DIR" || die "Download failed. Check your internet connection and try again."
   ok "Patch downloaded"
 fi
 
