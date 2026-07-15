@@ -397,18 +397,20 @@ try:
     def launch_patched(target_path):
         """Launch the game exe directly. Required because EasyAntiCheat blocks
         the injected dinput8.dll on the normal Steam launch path (crash).
-        Steam must be running for online play.
-
-        On Windows we start the .exe directly. On Linux/macOS a Windows .exe
-        cannot be executed directly (that raises OSError: [Errno 8] Exec format
-        error) -- the game only runs through Steam/Proton -- so there we launch
-        it via Steam's app URL instead."""
+        Steam must be running for online play."""
         exe = os.path.join(target_path, "BLEACH_Rebirth_of_Souls.exe")
         try:
-            if platform.system() == "Windows":
-                subprocess.Popen([exe], cwd=target_path)
+            subprocess.Popen([exe], cwd=target_path)
+        except OSError as e:
+            if getattr(e, "winerror", None) == 740:
+                # exe's manifest requires elevation — Popen/CreateProcess can't
+                # trigger the UAC prompt itself, ShellExecuteW with "runas" can.
+                try:
+                    ctypes.windll.shell32.ShellExecuteW(None, "runas", exe, None, target_path, 1)
+                except Exception as e2:
+                    print(f"Error launching patched game (elevated): {e2}")
             else:
-                open_file("steam://rungameid/1689620")
+                print(f"Error launching patched game: {e}")
         except Exception as e:
             print(f"Error launching patched game: {e}")
 
