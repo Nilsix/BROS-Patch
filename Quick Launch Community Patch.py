@@ -4,6 +4,14 @@ import shutil
 import subprocess
 import platform
 import zlib
+try:
+    import requests
+except:
+    pass
+try:
+    import hashlib
+except:
+    pass
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -12,6 +20,8 @@ GAME_VERSION = "Bleach Rebirth of Souls Community Patch"
 config_path = os.path.join(BASE_DIR, "Json", "config.json")
 with open(config_path, "r") as f:
     config = json.load(f)
+
+
 
 game_path = config.get("GAME_PATH", "")
 
@@ -123,7 +133,7 @@ def launch_patched(target_path):
 
 
 def launch(gameVersion):
-    pulling_from_git()
+    
     try:
         injectFolder(gameVersion, "Script")
         injectFolder(gameVersion, "Motion")
@@ -169,4 +179,38 @@ def launch(gameVersion):
 
 
 if __name__ == "__main__":
+    pulling_from_git()
+    VERSION_STRING = f"{get_snapshot()}"
+
+    admin_config_path = None
+
+    try:
+        if os.path.exists(os.path.join(BASE_DIR,"adminConfig.json")):
+            admin_config_path = os.path.join(BASE_DIR,"adminConfig.json")
+    except:
+        admin_config_path = None
+    
+    admin_config = None
+    
+    if admin_config_path is not None:
+        with open(admin_config_path, "r") as f:
+            admin_config = json.load(f)
+
+    if admin_config_path != None:
+        try:
+            if VERSION_STRING != admin_config["VERSION"] : 
+                admin_config["VERSION"] = VERSION_STRING
+                with open(admin_config_path,"w") as f:
+                    json.dump(admin_config,f)
+
+                hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
+                
+                if admin_config["ADMIN_ID"] == hash:
+                    webhook_url = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+                    try : 
+                        requests.post(webhook_url, json={"content": "Launcher latest version : " + VERSION_STRING})
+                    except:
+                        pass
+        except:
+            pass
     launch(GAME_VERSION)
