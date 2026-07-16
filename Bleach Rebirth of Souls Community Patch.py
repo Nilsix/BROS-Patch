@@ -30,6 +30,7 @@ except:
 
 try: 
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    print("Checking for updates, please wait")
 
     reworks = ["OFF"]
 
