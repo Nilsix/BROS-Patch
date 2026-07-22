@@ -447,10 +447,18 @@ try:
             print(f"[matchmaking] could not remove dinput8.dll: {e}")
 
     def launch_patched(target_path):
-        """Launch the game exe directly. Required because EasyAntiCheat blocks
-        the injected dinput8.dll on the normal Steam launch path (crash).
-        Steam must be running for online play."""
+        """Launch the patched game. On Windows, start the .exe directly (required
+        so EasyAntiCheat doesn't block the injected dinput8.dll -- crash otherwise).
+        On Linux/macOS a Windows .exe can't be exec'd directly ([Errno 8] Exec
+        format error) -- it only runs through Steam/Proton -- so launch it via
+        Steam's app URL instead. Steam must be running for online play."""
         exe = os.path.join(target_path, "BLEACH_Rebirth_of_Souls.exe")
+        if platform.system() != "Windows":
+            try:
+                open_file("steam://rungameid/1689620")
+            except Exception as e:
+                print(f"Error launching patched game: {e}")
+            return
         try:
             subprocess.Popen([exe], cwd=target_path)
         except OSError as e:
