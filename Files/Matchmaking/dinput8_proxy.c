@@ -204,12 +204,60 @@ static void patch_version_string(void)
         log_line("VERSION: title renamed -> 'ReBalance <ver>'");
     }
 }
+static void patch_byakuya_evo_icon(void)
+{
+    /* Byakuya (pl022) unique stance icon kept visible in evo (exe memory patch).
+       Vanilla/rework behaviour: the unique icon (Senbonzakura, sealed/unsealed)
+       is drawn in base form but vanishes entirely once he awakens (Senkei).
+       The sealed<->unsealed artwork is NOT the problem: the icon's anim node
+       0x14 already computes  (bit0 of [combat_obj+0x1098]) << 5  -> state 0 or
+       32, i.e. ENHANCED==0 (sword) = sealed, ENHANCED==1 (petals) = unsealed.
+       That mapping is simply never reached in evo, because the icon is gated
+       off by the form enum [combat_obj+0x1094] (0=base, 1=evo, 2=reverse).
+
+       ActionCharaUniqueUI_Pl22::vt[22] (VA 0x1402065C0, RVA 0x2065C0) is
+       Byakuya's UI "get current form" getter:
+           mov rax,[rcx+8]
+           mov rcx,[rax+0x110]      ; guard
+           mov rax,[rax+0xF0]
+           mov eax,[rax+0x1094]     ; <- RVA 0x2065DD, the form read
+           ret
+       Forcing that read to 0 makes his unique UI always believe it is in base
+       form, so the icon keeps being drawn after awakening; sealed/unsealed then
+       follows the stance on its own via node 0x14. The getter lives in the Pl22
+       vtable, i.e. it is Byakuya's own UI class method and is not shared with
+       any other character, so the blast radius is limited to his unique icon.
+       Guarded by a byte check so a future game update silently skips instead of
+       corrupting code.
+
+         orig:  8B 80 94 10 00 00   mov eax,[rax+00001094]
+         new :  31 C0 90 90 90 90   xor eax,eax ; nop*4        ; always form 0  */
+    unsigned char* mod = (unsigned char*)GetModuleHandleA(NULL);
+    if (!mod) return;
+    unsigned char* p = mod + 0x2065DD;
+    static const unsigned char orig[6] = {0x8B,0x80,0x94,0x10,0x00,0x00};
+    static const unsigned char repl[6] = {0x31,0xC0,0x90,0x90,0x90,0x90};
+    if (memcmp(p, orig, 6) != 0) {
+        log_line("BYAKUYA_ICON: bytes not at expected RVA 0x2065DD (game updated?) -- skipped");
+        return;
+    }
+    DWORD old;
+    if (VirtualProtect(p, 6, PAGE_EXECUTE_READWRITE, &old)) {
+        memcpy(p, repl, 6);
+        VirtualProtect(p, 6, old, &old);
+        FlushInstructionCache(GetCurrentProcess(), p, 6);
+        log_line("BYAKUYA_ICON: stance icon kept visible in evo (RVA 0x2065DD)");
+    } else {
+        log_line("BYAKUYA_ICON: VirtualProtect failed at RVA 0x2065DD");
+    }
+}
 static DWORD WINAPI worker(LPVOID u)
 {
     (void)u;
     log_line("==== dinput8 proxy loaded INTO GAME (pid %lu) ====", GetCurrentProcessId());
     load_settings();
     patch_version_string();
+    patch_byakuya_evo_icon();
     for (int i=0;i<600;i++){ int r=try_install(); if(r==1)return 0; if(r<0)return 0; Sleep(500); }
     log_line("ERROR: steam_api64/matchmaking never appeared -- is this the game process?");
     return 0;
