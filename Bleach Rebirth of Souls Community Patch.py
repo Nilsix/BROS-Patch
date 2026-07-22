@@ -52,6 +52,44 @@ try:
         except Exception:
             return "unknown"
     
+    def get_latest():
+        """Short commit hash of origin/main (the newest pushed build). Does a
+        quiet fetch so it is accurate even for DevToken users who skip the
+        reset. Returns 'unknown' offline."""
+        try:
+            subprocess.run(["git","-C",BASE_DIR,"fetch","--quiet"],
+                           capture_output=True, text=True, timeout=20)
+            r = subprocess.run(["git","-C",BASE_DIR,"rev-parse","--short","origin/main"],
+                               check=True, capture_output=True, text=True)
+            return r.stdout.strip()
+        except Exception:
+            return "unknown"
+
+    def compute_match_code(build, gameVersion):
+        """The online room/match code for a given build + version. Must stay
+        byte-identical to setup_matchmaking() so the launcher shows exactly what
+        the loader writes to patch_ranked.txt."""
+        import zlib
+        seed = f"{build}|{gameVersion}"
+        return 100000 + (zlib.crc32(seed.encode("utf-8")) % 800000)
+
+    def read_loaded_code():
+        """The match code the loader actually installed for THIS player, read
+        from the last 'match code <n> loaded' line of patch_ranked.log next to
+        the game exe. Lets a player confirm their room code installed right."""
+        try:
+            import re
+            p = os.path.join(game_path, "patch_ranked.log")
+            last = None
+            with open(p, encoding="utf-8", errors="replace") as f:
+                for line in f:
+                    m = re.search(r"match code (\d+) loaded", line)
+                    if m:
+                        last = m.group(1)
+            return last
+        except Exception:
+            return None
+
     def pulling_from_git():
         # Ensure git can write the deep Effect/spfx/... paths that blow past the
         # legacy 260-char Windows limit. core.longpaths makes git use \\?\
@@ -165,16 +203,29 @@ try:
             pass
        
 
-    window = Tk()
+    # DPI-aware BEFORE creating the window, so text renders crisp at the monitor's
+    # native resolution instead of Windows bitmap-stretching it (that stretch is
+    # what looked washed-out / soft).
     try:
-        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+        ctypes.windll.shcore.SetProcessDpiAwareness(2)   # per-monitor v2 (Win 8.1+)
+    except Exception:
+        try: ctypes.windll.user32.SetProcessDPIAware()   # fallback (older Windows)
+        except Exception: pass
+
+    window = Tk()
+    window.withdraw()                     # stay hidden until sized to fit content
+    try:
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
     except:
         pass
     window.title("Bleach Community Patch")
-    window.geometry("1080x900")
-    window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
+    try: window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
+    except Exception: pass
     #minimum size of the window
-    window.minsize(480,360)
+    window.minsize(600,400)
+    # Final size is computed at the very end by fit_window(), after every widget
+    # exists: the window is sized to exactly fit its content (capped to the
+    # screen) and centred -- crisp at native DPI, nothing cut off, no resizing.
     bgcolor = "#4A1942"
     labelcolor = "#D9B8D4"
     window.config(background=bgcolor)
@@ -581,7 +632,7 @@ try:
 
     #box
     container = Frame(window, bg=bgcolor)
-    container.pack(expand=YES)
+    container.pack(expand=YES, fill=BOTH, padx=60, pady=6)
     mainPage = Frame(container,bg=bgcolor)
     settingsPage = Frame(container,bg=bgcolor)
     gameModesPage = Frame(container,bg=bgcolor)
@@ -606,7 +657,50 @@ try:
     labelSubTitleReworks = Label(reworksPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
-    labelVersion = Label(mainPage,text=f'Launcher version : {VERSION_STRING}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    # Version + live online-code panel. Each underlined term shows a short
+    # explanation on hover (reuses the Tooltip class) so the numbers aren't confusing.
+    COMMUNITY_VERSION = "Bleach Rebirth of Souls Community Patch"
+    LATEST_STRING = get_latest()
+    _have_latest  = LATEST_STRING not in ("", "unknown")
+    _up_to_date   = _have_latest and (VERSION_STRING == LATEST_STRING)
+    MASTER_CODE   = compute_match_code(LATEST_STRING if _have_latest else VERSION_STRING, COMMUNITY_VERSION)
+    _your_code    = read_loaded_code()
+
+    versionPanel = Frame(mainPage, bg=bgcolor)
+    def _term(parent, text, tip):
+        lbl = Label(parent, text=text, font=("Courrier",12,"underline"),
+                    bg=bgcolor, fg="#F3CDEC", cursor="question_arrow")
+        Tooltip(lbl, tip)
+        return lbl
+    def _val(parent, text, fg=labelcolor):
+        return Label(parent, text=text, font=("Courrier",12), bg=bgcolor, fg=fg)
+
+    _status1 = "(up to date)" if _up_to_date else ("(update available - relaunch)" if _have_latest else "(offline)")
+    _term(versionPanel, "Current version",
+          "The patch build you have installed right now (short git commit hash).").grid(row=0,column=0,sticky="e",pady=1)
+    _val(versionPanel, f" : {VERSION_STRING}").grid(row=0,column=1,sticky="w",padx=(0,22))
+    _term(versionPanel, "Latest version",
+          "The newest patch build published on GitHub. If it differs from Current, an update is available - relaunch to get it.").grid(row=0,column=2,sticky="e",pady=1)
+    _val(versionPanel, f" : {LATEST_STRING}  {_status1}",
+         fg=(labelcolor if (_up_to_date or not _have_latest) else "#FFD27F")).grid(row=0,column=3,sticky="w")
+
+    _term(versionPanel, "Master online code",
+          "The room code every player on the LATEST build uses online. You only match players whose code equals this one.").grid(row=1,column=0,sticky="e",pady=1)
+    _val(versionPanel, f" : {MASTER_CODE}").grid(row=1,column=1,sticky="w",padx=(0,22))
+    _term(versionPanel, "Your loaded code",
+          "The room code that actually installed on your machine the last time the game ran (read from patch_ranked.log). It should equal Master online code.").grid(row=1,column=2,sticky="e",pady=1)
+    if _your_code:
+        _ok = str(_your_code) == str(MASTER_CODE)
+        _val(versionPanel, f" : {_your_code}  " + ("(OK)" if _ok else "(mismatch)"),
+             fg=("#9CE59C" if _ok else "#FF9B9B")).grid(row=1,column=3,sticky="w")
+    else:
+        _val(versionPanel, " : (not set yet)", fg="#FFD27F").grid(row=1,column=3,sticky="w")
+
+    Label(versionPanel,
+          text="Launch the game once through the launcher to update your online code. "
+               "If it still doesn't match, update your launcher / reinstall the patch.",
+          font=("Courrier",9), bg=bgcolor, fg="#C9A9C2", wraplength=1000, justify="center"
+          ).grid(row=2,column=0,columnspan=4,pady=(5,0))
     
     brosVersion = StringVar()
     gameVersionsList = []
@@ -758,8 +852,8 @@ try:
             reworks[0] = "OFF"
         reworksByakuyaButton.config(text=f'Byakuya Rework : {"ON" if reworks[0] == "Byakuya" else "OFF"}')
 
-    textSize = 15
-    paddingYvalue = 10
+    textSize = 12
+    paddingYvalue = 5
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
     joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/fSbsZE3qSZ"))
@@ -790,7 +884,7 @@ try:
     #pack
     labelTitle.pack()
     labelSubTitle.pack()
-    labelVersion.pack()
+    versionPanel.pack(pady=(2,4))
     #labelWarning.pack(fill=X)
     labelGamePath.pack(fill=X)
     brosVersionList.pack(pady=paddingYvalue,fill=X)
@@ -988,10 +1082,25 @@ try:
     reworksByakuyaButton.pack(pady=paddingYvalue, fill=X)
     reworksBackToMenuButton.pack(pady=paddingYvalue, fill=X)
 
+    # Let the stacked pages fill the whole container (so buttons stretch to width).
+    container.grid_rowconfigure(0, weight=1)
+    container.grid_columnconfigure(0, weight=1)
     for page in(mainPage,settingsPage,gameModesPage,repairPage,reworksPage):
         page.grid(row=0,column=0,sticky="nsew")
     mainPage.tkraise()
 
+    def fit_window():
+        # Size the window to exactly fit its content (the tallest stacked page,
+        # since they all share row0/col0), capped to the screen, then centre it.
+        # Crisp at native DPI + never clipped, whatever the monitor/scaling.
+        window.update_idletasks()
+        sw = window.winfo_screenwidth(); sh = window.winfo_screenheight()
+        w = min(max(window.winfo_reqwidth(), 700), sw - 40)
+        h = min(window.winfo_reqheight(), sh - 80)
+        x = max(0, (sw - w) // 2); y = max(0, (sh - h) // 2 - 20)
+        window.geometry(f"{w}x{h}+{x}+{y}")
+    fit_window()
+    window.deiconify()
     window.mainloop()
 except Exception as e:
     try :
