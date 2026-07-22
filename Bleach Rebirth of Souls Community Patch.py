@@ -52,6 +52,44 @@ try:
         except Exception:
             return "unknown"
     
+    def get_latest():
+        """Short commit hash of origin/main (the newest pushed build). Does a
+        quiet fetch so it is accurate even for DevToken users who skip the
+        reset. Returns 'unknown' offline."""
+        try:
+            subprocess.run(["git","-C",BASE_DIR,"fetch","--quiet"],
+                           capture_output=True, text=True, timeout=20)
+            r = subprocess.run(["git","-C",BASE_DIR,"rev-parse","--short","origin/main"],
+                               check=True, capture_output=True, text=True)
+            return r.stdout.strip()
+        except Exception:
+            return "unknown"
+
+    def compute_match_code(build, gameVersion):
+        """The online room/match code for a given build + version. Must stay
+        byte-identical to setup_matchmaking() so the launcher shows exactly what
+        the loader writes to patch_ranked.txt."""
+        import zlib
+        seed = f"{build}|{gameVersion}"
+        return 100000 + (zlib.crc32(seed.encode("utf-8")) % 800000)
+
+    def read_loaded_code():
+        """The match code the loader actually installed for THIS player, read
+        from the last 'match code <n> loaded' line of patch_ranked.log next to
+        the game exe. Lets a player confirm their room code installed right."""
+        try:
+            import re
+            p = os.path.join(game_path, "patch_ranked.log")
+            last = None
+            with open(p, encoding="utf-8", errors="replace") as f:
+                for line in f:
+                    m = re.search(r"match code (\d+) loaded", line)
+                    if m:
+                        last = m.group(1)
+            return last
+        except Exception:
+            return None
+
     def pulling_from_git():
         # Ensure git can write the deep Effect/spfx/... paths that blow past the
         # legacy 260-char Windows limit. core.longpaths makes git use \\?\
@@ -167,14 +205,25 @@ try:
 
     window = Tk()
     try:
-        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)  
+        ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
     except:
         pass
     window.title("Bleach Community Patch")
-    window.geometry("1080x900")
-    window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
+    # Launch at 720p, centred. The content frame fills the whole window (see the
+    # container pack below), so the buttons scale up to the width instead of
+    # sitting in a narrow column with big empty margins. Still resizable, so on a
+    # bigger monitor the buttons just get wider.
+    try:
+        _w, _h = 1280, 720
+        _sw = window.winfo_screenwidth(); _sh = window.winfo_screenheight()
+        _x = max(0, (_sw - _w) // 2); _y = max(0, (_sh - _h) // 2 - 20)
+        window.geometry(f"{_w}x{_h}+{_x}+{_y}")
+    except Exception:
+        window.geometry("1280x720")
+    try: window.iconbitmap(os.path.join(BASE_DIR,"ressources/pimplin.ico"))
+    except Exception: pass
     #minimum size of the window
-    window.minsize(480,360)
+    window.minsize(900,560)
     bgcolor = "#4A1942"
     labelcolor = "#D9B8D4"
     window.config(background=bgcolor)
@@ -581,7 +630,7 @@ try:
 
     #box
     container = Frame(window, bg=bgcolor)
-    container.pack(expand=YES)
+    container.pack(expand=YES, fill=BOTH, padx=60, pady=6)
     mainPage = Frame(container,bg=bgcolor)
     settingsPage = Frame(container,bg=bgcolor)
     gameModesPage = Frame(container,bg=bgcolor)
@@ -606,7 +655,22 @@ try:
     labelSubTitleReworks = Label(reworksPage,text=subTitleText,font=("Courrier",20),bg=bgcolor,fg=labelcolor)
     labelWarning = Label(mainPage, text="Warning : Please only use the non vanilla features in room matches online, not in casual or ranked matches",font=("Courrier",15),bg=bgcolor,fg=labelcolor)
     labelGamePath = Label(mainPage,text=f'Current game path : {game_path}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
-    labelVersion = Label(mainPage,text=f'Launcher version : {VERSION_STRING}',font=("Courrier",15),bg=bgcolor,fg=labelcolor)
+    # Version + live online-code panel (current vs latest, and the master room code).
+    COMMUNITY_VERSION = "Bleach Rebirth of Souls Community Patch"
+    LATEST_STRING = get_latest()
+    _have_latest  = LATEST_STRING not in ("", "unknown")
+    _up_to_date   = _have_latest and (VERSION_STRING == LATEST_STRING)
+    MASTER_CODE   = compute_match_code(LATEST_STRING if _have_latest else VERSION_STRING, COMMUNITY_VERSION)
+    _your_code    = read_loaded_code()
+
+    _line1 = f"Current version : {VERSION_STRING}      Latest version : {LATEST_STRING}   " + \
+             ("(up to date)" if _up_to_date else ("(update available - relaunch to update)" if _have_latest else "(offline - can't check)"))
+    _line2 = f"Master online code : {MASTER_CODE}"
+    if _your_code:
+        _line2 += f"      Your loaded code : {_your_code}   " + \
+                  ("(OK)" if str(_your_code) == str(MASTER_CODE) else "(mismatch - relaunch the patch)")
+    labelVersion = Label(mainPage, text=_line1 + "\n" + _line2,
+                         font=("Courrier",13), bg=bgcolor, fg=labelcolor, justify="center")
     
     brosVersion = StringVar()
     gameVersionsList = []
@@ -759,7 +823,7 @@ try:
         reworksByakuyaButton.config(text=f'Byakuya Rework : {"ON" if reworks[0] == "Byakuya" else "OFF"}')
 
     textSize = 15
-    paddingYvalue = 10
+    paddingYvalue = 5
     #buttons
     launchButton = Button(mainPage,text="Launch the game",font=("Courrier",textSize),bg="white",fg=bgcolor,command=preLauncher)
     joinDiscordButton = Button(mainPage,text="Join our discord :) ",font=("Courrier",textSize),command=lambda : webbrowser.open("https://discord.gg/fSbsZE3qSZ"))
@@ -988,6 +1052,9 @@ try:
     reworksByakuyaButton.pack(pady=paddingYvalue, fill=X)
     reworksBackToMenuButton.pack(pady=paddingYvalue, fill=X)
 
+    # Let the stacked pages fill the whole container (so buttons stretch to width).
+    container.grid_rowconfigure(0, weight=1)
+    container.grid_columnconfigure(0, weight=1)
     for page in(mainPage,settingsPage,gameModesPage,repairPage,reworksPage):
         page.grid(row=0,column=0,sticky="nsew")
     mainPage.tkraise()

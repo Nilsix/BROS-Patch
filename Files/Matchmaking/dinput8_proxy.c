@@ -206,49 +206,42 @@ static void patch_version_string(void)
 }
 static void patch_byakuya_evo_icon(void)
 {
-    /* Byakuya (pl022) unique stance icon kept visible in evo (exe memory patch).
-       Vanilla/rework behaviour: the unique icon (Senbonzakura, sealed/unsealed)
-       is drawn in base form but vanishes entirely once he awakens (Senkei).
-       The sealed<->unsealed artwork is NOT the problem: the icon's anim node
-       0x14 already computes  (bit0 of [combat_obj+0x1098]) << 5  -> state 0 or
-       32, i.e. ENHANCED==0 (sword) = sealed, ENHANCED==1 (petals) = unsealed.
-       That mapping is simply never reached in evo, because the icon is gated
-       off by the form enum [combat_obj+0x1094] (0=base, 1=evo, 2=reverse).
-
-       ActionCharaUniqueUI_Pl22::vt[22] (VA 0x1402065C0, RVA 0x2065C0) is
-       Byakuya's UI "get current form" getter:
-           mov rax,[rcx+8]
-           mov rcx,[rax+0x110]      ; guard
-           mov rax,[rax+0xF0]
-           mov eax,[rax+0x1094]     ; <- RVA 0x2065DD, the form read
-           ret
-       Forcing that read to 0 makes his unique UI always believe it is in base
-       form, so the icon keeps being drawn after awakening; sealed/unsealed then
-       follows the stance on its own via node 0x14. The getter lives in the Pl22
-       vtable, i.e. it is Byakuya's own UI class method and is not shared with
-       any other character, so the blast radius is limited to his unique icon.
-       Guarded by a byte check so a future game update silently skips instead of
-       corrupting code.
-
-         orig:  8B 80 94 10 00 00   mov eax,[rax+00001094]
-         new :  31 C0 90 90 90 90   xor eax,eax ; nop*4        ; always form 0  */
+    /* Byakuya (pl022) unique stance icon kept visible in evo -- Pl22-ONLY.
+       CORRECTED 2026-07-22 (Aizen/Stark bugfix). The form getter at VA
+       0x1402065C0 is a SHARED base-class method: vtable slot 22 of 27 UI
+       classes (Pl22 Byakuya AND Pl20 Aizen, Pl33 Stark, ...). Patching its body
+       in place forced form=0 for all of them, so Aizen/Stark icons flickered.
+       Fix: give ONLY Byakuya's class a private copy of the getter that always
+       returns form 0, and repoint just his vtable slot (VA 0x141440678 /
+       RVA 0x1440678). Shared method left untouched; all other classes normal. */
     unsigned char* mod = (unsigned char*)GetModuleHandleA(NULL);
     if (!mod) return;
-    unsigned char* p = mod + 0x2065DD;
-    static const unsigned char orig[6] = {0x8B,0x80,0x94,0x10,0x00,0x00};
-    static const unsigned char repl[6] = {0x31,0xC0,0x90,0x90,0x90,0x90};
-    if (memcmp(p, orig, 6) != 0) {
-        log_line("BYAKUYA_ICON: bytes not at expected RVA 0x2065DD (game updated?) -- skipped");
+    void**         slot   = (void**)(mod + 0x1440678);   /* Pl22 vtable[22] */
+    unsigned char* shared = mod + 0x2065C0;              /* shared getter   */
+    static const unsigned char sig[8] = {0x48,0x8B,0x41,0x08,0x48,0x8B,0x88,0x10};
+    if ((unsigned char*)*slot != shared || memcmp(shared, sig, 8) != 0) {
+        log_line("BYAKUYA_ICON: Pl22 vt[22]/getter not as expected (game updated?) -- skipped");
         return;
     }
+    static const unsigned char stub[40] = {
+        0x48,0x8B,0x41,0x08, 0x48,0x8B,0x88,0x10,0x01,0x00,0x00,
+        0x48,0x85,0xC9, 0x74,0x14, 0x83,0x79,0x08,0x00, 0x74,0x0E,
+        0x48,0x8B,0x80,0xF0,0x00,0x00,0x00,
+        0x31,0xC0,0x90,0x90,0x90,0x90, 0xC3,
+        0x8B,0x40,0x44, 0xC3
+    };
+    void* code = VirtualAlloc(NULL, sizeof(stub),
+                              MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    if (!code) { log_line("BYAKUYA_ICON: VirtualAlloc failed"); return; }
+    memcpy(code, stub, sizeof(stub));
+    FlushInstructionCache(GetCurrentProcess(), code, sizeof(stub));
     DWORD old;
-    if (VirtualProtect(p, 6, PAGE_EXECUTE_READWRITE, &old)) {
-        memcpy(p, repl, 6);
-        VirtualProtect(p, 6, old, &old);
-        FlushInstructionCache(GetCurrentProcess(), p, 6);
-        log_line("BYAKUYA_ICON: stance icon kept visible in evo (RVA 0x2065DD)");
+    if (VirtualProtect(slot, sizeof(void*), PAGE_READWRITE, &old)) {
+        *slot = code;
+        VirtualProtect(slot, sizeof(void*), old, &old);
+        log_line("BYAKUYA_ICON: Pl22-only form getter repointed (icon in evo; Aizen/Stark/others unaffected)");
     } else {
-        log_line("BYAKUYA_ICON: VirtualProtect failed at RVA 0x2065DD");
+        log_line("BYAKUYA_ICON: VirtualProtect(vtable slot) failed");
     }
 }
 static DWORD WINAPI worker(LPVOID u)
