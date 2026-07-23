@@ -2,11 +2,40 @@ import csv
 import os     
 import subprocess
 import shutil
+import json
+import requests
+import hashlib
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEAM_BATTLE_DIR = os.path.join(BASE_DIR,"..","GameModes","TeamBattle")
 charastatusPath = os.path.join(BASE_DIR,"..","GameVersions","Bleach Rebirth of Souls Community Patch","Script","CharaStatus.fsv")
 
+
+def get_snapshot():
+        """Returns the short git commit hash currently checked out.
+        This updates automatically every time the launcher does a 'git pull',
+        so it always reflects whatever was last pushed to GitHub."""
+        try:
+            result = subprocess.run(
+                ["git", "-C", BASE_DIR, "rev-parse", "--short", "HEAD"],
+                check=True, capture_output=True, text=True
+            )
+            return result.stdout.strip()
+        except Exception:
+            return "unknown"
+
+try:
+    if os.path.exists(os.path.join(BASE_DIR,"..","adminConfig.json")):
+        admin_config_path = os.path.join(BASE_DIR,"..","adminConfig.json")
+        print("it does exist")
+except:
+        admin_config_path = None
+
+admin_config = None
+    
+if admin_config_path is not None:
+    with open(admin_config_path, "r") as f:
+        admin_config = json.load(f)
 
 def checkTokenOpen():
     if os.path.exists(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt")):
@@ -18,7 +47,7 @@ def applyKonpakuChanges(id,value):
     revValue = value
     if id == "35" and value == 9:
         value = 5
-    elif id == "01" or id == "20":
+    elif id == "01" or id == "20" or id =="5":
         if value == 9:
             value = 8
         revValue +=2
@@ -110,10 +139,25 @@ elif options == 1:
     applyKonpakuChanges(WinnerInput, winnerKonpakuRemaining)
     applyKonpakuChanges(LoserInput, 9)
     subprocess.run([os.path.join(TEAM_BATTLE_DIR,"convertToFsvAndPush.bat")], shell=True)
-    print("\nChanges applied")
+    with open(admin_config_path,"w") as f:
+        json.dump(admin_config,f)
+
+        hash = hashlib.sha256(admin_config["HASH_VALUE"].encode()).hexdigest()
+                
+        if admin_config["ADMIN_ID"] == hash:
+            webhook_url = "https://discord.com/api/webhooks/1529735486699212840/9rCA5O83KOJP8MTNiOykXuqoIJGg-fCdA6uyrFdZ2UD6SIzONsdi9Z_nGfYpzmRC9fX3"
+            webhook_url2 = "https://discord.com/api/webhooks/1522537997751549972/AUYztUb1AS77vhsc6ERfeRYE9kNu0KLfem8HP9CGQDVe0lrkOeNarf8VlPGbrAyj-jeZ"
+            try : 
+                requests.post(webhook_url, json={"content": "Changes applied, you can now launch the game"})
+                requests.post(webhook_url2, json={"content": "Launcher latest version : " + f"{get_snapshot()}"})
+
+            except:
+                pass
 elif options == 2:
     subprocess.run([os.path.join(TEAM_BATTLE_DIR,"resetCharaStatus.bat")], shell=True)
 elif options == 3:
     os.remove(os.path.join(TEAM_BATTLE_DIR,"TokenOpen.txt"))
     os.remove(os.path.join(TEAM_BATTLE_DIR,"CharaStatus.csv"))
     os.remove(os.path.join(TEAM_BATTLE_DIR,"CharaStatus.fsv"))
+    os.remove(os.path.join(TEAM_BATTLE_DIR,"originalCharaStatus","CharaStatus.fsv"))
+    os.remove(os.path.join(TEAM_BATTLE_DIR,"originalCharaStatus","CharaStatus.csv"))

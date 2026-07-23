@@ -133,7 +133,8 @@ def launch_patched(target_path):
 
 
 def launch(gameVersion):
-    
+    if not os.path.exists(os.path.join(BASE_DIR,"GameModes","TeamBattle","TokenOpen.txt")):
+        config["TEAM_BATTLE"] = "OFF"
     try:
         injectFolder(gameVersion, "Script")
         injectFolder(gameVersion, "Motion")

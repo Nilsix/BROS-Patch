@@ -476,6 +476,8 @@ try:
 
     def launch(gameVersion):
         pulling_from_git()
+        if not os.path.exists(os.path.join(BASE_DIR,"GameModes","TeamBattle","TokenOpen.txt")):
+            config["TEAM_BATTLE"] = "OFF"
         try:
             #folder injection
             injectFolder(gameVersion,"Script")
